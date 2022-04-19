@@ -7,8 +7,13 @@ import HelloWorld from "@/components/HelloWorld.vue";
 	<header>
 		<img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-		<div class="wrapper">
-			<h1 class="text-3xl font-bold underline text-green-500">Hello world!</h1>
+		<div>
+			<h1 class="text-3xl underline text-green-500 font-ibm-plex-thai">สวัสดี ฟอนต์ ไอบีเอ็มใหม่!</h1>
+			<br />
+
+			<h1 class="text-3xl underline text-green-500 font-ibm-plex-thai">HelloWorld</h1>
+			<h1 class="text-3xl underline text-green-500">HelloWorld</h1>
+
 			<HelloWorld msg="You did it!" />
 
 			<nav>
@@ -16,13 +21,16 @@ import HelloWorld from "@/components/HelloWorld.vue";
 				<RouterLink to="/about">About</RouterLink>
 			</nav>
 		</div>
+		<!-- <h1 class="text-3xl underline text-green-500 font-ibmPlex">Hello world!</h1>
+
+		<h1 class="text-3xl underline text-green-500">Hello world!</h1> -->
 	</header>
 
 	<RouterView />
 </template>
 
 <style>
-@import "@/assets/base.css";
+/* @import "@/assets/base.css"; */
 
 #app {
 	max-width: 1280px;
