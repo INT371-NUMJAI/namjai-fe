@@ -7,8 +7,8 @@ import HelloWorld from "@/components/HelloWorld.vue";
 	<header>
 		<img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-		<div>
-			<h1 class="text-3xl underline text-green-500 font-ibm-plex-thai">สวัสดี ฟอนต์ ไอบีเอ็มใหม่!</h1>
+		<div class="bg-namjaigreen">
+			<h1 class="text-3xl underline text-namjaigreen font-ibm-plex-thai">สวัสดี ฟอนต์ ไอบีเอ็มใหม่!</h1>
 			<br />
 
 			<h1 class="text-3xl underline text-green-500 font-ibm-plex-thai">HelloWorld</h1>
