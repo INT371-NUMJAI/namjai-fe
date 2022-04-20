@@ -17,6 +17,11 @@ module.exports = {
 				namjaigreen: "#00715D",
 			}
 		},
+		screens: {
+			'sm': '390px',
+			'md': '834px',
+			'lg': '1281px',
+		}
 	},
 	plugins: [],
 };
