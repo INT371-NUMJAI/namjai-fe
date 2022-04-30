@@ -7,6 +7,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
 	<w-app>
 		<header>
 			<img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+			<w-icon xl color="primary"> fa fa-star </w-icon>
 			<w-button class="ml-24" bg-color="success">success</w-button>
 			<w-button class="ml-24" bg-color="error">error</w-button>
 
