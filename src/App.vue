@@ -1,8 +1,3 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "@/components/HelloWorld.vue";
-</script>
-
 <template>
 	<w-app>
 		<nav class="bg-namjaigreen flex items-center justify-between px-7 py-3 lg:py-3 lg:px-11 drop-shadow-md lg:fixed lg:w-screen">
