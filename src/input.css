@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-	@apply font-ibm-plex-thai;
+	@apply font-ibm-plex-thai bg-namjaibeige;
 }
