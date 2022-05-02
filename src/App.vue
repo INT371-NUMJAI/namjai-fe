@@ -17,7 +17,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
 				<w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
 				<w-button bg-color="transparent" class="font-medium">จิตอาสา</w-button>
 				<w-button bg-color="transparent" class="font-medium">เกี่ยวกับเรา</w-button>
-				<w-button bg-color="transparent" round outline class="py-4 bd4 font-medium">เข้าสู่ระบบ</w-button>
+				<w-button bg-color="transparent" round outline class="py-4 font-medium">เข้าสู่ระบบ</w-button>
 			</div>
 		</nav>
 			<div class="md:flex md:justify-end hidden">
@@ -25,37 +25,35 @@ import HelloWorld from "@/components/HelloWorld.vue";
 				</div>
 			</div>
 			<div
-				class="bg-namjaiwhite md:bg-transparent md:mx-28 p-10 mt-48 md:mt-16 md:h-screen h-screen w-full md:w-fit rounded-t-3xl md:rounded-none fixed">
+				class="bg-namjaiwhite md:bg-transparent md:mx-28 p-10 mt-80 md:mt-20 md:h-screen h-screen w-full md:w-fit rounded-t-3xl md:rounded-none fixed">
 				<div class="-my-10 mx-56 md:hidden">
 					<div class="w-24 h-20 bg-namjaiyellow rounded-b-full"></div>
 				</div>
-				<h1 class="text-namjaiblack font-bold text-2xl md:text-5xl">Help Drive Change</h1>
+				<h1 class="text-namjaiblack font-bold text-2xl md:text-5xl">ยินดีต้อนรับ!</h1>
 				<div class="py-4">
 					<div class="w-16 border-4 border-t border-namjaired"></div>
 				</div>
-				<div class="mt-7 font-medium">
+				<div class="mt-7 font-medium md:w-80 md:mt-10">
 					<w-form class="grid grid-flow-row">
-						<div class="md:inline-block">
-						<label class="text-sm mb-2">ชื่อ</label>
-						<w-input class="mb-7" type="text" color="black" placeholder="ชื่อ" />
-						<label class="text-sm mb-2">นามสกุล</label>
-						<w-input class="mb-7" type="text" color="black" placeholder="นามสกุล" />
-						</div>
 						<label class="text-sm mb-2">อีเมล</label>
-						<w-input class="mb-7" type="email" color="black" placeholder="เช่น abc@gmail.com" />
+						<w-input class="mb-10" type="email" color="black" placeholder="เช่น abc@gmail.com" />
 						<label class="text-sm mb-2">รหัสผ่าน</label>
-						<w-input class="mb-7" type="password" color="black" placeholder="*******" />
+						<w-input class="mb-10" type="password" color="black" placeholder="*******" />
 					</w-form>
 				</div>
-				<div class="flex justify-center mt-3 -ml-1 mb-5 w-80 my-10 rounded-xl bg-namjaigreen h-14">
+				<div class="md:block md:w-80">
+				<div class="flex justify-center mt-3 mb-5 w-80 my-10 rounded-xl bg-namjaigreen h-14">
 					<w-button color="white" bg-color="transparent" class="text-white text-base font-semibold"
 						type="submit">
 						เข้าสู่ระบบ</w-button>
 				</div>
 				<div class="flex justify-center text-sm">
-					<p>มีบัญชีอยู่แล้วใช่หรือไม่?</p>
-					<button bg-color="transparent" class="ml-1 font-semibold">เข้าสู่ระบบ</button>
+					<p>ยังไม่มีบัญชีใช่หรือไม่?</p>
+					<button bg-color="transparent" class="ml-1 font-semibold">ลงทะเบียน</button>
+				</div>
 				</div>
 			</div>
+			<img class="hidden md:block md:w-2/5 md:absolute md:top-44 md:right-48 md:z-10" src="../src/assets/pic1.png" />
+			<img class="hidden md:block md:w-3/5 md:absolute md:top-24 md:right-14 md:-z-0" src="../src/assets/pic2.png" />			
 	</w-app>
 </template>
