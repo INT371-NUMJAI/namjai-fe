@@ -15,20 +15,20 @@
 				<w-button bg-color="transparent" round outline class="py-4 font-medium">เข้าสู่ระบบ</w-button>
 			</div>
 		</nav>
-			<div class="md:flex md:justify-end hidden">
-				<div class="md:w-1/3 md:h-screen md:bg-namjaigreen">
+			<div class="lg:flex md:justify-end hidden">
+				<div class="lg:w-1/3 lg:h-screen lg:bg-namjaigreen">
 				</div>
 			</div>
 			<div
-				class="bg-namjaiwhite md:bg-transparent md:mx-28 p-10 mt-80 md:mt-20 md:h-screen h-screen w-full md:w-fit rounded-t-3xl md:rounded-none fixed">
-				<div class="-my-10 mx-56 md:hidden">
+				class="bg-namjaiwhite lg:bg-transparent lg:mx-28 md:px-20 p-10 mt-80 lg:mt-20 lg:h-screen h-screen w-full lg:w-fit rounded-t-3xl md:rounded-t-3xl md:rounded-none fixed">
+				<div class="-my-10 lg:hidden float-right">
 					<div class="w-24 h-20 bg-namjaiyellow rounded-b-full"></div>
 				</div>
-				<h1 class="text-namjaiblack font-bold text-2xl md:text-5xl">ยินดีต้อนรับ!</h1>
+				<h1 class="text-namjaiblack font-bold text-2xl lg:text-5xl">ยินดีต้อนรับ!</h1>
 				<div class="py-4">
 					<div class="w-16 border-4 border-t border-namjaired"></div>
 				</div>
-				<div class="mt-7 font-medium md:w-80 md:mt-10">
+				<div class="mt-7 font-medium lg:w-80 lg:mt-10">
 					<w-form class="grid grid-flow-row">
 						<label class="text-sm mb-2">อีเมล</label>
 						<w-input class="mb-10" type="email" color="black" placeholder="เช่น abc@gmail.com" />
@@ -36,8 +36,8 @@
 						<w-input class="mb-10" type="password" color="black" placeholder="*******" />
 					</w-form>
 				</div>
-				<div class="md:block md:w-80">
-				<div class="flex justify-center mt-3 mb-5 w-80 my-10 rounded-xl bg-namjaigreen h-14">
+				<div class="lg:block lg:w-80">
+				<div class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 bg-namjaigreen h-14 w-80 my-10 rounded-xl">
 					<w-button color="white" bg-color="transparent" class="text-white text-base font-semibold"
 						type="submit">
 						เข้าสู่ระบบ</w-button>
@@ -48,7 +48,7 @@
 				</div>
 				</div>
 			</div>
-			<img class="hidden md:block md:w-2/5 md:absolute md:top-44 md:right-48 md:z-10" src="../src/assets/pic1.png" />
-			<img class="hidden md:block md:w-3/5 md:absolute md:top-24 md:right-14 md:-z-0" src="../src/assets/pic2.png" />			
+			<img class="hidden lg:block lg:w-2/5 lg:absolute lg:top-44 lg:right-48 lg:z-10" src="../src/assets/pic1.png" />
+			<img class="hidden lg:block lg:w-3/5 lg:absolute lg:top-24 lg:right-14 lg:-z-0" src="../src/assets/pic2.png" />			
 	</w-app>
 </template>
