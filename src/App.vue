@@ -1,7 +1,9 @@
 <template>
 	<w-app>
 		<div>
+
 			<nav-bar />
+
 		</div>
 	</w-app>
 </template>
