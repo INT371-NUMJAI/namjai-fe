@@ -1,0 +1,9 @@
+networks:
+  default:
+    external:
+      name: int371-network
+services:
+  frontend:
+    container_name: frontend-dev
+    build: .
+    image: ghcr.io/int371-namjai/namjai-fe:dev

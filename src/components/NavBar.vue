@@ -1,5 +1,5 @@
 <template>
-	<w-app>
+	<div>
 		<nav class="bg-namjaigreen flex items-center justify-between px-7 py-3 md:py-3 md:px-11 drop-shadow-md">
 			<div class="flex items-center text-white">
 				<img class="w-28" src="../assets/namjai.png" />
@@ -12,8 +12,12 @@
 				<w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
 				<w-button bg-color="transparent" class="font-medium">จิตอาสา</w-button>
 				<w-button bg-color="transparent" class="font-medium">เกี่ยวกับเรา</w-button>
-				<w-button bg-color="transparent" round outline class="py-4 bd4 font-medium">เข้าสู่ระบบ</w-button>
+				<router-link to="/about">
+					<w-button bg-color="transparent" round outline class="py-4 bd4 font-medium"
+						>เข้าสู่ระบบ</w-button
+					></router-link
+				>
 			</div>
 		</nav>
-	</w-app>
+	</div>
 </template>
