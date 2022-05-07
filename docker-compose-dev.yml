@@ -4,6 +4,6 @@ networks:
       name: int371-network
 services:
   frontend:
-    container_name: frontend-dev
+    container_name: frontend_dev
     build: .
     image: ghcr.io/int371-namjai/namjai-fe:dev
