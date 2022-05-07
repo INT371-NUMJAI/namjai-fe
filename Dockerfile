@@ -2,6 +2,7 @@ FROM node:lts-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
+RUN npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
 COPY . .
 RUN npm run build
 
