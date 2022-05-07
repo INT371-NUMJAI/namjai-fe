@@ -6,4 +6,4 @@ services:
   frontend:
     container_name: frontend_dev
     build: .
-    image: ghcr.io/int371-namjai/namjai-fe:dev
+    image: ghcr.io/int371-numjai/namjai-fe:dev

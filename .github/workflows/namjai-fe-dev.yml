@@ -1,4 +1,4 @@
-name: namjai-de-dev
+name: numjai-fe-dev
 on:
   push:
     branches:
