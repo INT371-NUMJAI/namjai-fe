@@ -12,7 +12,7 @@
 				<w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
 				<w-button bg-color="transparent" class="font-medium">จิตอาสา</w-button>
 				<w-button bg-color="transparent" class="font-medium">เกี่ยวกับเรา</w-button>
-				<router-link to="/about">
+				<router-link to="/login">
 					<w-button bg-color="transparent" round outline class="py-4 bd4 font-medium"
 						>เข้าสู่ระบบ</w-button
 					></router-link

@@ -4,9 +4,9 @@
 			<div class="lg:w-1/3 lg:h-screen lg:bg-namjaigreen"></div>
 		</div>
 		<div
-			class="bg-namjaiwhite lg:bg-transparent lg:mx-28 md:px-20 p-10 mt-80 lg:mt-20 lg:h-screen h-screen w-full lg:w-fit rounded-t-3xl md:rounded-t-3xl md:rounded-none fixed"
+			class="bg-namjaiwhite lg:bg-transparent lg:mx-28 md:px-20 p-[30px] absolute bottom-0 lg:pt-[120px] lg:h-screen h-3/5 md:h-1/2 w-full lg:w-fit rounded-t-3xl md:rounded-t-3xl"
 		>
-			<div class="-my-10 lg:hidden float-right">
+			<div class="-my-[30px] lg:hidden float-right">
 				<div class="w-24 h-20 bg-namjaiyellow rounded-b-full"></div>
 			</div>
 			<h1 class="text-namjaiblack font-bold text-2xl lg:text-5xl">ยินดีต้อนรับ!</h1>
@@ -22,7 +22,7 @@
 				</w-form>
 			</div>
 			<div class="lg:block lg:w-80">
-				<div class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 bg-namjaigreen h-14 w-80 my-10 rounded-xl">
+				<div class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 bg-namjaigreen h-14 my-10 rounded-xl">
 					<w-button color="white" bg-color="transparent" class="text-white text-base font-semibold" type="submit">
 						เข้าสู่ระบบ</w-button
 					>

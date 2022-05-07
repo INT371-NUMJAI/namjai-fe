@@ -2,6 +2,7 @@
 	<w-app>
 		<div>
 			<nav-bar />
+			<router-view />
 		</div>
 	</w-app>
 </template>
