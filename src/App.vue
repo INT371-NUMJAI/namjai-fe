@@ -6,18 +6,6 @@
 		<w-drawer v-model="showDrawer" bg-color="namjaigreen" width="187">
 			<w-button class="button--close" @click="showDrawer = false" sm outline round absolute color="black"
 				icon="wi-cross"></w-button>
-			<!-- <div>
-			<w-button bg-color="transparent">มูลนิธิ</w-button>
-			</div>
-			<div>
-			<w-button bg-color="transparent">โครงการ</w-button>
-			</div>
-			<div>
-			<w-button bg-color="transparent">จิตอาสา</w-button>
-			</div>
-			<div>
-			<w-button bg-color="transparent">เกี่ยวกับเรา</w-button>
-			</div> -->
 			<div class="space-y-6 mx-5 mt-10 w-96">
 				<div class="flex justify-center">
 					<w-button bg-color="transparent" outline round class="text-sm text-black">เข้าสู่ระบบ</w-button>
@@ -56,7 +44,7 @@
 export default {
 	data() {
 		return {
-			showDrawer: true
+			showDrawer: false
 		}
 	}
 }
