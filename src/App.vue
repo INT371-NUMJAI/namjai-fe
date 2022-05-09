@@ -27,8 +27,8 @@ import HelloWorld from "@/components/HelloWorld.vue";
 			<div class="w-32 h-32 border-2 border-namjaiyellow rounded-full"></div>
 		</div>
 		<div class="h-full w-full md:h-[850px] bg-namjaiwhite rounded-2xl lg:bg-transparent">
-			<div class="mx-8 mb-20 md:mx-20 lg:mx-44">
-				<div class="flex space-x-9 md:space-x-[380px]">
+			<div class="mx-8 mb-20 md:mx-20 lg:mx-44 ">
+				<div class="flex justify-between">
 					<span class="mt-10 text-2xl lg:text-5xl lg:mt-16 font-semibold">เริ่มต้นเปลี่ยนสังคม</span>
 					<div class="w-24 h-20 md:w-28 md:h-24 bg-namjaiyellow rounded-b-full lg:hidden"></div>
 				</div>
@@ -139,7 +139,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
 						<div class="space-y-4">
 							<label class="font-medium">รายละเอียด</label>
 							<div class="h-full bg-namjaiwhite">
-								<w-textarea placeholder="ใส่รายละเอียดขององค์กรในช่องนี้" class="font-normal"
+								<w-textarea placeholder="ใส่รายละเอียดขององค์กรในช่องนี้" class="font-normal p-4"
 									color="black">
 								</w-textarea>
 							</div>
@@ -166,7 +166,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
 						</div>
 					</div>
 				</w-form>
-				<div class="flex justify-center text-sm lg:text-base space-x-2 mx-10">
+				<div class="flex justify-center text-sm lg:text-base space-x-2 mx-10 lg:pb-10">
 					<p>มีบัญชีแล้วใช่หรือไม่?</p>
 					<button bg-color="transparent" class="ml-1 font-semibold">เข้าสู่ระบบ</button>
 				</div>
