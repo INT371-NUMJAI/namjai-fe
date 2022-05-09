@@ -1,0 +1,15 @@
+@import "./font.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+html,
+body {
+	font-family: "IBMPlexSansThai";
+}
+
+h1 {
+	font-family: "IBMPlexSansThai-Bold";
+}
