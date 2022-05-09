@@ -3,16 +3,11 @@ import { createPinia } from "pinia";
 
 import App from "./App.vue";
 import router from "./router";
-import WaveUI from "wave-ui/src/wave-ui";
-import "./index.css";
-// import WaveUI from "wave-ui/src/wave-ui/core";
-// import { WApp, WButton, WIcon, WDrawer } from "wave-ui/src/wave-ui/components";
+import "./styles/index.css";
+
 const app = createApp(App);
 
 app.use(createPinia());
 app.use(router);
 
-new WaveUI(app, {
-	// Some Wave UI options.
-});
 app.mount("#app");

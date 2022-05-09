@@ -1,10 +1,8 @@
 <template>
-	<w-app>
-		<div>
-			<nav-bar />
-			<router-view />
-		</div>
-	</w-app>
+	<div>
+		<nav-bar />
+		<router-view />
+	</div>
 </template>
 
 <script>

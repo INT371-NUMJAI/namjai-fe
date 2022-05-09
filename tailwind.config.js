@@ -3,7 +3,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				"ibm-plex-thai": ['"IBM Plex Sans Thai"', "sans-serif"],
+				sans: ["IBMPlexSansThai", "sans-serif"],
 			},
 			colors: {
 				namjaiwhite: "#FFFFFF",
@@ -15,12 +15,12 @@ module.exports = {
 				namjaiyellow: "#FDD65B",
 				namjaired: "#D45343",
 				namjaigreen: "#00715D",
-			}
+			},
 		},
 		screens: {
-			'md': '834px',
-			'lg': '1280px',
-		}
+			md: "834px",
+			lg: "1280px",
+		},
 	},
 	plugins: [],
 };

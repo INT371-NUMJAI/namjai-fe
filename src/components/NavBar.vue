@@ -4,18 +4,15 @@
 			<div class="flex items-center text-white">
 				<router-link to="/"> <img class="w-28" src="../assets/namjai.png" /></router-link>
 			</div>
-			<div class="md:hidden">
-				<w-icon color="white">fa fa-bars</w-icon>
-			</div>
 			<div class="hidden md:flex md:space-x-11 items-center text-white font-semibold">
-				<w-button bg-color="transparent" class="font-medium">มูลนิธิ</w-button>
-				<w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
-				<w-button bg-color="transparent" class="font-medium">จิตอาสา</w-button>
-				<w-button bg-color="transparent" class="font-medium">เกี่ยวกับเรา</w-button>
+				<button class="bg-transparent font-medium">มูลนิธิ</button>
+				<button class="bg-transparent font-medium">โครงการ</button>
+				<button class="bg-transparent font-medium">จิตอาสา</button>
+				<button class="bg-transparent font-medium">เกี่ยวกับเรา</button>
 				<router-link to="/login">
-					<w-button bg-color="transparent" round outline class="py-4 bd4 font-medium"
-						>เข้าสู่ระบบ</w-button
-					></router-link
+					<button class="p-2 font-medium bg-transparent border-2 rounded-lg w-auto h-auto">
+						เข้าสู่ระบบ
+					</button></router-link
 				>
 			</div>
 		</nav>
