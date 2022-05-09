@@ -8,32 +8,32 @@
 				icon="wi-cross"></w-button>
 			<div class="space-y-6 mx-5 mt-10 w-96">
 				<div class="flex justify-center">
-					<w-button bg-color="transparent" outline round class="text-sm text-black">เข้าสู่ระบบ</w-button>
+					<w-button bg-color="transparent" outline round class="text-black py-1">เข้าสู่ระบบ</w-button>
 				</div>
 				<div class="flex justify-center">
-					<w-button bg-color="transparent" outline round class="text-sm text-black">สมัครสมาชิก</w-button>
+					<w-button bg-color="transparent" outline round class="text-black py-1">สมัครสมาชิก</w-button>
 				</div>
 				<w-divider class="w-36" color="grey" />
 				<div class="space-y-7 -ml-2">
 					<div class="flex justify-end">
-						<w-button bg-color="transparent" color="info-light1" class="block text-xl w-auto">มูลนิธิ
+						<w-button bg-color="transparent" color="info-light1" class="block w-auto">มูลนิธิ
 						</w-button>
 					</div>
 					<div class="flex justify-end">
-						<w-button bg-color="transparent" color="info-light1" class="block text-xl w-auto">โครงการ
+						<w-button bg-color="transparent" color="info-light1" class="block w-auto">โครงการ
 						</w-button>
 					</div>
 					<div class="flex justify-end">
-						<w-button bg-color="transparent" color="info-light1" class="block text-xl w-auto">จิตอาสา
+						<w-button bg-color="transparent" color="info-light1" class="block w-auto">จิตอาสา
 						</w-button>
 					</div>
 					<div class="flex justify-end">
-						<w-button bg-color="transparent" color="info-light1" class="block text-xl w-auto">เกี่ยวกับเรา
+						<w-button bg-color="transparent" color="info-light1" class="block w-auto">เกี่ยวกับเรา
 						</w-button>
 					</div>
 				</div>
 				<div class="flex justify-center">
-					<w-button outline round bg-color="transparent" color="black" class="block w-auto">ออกจากระบบ
+					<w-button outline round bg-color="transparent" color="black" class="block w-auto mt-10">ออกจากระบบ
 					</w-button>
 				</div>
 			</div>
@@ -44,7 +44,7 @@
 export default {
 	data() {
 		return {
-			showDrawer: false
+			showDrawer: true
 		}
 	}
 }
