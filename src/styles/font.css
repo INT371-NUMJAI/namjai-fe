@@ -3,7 +3,7 @@
 	font-style: normal;
 	font-weight: 700;
 	letter-spacing: "1%";
-	src: url("../src/assets/font/IBMPlexSansThai-Bold.ttf");
+	src: url("../assets/font/IBMPlexSansThai-Bold.ttf");
 }
 
 @font-face {
@@ -11,7 +11,7 @@
 	font-style: normal;
 	font-weight: 500;
 	letter-spacing: "1%";
-	src: url("../src/assets/font/IBMPlexSansThai-Medium.ttf");
+	src: url("../assets/font/IBMPlexSansThai-Medium.ttf");
 }
 
 @font-face {
@@ -19,7 +19,7 @@
 	font-style: normal;
 	font-weight: 400;
 	letter-spacing: "1%";
-	src: url("../src/assets/font/IBMPlexSansThai-Regular.ttf");
+	src: url("../assets/font/IBMPlexSansThai-Regular.ttf");
 }
 
 @font-face {
@@ -27,5 +27,5 @@
 	font-style: normal;
 	font-weight: 300;
 	letter-spacing: "1%";
-	src: url("../src/assets/font/IBMPlexSansThai-Light.ttf");
+	src: url("../assets/font/IBMPlexSansThai-Light.ttf");
 }
