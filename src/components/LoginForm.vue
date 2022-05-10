@@ -1,3 +1,4 @@
+routerlink
 <template>
 	<div class="lg:flex md:justify-end hidden">
 		<div class="lg:w-1/3 lg:h-screen lg:bg-namjaigreen"></div>
@@ -31,10 +32,12 @@
 			</div>
 			<div class="flex justify-center text-sm lg:text-base">
 				<p>ยังไม่มีบัญชีใช่หรือไม่?</p>
-				<button bg-color="transparent" class="ml-1 font-semibold">ลงทะเบียน</button>
+				<router-link to="/signup"
+					><button bg-color="transparent" class="ml-1 font-semibold">ลงทะเบียน</button></router-link
+				>
 			</div>
 		</div>
 	</div>
-	<img class="hidden lg:block lg:w-2/5 lg:absolute lg:top-44 lg:right-48 lg:z-10" src="../src/assets/pic1.png" />
-	<img class="hidden lg:block lg:w-3/5 lg:absolute lg:top-24 lg:right-14 lg:-z-0" src="../src/assets/pic2.png" />
+	<img class="hidden lg:block lg:w-2/5 lg:absolute lg:top-44 lg:right-48 lg:z-10" src="../assets/pic1.png" />
+	<img class="hidden lg:block lg:w-3/5 lg:absolute lg:top-24 lg:right-14 lg:-z-0" src="../assets/pic2.png" />
 </template>
