@@ -53,7 +53,7 @@
 						</div>
 					</w-form>
 
-					<w-form name="donorForm" class="hidden lg:inline">
+					<w-form name="foundationForm" class="hidden lg:inline">
 						<div class="space-y-10">
 							<div class="space-y-4">
 								<div class="font-medium">ขนาดองค์กร</div>
