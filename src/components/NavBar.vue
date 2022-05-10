@@ -5,7 +5,8 @@
 				<router-link to="/"> <img class="w-28" src="../assets/namjai.png" /></router-link>
 			</div>
 			<div class="md:hidden">
-				<w-icon color="white">fa fa-bars</w-icon>
+				<!-- <w-icon color="white">fa fa-bars</w-icon> -->
+				<drawer></drawer>
 			</div>
 			<div class="hidden md:flex md:space-x-11 items-center text-white font-semibold">
 				<w-button bg-color="transparent" class="font-medium">มูลนิธิ</w-button>
@@ -23,3 +24,11 @@
 		</nav>
 	</div>
 </template>
+<script>
+import Drawer from "./Drawer.vue";
+export default {
+	components: {
+		Drawer,
+	},
+};
+</script>

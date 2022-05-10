@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <template>
 	<div class="about">
 		<h1>This is an about page</h1>
@@ -14,3 +15,5 @@
 	}
 }
 </style>
+=======
+>>>>>>> origin/sprint3/feature/int-56-component-drawer
