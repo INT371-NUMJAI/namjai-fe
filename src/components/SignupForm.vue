@@ -11,7 +11,7 @@
 			</div>
 			<div class="w-16 border-4 border-t border-namjaired md:-mt-4 lg:mt-2"></div>
 			<div class="lg:grid lg:grid-cols-4 lg:gap-8 lg:mt-10">
-				<div name="formContent" class="lg:col-span-3 lg:overflow-y-scroll">
+				<div name="formContent" class="lg:col-span-3">
 					<div class="hidden lg:inline-flex lg:space-x-[60px] lg:mt-10">
 						<div class="w-32 h-10 border border-namjaibrown rounded-md py-2 text-center space-x-3">
 							<w-radio class="mr2" name="radio1" color="yellow"></w-radio>
