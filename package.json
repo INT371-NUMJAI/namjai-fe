@@ -14,7 +14,7 @@
     "pinia": "^2.0.13",
     "vue": "^3.2.31",
     "vue-router": "^4.0.14",
-    "wave-ui": "^2.36.2"
+    "wave-ui": "^2.38.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",
