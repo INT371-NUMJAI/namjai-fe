@@ -25,10 +25,11 @@
 	</div>
 </template>
 <script>
+import { defineComponent } from "vue";
 import Drawer from "./Drawer.vue";
-export default {
+export default defineComponent({
 	components: {
 		Drawer,
 	},
-};
+});
 </script>
