@@ -100,7 +100,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
                     >
                     <w-input color="black" placeholder="ชื่อผู้ใช้"></w-input>
                   </div>
-                  <div class="space-y-2 lg:space-y-4">
+                  <div class="space-y-2 lg:space-y-4 lg:pb-16">
                     <label class="text-sm lg:text-base font-medium"
                       >รหัสผ่าน</label
                     >
@@ -203,7 +203,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
                     </w-textarea>
                   </div>
                 </div>
-                <div class="space-y-8">
+                <div class="space-y-8 py-16">
                   <div class="space-y-4">
                     <label class="font-medium">หนังสือการจัดตั้งองค์กร</label>
                     <div
@@ -238,7 +238,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
               </div>
             </w-form>
             <div
-              class="flex justify-center text-sm lg:text-base space-x-2 mx-10 lg:pb-10"
+              class="flex justify-center text-sm lg:text-base space-x-2 mx-10 lg:mb-10"
             >
               <p>มีบัญชีแล้วใช่หรือไม่?</p>
               <button bg-color="transparent" class="ml-1 font-semibold">
@@ -246,30 +246,39 @@ import HelloWorld from "@/components/HelloWorld.vue";
               </button>
             </div>
           </div>
-          <div name="process" class="hidden lg:inline lg:space-y-[50px] lg:fixed lg:right-44">
+          <div
+            name="process"
+            class="hidden lg:inline lg:space-y-[50px] lg:fixed lg:right-44"
+          >
             <div class="space-y-3">
               <div
                 class="w-20 h-20 rounded-full bg-namjaiwhite flex items-center mx-auto"
               >
                 <span class="mx-auto text-3xl font-semibold">1</span>
               </div>
-              <span class="flex justify-center text-xl font-semibold">ข้อมูลผู้สมัคร</span>
+              <span class="flex justify-center text-xl font-semibold"
+                >ข้อมูลผู้สมัคร</span
+              >
             </div>
-			 <div class="space-y-3">
+            <div class="space-y-3">
               <div
                 class="w-20 h-20 rounded-full bg-namjaiwhite flex items-center mx-auto"
               >
                 <span class="mx-auto text-3xl font-semibold">2</span>
               </div>
-              <span class="flex justify-center text-xl font-semibold">ข้อมูลองค์กร</span>
+              <span class="flex justify-center text-xl font-semibold"
+                >ข้อมูลองค์กร</span
+              >
             </div>
-			 <div class="space-y-3">
+            <div class="space-y-3">
               <div
                 class="w-20 h-20 rounded-full bg-namjaiwhite flex items-center mx-auto"
               >
                 <span class="mx-auto text-3xl font-semibold">3</span>
               </div>
-              <span class="flex justify-center text-xl font-semibold">เอกสารองค์กร</span>
+              <span class="flex justify-center text-xl font-semibold"
+                >เอกสารองค์กร</span
+              >
             </div>
           </div>
         </div>
