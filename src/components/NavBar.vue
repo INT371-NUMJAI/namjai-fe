@@ -16,9 +16,9 @@
 				>
 				<w-button bg-color="transparent" class="font-medium">เกี่ยวกับเรา</w-button>
 				<router-link to="/login">
-					<w-button bg-color="transparent" round outline class="py-4 bd4 font-medium"
-						>เข้าสู่ระบบ</w-button
-					></router-link
+					<w-button class="p-2 font-medium bg-transparent border-2 rounded-lg w-auto h-auto">
+						เข้าสู่ระบบ
+					</w-button></router-link
 				>
 			</div>
 		</nav>

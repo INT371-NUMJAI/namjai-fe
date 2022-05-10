@@ -1,0 +1,14 @@
+@import "./font.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	font-family: "IBMPlexSansThai";
+	@apply bg-namjaibeige;
+}
+
+h1 {
+	font-family: "IBMPlexSansThai-Bold";
+}

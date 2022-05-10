@@ -4,7 +4,9 @@ import { createPinia } from "pinia";
 import App from "./App.vue";
 import router from "./router";
 import WaveUI from "wave-ui/src/wave-ui";
-import "./index.css";
+import { defineComponent } from "vue";
+
+import "./styles/index.css";
 
 const app = createApp(App);
 
