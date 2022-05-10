@@ -10,7 +10,9 @@
 			<div class="hidden md:flex md:space-x-11 items-center text-white font-semibold">
 				<w-button bg-color="transparent" class="font-medium">มูลนิธิ</w-button>
 				<w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
-				<w-button bg-color="transparent" class="font-medium">จิตอาสา</w-button>
+				<router-link to="/volunteer">
+					<w-button bg-color="transparent" class="font-medium">จิตอาสา</w-button></router-link
+				>
 				<w-button bg-color="transparent" class="font-medium">เกี่ยวกับเรา</w-button>
 				<router-link to="/login">
 					<w-button bg-color="transparent" round outline class="py-4 bd4 font-medium"
