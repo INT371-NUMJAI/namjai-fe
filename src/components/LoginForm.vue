@@ -25,11 +25,12 @@ routerlink
 			<button class="-mt-2 text-sm lg:text-base">ลืมรหัสผ่าน?</button>
 		</div>
 		<div class="lg:block lg:w-80">
-			<div class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 bg-namjaigreen h-[60px] my-10 rounded-xl">
+			<!-- <div class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 bg-namjaigreen h-[60px] my-10 rounded-xl">
 				<w-button color="white" bg-color="transparent" class="text-white text-lg font-semibold" type="submit">
 					เข้าสู่ระบบ</w-button
 				>
-			</div>
+			</div> -->
+			<base-button />
 			<div class="flex justify-center text-sm lg:text-base">
 				<p>ยังไม่มีบัญชีใช่หรือไม่?</p>
 				<router-link to="/signup"
@@ -41,3 +42,13 @@ routerlink
 	<img class="hidden lg:block lg:w-2/5 lg:absolute lg:top-44 lg:right-48 lg:z-10" src="../assets/pic1.png" />
 	<img class="hidden lg:block lg:w-3/5 lg:absolute lg:top-24 lg:right-14 lg:-z-0" src="../assets/pic2.png" />
 </template>
+
+<script>
+import { defineComponent } from "vue";
+import BaseButton from "./BaseButton.vue";
+export default defineComponent({
+  components: {
+    BaseButton,
+  },
+});
+</script>
