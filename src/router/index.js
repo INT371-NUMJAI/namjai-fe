@@ -22,7 +22,7 @@ const router = createRouter({
 		{
 			path: "/volunteer",
 			name: "volunteer",
-			component: () => import("../components/VolunteerActivityBlock.vue"),
+			component: () => import("../views/Volunteer.vue"),
 		},
 	],
 });
