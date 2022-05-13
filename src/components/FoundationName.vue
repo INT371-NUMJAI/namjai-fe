@@ -1,18 +1,28 @@
 <template>
-  <div class="mt-[120px] mx-[30px] flex flex-wrap items-center justify-center">
+  <div>
     <div
-      class="container sm:w-full md:w-2/3 bg-namjaiwhite rounded-xl transform duration-200 easy-in-out"
+      class="mt-[120px] mx-[30px] md:mx-20 lg:mt-[60px] lg:mx-0 flex flex-wrap items-center justify-center"
     >
-      <div class="flex justify-center px-5 -mt-12">
-        <img
-          class="h-32 w-32 bg-namjaibeige p-2 rounded-full object-cover"
-          src="../assets/pic1.png"
-          alt=""
-        />
-      </div>
+      <div
+        class="container w-full lg:flex bg-white rounded-xl lg:rounded-l-full lg:rounded-xl transform duration-200 easy-in-out lg:space-x-5"
+      >
+        <div
+          class="flex justify-center lg:justify-start px-5 lg:-ml-5 -mt-16 lg:mt-0"
+        >
+          <img
+            class="h-[156px] w-[156px] bg-namjaibeige lg:bg-transparent p-2 lg:p-0 rounded-full object-cover"
+            src="../assets/pic1.png"
+            alt=""
+          />
+        </div>
 
-      <div class="text-center pt-3 pb-6">
-        <h2 class="text-namjaiblack text-2xl font-semibold">มูลนิธิกระจกเงา</h2>
+        <div class="text-center pt-3 pb-6 lg:my-auto">
+          <h2
+            class="text-namjaiblack font-medium md:text-2xl lg:text-[35px] md:font-semibold lg:font-semibold"
+          >
+            มูลนิธิกระจกเงาในพระบรมราชินูปถัมภ์
+          </h2>
+        </div>
       </div>
     </div>
   </div>
