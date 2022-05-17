@@ -2,8 +2,8 @@
 	<div>
 		<div class="lg:mx-44 md:mx-24 mx-[30px]">
 			<div class="my-10">
-				<span class="mt-10 text-2xl lg:text-[48px] lg:mt-16 font-semibold">จิตอาสา</span>
-				<div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-2"></div>
+				<h1 class="mt-10 text-2xl lg:text-[48px] lg:mt-[120px] font-semibold">จิตอาสา</h1>
+				<div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-4"></div>
 			</div>
 			<div class="lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 grid grid-cols-1 gap-5 md:gap-6">
 				<div class="lg:max-w-sm md:max-w-md rounded-lg overflow-hidden bg-namjaiwhite">

@@ -6,7 +6,7 @@
 	<div class="h-full w-full md:h-[850px] bg-namjaiwhite rounded-2xl lg:bg-transparent">
 		<div class="mx-8 mb-20 md:mx-20 lg:mx-44">
 			<div class="flex justify-between">
-				<span class="mt-10 text-2xl lg:text-5xl lg:mt-16 font-semibold">เริ่มต้นเปลี่ยนสังคม</span>
+				<h1 class="mt-10 text-2xl lg:text-5xl lg:mt-[120px] font-semibold">เริ่มต้นเปลี่ยนสังคม</h1>
 				<div class="w-24 h-20 md:w-28 md:h-24 bg-namjaiyellow rounded-b-full lg:hidden"></div>
 			</div>
 			<div class="w-16 border-4 border-t border-namjaired md:-mt-4 lg:mt-2"></div>
