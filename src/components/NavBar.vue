@@ -9,12 +9,14 @@
 			<w-icon color="white">fa fa-bars</w-icon>
 		</div>
 		<div class="hidden lg:flex lg:space-x-11 items-center text-white lg:text-sm">
-			<w-button bg-color="transparent" class=" ">มูลนิธิ</w-button>
-			<w-button bg-color="transparent" class=" ">โครงการ</w-button>
-			<router-link to="/volunteer"> <w-button bg-color="transparent" class=" ">จิตอาสา</w-button></router-link>
-			<w-button bg-color="transparent" class=" ">เกี่ยวกับเรา</w-button>
+			<w-button bg-color="transparent" class="font-medium">มูลนิธิ</w-button>
+			<w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
+			<router-link to="/volunteer">
+				<w-button bg-color="transparent" class="font-medium">จิตอาสา</w-button></router-link
+			>
+			<w-button bg-color="transparent" class="font-medium">เกี่ยวกับเรา</w-button>
 			<router-link to="/login">
-				<w-button bg-color="transparent" round outline class="py-4">เข้าสู่ระบบ</w-button></router-link
+				<w-button bg-color="transparent" round outline class="py-4 font-medium">เข้าสู่ระบบ</w-button></router-link
 			>
 		</div>
 	</nav>
