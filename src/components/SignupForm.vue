@@ -10,15 +10,15 @@
 				<div class="w-24 h-20 md:w-28 md:h-24 bg-namjaiyellow rounded-b-full lg:hidden"></div>
 			</div>
 			<div class="w-16 border-4 border-t border-namjaired md:-mt-4 lg:mt-2"></div>
-			<div class="lg:grid lg:grid-cols-4 lg:gap-8 lg:mt-10">
+			<div class="lg:grid lg:grid-cols-4 lg:gap-8 lg:mt-3">
 				<div name="formContent" class="lg:col-span-3">
 					<div class="hidden lg:inline-flex lg:space-x-[60px] lg:mt-10">
 						<div class="w-32 h-10 border border-namjaibrown rounded-md py-2 text-center space-x-3">
-							<w-radio class="mr2" name="radio1" color="yellow"></w-radio>
+							<w-radio class="mr2" name="radio1" color="red-light1"></w-radio>
 							<span class="font-medium">บุคคลทั่วไป</span>
 						</div>
 						<div class="w-32 h-10 border border-namjaibrown rounded-md py-2 px-3 space-x-5">
-							<w-radio class="mr2" name="radio1" color="yellow"></w-radio>
+							<w-radio class="mr2" name="radio1" color="red-light1"></w-radio>
 							<span class="font-medium">มูลนิธิ</span>
 						</div>
 					</div>
@@ -45,7 +45,7 @@
 									<label class="text-sm lg:text-base font-medium">ชื่อผู้ใช้</label>
 									<w-input color="black" placeholder="ชื่อผู้ใช้"></w-input>
 								</div>
-								<div class="space-y-2 lg:space-y-4 lg:pb-16">
+								<div class="space-y-2 lg:space-y-4 ">
 									<label class="text-sm lg:text-base font-medium">รหัสผ่าน</label>
 									<w-input color="black" placeholder="รหัสผ่าน"></w-input>
 								</div>
@@ -53,17 +53,17 @@
 						</div>
 					</w-form>
 
-					<w-form name="foundationForm" class="hidden lg:inline">
-						<div class="space-y-10">
+					<w-form name="foundationForm" class="hidden lg:inline ">
+						<div class="space-y-10 pb-10">
 							<div class="space-y-4">
 								<div class="font-medium">ขนาดองค์กร</div>
 								<div class="inline-flex space-x-10">
 									<div class="w-32 h-10 border border-namjaibrown rounded-md py-2 text-center space-x-3">
-										<w-radio class="mr2" name="radio1" color="yellow"></w-radio>
+										<w-radio class="mr2" name="radio1" color="red-light1"></w-radio>
 										<span class="font-medium">ขนาดเล็ก</span>
 									</div>
 									<div class="w-32 h-10 border border-namjaibrown rounded-md py-2 text-center space-x-3">
-										<w-radio class="mr2" name="radio1" color="yellow"></w-radio>
+										<w-radio class="mr2" name="radio1" color="red-light1"></w-radio>
 										<span class="font-medium">ขนาดเล็ก</span>
 									</div>
 								</div>
@@ -121,34 +121,32 @@
 									</w-textarea>
 								</div>
 							</div>
-							<div class="space-y-8 py-16">
-								<div class="space-y-4">
-									<label class="font-medium">หนังสือการจัดตั้งองค์กร</label>
-									<div class="w-36 h-10 border bg-namjaibrown rounded-md py-2 text-center">
-										<w-button class="ma1" bg-color="transparent" color="white">เลือกไฟล์</w-button>
-									</div>
+							<div class="space-y-4">
+								<div class="grid grid-flow-row space-y-1 ">
+									<label>เอกสารที่เกี่ยวข้อง</label>
+									<span class="text-sm text-namjaidarkgray">** ส่งไฟล์ zip เพื่อตรวจสอบหลักฐานประกอบไปด้วย หนังสือการจัดตั้งองค์กร, สำเนาบัตรประชาชนผู้บริหาร ,สำเนาหน้าสมุดบัญชีองค์กร</span>
 								</div>
-								<div class="space-y-4">
-									<label class="font-medium">สำเนาบัตรประชาชนผู้บริหาร</label>
-									<div class="w-36 h-10 border bg-namjaibrown rounded-md py-2 text-center">
-										<w-button class="ma1" bg-color="transparent" color="white">เลือกไฟล์</w-button>
-									</div>
-								</div>
-								<div class="space-y-4">
-									<label class="font-medium">สำเนาหน้าสมุดบัญชีองค์กร</label>
-									<div class="w-36 h-10 border bg-namjaibrown rounded-md py-2 text-center">
-										<w-button class="ma1" bg-color="transparent" color="white">เลือกไฟล์</w-button>
-									</div>
+								<div class="w-36 h-10 border bg-namjaibrown rounded-md py-2 text-center">
+									<w-button class="ma1" color="white">เลือกไฟล์</w-button>
 								</div>
 							</div>
 						</div>
 					</w-form>
-					<div class="flex justify-center text-sm lg:text-base space-x-2 mx-10 lg:mb-10">
-						<p>มีบัญชีแล้วใช่หรือไม่?</p>
-						<button bg-color="transparent" class="ml-1 font-semibold">เข้าสู่ระบบ</button>
+					<div class="lg:block lg:w-80 lg:pb-[60px] lg:mx-auto">
+						<div class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 bg-namjaigreen h-[60px] my-10 rounded-xl">
+							<w-button color="white" bg-color="transparent" class="text-white text-lg font-semibold" type="submit">
+								ลงทะเบียน
+							</w-button>
+						</div>
+						<div class="flex justify-center text-sm lg:text-base">
+							<p>ยังไม่มีบัญชีใช่หรือไม่?</p>
+							<router-link to="/login">
+								<button bg-color="transparent" class="ml-1 font-semibold">เข้าสู่ระบบ</button>
+							</router-link>
+						</div>
 					</div>
 				</div>
-				<div name="process" class="hidden lg:inline lg:space-y-[50px] lg:fixed lg:right-44">
+				<!-- <div name="process" class="hidden lg:inline lg:space-y-[50px] lg:fixed lg:right-44">
 					<div class="space-y-3">
 						<div class="w-20 h-20 rounded-full bg-namjaiwhite flex items-center mx-auto">
 							<span class="mx-auto text-3xl font-semibold">1</span>
@@ -167,7 +165,7 @@
 						</div>
 						<span class="flex justify-center text-xl font-semibold">เอกสารองค์กร</span>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
