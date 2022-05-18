@@ -108,7 +108,7 @@
       </div>
       <div class="w-[156px] h-[50px] border bg-namjaiyellow rounded-md py-3 text-center mx-auto mt-[30px]">
         <w-button class="ma1" bg-color="transparent" color="white"
-          >เลือกไฟล์</w-button
+          >สมัครเลย</w-button
         >
       </div>
     </div>
