@@ -1,6 +1,6 @@
 <template>
-	<table class="table-auto mx-28">
-		<thead>
+	<table class="table-auto mx-auto">
+		<!-- <thead>
 			<tr>
 				<th class="w-10">ลำดับ</th>
 				<th class="w-96">มูลนิธิ</th>
@@ -9,23 +9,37 @@
 				<th>สถานะ</th>
 				<th>ผู้อนุมัติ</th>
 			</tr>
-		</thead>
+		</thead> -->
 		<tbody class="bg-namjaiwhite text-namjaiblack">
 			<tr>
-				<td class="text-center py-2">1</td>
+				<td class="text-center py-2 px-4">1</td>
 				<td>
-					<p class="overflow-hidden truncate w-96 py-2 px-8">
+					<p class="overflow-hidden truncate w-96 py-2 px-4">
 						เยอร์บีร่าคอลัมน์บาร์บีคิวครูเสดซีดาaslvkamdflkvm;lfkv;slfbn
 					</p>
 				</td>
-				<td class="text-center">ศุภานัน โชติธีรทัต</td>
-				<td class="text-center">00/00/0000</td>
-				<td class="text-center">สถานะ</td>
-				<td class="text-center">ศุภานัน โชติธีรทัต</td>
+				<td class="text-center px-4">ศุภานัน โชติธีรทัต</td>
+				<td class="text-center px-4">00/00/0000</td>
+				<!-- <verification-status /> -->
+				<!-- <td class="text-center px-4">สถานะ</td> -->
+				<td class="text-center px-4">ศุภานัน โชติธีรทัต</td>
 			</tr>
 		</tbody>
 	</table>
 </template>
+
+<script>
+import { defineComponent } from "vue";
+// import VerificationStatus from "./VerificationStatus.vue";
+
+export default defineComponent({
+	components: {
+		NavBar,
+		// VerificationStatus,
+	},
+});
+</script>
+
 <style scoped>
 .table {
 	border-spacing: 0 15px;
