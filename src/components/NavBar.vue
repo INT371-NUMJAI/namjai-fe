@@ -6,7 +6,8 @@
 			<img class="w-28" src="../assets/logonamjai_new.png" />
 		</div>
 		<div class="lg:hidden">
-			<w-icon color="white">fa fa-bars</w-icon>
+			<!-- <w-icon color="white">fa fa-bars</w-icon> -->
+			<drawer />
 		</div>
 		<div class="hidden lg:flex lg:space-x-11 items-center text-white lg:text-sm">
 			<w-button bg-color="transparent" class="font-medium">มูลนิธิ</w-button>

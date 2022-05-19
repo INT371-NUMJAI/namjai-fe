@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<w-button @click="showDrawer = true" bg-color="transparent">
-			<w-icon color="black">fa fa-bars</w-icon>
+			<w-icon color="white">fa fa-bars</w-icon>
 		</w-button>
 		<w-drawer v-model="showDrawer" bg-color="namjaigreen" width="187">
 			<w-button
@@ -35,6 +35,26 @@
 					<div class="flex justify-end">
 						<w-button bg-color="transparent" color="info-light1" class="block w-auto">เกี่ยวกับเรา </w-button>
 					</div>
+					<div class="flex justify-end">
+						<w-accordion :items="1" expand-icon-left>
+			<template #item-title>
+				<div>บัญชี</div>
+			</template>
+			<template #item-content>
+				<div class="space-y-2 text-right">
+				<button class="block ml-6"
+					@click="showDropDown = false"
+				>บัญชี</button>
+				<button class="block ml-1"
+					@click="showDropDown = false"
+				>ข้อความ</button>
+				<button class="block ml-6"
+					@click="showDropDown = false"
+				>สถิติ</button>
+				</div>
+			</template>
+		</w-accordion>
+					</div>
 				</div>
 				<div class="flex justify-center">
 					<w-button outline round bg-color="transparent" color="black" class="block w-auto mt-10">ออกจากระบบ </w-button>
@@ -49,6 +69,7 @@ export default defineComponent({
 	data() {
 		return {
 			showDrawer: false,
+			showDropDown: false,
 		};
 	},
 });
