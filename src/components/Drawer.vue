@@ -41,14 +41,14 @@
 				<div>บัญชี</div>
 			</template>
 			<template #item-content>
-				<div class="space-y-2 text-right">
-				<button class="block ml-6"
+				<div class="space-y-2">
+				<button class="block ml-6 "
 					@click="showDropDown = false"
 				>บัญชี</button>
 				<button class="block ml-1"
 					@click="showDropDown = false"
 				>ข้อความ</button>
-				<button class="block ml-6"
+				<button class="block ml-7"
 					@click="showDropDown = false"
 				>สถิติ</button>
 				</div>
