@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<w-button @click="showDrawer = true" bg-color="transparent">
-			<w-icon color="black">fa fa-bars</w-icon>
+			<w-icon color="white">fa fa-bars</w-icon>
 		</w-button>
 		<w-drawer v-model="showDrawer" bg-color="namjaigreen" width="187">
 			<w-button
