@@ -1,16 +1,19 @@
 <template>
-    <table class="table-auto mx-auto">
-        <thead class="bg-namjaibrown text-namjaiwhite">
-            <tr class="space-x-7">
-                <th class="py-2 px-2 text-center">ลำดับ</th>
-                <th class="text-center">มูลนิธิ</th>
-                <th>ชื่อ-สกุล</th>
-                <th>วันที่สมัคร</th>
-                <th>สถานะ</th>
-                <th>ผู้อนุมัติ</th>
+   <div class="mt-[120px] mb-[10px]">
+        <table class="text-center mx-[177px]">
+          <thead class="text-white bg-namjaibrown ">
+            <tr>
+              <th class="py-3 w-[75px]">ลำดับ</th>
+              <th>
+                 <p class="py-3 w-[300px]"> มูลนิธิ</p></th>
+              <th class="py-3 w-[250px]">ชื่อ-สกุล</th>
+              <th class="py-3 w-[200px]">วันที่สมัคร</th>
+              <th class="py-3 w-[100px]">สถานะ</th>
+              <th class="py-3 w-[250px]">ผู้อนุมัติ</th>
             </tr>
-        </thead>
-    </table>
+          </thead>
+        </table>
+      </div>
 </template>
 
 <style scoped>
