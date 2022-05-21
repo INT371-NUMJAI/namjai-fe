@@ -1,31 +1,31 @@
 <template>
-	<table class="table-auto mx-28">
-		<thead>
-			<tr>
-				<th class="w-10">ลำดับ</th>
-				<th class="w-96">มูลนิธิ</th>
-				<th>ชื่อ-สกุล</th>
-				<th>วันที่สมัคร</th>
-				<th>สถานะ</th>
-				<th>ผู้อนุมัติ</th>
-			</tr>
-		</thead>
-		<tbody class="bg-namjaiwhite text-namjaiblack">
-			<tr>
-				<td class="text-center py-2">1</td>
-				<td>
-					<p class="overflow-hidden truncate w-96 py-2 px-8">
-						เยอร์บีร่าคอลัมน์บาร์บีคิวครูเสดซีดาaslvkamdflkvm;lfkv;slfbn
-					</p>
-				</td>
-				<td class="text-center">ศุภานัน โชติธีรทัต</td>
-				<td class="text-center">00/00/0000</td>
-				<td class="text-center">สถานะ</td>
-				<td class="text-center">ศุภานัน โชติธีรทัต</td>
-			</tr>
-		</tbody>
-	</table>
+<table class="mx-[177px] mt-[120px]">
+          <thead class="text-black bg-white ">
+            <tr>
+              <th class="py-3 w-[83px]">1</th>
+              <th>
+                 <p class="overflow-hidden truncate py-3 w-[300px]">เยอร์บีร่าคอลัมน์บาร์บีคิวครูเสดซีดาaslvkamdflkvm;lfkv;slfbn</p></th>
+              <th class="py-3 w-[260px]">ศุภานัน โชติธีรทัต</th>
+              <th class="py-3 w-[185px]">00/00/0000</th>
+              <th class="py-3 w-[95px]"><verification-status /></th>
+              <th class="py-3 w-[250px]">กันญภัทร ผลบุญเจริญชัย</th>
+            </tr>
+          </thead>
+        </table>
 </template>
+
+<script>
+import { defineComponent } from "vue";
+import VerificationStatus from "./VerificationStatus.vue";
+
+export default defineComponent({
+  components: {
+	VerificationStatus
+  },
+});
+</script>
+
+
 <style scoped>
 .table {
 	border-spacing: 0 15px;
