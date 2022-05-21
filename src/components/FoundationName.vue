@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="mt-[120px] mx-[30px] md:mx-20 lg:mt-[60px] lg:mx-0 flex flex-wrap items-center justify-center"
+      class="flex flex-wrap items-center justify-center"
     >
       <div
         class="container w-full lg:flex bg-white rounded-xl lg:rounded-l-full lg:rounded-xl transform duration-200 easy-in-out lg:space-x-5"
