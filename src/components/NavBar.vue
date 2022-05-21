@@ -2,7 +2,7 @@
 	<nav
 		class="bg-namjaigreen flex items-center justify-between px-7 py-6 lg:py-4 lg:px-11 drop-shadow-md lg:fixed lg:w-screen">
 		<div class="flex items-center text-white">
-			<!-- <img class="w-28" src="../assets/logonamjai_new.png" /> -->
+			<router-link to="/">
 			<svg width="112" viewBox="0 0 329 59" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path
 					d="M50.75 7V56H41.44L17.01 26.25V56H5.81V7H15.19L39.55 36.75V7H50.75ZM103.713 45.5H80.9632L76.6232 56H65.0032L86.8432 7H98.0432L119.953 56H108.053L103.713 45.5ZM100.143 36.89L92.3732 18.13L84.6032 36.89H100.143Z"
@@ -14,6 +14,7 @@
 					d="M147.083 56.4828C140.083 46.3161 127.583 23.9828 133.583 15.9828C135.082 12.4828 139.882 6.88281 147.083 12.4828C154.283 18.0828 158.083 26.4828 159.083 29.9828C161.249 23.8161 166.283 10.7828 169.083 7.98281C172.583 4.48281 177.583 0.482811 183.583 9.48281C189.583 18.4828 183.083 45.4828 169.083 56.4828"
 					stroke="#D45343" stroke-width="6" />
 			</svg>
+			</router-link>
 		</div>
 		<div class="lg:hidden">
 			<!-- <w-icon color="white">fa fa-bars</w-icon> -->

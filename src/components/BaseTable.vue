@@ -1,5 +1,5 @@
 <template>
-   <div class="mt-[120px] mb-[10px]">
+   <div class="mt-[40px] mb-[10px]">
         <table class="text-center mx-[177px]">
           <thead class="text-white bg-namjaibrown ">
             <tr>

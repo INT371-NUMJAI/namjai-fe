@@ -1,5 +1,5 @@
 <template>
-<table class="mx-[177px] mt-[120px]">
+<table class="mx-[177px]">
           <thead class="text-black bg-white ">
             <tr>
               <th class="py-3 w-[83px]">1</th>
