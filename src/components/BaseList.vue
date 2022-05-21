@@ -25,7 +25,6 @@ export default defineComponent({
 });
 </script>
 
-
 <style scoped>
 .table {
 	border-spacing: 0 15px;
