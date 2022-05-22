@@ -16,10 +16,14 @@
 			></w-button>
 			<div class="space-y-6 mx-5 mt-10 w-96">
 				<div class="flex justify-center">
-					<w-button bg-color="transparent" outline round class="text-black py-1">เข้าสู่ระบบ</w-button>
+					<router-link to="/login">
+					<w-button @click="showDrawer = !showDrawer" bg-color="transparent" outline round class="text-black py-1">เข้าสู่ระบบ</w-button>
+					</router-link>
 				</div>
 				<div class="flex justify-center">
-					<w-button bg-color="transparent" outline round class="text-black py-1">สมัครสมาชิก</w-button>
+					<router-link to="/signup">
+					<w-button @click="showDrawer = !showDrawer" bg-color="transparent" outline round class="text-black py-1">สมัครสมาชิก</w-button>
+					</router-link>
 				</div>
 				<w-divider class="w-36" color="grey" />
 				<div class="space-y-7 -ml-2">
@@ -30,7 +34,9 @@
 						<w-button bg-color="transparent" color="info-light1" class="block w-auto">โครงการ </w-button>
 					</div>
 					<div class="flex justify-end">
-						<w-button bg-color="transparent" color="info-light1" class="block w-auto">จิตอาสา </w-button>
+						<router-link to="/volunteer">
+						<w-button @click="showDrawer = !showDrawer" bg-color="transparent" color="info-light1" class="block w-auto">จิตอาสา </w-button>
+						</router-link>
 					</div>
 					<div class="flex justify-end">
 						<w-button bg-color="transparent" color="info-light1" class="block w-auto">เกี่ยวกับเรา </w-button>
