@@ -32,10 +32,10 @@
       <div
         class="my-5 px-[30px] py-3 lg:py-4 space-x-[30px] md:space-x-[50px] lg:space-x-[60px] bg-namjaiwhite rounded-lg flex text-center text-[14px] lg:text-[16px] font-black text-[#5A5A5A]"
       >
-        <a><p>โพสต์</p></a>
-        <p>โครงการ</p>
-        <p>จิตอาสา</p>
-        <p>เกี่ยวกับ</p>
+        <button><p>โพสต์</p></button>
+        <button><p>โครงการ</p></button>
+        <button><p>จิตอาสา</p></button>
+        <button><p>เกี่ยวกับ</p></button>
       </div>
       <div class="mt-5">
         <div name="post" class="space-y-[30px]">
