@@ -4,7 +4,7 @@ routerlink
 		<div class="lg:w-1/3 lg:h-screen lg:bg-namjaigreen"></div>
 	</div>
 	<div
-		class="bg-namjaiwhite lg:bg-transparent lg:mx-28 md:px-20 pt-10 pb-10 px-[30px] absolute bottom-0 lg:pt-[120px] lg:h-screen h-3/5 md:h-1/2 w-full lg:w-fit rounded-t-3xl md:rounded-t-3xl"
+		class="bg-namjaiwhite lg:bg-transparent lg:mx-28 md:px-20 pt-10 pb-10 px-[30px] mt-[80%] lg:pt-[120px] lg:h-screen h-3/5 md:h-1/2 w-full lg:w-fit rounded-t-3xl md:rounded-t-3xl"
 	>
 		<div class="-my-[40px] lg:hidden float-right">
 			<div class="w-24 h-20 bg-namjaiyellow rounded-b-full"></div>
