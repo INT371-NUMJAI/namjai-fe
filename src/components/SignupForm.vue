@@ -11,8 +11,10 @@
 			</div>
 			<div class="w-16 border-4 border-t border-namjaired md:-mt-4 lg:mt-2"></div>
 			<div class="lg:grid lg:grid-cols-4 lg:gap-8 lg:mt-3">
-				<div name="formContent" class="lg:col-span-3">
-					<div class="hidden lg:inline-flex lg:space-x-[60px] lg:mt-10">
+				<div name="formContent" class="lg:col-span-3 lg:mt-10 lg:space-y-4">
+					<div class=" hidden md:hidden lg:block lg:font-medium">ประเภทผู้ใช้</div>
+					<!-- <h1 class="text-[20px] text-namjaidarkgray lg:text-[20px]">ประภทผู้ใช้</h1> -->
+					<div class="hidden lg:inline-flex lg:space-x-[60px] ">
 						<div class="w-32 h-10 border border-namjaibrown rounded-md py-2 text-center space-x-3">
 							<w-radio class="mr2" name="radio1" color="red-light1"></w-radio>
 							<span class="font-medium">บุคคลทั่วไป</span>
@@ -37,7 +39,7 @@
 
 							<div class="space-y-2 lg:space-y-4">
 								<label class="text-sm lg:text-base font-medium">อีเมล</label>
-								<w-input color="black" placeholder="อีเมล"></w-input>
+								<w-input type="email" color="black" placeholder="อีเมล"></w-input>
 							</div>
 
 							<div class="space-y-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0">
@@ -47,31 +49,46 @@
 								</div>
 								<div class="space-y-2 lg:space-y-4 ">
 									<label class="text-sm lg:text-base font-medium">รหัสผ่าน</label>
-									<w-input color="black" placeholder="รหัสผ่าน"></w-input>
+									<w-input type="password" color="black" placeholder="รหัสผ่าน"></w-input>
 								</div>
 							</div>
 						</div>
 					</w-form>
 
 					<w-form name="foundationForm" class="hidden lg:inline ">
-						<div class="space-y-10 pb-10">
-							<div class="space-y-4">
-								<div class="font-medium">ขนาดองค์กร</div>
-								<div class="inline-flex space-x-10">
-									<div class="w-32 h-10 border border-namjaibrown rounded-md py-2 text-center space-x-3">
-										<w-radio class="mr2" name="radio1" color="red-light1"></w-radio>
-										<span class="font-medium">ขนาดเล็ก</span>
-									</div>
-									<div class="w-32 h-10 border border-namjaibrown rounded-md py-2 text-center space-x-3">
-										<w-radio class="mr2" name="radio1" color="red-light1"></w-radio>
-										<span class="font-medium">ขนาดเล็ก</span>
+						<div class="space-y-10 pb-10 pt-[30px]">
+							<div class="space-y-4 ">
+								<h1 class="text-[20px] text-namjaidarkgray">ข้อมูลผู้ใช้</h1>
+								<div class="space-y-4 pt-[20px]">
+									<div class="font-medium">ขนาดองค์กร</div>
+									<div class="inline-flex space-x-[60px]">
+										<div class="w-32 h-10 border border-namjaibrown rounded-md py-2 text-center space-x-3">
+											<w-radio class="mr2" name="radio1" color="red-light1"></w-radio>
+											<span class="font-medium">ขนาดเล็ก</span>
+										</div>
+										<div class="w-32 h-10 border border-namjaibrown rounded-md py-2 text-center space-x-3">
+											<w-radio class="mr2" name="radio1" color="red-light1"></w-radio>
+											<span class="font-medium">ขนาดใหญ่</span>
+										</div>
 									</div>
 								</div>
 							</div>
+							
 							<div class="space-y-4">
 								<label class="font-medium">ชื่อองค์กร</label>
 								<w-input color="black" placeholder="ชื่อองค์กร"></w-input>
 							</div>
+							<div class="grid grid-cols-2 gap-10">
+								<div class="space-y-4">
+									<label class="font-medium">อีเมล</label>
+									<w-input type="email" color="black" placeholder="อีเมล"></w-input>
+								</div>
+								<div class="space-y-4">
+									<label class="font-medium">รหัสผ่าน</label>
+									<w-input type="email" color="black" placeholder="รหัสผ่าน"></w-input>
+								</div>
+							</div>
+							<h1 class="pt-[30px] text-[20px] text-namjaidarkgray">ข้อมูลที่อยู่องค์กร</h1>
 							<div class="space-y-4">
 								<label class="font-medium">ที่ตั้ง</label>
 								<w-input color="black" placeholder="เลขที่ หมู่ ซอย ถนน"></w-input>
@@ -96,6 +113,7 @@
 									<w-input color="black" placeholder="รหัสไปรษณีย์"></w-input>
 								</div>
 							</div>
+							<h1 class="pt-[30px] text-[20px] text-namjaidarkgray">ข้อมูลองค์กร</h1>
 							<div class="space-y-4">
 								<label class="font-medium">วันเดือนปี ที่จัดตั้งองค์กร</label>
 								<w-input type="date" color="black"></w-input>
@@ -107,11 +125,11 @@
 							<div class="grid grid-cols-2 gap-10">
 								<div class="space-y-2 lg:space-y-4">
 									<label class="font-medium">เบอร์โทรศัพท์</label>
-									<w-input color="black" placeholder="เบอร์โทรศัพท์"></w-input>
+									<w-input type="tel" color="black" placeholder="เบอร์โทรศัพท์"></w-input>
 								</div>
 								<div class="space-y-4">
 									<label class="font-medium">อีเมล</label>
-									<w-input color="black" placeholder="อีเมล"></w-input>
+									<w-input type="email" color="black" placeholder="อีเมล"></w-input>
 								</div>
 							</div>
 							<div class="space-y-4">
@@ -121,14 +139,13 @@
 									</w-textarea>
 								</div>
 							</div>
+							
 							<div class="space-y-4">
 								<div class="grid grid-flow-row space-y-1 ">
 									<label>เอกสารที่เกี่ยวข้อง</label>
 									<span class="text-sm text-namjaidarkgray">** ส่งไฟล์ zip เพื่อตรวจสอบหลักฐานประกอบไปด้วย หนังสือการจัดตั้งองค์กร, สำเนาบัตรประชาชนผู้บริหาร ,สำเนาหน้าสมุดบัญชีองค์กร</span>
 								</div>
-								<div class="w-36 h-10 border bg-namjaibrown rounded-md py-2 text-center">
-									<w-button class="ma1" color="white">เลือกไฟล์</w-button>
-								</div>
+								<w-input type="file" class="w-36 h-20 " color="amber" bg-color="amber-light1" outline>เลือกไฟล์</w-input>
 							</div>
 						</div>
 					</w-form>
