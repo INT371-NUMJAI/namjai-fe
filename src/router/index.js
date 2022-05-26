@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import AppVue from "../App.vue";
+import SignupFormFoundation from "../components/SignupFormFoundation.vue";
+import SignupFormUser from "../components/SignupFormUser.vue";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,7 +19,17 @@ const router = createRouter({
 		{
 			path: "/signup",
 			name: "signup",
-			component: () => import("../components/SignupForm.vue"),
+			component: () => import("../views/Signup.vue"),
+			children: [
+				{
+				  path: 'user',
+				  component: SignupFormUser,
+				},
+				{
+				  path: 'foundation',
+				  component: SignupFormFoundation,
+				},
+			  ],
 		},
 		{
 			path: "/volunteer",

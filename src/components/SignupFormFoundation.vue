@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-10">
     <w-form name="foundationForm" class="hidden lg:inline">
       <div class="space-y-10 pb-10 pt-[30px]">
         <div class="space-y-4">
@@ -104,6 +104,13 @@
         </div>
 
         <div class="space-y-4">
+          <div name="smallfdn" class="grid grid-flow-row space-y-1">
+            <label>เอกสารที่เกี่ยวข้อง</label>
+            <span class="text-sm text-namjaidarkgray"
+              >** ส่งไฟล์ zip เพื่อตรวจสอบหลักฐานประกอบไปด้วย
+              สำเนาบัตรประชาชนผู้บริหาร ,สำเนาหน้าสมุดบัญชีองค์กร</span
+            >
+          </div>
           <div name="hudgefdn" class="grid grid-flow-row space-y-1">
             <label>เอกสารที่เกี่ยวข้อง</label>
             <span class="text-sm text-namjaidarkgray"
@@ -112,13 +119,7 @@
               สำเนาบัตรประชาชนผู้บริหาร ,สำเนาหน้าสมุดบัญชีองค์กร</span
             >
           </div>
-          <div name="smallfdn" class="grid grid-flow-row space-y-1">
-            <label>เอกสารที่เกี่ยวข้อง</label>
-            <span class="text-sm text-namjaidarkgray"
-              >** ส่งไฟล์ zip เพื่อตรวจสอบหลักฐานประกอบไปด้วย
-              สำเนาบัตรประชาชนผู้บริหาร ,สำเนาหน้าสมุดบัญชีองค์กร</span
-            >
-          </div>
+
           <w-input
             type="file"
             class="w-20 h-20"
@@ -130,5 +131,27 @@
         </div>
       </div>
     </w-form>
+    <div class="lg:block lg:w-80 lg:pb-[60px] lg:mx-auto">
+      <div
+        class="md:mx-auto mx-auto flex justify-center mt-1 mb-5 bg-namjaigreen h-[60px] my-10 rounded-xl"
+      >
+        <w-button
+          color="white"
+          bg-color="transparent"
+          class="text-white text-lg font-semibold"
+          type="submit"
+        >
+          ลงทะเบียน
+        </w-button>
+      </div>
+      <div class="flex justify-center text-sm lg:text-base">
+        <p>ยังไม่มีบัญชีใช่หรือไม่?</p>
+        <router-link to="/login">
+          <button bg-color="transparent" class="ml-1 font-semibold">
+            เข้าสู่ระบบ
+          </button>
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
