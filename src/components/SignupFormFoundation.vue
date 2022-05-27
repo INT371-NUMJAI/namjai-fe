@@ -6,19 +6,21 @@
           <h1 class="text-[20px] text-namjaigreen">ข้อมูลผู้ใช้</h1>
           <div class="space-y-4 pt-[20px]">
             <div class="font-medium">ขนาดองค์กร</div>
-            <div class="inline-flex space-x-[60px]">
-              <div
+            <div class="flex space-x-[60px]">
+              <w-radios v-model="selection" :items="radioItems" color="red-light1" inline label-color="black" class="">
+              </w-radios>
+              <!-- <div
                 class="w-32 h-10 border border-namjaibrown rounded-md py-2 text-center space-x-3"
               >
-                <w-radio :validators="[validators.required]"  class="mr2" name="radio1" color="red-light1"></w-radio>
+                <w-radio v-model="small" :validators="[validators.required]" color="red-light1"></w-radio>
                 <span class="font-medium">ขนาดเล็ก</span>
               </div>
               <div
                 class="w-32 h-10 border border-namjaibrown rounded-md py-2 text-center space-x-3"
               >
-                <w-radio :validators="[validators.required]" class="mr2" name="radio1" color="red-light1"></w-radio>
+                <w-radio :validators="[validators.required]" color="red-light1"></w-radio>
                 <span class="font-medium">ขนาดใหญ่</span>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -166,6 +168,12 @@ import { defineComponent } from "vue";
 export default defineComponent({
   data: () => ({
     // userlists: ["Qwanjai", "Faahhhhhhh", "Chutipaaaa"],
+    // small:true,
+    selection: 1,
+    radioItems: [
+      { label: 'ขนาดเล็ก', value: 1 },
+      { label: 'ขนาดใหญ่', value: 2 },
+    ],
     validators: {
       required: (value) => !!value || "This field is required",
       minLength: (value) => value.length >= 8 || "Your password must be minimum 8 characters",
