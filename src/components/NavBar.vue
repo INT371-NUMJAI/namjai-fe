@@ -15,12 +15,14 @@
 					stroke="#D45343" stroke-width="6" />
 			</svg>
 			</router-link>
+			<h1>Admin</h1>
 		</div>
 		<div class="lg:hidden">
 			<!-- <w-icon color="white">fa fa-bars</w-icon> -->
 			<drawer />
 		</div>
 		<div class="hidden lg:flex lg:space-x-11 items-center text-white lg:text-base">
+			<w-button bg-color="transparent" class="font-medium">จัดการ</w-button>
 			<w-button bg-color="transparent" class="font-medium">มูลนิธิ</w-button>
 			<w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
 			<router-link to="/volunteer">
