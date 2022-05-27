@@ -4,3 +4,13 @@
             เข้าสู่ระบบ</w-button>
     </div>
 </template>
+
+<script>
+import { defineComponent } from "vue";
+
+export default defineComponent({
+	props: {
+		disabled
+	},
+});
+</script>

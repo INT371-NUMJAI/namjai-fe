@@ -16,9 +16,10 @@ routerlink
       <div class="w-16 border-4 border-t border-namjaired"></div>
     </div>
     <div class="mt-7 font-medium lg:w-80 lg:mt-10">
-      <w-form class="grid grid-flow-row">
+      <w-form v-model="valid" class="grid grid-flow-row">
         <label class="text-sm lg:text-base mb-2">อีเมล</label>
         <w-input
+          :validators="[validators.required]"
           class="mb-8"
           type="email"
           color="black"
@@ -26,31 +27,25 @@ routerlink
         />
         <label class="text-sm lg:text-base mb-2">รหัสผ่าน</label>
         <w-input
+          :validators="[validators.required]"
           class="mb-6"
           type="password"
           color="black"
           placeholder="*******"
         />
-      </w-form>
-    </div>
-    <div class="flex justify-end mb-5">
+         <div class="flex justify-end mb-5">
       <button class="-mt-2 text-sm lg:text-base underline underline-offset-2">
         ลืมรหัสผ่าน?
       </button>
     </div>
+    <!-- <base-button class="w-80" /> -->
+     <div class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 bg-namjaigreen h-[60px] lg:w-80 my-10 rounded-xl">
+        <w-button :disabled="valid === false" color="white" bg-color="transparent" class="text-white text-lg font-semibold" type="submit">
+            เข้าสู่ระบบ</w-button>
+    </div>
+      </w-form>
+    </div>
     <div class="lg:block lg:w-80">
-      <div
-        class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 bg-namjaigreen h-[60px] my-10 rounded-xl"
-      >
-        <w-button
-          color="white"
-          bg-color="transparent"
-          class="text-white text-lg font-semibold"
-          type="submit"
-        >
-          เข้าสู่ระบบ</w-button
-        >
-      </div>
       <div class="flex justify-center text-sm lg:text-base">
         <p>ยังไม่มีบัญชีใช่หรือไม่?</p>
         <router-link to="/signup"
@@ -73,3 +68,15 @@ routerlink
     src="../assets/pic2.png"
   />
 </template>
+
+<script>
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  data: () => ({
+  validators: {
+    required: value => !!value || 'This field is required'
+  }
+})
+});
+</script>
