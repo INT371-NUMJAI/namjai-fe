@@ -9,32 +9,42 @@ const router = createRouter({
 		{
 			path: "/",
 			name: "home",
-			component: () => import("../views/Home.vue"),
-		},
-		{
-			path: "/login",
-			name: "login",
 			component: () => import("../components/LoginForm.vue"),
 		},
+		// {
+		// 	path: "/login",
+		// 	name: "login",
+		// 	component: () => import("../components/LoginForm.vue"),
+		// },
 		{
 			path: "/signup",
 			name: "signup",
 			component: () => import("../views/Signup.vue"),
 			children: [
 				{
-				  path: 'user',
-				  component: SignupFormUser,
+					path: "user",
+					component: SignupFormUser,
 				},
 				{
-				  path: 'foundation',
-				  component: SignupFormFoundation,
+					path: "foundation",
+					component: SignupFormFoundation,
 				},
-			  ],
+			],
 		},
 		{
 			path: "/volunteer",
 			name: "volunteer",
 			component: () => import("../views/Volunteer.vue"),
+		},
+		{
+			path: "/admin-management",
+			name: "admin-management",
+			component: () => import("../views/AdminApprove.vue"),
+		},
+		{
+			path: "/fdn",
+			name: "fdn-detail-verify",
+			component: () => import("../views/AdminVerifyAccountDetail.vue"),
 		},
 	],
 });
