@@ -120,7 +120,7 @@
           <w-input
             :validators="[validators.required]"
             color="black"
-            placeholder="เลขที่ หมู่ ซอย ถนน"
+            placeholder="=ชื่อ-สกุล"
           ></w-input>
         </div>
         <div class="grid grid-cols-2 gap-10">
@@ -172,6 +172,8 @@
             >
           </div>
           <w-input
+            :validators="[() => files.length || 'Please add a file']"
+            v-model="files"
             type="file"
             class="w-20 h-20"
             color="amber"
@@ -212,43 +214,51 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  data: () => ({
-    // userlists: ["Qwanjai", "Faahhhhhhh", "Chutipaaaa"],
-    // small:true,
-    selection: 1,
-    radioItems: [
-      { label: "ขนาดเล็ก", value: 1 },
-      { label: "ขนาดใหญ่", value: 2 },
-    ],
-    validators: {
-      required: (value) => !!value || "This field is required",
-      minLength: (value) =>
-        value.length >= 8 || "Your password must be minimum 8 characters",
-      username: (value) => {
-        let userlists = ["Qwanjai", "Faahhhhhhh", "Chutipaaaa"];
-        for (let i = 0; i < userlists.length; i++) {
-          if (userlists[i].toLowerCase() === value.toLowerCase()) {
-            return "This username is already in use";
+  data() {
+    return {
+      files: [],
+      // fileUpload: null,
+      selection: 1,
+      radioItems: [
+        { label: "ขนาดเล็ก", value: 1 },
+        { label: "ขนาดใหญ่", value: 2 },
+      ],
+      validators: {
+        required: (value) => !!value || "This field is required",
+        minLength: (value) =>
+          value.length >= 8 || "Your password must be minimum 8 characters",
+        username: (value) => {
+          let userlists = ["Qwanjai", "Faahhhhhhh", "Chutipaaaa"];
+          for (let i = 0; i < userlists.length; i++) {
+            if (userlists[i].toLowerCase() === value.toLowerCase()) {
+              return "This username is already in use";
+            }
           }
-        }
-      },
-      email: (value) => {
-        let emails = ["abc@gmail.com", "def.1@hotmail.com"];
-        for (let i = 0; i < emails.length; i++) {
-          if (emails[i].toLowerCase() === value.toLowerCase()) {
-            return "This email already regitered";
+        },
+        email: (value) => {
+          let emails = ["abc@gmail.com", "def.1@hotmail.com"];
+          for (let i = 0; i < emails.length; i++) {
+            if (emails[i].toLowerCase() === value.toLowerCase()) {
+              return "This email already regitered";
+            }
           }
-        }
-      },
-      foundation: (value) => {
-        let foundations = ["The Mirror Foundation", "Child Foundation"];
-        for (let i = 0; i < foundations.length; i++) {
-          if (foundations[i].toLowerCase() === value.toLowerCase()) {
-            return "This foundation name is already in use";
+        },
+        foundation: (value) => {
+          let foundations = ["The Mirror Foundation", "Child Foundation"];
+          for (let i = 0; i < foundations.length; i++) {
+            if (foundations[i].toLowerCase() === value.toLowerCase()) {
+              return "This foundation name is already in use";
+            }
           }
-        }
+        },
       },
-    },
-  }),
+    }
+  },
+  // methods: {
+  //   fileHandler(event) {
+  //     const input = event.target.files[0];
+  //     this.fileUpload = input;
+  //   },
+  // },
 });
 </script>

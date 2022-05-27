@@ -48,6 +48,8 @@
             ></w-input>
           </div>
         </div>
+      </div>
+      <div class="lg:block lg:w-80 lg:mt-10 lg:pb-[60px] lg:mx-auto">
         <div
           class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 bg-namjaigreen h-[60px] lg:w-80 my-10 rounded-xl"
         >
@@ -61,9 +63,6 @@
             ลงทะเบียน
           </w-button>
         </div>
-      </div>
-      </w-form>
-      <div class="lg:block lg:w-80 lg:mt-10 lg:pb-[60px] lg:mx-auto">
         <div class="flex justify-center text-sm lg:text-base">
           <p>ยังไม่มีบัญชีใช่หรือไม่?</p>
           <router-link to="/login">
@@ -73,6 +72,7 @@
           </router-link>
         </div>
       </div>
+      </w-form>
   </div>
 </template>
 
