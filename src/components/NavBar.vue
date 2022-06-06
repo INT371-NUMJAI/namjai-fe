@@ -1,6 +1,6 @@
 <template>
 	<nav
-		class="bg-namjaigreen flex items-center justify-between px-7 py-6 lg:py-4 lg:px-11 drop-shadow-md lg:fixed lg:w-screen"
+		class="bg-orange-500 flex items-center justify-between px-7 py-6 lg:py-4 lg:px-11 drop-shadow-md lg:fixed lg:w-screen"
 	>
 		<div class="flex items-center text-white space-x-5">
 			<router-link to="/">
