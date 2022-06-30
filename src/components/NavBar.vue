@@ -36,7 +36,7 @@
 				<w-button bg-color="transparent" class="font-medium">จิตอาสา</w-button>
 			</router-link>
 			<w-button bg-color="transparent" class="font-medium">เกี่ยวกับเรา</w-button>
-			<router-link to="/login">
+			<router-link to="/">
 				<w-button bg-color="transparent" round outline class="py-4 font-medium">เข้าสู่ระบบ</w-button>
 			</router-link>
 		</div>

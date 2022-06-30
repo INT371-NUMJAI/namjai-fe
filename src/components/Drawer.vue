@@ -16,13 +16,17 @@
 			></w-button>
 			<div class="space-y-6 mx-5 mt-10 w-96">
 				<div class="flex justify-center">
-					<router-link to="/login">
-					<w-button @click="showDrawer = !showDrawer" bg-color="transparent" outline round class="text-black py-1">เข้าสู่ระบบ</w-button>
+					<router-link to="/">
+						<w-button @click="showDrawer = !showDrawer" bg-color="transparent" outline round class="text-black py-1"
+							>เข้าสู่ระบบ</w-button
+						>
 					</router-link>
 				</div>
 				<div class="flex justify-center">
 					<router-link to="/signup">
-					<w-button @click="showDrawer = !showDrawer" bg-color="transparent" outline round class="text-black py-1">สมัครสมาชิก</w-button>
+						<w-button @click="showDrawer = !showDrawer" bg-color="transparent" outline round class="text-black py-1"
+							>สมัครสมาชิก</w-button
+						>
 					</router-link>
 				</div>
 				<w-divider class="w-36" color="grey" />
@@ -35,7 +39,13 @@
 					</div>
 					<div class="flex justify-end">
 						<router-link to="/volunteer">
-						<w-button @click="showDrawer = !showDrawer" bg-color="transparent" color="info-light1" class="block w-auto">จิตอาสา </w-button>
+							<w-button
+								@click="showDrawer = !showDrawer"
+								bg-color="transparent"
+								color="info-light1"
+								class="block w-auto"
+								>จิตอาสา
+							</w-button>
 						</router-link>
 					</div>
 					<div class="flex justify-end">
@@ -43,23 +53,17 @@
 					</div>
 					<div class="flex justify-end">
 						<w-accordion :items="1" expand-icon-left>
-			<template #item-title>
-				<div>บัญชี</div>
-			</template>
-			<template #item-content>
-				<div class="space-y-2">
-				<button class="block ml-6 "
-					@click="showDropDown = false"
-				>บัญชี</button>
-				<button class="block ml-1"
-					@click="showDropDown = false"
-				>ข้อความ</button>
-				<button class="block ml-7"
-					@click="showDropDown = false"
-				>สถิติ</button>
-				</div>
-			</template>
-		</w-accordion>
+							<template #item-title>
+								<div>บัญชี</div>
+							</template>
+							<template #item-content>
+								<div class="space-y-2">
+									<button class="block ml-6" @click="showDropDown = false">บัญชี</button>
+									<button class="block ml-1" @click="showDropDown = false">ข้อความ</button>
+									<button class="block ml-7" @click="showDropDown = false">สถิติ</button>
+								</div>
+							</template>
+						</w-accordion>
 					</div>
 				</div>
 				<div class="flex justify-center">
