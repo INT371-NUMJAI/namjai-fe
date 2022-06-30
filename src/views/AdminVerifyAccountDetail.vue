@@ -53,10 +53,10 @@
 		</fieldset>
 		<div class="flex mb-[60px] mx-auto justify-center space-x-[50px]">
 			<div class="flex">
-				<w-button class="w-[150px] h-[50px]" />
+				<base-button class="w-[150px] h-[50px]" />
 			</div>
 			<div class="flex">
-				<w-button @click="dialog.show = true" class="bg-namjaired w-[150px] h-[50px] justify-start" />
+				<base-button @click="dialog.show = true" class="bg-namjaired w-[150px] h-[50px] justify-start" />
 			</div>
 		</div>
 		<w-dialog v-model="dialog.show" :width="dialog.width" bg-color="namajai-green">

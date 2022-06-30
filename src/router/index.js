@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import AppVue from "../App.vue";
-import SignupFormFoundation from "../components/SignupFormFoundation.vue";
-import SignupFormUser from "../components/SignupFormUser.vue";
+import SignupFormFoundation from "../components/Forms/SignupFormFoundation.vue";
+import SignupFormUser from "../components/Forms/SignupFormUser.vue";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,7 +9,7 @@ const router = createRouter({
 		{
 			path: "/",
 			name: "home",
-			component: () => import("../components/LoginForm.vue"),
+			component: () => import("../components/Forms/LoginForm.vue"),
 		},
 		// {
 		// 	path: "/login",
