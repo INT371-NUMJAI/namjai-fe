@@ -113,7 +113,6 @@ export default defineComponent({
 				.then((response) => {
 					if (response.status == 200) {
 						this.$waveui.notify("sign up profile successfully", "success");
-						this.$router.push("/signin");
 					}
 				})
 				.catch((error) => {
