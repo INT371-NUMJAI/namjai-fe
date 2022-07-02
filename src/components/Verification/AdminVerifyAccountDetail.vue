@@ -92,8 +92,8 @@
 
 <script>
 import { defineComponent } from "vue";
-import VerificationStatus from "../components/VerificationStatus.vue";
-import BaseButton from "../components/Bases/BaseButton.vue";
+import VerificationStatus from "./VerificationStatus.vue";
+import BaseButton from "@/components/_Bases/BaseButton.vue";
 
 export default defineComponent({
 	components: {

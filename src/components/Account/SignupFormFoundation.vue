@@ -163,6 +163,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
 	data() {
 		return {
+			valid: null,
 			files: [],
 			// fileUpload: null,
 			selection: 1,
