@@ -19,7 +19,7 @@
 
 <script>
 import { defineComponent } from "vue";
-import VerificationStatus from "@/components/VerificationStatus.vue";
+import VerificationStatus from "@/components/Verification/VerificationStatus.vue";
 
 export default defineComponent({
 	components: {

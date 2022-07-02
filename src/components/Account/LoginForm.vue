@@ -14,7 +14,7 @@ routerlink
 			<div class="w-16 border-4 border-t border-namjaired"></div>
 		</div>
 		<div class="mt-7 font-medium lg:w-80 lg:mt-10">
-			<w-form v-model="valid" class="grid grid-flow-row">
+			<w-form class="grid grid-flow-row">
 				<label class="text-sm lg:text-base mb-2">อีเมล</label>
 				<w-input
 					:validators="[validators.required]"
@@ -30,13 +30,7 @@ routerlink
 				</div>
 				<!-- <base-button class="w-80" /> -->
 				<div class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 bg-namjaigreen h-[60px] lg:w-80 my-10 rounded-xl">
-					<w-button
-						:disabled="valid === false"
-						color="white"
-						bg-color="transparent"
-						class="text-white text-lg font-semibold"
-						type="submit"
-					>
+					<w-button color="white" bg-color="transparent" class="text-white text-lg font-semibold" type="submit">
 						เข้าสู่ระบบ</w-button
 					>
 				</div>

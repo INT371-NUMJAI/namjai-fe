@@ -5,16 +5,32 @@
 				<div class="space-y-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0">
 					<div class="space-y-2 lg:space-y-4">
 						<label class="text-sm lg:text-base font-medium">ชื่อ</label>
-						<w-input :validators="[validators.required]" color="black" placeholder="ชื่อ"></w-input>
+						<w-input
+							:validators="[validators.required]"
+							color="black"
+							placeholder="ชื่อ"
+							v-model="user.firstName"
+						></w-input>
 					</div>
 					<div class="space-y-2 lg:space-y-4">
 						<label class="text-sm lg:text-base font-medium">นามสกุล</label>
-						<w-input :validators="[validators.required]" color="black" placeholder="นามสกุล"></w-input>
+						<w-input
+							:validators="[validators.required]"
+							color="black"
+							placeholder="นามสกุล"
+							v-model="user.lastName"
+						></w-input>
 					</div>
 				</div>
 				<div class="space-y-2 lg:space-y-4">
 					<label class="text-sm lg:text-base font-medium">อีเมล</label>
-					<w-input :validators="[validators.required]" type="email" color="black" placeholder="อีเมล"></w-input>
+					<w-input
+						:validators="[validators.required]"
+						type="email"
+						color="black"
+						placeholder="อีเมล"
+						v-model="user.email"
+					></w-input>
 				</div>
 				<div class="space-y-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0">
 					<div class="space-y-2 lg:space-y-4">
@@ -23,6 +39,7 @@
 							:validators="[validators.required, validators.username]"
 							color="black"
 							placeholder="ชื่อผู้ใช้"
+							v-model="user.userName"
 						></w-input>
 					</div>
 					<div class="space-y-2 lg:space-y-4">
@@ -32,6 +49,7 @@
 							type="password"
 							color="black"
 							placeholder="รหัสผ่าน"
+							v-model="user.password"
 						></w-input>
 					</div>
 				</div>
@@ -44,10 +62,12 @@
 						bg-color="transparent"
 						class="text-white text-lg font-semibold"
 						type="submit"
+						@click="submitForm()"
 					>
 						ลงทะเบียน
 					</w-button>
 				</div>
+				<!-- <span>{{ user }}</span> -->
 				<div class="flex justify-center text-sm lg:text-base">
 					<p>ยังไม่มีบัญชีใช่หรือไม่?</p>
 					<router-link to="/">
@@ -61,9 +81,10 @@
 
 <script>
 import { defineComponent } from "vue";
-
+import authService from "@/services/auth-service";
 export default defineComponent({
 	data: () => ({
+		valid: null,
 		// userlists: ["Qwanjai", "Faahhhhhhh", "Chutipaaaa"],
 		validators: {
 			required: (value) => !!value || "This field is required",
@@ -77,6 +98,28 @@ export default defineComponent({
 				}
 			},
 		},
+		user: {
+			userName: "",
+			email: "",
+			firstName: "",
+			lastName: "",
+			password: "",
+		},
 	}),
+	methods: {
+		submitForm() {
+			authService
+				.register(this.user)
+				.then((response) => {
+					if (response.status == 200) {
+						this.$waveui.notify("sign up profile successfully", "success");
+						this.$router.push("/signin");
+					}
+				})
+				.catch((error) => {
+					console.error(error);
+				});
+		},
+	},
 });
 </script>

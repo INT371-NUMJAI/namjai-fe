@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import AppVue from "../App.vue";
-import SignupFormFoundation from "../components/Forms/SignupFormFoundation.vue";
-import SignupFormUser from "../components/Forms/SignupFormUser.vue";
+import SignupFormFoundation from "../components/Account/SignupFormFoundation.vue";
+import SignupFormUser from "../components/Account/SignupFormUser.vue";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,7 +8,7 @@ const router = createRouter({
 		{
 			path: "/",
 			name: "home",
-			component: () => import("../components/Forms/LoginForm.vue"),
+			component: () => import("../components/Account/LoginForm.vue"),
 		},
 		// {
 		// 	path: "/login",
@@ -19,7 +18,7 @@ const router = createRouter({
 		{
 			path: "/signup",
 			name: "signup",
-			component: () => import("../views/Signup.vue"),
+			component: () => import("../components/Account/ViewSignup.vue"),
 			children: [
 				{
 					path: "user",
@@ -34,17 +33,17 @@ const router = createRouter({
 		{
 			path: "/volunteer",
 			name: "volunteer",
-			component: () => import("../views/Volunteer.vue"),
+			component: () => import("../components/Volunteer/ViewVolunteer.vue"),
 		},
 		{
 			path: "/admin-management",
 			name: "admin-management",
-			component: () => import("../views/AdminApprove.vue"),
+			component: () => import("../components/Verification/AdminApprove.vue"),
 		},
 		{
 			path: "/fdn",
 			name: "fdn-detail-verify",
-			component: () => import("../views/AdminVerifyAccountDetail.vue"),
+			component: () => import("../components/Verification/AdminVerifyAccountDetail.vue"),
 		},
 	],
 });

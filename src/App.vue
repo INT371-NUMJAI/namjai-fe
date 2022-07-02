@@ -9,10 +9,10 @@
 
 <script>
 import { defineComponent } from "vue";
-import NavBar from "./components/NavBar.vue";
+import NavBar from "./components/NavBar/NavBar.vue";
 export default defineComponent({
 	components: {
-		NavBar
+		NavBar,
 	},
 });
 </script>

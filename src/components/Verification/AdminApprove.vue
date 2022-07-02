@@ -13,8 +13,8 @@
 
 <script>
 import { defineComponent } from "vue";
-import BaseList from "../components/Bases/BaseList.vue";
-import BaseTable from "../components/Bases/BaseTable.vue";
+import BaseList from "@/components/_Bases/BaseList.vue";
+import BaseTable from "@/components/_Bases/BaseTable.vue";
 
 export default defineComponent({
 	components: {

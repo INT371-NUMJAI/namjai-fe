@@ -1,5 +1,5 @@
 <template>
-	<div class="">
+	<div>
 		<div class="h-56 md:h-72 lg:hidden">
 			<div class="w-32 h-32 bg-namjaired rounded-full -ml-10 -mt-5"></div>
 			<div class="w-32 h-32 border-2 border-namjaiyellow rounded-full"></div>
@@ -14,24 +14,33 @@
 				<div class="lg:grid lg:grid-cols-4 lg:gap-8 lg:mt-3">
 					<div name="formContent" class="lg:col-span-3 lg:mt-8 lg:space-y-4">
 						<div class="hidden md:hidden lg:block lg:font-medium">ประเภทผู้ใช้</div>
-						<!-- <h1 class="text-[20px] text-namjaidarkgray lg:text-[20px]">ประภทผู้ใช้</h1> -->
 						<div>
-							<!-- <signup-user class="lg:hidden" /> -->
 							<div class="hidden lg:block">
-								<router-link
-									to="/signup/user"
-									class="border border-namjaibrown rounded-md py-2 px-3 text-center space-x-3"
+								<span>
+									<w-checkbox
+										color="amber"
+										round
+										v-model="clicked[0]"
+										@click="clicked[1] = false"
+										class="border border-amber-400 bg-white rounded-md py-2 px-3 text-center space-x-3"
+									>
+										<p class="font-bold text-black"><router-link to="/signup/user">บุคคลทั่วไป</router-link></p>
+									</w-checkbox></span
 								>
-									<w-radio name="radio1" color="red-light1"></w-radio>
-									<span class="font-medium">บุคคลทั่วไป</span>
-								</router-link>
-								<router-link
-									to="/signup/foundation"
-									class="w-32 h-10 border border-namjaibrown rounded-md py-2 pl-3 pr-8 space-x-5 ml-14"
+								<span
+									><w-checkbox
+										color="amber"
+										round
+										v-model="clicked[1]"
+										@click="clicked[0] = false"
+										class="w-32 h-10 border border-amber-400 bg-white rounded-md py-2 pl-3 pr-8 space-x-3 ml-14"
+									>
+										<router-link to="/signup/foundation">
+											<p class="font-bold text-black">มูลนิธิ</p></router-link
+										></w-checkbox
+									></span
 								>
-									<w-radio name="radio1" color="red-light1"></w-radio>
-									<span class="font-medium">มูลนิธิ</span>
-								</router-link>
+
 								<router-view></router-view>
 							</div>
 						</div>
@@ -43,13 +52,16 @@
 </template>
 
 <script>
-// import SignupFormUser from "../components/Forms/SignupFormUser.vue";
-// import SignupFormFoundation from "../components/Forms/SignupFormFoundation.vue";
-
 export default {
-	// components: {
-	// 	"signup-user": SignupFormUser,
-	// 	"signup-foundation": SignupFormFoundation,
-	// },
+	data() {
+		return {
+			clicked: [false, false],
+		};
+	},
+	methods: {
+		// swapCheckedValue() {
+		// 	this.clicked[0] ? this.clicked[1] = false : this.clicked[]
+		// },
+	},
 };
 </script>
