@@ -18,6 +18,15 @@ class AuthService {
 	register(user) {
 		return http.post("/auth/signup", user);
 	}
+
+	registerFoundation(fdn) {
+		return http.post("/auth/signup/fdn", fdn);
+	}
+
+	uploadFDNDocument(data) {
+		http.defaults.headers["Content-type"] = "multipart/form-data";
+		return http.post("/auth/fdn/upload-doc", data);
+	}
 	getUsernameList() {
 		return http.get("/view/userlist");
 	}

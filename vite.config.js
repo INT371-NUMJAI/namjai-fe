@@ -6,6 +6,7 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	transpileDependencies: ["wave-ui"],
 	plugins: [vue(), vueJsx()],
 	resolve: {
 		alias: {
@@ -15,8 +16,7 @@ export default defineConfig({
 	css: {
 		preprocessorOptions: {
 			scss: {
-				additionalData:
-					'$use-layout-classes: false;@import "/src/../node_modules/wave-ui/src/wave-ui/scss/_variables.scss";',
+				additionalData: '$use-layout-classes: false;@import "/src/../node_modules/wave-ui/src/wave-ui/scss/_variables.scss";',
 			},
 		},
 	},
