@@ -14,7 +14,7 @@ app.use(store);
 app.use(VueAxios, axios);
 new WaveUI(app, {
 	colors: {
-		primary: "#e91e63",
+		primary: "#ff8149",
 		secondary: "#5d9a26",
 	},
 });
