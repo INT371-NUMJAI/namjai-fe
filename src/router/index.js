@@ -5,10 +5,15 @@ import SignupFormUser from "../components/Account/SignupFormUser.vue";
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
+		// {
+		// 	path: "/",
+		// 	name: "home",
+		// 	component: () => import("../components/Account/LoginForm.vue"),
+		// },
 		{
 			path: "/",
 			name: "home",
-			component: () => import("../components/Account/LoginForm.vue"),
+			component: () => import("../components/Page/Home.vue"),
 		},
 		// {
 		// 	path: "/login",
