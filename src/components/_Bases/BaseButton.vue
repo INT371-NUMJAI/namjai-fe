@@ -1,17 +1,30 @@
 <template>
-	<div class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 bg-namjaigreen h-[60px] my-10 rounded-xl">
-		<w-button color="white" bg-color="transparent" class="text-white text-lg font-semibold" type="submit">
-			เข้าสู่ระบบ</w-button
-		>
-	</div>
+	<!-- <div class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 h-[60px] my-10 rounded-xl w-[350px]" :class="[buttonColor]"> -->
+	<button class="text-white text-lg font-semibold md:mx-auto mx-auto flex justify-center mt-3 mb-5 h-[60px] my-5 rounded-xl w-[350px] pt-4" :type="buttonType" :disabled="isValid" :class="[buttonColor]">{{ buttonLabel }}</button>
+	<!-- </div> -->
 </template>
 
 <script>
-import { defineComponent } from "vue";
-
-export default defineComponent({
-	// props: {
-	// 	disabled,
-	// },
-});
+export default {
+	props: {
+		buttonLabel: {
+			type: String,
+		},
+		buttonColor: {
+			type: String,
+			default: "bg-namjaigreen",
+		},
+		isValid: {
+			type: Boolean,
+		},
+		buttonType: {
+			type: String,
+		},
+	},
+};
 </script>
+<style>
+:disabled {
+	@apply text-neutral-200  bg-gray-500;
+}
+</style>
