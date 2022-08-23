@@ -35,8 +35,8 @@
 		</div>
 		{{ loginRequest }}
 	</div>
-	<w-image class="hidden lg:block lg:w-2/5 lg:absolute lg:top-44 lg:right-48 lg:z-10" :src="`./public/imgs/pic1.png`"></w-image>
-	<w-image class="hidden lg:block lg:w-3/5 lg:absolute lg:top-24 lg:right-14 lg:-z-0" :src="`./public/imgs/pic2.png`"></w-image>
+	<w-image class="hidden lg:block lg:w-2/5 lg:absolute lg:top-44 lg:right-48 lg:z-10" :src="`/public/pic1.png`"></w-image>
+	<w-image class="hidden lg:block lg:w-3/5 lg:absolute lg:top-24 lg:right-14 lg:-z-0" :src="`/public/pic2.png`"></w-image>
 </template>
 
 <script>
