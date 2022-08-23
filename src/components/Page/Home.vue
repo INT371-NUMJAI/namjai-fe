@@ -235,10 +235,9 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
 // import BaseButton from "../src/components/_Bases/BaseButton.vue";
 
-export default defineComponent({
+export default {
 	// components: {
 	// 	BaseButton,
 	// },
@@ -341,7 +340,7 @@ export default defineComponent({
 			});
 		},
 	},
-});
+};
 </script>
 
 <style scoped>
