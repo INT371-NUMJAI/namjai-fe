@@ -1,18 +1,26 @@
 <template>
 	<w-app>
 		<div>
-			<nav-bar class="z-50" />
+			<nav-bar class="z-40" />
 			<router-view />
+			<!-- <foo-ter class="z-50" /> -->
 		</div>
 	</w-app>
 </template>
 
 <script>
-import { defineComponent } from "vue";
 import NavBar from "./components/NavBar/NavBar.vue";
-export default defineComponent({
+// import Footer from "./components/NavBar/Footer.vue";
+export default {
 	components: {
-		NavBar,
+		"nav-bar": NavBar,
+		// "foo-ter": Footer,
 	},
-});
+};
 </script>
+<style>
+/* .w-notification-manager {
+	@apply absolute z-50;
+	z-index: 100;
+} */
+</style>
