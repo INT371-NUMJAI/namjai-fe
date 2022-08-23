@@ -17,15 +17,17 @@
 						<div>
 							<div class="hidden lg:block">
 								<span>
-									<w-checkbox color="amber" round v-model="clicked[0]" @click="clicked[1] = false" class="border border-amber-400 bg-white rounded-md py-2 px-3 text-center space-x-3">
-										<p class="font-bold text-black"><router-link to="/signup/user">บุคคลทั่วไป</router-link></p>
-									</w-checkbox></span
-								>
-								<span
-									><w-checkbox color="amber" round v-model="clicked[1]" @click="clicked[0] = false" class="w-32 h-10 border border-amber-400 bg-white rounded-md py-2 pl-3 pr-8 space-x-3 ml-14">
-										<router-link to="/signup/foundation"> <p class="font-bold text-black">มูลนิธิ</p></router-link></w-checkbox
-									></span
-								>
+									<router-link to="/signup/user">
+										<w-checkbox color="amber" round v-model="clicked[0]" @click="clicked[1] = false" class="border border-amber-400 bg-white rounded-md py-2 px-3 text-center space-x-3">
+											<p class="font-bold text-black">บุคคลทั่วไป</p>
+										</w-checkbox>
+									</router-link>
+								</span>
+								<span>
+									<w-checkbox color="amber" round v-model="clicked[1]" @click="clicked[0] = false" class="w-32 h-10 border border-amber-400 bg-white rounded-md py-2 pl-3 pr-8 space-x-3 ml-14">
+										<router-link to="/signup/foundation"> <p class="font-bold text-black">มูลนิธิ</p></router-link>
+									</w-checkbox>
+								</span>
 
 								<router-view></router-view>
 							</div>
