@@ -31,7 +31,7 @@
         </w-image>
         </div> -->
 				<div class="">
-					<w-image class="lg:w-screen h-screen" :src="`src/assets/pic3.png`" :ratio="500 / 1000" content-class="justify-start" no-spinner transition="">
+					<w-image class="lg:w-screen h-screen" :src="`https://images.unsplash.com/photo-1504598578017-40d9b776f1bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80`" :ratio="500 / 1000" content-class="justify-start" no-spinner transition="">
 						<div class="lg:mx-44 md:mx-[40px] mx-[30px] absolute lg:top-[150px] top-[100px] space-y-10 text-white">
 							<h1 class="lg:text-6xl md:text-6xl text-5xl">ร่วมเป็นส่วนหนึ่ง</h1>
 							<div class="flex lg:space-x-6 md:space-x-6 space-x-2">
@@ -41,7 +41,9 @@
 							<div class="absolute lg:top-[160px] md:top-[160px] top-[120px] lg:left-[212px] md:left-[210px] left-[160px] w-16 border-4 border-t border-namjaired"></div>
 							<p class="lg:w-[480px] md:w-[480px] w-[330px]">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
 							<div>
-								<w-button class="w-[156px] lg:ml-0 ml-0 md:ml-0" label="บริจาคเลย" />
+								<router-link to="/main">
+									<base-button class="w-[156px] lg:ml-0 ml-0 md:ml-0" buttonLabel="บริจาคเลย" />
+								</router-link>
 							</div>
 						</div>
 					</w-image>
@@ -167,21 +169,21 @@
 		</div>
 		<div class="snap-start">
 			<div id="section4" class="lg:h-screen h-5/6 lg:overflow-hidden bg-namjaiwhite -mt-[200px] lg:mt-0">
-				<w-image class="relative md:mx-[40px] lg:top-[100px] md:-top-[320px] lg:left-[135px] right-auto hidden lg:block md:hidden" :src="`src/assets/pic4.png`" :width="1086" :height="285" content-class="justify-start text-namjaiwhite mx-[95px] -mt-[100px]" no-spinner transition="">
+				<w-image class="relative md:mx-[40px] lg:top-[100px] md:-top-[320px] lg:left-[135px] right-auto hidden lg:block md:hidden" :src="`https://images.unsplash.com/photo-1521651000640-f7b2cb02ffb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80`" :width="1086" :height="285" content-class="justify-start text-namjaiwhite mx-[95px] -mt-[100px]" no-spinner transition="">
 					<h1 class="text-4xl leading-relaxed">
 						Happiness doesn't result from <br />
 						what we get, but from what we give
 					</h1>
 					<p class="mt-[150px] -mx-[80px]">Ben Carson</p>
-					<w-button class="w-[342px] relative top-[142px] right-[440px] bg-namjaiyellow" label="บริจาคเลย"></w-button>
+					<base-button class="w-[342px] relative top-[142px] right-[440px]" buttonColor="bg-namjaiyellow" buttonLabel="บริจาคเลย"></base-button>
 				</w-image>
-				<w-image class="relative md:mx-[40px] lg:top-[100px] md:-top-[320px] lg:left-[135px] right-auto hidden lg:hidden md:block" :src="`src/assets/pic4.png`" :width="754" :height="213" content-class="justify-start text-namjaiwhite mx-[50px] -mt-[100px]" no-spinner transition="">
+				<w-image class="relative md:mx-[40px] lg:top-[100px] md:-top-[320px] lg:left-[135px] right-auto hidden lg:hidden md:block" :src="`https://images.unsplash.com/photo-1521651000640-f7b2cb02ffb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80`" :width="754" :height="213" content-class="justify-start text-namjaiwhite mx-[50px] -mt-[100px]" no-spinner transition="">
 					<h1 class="text-2xl leading-relaxed w-[550px]">
 						Happiness doesn't result from <br />
 						what we get, but from what we give
 					</h1>
 					<p class="absolute top-[210px] right-[250px]">Ben Carson</p>
-					<w-button class="w-[327px] relative top-[110px] right-[350px] bg-namjaiyellow" label="บริจาคเลย"></w-button>
+					<base-button class="w-[327px] relative top-[110px] right-[350px]" buttonColor="bg-namjaiyellow" buttonLabel="บริจาคเลย"></base-button>
 				</w-image>
 				<div class="bg-namjaigreen h-screen">
 					<div class="relative lg:top-[355px] top-[710px] flex items-center lg:mx-[175px] mx-[30px]">
@@ -235,12 +237,7 @@
 </template>
 
 <script>
-// import BaseButton from "../src/components/_Bases/BaseButton.vue";
-
 export default {
-	// components: {
-	// 	BaseButton,
-	// },
 	data() {
 		return {
 			view: {
