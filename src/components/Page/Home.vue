@@ -31,7 +31,7 @@
         </w-image>
         </div> -->
 				<div class="">
-					<w-image class="lg:w-screen h-screen" :src="`src/assets/pic3.png`" :ratio="500 / 1000" content-class="justify-start" no-spinner transition="">
+					<w-image class="lg:w-screen h-screen" :src="`@/assets/pic3.png`" :ratio="500 / 1000" content-class="justify-start" no-spinner transition="">
 						<div class="lg:mx-44 md:mx-[40px] mx-[30px] absolute lg:top-[150px] top-[100px] space-y-10 text-white">
 							<h1 class="lg:text-6xl md:text-6xl text-5xl">ร่วมเป็นส่วนหนึ่ง</h1>
 							<div class="flex lg:space-x-6 md:space-x-6 space-x-2">
@@ -64,14 +64,14 @@
 					<div class="overflow-hidden">
 						<div @scroll="handleScroll" id="scrollDemo" class="overflow-y-auto snap-y snap-mandatory lg:mt-0 md:mt-[40px] mt-7 lg:h-[297px] md:h-auto h-[340px] lg:w-auto md:w-screen w-[400px] space-y-4 md:space-y-6">
 							<div class="lg:grid lg:grid-cols-2 md:grid md:grid-cols-2 snap-center">
-								<img class="lg:-mx-5 mx-0 lg:w-[528px] md:w-[367px] w-[330px] z-20" src="../assets/pic1.png" alt="" />
+								<img class="lg:-mx-5 mx-0 lg:w-[528px] md:w-[367px] w-[330px] z-20" src="@/assets/pic1.png" alt="" />
 								<div class="lg:my-auto">
 									<h1 class="block lg:hidden text-namjaigreen text-2xl mt-[40px] mb-[10px]">FOUNDATION</h1>
 									<p class="lg:w-[372px] z-20 my-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 								</div>
 							</div>
 							<div class="lg:grid lg:grid-cols-2 md:grid md:grid-cols-2 snap-center">
-								<img class="lg:-mx-5 mx-0 lg:w-[528px] md:w-[367px] w-[330px] z-20" src="../assets/pic1.png" alt="" />
+								<img class="lg:-mx-5 mx-0 lg:w-[528px] md:w-[367px] w-[330px] z-20" src="@/assets/pic1.png" alt="" />
 								<div class="lg:my-auto">
 									<h1 class="block lg:hidden text-namjaigreen text-2xl mt-[40px] mb-[10px]">DONOR</h1>
 									<p class="w-[372px] z-20 my-auto">
@@ -81,7 +81,7 @@
 								</div>
 							</div>
 							<div class="lg:grid lg:grid-cols-2 md:grid md:grid-cols-2 snap-center">
-								<img class="lg:-mx-5 mx-0 lg:w-[528px] md:w-[367px] w-[330px] z-20" src="../assets/pic1.png" alt="" />
+								<img class="lg:-mx-5 mx-0 lg:w-[528px] md:w-[367px] w-[330px] z-20" src="@/assets/pic1.png" alt="" />
 								<div class="lg:my-auto">
 									<h1 class="block lg:hidden text-namjaigreen text-2xl mt-[40px] mb-[10px]">VOLUNTEER</h1>
 									<p class="w-[372px] z-20 my-auto">
@@ -167,7 +167,7 @@
 		</div>
 		<div class="snap-start">
 			<div id="section4" class="lg:h-screen h-5/6 lg:overflow-hidden bg-namjaiwhite -mt-[200px] lg:mt-0">
-				<w-image class="relative md:mx-[40px] lg:top-[100px] md:-top-[320px] lg:left-[135px] right-auto hidden lg:block md:hidden" :src="`src/assets/pic4.png`" :width="1086" :height="285" content-class="justify-start text-namjaiwhite mx-[95px] -mt-[100px]" no-spinner transition="">
+				<w-image class="relative md:mx-[40px] lg:top-[100px] md:-top-[320px] lg:left-[135px] right-auto hidden lg:block md:hidden" :src="`@/assets/pic4.png`" :width="1086" :height="285" content-class="justify-start text-namjaiwhite mx-[95px] -mt-[100px]" no-spinner transition="">
 					<h1 class="text-4xl leading-relaxed">
 						Happiness doesn't result from <br />
 						what we get, but from what we give
@@ -175,7 +175,7 @@
 					<p class="mt-[150px] -mx-[80px]">Ben Carson</p>
 					<w-button class="w-[342px] relative top-[142px] right-[440px] bg-namjaiyellow" label="บริจาคเลย"></w-button>
 				</w-image>
-				<w-image class="relative md:mx-[40px] lg:top-[100px] md:-top-[320px] lg:left-[135px] right-auto hidden lg:hidden md:block" :src="`src/assets/pic4.png`" :width="754" :height="213" content-class="justify-start text-namjaiwhite mx-[50px] -mt-[100px]" no-spinner transition="">
+				<w-image class="relative md:mx-[40px] lg:top-[100px] md:-top-[320px] lg:left-[135px] right-auto hidden lg:hidden md:block" :src="`@/assets/pic4.png`" :width="754" :height="213" content-class="justify-start text-namjaiwhite mx-[50px] -mt-[100px]" no-spinner transition="">
 					<h1 class="text-2xl leading-relaxed w-[550px]">
 						Happiness doesn't result from <br />
 						what we get, but from what we give
