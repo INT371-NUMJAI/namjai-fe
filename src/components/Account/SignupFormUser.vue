@@ -5,67 +5,31 @@
 				<div class="space-y-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0">
 					<div class="space-y-2 lg:space-y-4">
 						<label class="text-sm lg:text-base font-medium">ชื่อ</label>
-						<w-input
-							:validators="[validators.required]"
-							color="black"
-							placeholder="ชื่อ"
-							v-model="user.firstName"
-						></w-input>
+						<w-input :validators="[validators.required]" color="black" placeholder="ชื่อ" v-model="user.firstName"></w-input>
 					</div>
 					<div class="space-y-2 lg:space-y-4">
 						<label class="text-sm lg:text-base font-medium">นามสกุล</label>
-						<w-input
-							:validators="[validators.required]"
-							color="black"
-							placeholder="นามสกุล"
-							v-model="user.lastName"
-						></w-input>
+						<w-input :validators="[validators.required]" color="black" placeholder="นามสกุล" v-model="user.lastName"></w-input>
 					</div>
 				</div>
 				<div class="space-y-2 lg:space-y-4">
 					<label class="text-sm lg:text-base font-medium">อีเมล</label>
-					<w-input
-						:validators="[validators.required]"
-						type="email"
-						color="black"
-						placeholder="อีเมล"
-						v-model="user.email"
-					></w-input>
+					<w-input :validators="[validators.required]" type="email" color="black" placeholder="อีเมล" v-model="user.email"></w-input>
 				</div>
 				<div class="space-y-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0">
 					<div class="space-y-2 lg:space-y-4">
 						<label class="text-sm lg:text-base font-medium">ชื่อผู้ใช้</label>
-						<w-input
-							:validators="[validators.required, validators.username]"
-							color="black"
-							placeholder="ชื่อผู้ใช้"
-							v-model="user.userName"
-						></w-input>
+						<w-input :validators="[validators.required, validators.username]" color="black" placeholder="ชื่อผู้ใช้" v-model="user.userName"></w-input>
 					</div>
 					<div class="space-y-2 lg:space-y-4">
 						<label class="text-sm lg:text-base font-medium">รหัสผ่าน</label>
-						<w-input
-							:validators="[validators.required, validators.minLength]"
-							type="password"
-							color="black"
-							placeholder="รหัสผ่าน"
-							v-model="user.password"
-						></w-input>
+						<w-input :validators="[validators.required, validators.minLength]" type="password" color="black" placeholder="รหัสผ่าน" v-model="user.password"></w-input>
 					</div>
 				</div>
 			</div>
 			<div class="lg:block lg:w-80 lg:mt-10 lg:pb-[60px] lg:mx-auto">
 				<div class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 bg-namjaigreen h-[60px] lg:w-80 my-10 rounded-xl">
-					<w-button
-						:disabled="valid === false"
-						color="white"
-						bg-color="transparent"
-						class="text-white text-lg font-semibold"
-						type="submit"
-						@click="submitForm()"
-					>
-						ลงทะเบียน
-					</w-button>
+					<w-button :disabled="valid === false" color="white" bg-color="transparent" class="text-white text-lg font-semibold" type="submit" @click="submitForm()"> ลงทะเบียน </w-button>
 				</div>
 				<!-- <span>{{ user }}</span> -->
 				<div class="flex justify-center text-sm lg:text-base">
@@ -80,13 +44,12 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
 import authService from "@/services/auth-service";
-export default defineComponent({
-	data: () => ({
-		valid: null,
-		// userlists: ["Qwanjai", "Faahhhhhhh", "Chutipaaaa"],
-		validators: {
+import { reactive, ref } from "vue";
+export default {
+	setup() {
+		const valid = ref(null);
+		const validators = reactive({
 			required: (value) => !!value || "This field is required",
 			minLength: (value) => value.length >= 8 || "Your password must be minimum 8 characters",
 			username: (value) => {
@@ -97,17 +60,15 @@ export default defineComponent({
 					}
 				}
 			},
-		},
-		user: {
+		});
+		const user = reactive({
 			userName: "",
 			email: "",
 			firstName: "",
 			lastName: "",
 			password: "",
-		},
-	}),
-	methods: {
-		submitForm() {
+		});
+		const submitForm = () => {
 			authService
 				.register(this.user)
 				.then((response) => {
@@ -118,7 +79,8 @@ export default defineComponent({
 				.catch((error) => {
 					console.error(error);
 				});
-		},
+		};
+		return { valid, validators, user, submitForm };
 	},
-});
+};
 </script>
