@@ -76,15 +76,36 @@
 				<h1 class="text-[30px] font-black text-namjaidarkgray">โปรแกรมจิตอาสา</h1>
 				<p class="pt-5 text-xl font-bold text-[#6A6A6A]">อยากออกไปช่วยเหลือผู้คนในพื้นที่</p>
 				<p class="pt-2 text-xl font-bold text-[#6A6A6A]">มีโครงการจิตอาสามากมายที่รอคอยอยู่ ตามหาโครงการที่ใช่สำหรับคุณ</p>
-				<volunteer-activity-block class="pt-10" />
+				
+				<vueper-slides class="no-shadow pt-10" 
+				:visible-slides="3"
+				:gap="3"
+				:slide-ratio="1 / 3"
+				:dragging-distance="70">
+					<vueper-slide v-for="i in 9" :key="i" :title="i.toString()" class="bg-lime-300" />
+				</vueper-slides>
+
 				<div class="py-10 flex space-x-2 justify-center items-center ">
 					<p class="font-extrabold text-namjaigreen">ไปหน้าจิตอาสา</p>
 					<w-icon class="animate-bounce" color="namjaigreen">fa fa-chevron-right</w-icon>
 				</div>
+				
 			</div>
 		</div>
 
-		<div id="sec5" class="mx-[177px] py-[60px] grid grid-cols-12 gap-[30px]">
+		<div id="sec5" v-on:scroll="scrollExpand" class="expand">
+			<div class="mx-[177px] py-[60px] grid grid-cols-12 gap-[30px]">
+				<img class="object-cover w-[714px] h-[408px] col-span-8" src="@/assets/sec5.png" />
+				<div class="col-span-4 py-10 space-y-[40px]">
+					<h1 class="text-2xl font-semibold text-namjaidarkgray text-center mx-10 leading-relaxed">โอกาสที่จะได้อาสาเพื่อ แบ่งปันความช่วยเหลือ</h1>
+					<p class="text-justify font-medium text-[#6A6A6A] leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div id="sec5" class="mx-[177px] py-[60px] grid grid-cols-12 gap-[30px]">
 			<img class="object-cover w-[714px] h-[408px] col-span-8" src="@/assets/sec5.png" />
 			<div class="col-span-4 py-10 space-y-[40px]">
 				<h1 class="text-2xl font-semibold text-namjaidarkgray text-center mx-10 leading-relaxed">โอกาสที่จะได้อาสาเพื่อ แบ่งปันความช่วยเหลือ</h1>
@@ -92,7 +113,8 @@
 					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 			</div>
-		</div>
+		</div> -->
+		
 
 		<div id="sec6" class="bg-[#FFFCF4] pt-[60px] pb-[80px]">
 			<div class="mx-[177px]">
@@ -170,6 +192,10 @@
 				</div> -->
 			</div>
 		</div>
+
+		<div @scroll="scrollExpand" class="container">
+			<div id="expand"></div>
+		</div>
 		
 		<div id="sec7" class="relative">
 			<img class="w-[1440px] h-[200px]" src="@/assets/sec7.png"/>
@@ -212,30 +238,57 @@
 .namjaigreen{
 	color:#00715D
 }
+
+/* .expand {
+	background: tomato;
+  min-height: 400px;
+  min-width: 20%;
+  will-change: width;
+} */
+
+
 </style>
 
 <script>
 import VolunteerActivityBlock from "@/components/Volunteer/VolunteerActivityBlock.vue";
+import { VueperSlides, VueperSlide } from 'vueperslides'
+import 'vueperslides/dist/vueperslides.css'
 
 export default {
 	components: {
 		"volunteer-activity-block": VolunteerActivityBlock,
+		VueperSlides, VueperSlide
 	},
 	methods: {
 		expandScroll(){
 			const zoomElement = document.querySelector(".zoom");
-let zoom = 1;
-const ZOOM_SPEED = 0.1;
-
-document.addEventListener("wheel", function(e) {  
-    
-    if(e.deltaY > 0){    
-        zoomElement.style.transform = `scale(${zoom += ZOOM_SPEED})`;  
-    }else{    
-        zoomElement.style.transform = `scale(${zoom -= ZOOM_SPEED})`;  }
-
-});
-		}
+			let zoom = 1;
+			const ZOOM_SPEED = 0.1;
+			document.addEventListener("wheel", function(e) {  
+				if(e.deltaY > 0){    
+					zoomElement.style.transform = `scale(${zoom += ZOOM_SPEED})`;  
+				}else{    
+					zoomElement.style.transform = `scale(${zoom -= ZOOM_SPEED})`;  }
+			});
+		},
+		// scrollExpand(){
+		// 	var expandDiv = document.getElementById("expand");
+		// 	var speed = 5;
+			
+		// 	function expanding() {
+		// 		var scrolltop = window.pageYOffset; // get number of pixels document has scrolled vertically
+		// 		var scrollAndSpeed = (scrolltop / speed);
+		// 		//Expand using transform
+		// 		//expandDiv.style.transform = "scalex( " + Math.min(Math.max(scrollAndSpeed, 1), 10) + ")";
+				
+		// 		//Or using width
+		// 		expandDiv.style.width = Math.min(Math.max(scrollAndSpeed, 20), 95) + "%";
+		// 	}
+			
+		// 	window.addEventListener('scroll', function() { // on page scroll
+		// 	requestAnimationFrame(expanding); // call parallaxing()
+		// 	}, false);
+		// }
 	},
 
 };

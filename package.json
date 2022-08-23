@@ -16,6 +16,7 @@
     "vue": "^3.2.31",
     "vue-axios": "^3.4.1",
     "vue-router": "^4.0.14",
+    "vueperslides": "^3.4.2",
     "vuex": "^4.0.2",
     "wave-ui": "^2.38.0"
   },
