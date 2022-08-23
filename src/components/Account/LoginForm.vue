@@ -21,14 +21,12 @@ routerlink
 				<w-input :validators="[validators.required]" class="mb-6" type="password" color="black" placeholder="*******" v-model="loginRequest.password" />
 				<div class="flex justify-end mb-5">
 					<button class="-mt-2 text-sm lg:text-base underline underline-offset-2">ลืมรหัสผ่าน?</button>
-					{{ loginRequest }}
 				</div>
 				<!-- <base-button class="w-80" /> -->
 				<div class="md:mx-auto mx-auto flex justify-center mt-3 mb-5 bg-namjaigreen h-[60px] lg:w-80 my-10 rounded-xl">
-					<w-button color="white" bg-color="transparent" class="text-white text-lg font-semibold" type="submit" @click="submitLogin"> เข้าสู่ระบบ</w-button>
+					<w-button color="white" bg-color="transparent" class="text-white text-lg font-semibold" type="submit" @click="sentRequest"> เข้าสู่ระบบ</w-button>
 				</div>
 			</w-form>
-			<w-button>test primary color</w-button>
 		</div>
 		<div class="lg:block lg:w-80">
 			<div class="flex justify-center text-sm lg:text-base">
@@ -36,40 +34,43 @@ routerlink
 				<router-link to="/signup"><button bg-color="transparent" class="ml-1 font-semibold underline underline-offset-2">ลงทะเบียน</button></router-link>
 			</div>
 		</div>
+		{{ loginRequest }}
 	</div>
-	<img class="hidden lg:block lg:w-2/5 lg:absolute lg:top-44 lg:right-48 lg:z-10" src="@/assets/pic1.png" />
-	<img class="hidden lg:block lg:w-3/5 lg:absolute lg:top-24 lg:right-14 lg:-z-0" src="@/assets/pic2.png" />
+	<w-image class="hidden lg:block lg:w-2/5 lg:absolute lg:top-44 lg:right-48 lg:z-10" :src="`src/assets/pic1.png`" />
+	<w-image class="hidden lg:block lg:w-3/5 lg:absolute lg:top-24 lg:right-14 lg:-z-0" :src="`src/assets/pic2.png`" />
 </template>
 
 <script>
-import { defineComponent } from "vue";
 import authService from "@/services/auth-service";
-export default defineComponent({
-	data: () => ({
-		validators: {
-			required: (value) => !!value || "This field is required",
-		},
-		loginRequest: {
+import { reactive } from "vue";
+import { useValidation } from "./validator";
+export default {
+	setup() {
+		const { validators } = useValidation();
+		const loginRequest = reactive({
 			email: "",
 			password: "",
-		},
-	}),
-	methods: {
-		submitLogin() {
-			console.log(this.loginRequest);
+		});
+		// if this.loginRequest !== null then submit login
+		const submitLogin = () => {
 			authService
 				.login(this.loginRequest)
 				.then((response) => {
-					console.log(response);
-					// if (response.status == 200) {
-					// 	console.log(response.data);
-					// 	// this.$waveui.notify("sign up profile successfully", "success");
-					// }
+					// console.log(response);
+					// // if (response.status == 200) {
+					// // 	console.log(response.data);
+					// // 	// this.$waveui.notify("sign up profile successfully", "success");
+					// // }
 				})
 				.catch((error) => {
-					console.error(error);
+					// console.error(error);
 				});
-		},
+		};
+
+		const sentRequest = () => {
+			typeof this.loginRequest !== "undefined" && this.loginRequest !== null ? submitLogin : true;
+		};
+		return { loginRequest, submitLogin, validators, sentRequest };
 	},
-});
+};
 </script>
