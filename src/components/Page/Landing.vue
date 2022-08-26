@@ -42,7 +42,7 @@
 							<p class="lg:w-[480px] md:w-[480px] w-[330px]">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
 							<div>
 								<router-link to="/main">
-									<base-button class="w-[156px] lg:ml-0 ml-0 md:ml-0" buttonLabel="บริจาคเลย" />
+									<base-button class="w-[156px] lg:w-[156px] lg:ml-0 ml-0 md:ml-0" buttonLabel="บริจาคเลย" />
 								</router-link>
 							</div>
 						</div>
@@ -101,7 +101,7 @@
 					<rect width="157" height="129" rx="10" fill="#FDD65B" />
 				</svg>
 
-				<svg class="lg:w-[675px] lg:h-[486px] md:hidden relative lg:-top-[130px] -top-[60px] md:-top-[20px] md:left-[140px] lg:left-[72px] -z-20" viewBox="0 0 675 486" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<svg class="lg:w-[675px] lg:h-[486px] lg:block md:hidden relative lg:-top-[130px] -top-[60px] md:-top-[20px] md:left-[140px] lg:left-[72px] -z-20" viewBox="0 0 675 486" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<rect x="173.5" y="33.5" width="391" height="181" rx="9.5" stroke="#00715D" />
 					<rect x="131.5" y="248.5" width="391" height="171" rx="9.5" stroke="#00715D" />
 					<circle cx="572" cy="383" r="103" fill="#D45343" />
