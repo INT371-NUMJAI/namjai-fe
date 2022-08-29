@@ -16,14 +16,14 @@
 				<w-input :validators="[validators.required]" class="mb-8" type="email" color="black" placeholder="เช่น abc@gmail.com" v-model="loginRequest.email" />
 
 				<label class="text-sm lg:text-base mb-2">รหัสผ่าน</label>
-				<w-input :validators="[validators.required]" class="mb-6" type="password" color="black" placeholder="*******" v-model="loginRequest.password" />
+				<w-input :validators="[validators.required, validators.minLength]" class="mb-6" type="password" color="black" placeholder="*******" v-model="loginRequest.password" />
 
 				<div class="flex justify-end mb-5">
 					<button class="-mt-2 text-sm lg:text-base underline underline-offset-2">ลืมรหัสผ่าน?</button>
 				</div>
 				<!-- <base-button class="w-80" /> -->
 
-				<base-button buttonLabel="เข้าสู่ระบบ" :isValid="valid === false" buttonType="submit" @click="sentRequest" />
+				<base-button buttonLabel="เข้าสู่ระบบ" :isValid="valid === false" buttonType="submit" @click="sayHi()" />
 				<!-- <base-button class="text-white text-lg font-semibold" @click="sentRequest" buttonLabel="เข้าสู่ระบบ" :isValid="valid === false" />
 				</div> -->
 			</w-form>
@@ -33,9 +33,9 @@
 				<p>ยังไม่มีบัญชีใช่หรือไม่?</p>
 				<router-link to="/signup"><button bg-color="transparent" class="ml-1 font-semibold underline underline-offset-2">ลงทะเบียน</button></router-link>
 			</div>
-			{{ valid }}
 			<!-- <w-button @click="$waveui.notify('Information.')" bg-color="info"> Notify info </w-button> -->
 		</div>
+		<!-- <w-button @click="$waveui.notify('Information.')" bg-color="info"> Notify info </w-button> -->
 	</div>
 	<img class="hidden lg:block lg:w-2/5 lg:absolute lg:top-44 lg:right-48 lg:z-10" src="@/assets/pic1.png" />
 	<img class="hidden lg:block lg:w-3/5 lg:absolute lg:top-24 lg:right-14 lg:-z-0" src="@/assets/pic2.png" />
@@ -46,28 +46,40 @@ import authService from "@/services/auth-service";
 import { reactive, ref } from "vue";
 import { useValidation } from "./validator";
 import BaseButton from "../_Bases/BaseButton.vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+import { getCurrentInstance } from "vue";
 export default {
 	setup() {
+		// const globals = getCurrentInstance().appContext.config.globalProperties.$waveui;
+		// console.log(globals);
+		const app = getCurrentInstance();
+		const waveui = app.appContext.config.globalProperties.$waveui;
 		const { validators } = useValidation();
 		const valid = ref(null);
-		const loginRequest = reactive({
-			email: "",
-			password: "",
-		});
-		// if this.loginRequest !== null then submit login
+		const loginRequest = reactive({ email: "", password: "" });
+		const store = useStore();
+		const router = useRouter();
+
 		const submitLogin = () => {
-			authService.login(loginRequest).then((response) => {
-				// notiManager(response.status);
+			authService.login(loginRequest);
+			store.dispatch("auth/login", loginRequest).then(() => {
+				router.push("/project");
 			});
-			// .catch((error) => {
-			// 	console.error(error);
-			// });
 		};
 		const sentRequest = () => {
-			this.$waveui.notify("test", "error");
 			typeof valid !== false && valid !== null ? submitLogin() : true;
 		};
-		return { validators, valid, loginRequest, sentRequest };
+		const sayHi = () => {
+			waveui.notify("Information.");
+		};
+		return {
+			validators,
+			valid,
+			loginRequest,
+			sentRequest,
+			sayHi,
+		};
 	},
 	components: { BaseButton },
 };

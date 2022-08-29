@@ -14,7 +14,7 @@ const app = createApp(App);
 app.use(router);
 app.use(store);
 app.use(VueAxios, axios);
-app.use(base);
+// app.use(base);
 app.mixin(globalMixins);
 new WaveUI(app, {
 	colors: {

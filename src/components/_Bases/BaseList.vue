@@ -1,31 +1,35 @@
 <template>
 	<table class="mx-[177px]">
-		<thead class="text-black bg-white">
+		<thead class="text-black bg-white" v-for="(objectProp, index) in objectProps" :key="index">
+			<!-- <router-link to="objectProp.uuid"> -->
 			<tr>
-				<th class="py-3 w-[83px]">1</th>
+				<th class="py-3 w-[83px]">{{ index + 1 }}</th>
 				<th>
-					<p class="overflow-hidden truncate py-3 w-[300px]">
-						เยอร์บีร่าคอลัมน์บาร์บีคิวครูเสดซีดาaslvkamdflkvm;lfkv;slfbn
-					</p>
+					<p class="overflow-hidden truncate py-3 w-[300px]">{{ objectProp.name }}</p>
 				</th>
-				<th class="py-3 w-[260px]">ศุภานัน โชติธีรทัต</th>
-				<th class="py-3 w-[185px]">00/00/0000</th>
-				<th class="py-3 w-[95px]"><verification-status /></th>
-				<th class="py-3 w-[250px]">กันญภัทร ผลบุญเจริญชัย</th>
+				<th class="py-3 w-[260px]">{{ objectProp.realName }}</th>
+				<th class="py-3 w-[185px]">{{ objectProp.registedDate }}</th>
+				<th class="py-3 w-[95px]"><verification-status :statusText="objectProp.status" /></th>
+				<th class="py-3 w-[250px]">{{ objectProp.approval }}</th>
 			</tr>
+			<!-- </router-link> -->
 		</thead>
 	</table>
 </template>
 
 <script>
-import { defineComponent } from "vue";
 import VerificationStatus from "@/components/Verification/VerificationStatus.vue";
 
-export default defineComponent({
+export default {
 	components: {
 		VerificationStatus,
 	},
-});
+	props: {
+		objectProps: {
+			type: Array,
+		},
+	},
+};
 </script>
 
 <style scoped>

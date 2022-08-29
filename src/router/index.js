@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import SignupFormFoundation from "../components/Account/SignupFormFoundation.vue";
 import SignupFormUser from "../components/Account/SignupFormUser.vue";
+import { useAuth } from "../services/auth-middleware";
+import { Role } from "@/_helpers/Role";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,5 +59,38 @@ const router = createRouter({
 		},
 	],
 });
-
 export default router;
+
+// router.beforeEach(async (to) => {
+// 	// redirect to login page if not logged in and trying to access a restricted page
+// 	const publicPages = ["/login"];
+// 	const authRequired = !publicPages.includes(to.path);
+// 	const auth = useAuth();
+
+// 	// if (authRequired && !auth.user) {
+// 	if (authRequired && !auth.store_auth.status) {
+// 		auth.returnUrl = to.fullPath;
+// 		return "/login";
+// 	}
+// });
+// router.beforeEach((to, from, next) => {
+// 	// redirect to login page if not logged in and trying to access a restricted page
+// 	const { authorize } = to.meta;
+// 	// const currentUser = authenticationService.currentUserValue;
+// 	const currentUser = useAuth().store_auth.user;
+
+// 	if (authorize) {
+// 		if (!currentUser) {
+// 			// not logged in so redirect to login page with the return url
+// 			return next({ path: "/login", query: { returnUrl: to.path } });
+// 		}
+
+// 		// check if route is restricted by role
+// 		if (authorize.length && !authorize.includes(currentUser.role)) {
+// 			// role not authorised so redirect to home page
+// 			return next({ path: "/" });
+// 		}
+// 	}
+
+// 	next();
+// });

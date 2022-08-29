@@ -5,11 +5,11 @@ export function notiManager(status) {
 	switch (true) {
 		case status == 200:
 			message("Success!");
-			typeRetuen("success");
+			typeReturn("success");
 			break;
 		case status >= 400 && status < 500:
 			message("Success!");
-			typeRetuen("error");
+			typeReturn("error");
 			break;
 	}
 	return $waveui.notify(message, typeReturn);

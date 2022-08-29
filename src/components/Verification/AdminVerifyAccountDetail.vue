@@ -7,7 +7,7 @@
 			</legend>
 			<div class="flex space-x-[20px] mb-[20px]">
 				<h2 class="font-semibold">สถานะ:</h2>
-				<verification-status />
+				<verification-status statusText="ACTIVE" />
 			</div>
 			<div class="flex space-x-[20px] mb-[20px]">
 				<h2 class="font-semibold">ชื่อองค์กร:</h2>
@@ -35,15 +35,7 @@
 			</div>
 			<div class="mb-[20px] space-y-[20px]">
 				<h2 class="font-semibold">รายละเอียดองค์กร:</h2>
-				<p>
-					ซัพพลายเออร์พ่อค้าอีสเตอร์ไฮเวย์ ดีพาร์ทเมนท์วาฟเฟิลโมหจริตซีนีเพล็กซ์ เยอบีราเพียบแปร้ เทวา
-					วานิลาแมกกาซีนเป่ายิงฉุบ สี่แยกริคเตอร์ อิเลียดร็อครายชื่อชนะเลิศเจล โอวัลตินแพทยสภาคาแรคเตอร์เอ๊าะ แจม
-					เซ็นเตอร์ศากยบุตรวัคค์เมจิกไลน์ เย้ว บ๊อบอัลมอนด์ครัวซองต์ เป่ายิงฉุบคาปูชิโน การันตีพาวเวอร์โปรเจ็กต์ อุด้ง
-					ภคันทลาพาธระโงกสงบสุข รามาธิบดีทาวน์เฮาส์แกงค์กุมภาพันธ์ เปเปอร์กับดักเคลียร์ถูกต้อง
-					สแล็กเฟิร์มโปรดักชั่นแทงกั๊ก เฮีย เฝอ แฟล็ตแมชีนมหภาค คำสาปอาว์คอนเซปต์แทงโก้ ทำงานแกสโซฮอล์แพกเกจช็อตเคส แคนู
-					ฮองเฮานายพรานพะเรอซาบะ พุทธศตวรรษเยอบีราแอปพริคอท โยโย่บอมบ์ปฏิสัมพันธ์สกรัม เทรดโกลด์ แซลมอนเย้ว
-					ดีกรีเลดี้สุนทรีย์โยโย่ฮาราคีรี ไตรมาสก่อนหน้า
-				</p>
+				<p>ซัพพลายเออร์พ่อค้าอีสเตอร์ไฮเวย์ ดีพาร์ทเมนท์วาฟเฟิลโมหจริตซีนีเพล็กซ์ เยอบีราเพียบแปร้ เทวา วานิลาแมกกาซีนเป่ายิงฉุบ สี่แยกริคเตอร์ อิเลียดร็อครายชื่อชนะเลิศเจล โอวัลตินแพทยสภาคาแรคเตอร์เอ๊าะ แจม เซ็นเตอร์ศากยบุตรวัคค์เมจิกไลน์ เย้ว บ๊อบอัลมอนด์ครัวซองต์ เป่ายิงฉุบคาปูชิโน การันตีพาวเวอร์โปรเจ็กต์ อุด้ง ภคันทลาพาธระโงกสงบสุข รามาธิบดีทาวน์เฮาส์แกงค์กุมภาพันธ์ เปเปอร์กับดักเคลียร์ถูกต้อง สแล็กเฟิร์มโปรดักชั่นแทงกั๊ก เฮีย เฝอ แฟล็ตแมชีนมหภาค คำสาปอาว์คอนเซปต์แทงโก้ ทำงานแกสโซฮอล์แพกเกจช็อตเคส แคนู ฮองเฮานายพรานพะเรอซาบะ พุทธศตวรรษเยอบีราแอปพริคอท โยโย่บอมบ์ปฏิสัมพันธ์สกรัม เทรดโกลด์ แซลมอนเย้ว ดีกรีเลดี้สุนทรีย์โยโย่ฮาราคีรี ไตรมาสก่อนหน้า</p>
 			</div>
 			<div class="flex space-x-[20px] mb-[30px]">
 				<h2 class="font-semibold">เอกสารยืนยันตัวตน:</h2>
@@ -51,67 +43,51 @@
 				<w-icon>fa fa-download</w-icon>
 			</div>
 		</fieldset>
-		<div class="flex mb-[60px] mx-auto justify-center space-x-[50px]">
+		<!-- <div class="flex mb-[60px] mx-auto justify-center space-x-[50px]">
 			<div class="flex">
 				<base-button class="w-[150px] h-[50px]" />
 			</div>
 			<div class="flex">
 				<base-button @click="dialog.show = true" class="bg-namjaired w-[150px] h-[50px] justify-start" />
 			</div>
-		</div>
-		<w-dialog v-model="dialog.show" :width="dialog.width" bg-color="namajai-green">
+		</div> -->
+		<!-- <w-dialog v-model="dialog.show" :width="dialog.width" bg-color="namajai-green">
 			<template #title bg-color="namjai-beige">
 				<h2 class="text-lg text-black">หมายเหตุ</h2>
-				<w-button
-					class="button--close mt-1 mx-2"
-					@click="dialog.show = false"
-					sm
-					outline
-					round
-					absolute
-					color="namjai-red"
-					icon="wi-cross"
-				></w-button>
+				<w-button class="button--close mt-1 mx-2" @click="dialog.show = false" sm outline round absolute color="namjai-red" icon="wi-cross"></w-button>
 			</template>
 			<w-form v-model="valid">
-				<w-textarea
-					:validators="[validators.required]"
-					color="black"
-					placeholder="รายละเอียดที่ไม่อนุมัติ"
-				></w-textarea>
+				<w-textarea :validators="[validators.required]" color="black" placeholder="รายละเอียดที่ไม่อนุมัติ"></w-textarea>
 				<template #actions>
-					<!-- <base-button @click="dialog.show = false" class="h-[40px] text-xs" /> -->
-					<w-button :disabled="[valid === false]" bg-color="namjai-green" color="white" @click="dialog.show = false"
-						>ยืนยัน</w-button
-					>
+					<base-button @click="dialog.show = false" class="h-[40px] text-xs" />
+					<w-button :disabled="[valid === false]" bg-color="namjai-green" color="white" @click="dialog.show = false">ยืนยัน</w-button>
 				</template>
 			</w-form>
-		</w-dialog>
+		</w-dialog> -->
 	</div>
 </template>
 
 <script>
-import { defineComponent } from "vue";
 import VerificationStatus from "./VerificationStatus.vue";
 import BaseButton from "@/components/_Bases/BaseButton.vue";
 
-export default defineComponent({
+export default {
 	components: {
 		VerificationStatus,
 		BaseButton,
 	},
-	data() {
-		return {
-			dialog: {
-				show: false,
-				width: 500,
-			},
-			validators: {
-				required: (value) => !!value || "This field is required",
-			},
-		};
-	},
-});
+	// data() {
+	// 	return {
+	// 		dialog: {
+	// 			show: false,
+	// 			width: 500,
+	// 		},
+	// 		validators: {
+	// 			required: (value) => !!value || "This field is required",
+	// 		},
+	// 	};
+	// },
+};
 </script>
 <style scoped>
 .namjai-red {

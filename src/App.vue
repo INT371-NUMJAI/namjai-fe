@@ -1,7 +1,7 @@
 <template>
 	<w-app>
 		<div>
-			<nav-bar class="z-40" />
+			<nav-bar class="z-40" navText="testttt" />
 			<router-view />
 			<!-- <foo-ter class="z-50" /> -->
 		</div>
@@ -19,8 +19,7 @@ export default {
 };
 </script>
 <style>
-/* .w-notification-manager {
+.w-notification-manager {
 	@apply absolute z-50;
-	z-index: 100;
-} */
+}
 </style>

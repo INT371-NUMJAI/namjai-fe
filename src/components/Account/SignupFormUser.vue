@@ -46,21 +46,11 @@
 <script>
 import authService from "@/services/auth-service";
 import { reactive, ref } from "vue";
+import { useValidation } from "../Account/validator";
 export default {
 	setup() {
+		const { validators } = useValidation();
 		const valid = ref(null);
-		const validators = reactive({
-			required: (value) => !!value || "This field is required",
-			minLength: (value) => value.length >= 8 || "Your password must be minimum 8 characters",
-			username: (value) => {
-				let userlists = ["Qwanjai", "Faahhhhhhh", "Chutipaaaa"];
-				for (let i = 0; i < userlists.length; i++) {
-					if (userlists[i].toLowerCase() === value.toLowerCase()) {
-						return "This username is already in use";
-					}
-				}
-			},
-		});
 		const user = reactive({
 			userName: "",
 			email: "",

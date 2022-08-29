@@ -7,19 +7,26 @@
 			</div>
 		</div>
 		<base-table />
-		<router-link to="/fdn"> <base-list /></router-link>
+		<router-link to="/fdn"> <base-list :objectProps="fdnList" /></router-link>
 	</div>
 </template>
 
 <script>
-import { defineComponent } from "vue";
 import BaseList from "@/components/_Bases/BaseList.vue";
 import BaseTable from "@/components/_Bases/BaseTable.vue";
+import { reactive } from "vue";
 
-export default defineComponent({
+export default {
 	components: {
 		BaseList,
 		BaseTable,
 	},
-});
+	setup() {
+		const fdnList = reactive([
+			{ order: 1, name: "jane", realName: "jane doe", registedDate: "00/00/00", status: "PENDING", approval: "JIMMY" },
+			{ order: 2, name: "jane2", realName: "jane doe2", registedDate: "00/00/002", status: "REJECTED", approval: "JIMMY2" },
+		]);
+		return { fdnList };
+	},
+};
 </script>

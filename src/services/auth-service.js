@@ -4,8 +4,9 @@ http.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 class AuthService {
 	login(user) {
 		return http.post("/auth/login", user).then((response) => {
-			if (response.data.jwt) {
+			if (response.data.accessToken) {
 				localStorage.setItem("user", JSON.stringify(response.data));
+				// console.log(localStorage.getItem("user"));
 			}
 			return response.data;
 		});

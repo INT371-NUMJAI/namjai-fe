@@ -240,13 +240,13 @@
 </style>
 
 <script>
-import VolunteerActivityBlock from "@/components/Volunteer/VolunteerActivityBlock.vue";
+import VolunteerActivityCard from "@/components/Volunteer/VolunteerActivityCard.vue";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 
 export default {
 	components: {
-		"volunteer-activity-block": VolunteerActivityBlock,
+		"volunteer-activity-card": VolunteerActivityCard,
 		VueperSlides,
 		VueperSlide,
 	},
