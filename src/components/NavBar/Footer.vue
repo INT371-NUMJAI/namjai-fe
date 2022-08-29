@@ -29,7 +29,7 @@
 					</div>
 					<div class="grid grid-rows-4 lg:col-span-2 col-span-1 text-namjaiwhite text-sm mb-4 lg:mb-0">
 						<p class="lg:pb-4 pb-3">หน้าต่างเว็บไซต์</p>
-						<p>หน้าหลัก</p>
+						<p>เกี่ยวกับเรา</p>
 						<p>มูลนิธิ</p>
 						<p>โครงการ</p>
 						<p>ข่าวสาร</p>

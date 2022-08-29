@@ -3,7 +3,7 @@
 		<w-button @click="showDrawer = true" bg-color="transparent">
 			<w-icon color="white">fa fa-bars</w-icon>
 		</w-button>
-		<w-drawer v-model="showDrawer" bg-color="namjaigreen" width="187">
+		<w-drawer v-model="showDrawer" bg-color="namjaigreen" width="187" class="z-50">
 			<w-button
 				class="button--close"
 				@click="showDrawer = false"
@@ -49,21 +49,10 @@
 						</router-link>
 					</div>
 					<div class="flex justify-end">
-						<w-button bg-color="transparent" color="info-light1" class="block w-auto">เกี่ยวกับเรา </w-button>
+						<w-button bg-color="transparent" color="info-light1" class="block w-auto">ข่าวสาร</w-button>
 					</div>
 					<div class="flex justify-end">
-						<w-accordion :items="1" expand-icon-left>
-							<template #item-title>
-								<div>บัญชี</div>
-							</template>
-							<template #item-content>
-								<div class="space-y-2">
-									<button class="block ml-6" @click="showDropDown = false">บัญชี</button>
-									<button class="block ml-1" @click="showDropDown = false">ข้อความ</button>
-									<button class="block ml-7" @click="showDropDown = false">สถิติ</button>
-								</div>
-							</template>
-						</w-accordion>
+						<w-button bg-color="transparent" color="info-light1" class="block w-auto">ข้อมูลส่วนตัว</w-button>
 					</div>
 				</div>
 				<div class="flex justify-center">
