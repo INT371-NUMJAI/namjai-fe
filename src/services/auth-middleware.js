@@ -7,19 +7,16 @@ export function useAuth() {
 	const store_auth = store.state.auth;
 	let auth_userName = ref("");
 	let auth_role = ref(false);
-	// onMounted(() => {
-	if (store_auth.status.loggedIn) {
-		auth_role.value = store_auth.user.role.localeCompare("ROLE_ADMIN") == 0 ? true : false;
-		// auth_role = "ROLE_ADMIN".localeCompare("ROLE_ADMIN");
-		auth_userName = store_auth.user.userName;
-		// console.log(auth_role);
-	}
-	// });
-	// onUpdated(() => {
-	// 	if (store_auth.status.loggedIn) {
-	// 		auth_role.value = store_auth.user.role.localeCompare("ROLE_ADMIN") == 0 ? true : false;
-	// 		// console.log(auth_role);
-	// 	}
-	// });
+
+	const checkLoggedIn = () => {
+		if (store_auth.status.loggedIn) {
+			auth_role.value = store_auth.user.role.localeCompare("ROLE_ADMIN") == 0 ? true : false;
+			auth_userName.value = store_auth.user.userName;
+		}
+	};
+	onMounted(() => checkLoggedIn());
+	onUpdated(() => {
+		checkLoggedIn();
+	});
 	return { auth_role, auth_userName, store_auth };
 }

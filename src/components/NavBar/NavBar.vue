@@ -8,7 +8,7 @@
 					<path d="M147.083 56.4828C140.083 46.3161 127.583 23.9828 133.583 15.9828C135.082 12.4828 139.882 6.88281 147.083 12.4828C154.283 18.0828 158.083 26.4828 159.083 29.9828C161.249 23.8161 166.283 10.7828 169.083 7.98281C172.583 4.48281 177.583 0.482811 183.583 9.48281C189.583 18.4828 183.083 45.4828 169.083 56.4828" stroke="#D45343" stroke-width="6" />
 				</svg>
 			</router-link>
-			<h1 class="mt-2" v-if="use_auth.auth_role">Admin</h1>
+			<h1 class="mt-2" v-if="auth_role && store_auth.status.loggedIn">Admin</h1>
 		</div>
 		<div class="lg:hidden">
 			<!-- <w-icon color="white">fa fa-bars</w-icon> -->
@@ -23,45 +23,75 @@
 			</router-link>
 			<w-button bg-color="transparent" class="font-medium">ข่าวสาร</w-button>
 			<div>
-				<span v-if="use_auth.auth_userName === null">
+				<span v-if="store_auth.user === null">
 					<router-link to="/login">
 						<w-button bg-color="transparent" round outline class="py-4 font-medium">เข้าสู่ระบบ</w-button>
 					</router-link>
 				</span>
-				<w-button bg-color="transparent" round outline class="py-4 font-medium">{{ use_auth.auth_userName }}</w-button>
+				<span v-if="store_auth.user !== null">
+					<w-button bg-color="transparent" round outline class="py-4 font-medium" @click="showDropDown = !showDropDown">
+						<p class="text-white">{{ auth_userName }}</p>
+						<div class="ml-2 -mt-[2px]">
+							<w-icon md color="white" v-if="showDropDown == false">fa fa-caret-down</w-icon>
+							<w-icon md color="white" v-if="showDropDown">fa fa-caret-up</w-icon>
+						</div>
+					</w-button>
+					<div>
+						<div class="absolute mt-2 -ml-[21px] z-10 bg-white" v-if="showDropDown">
+							<div class="text-white font-medium">
+								<w-button color="black" bg-color="transparent" class="block text-sm ml-5 my-2">ข้อมูลส่วนตัว</w-button>
+								<w-button color="red" bg-color="transparent" class="block text-sm ml-[35px] my-2" @click="clicktoLogout">ลงชื่อออก</w-button>
+							</div>
+						</div>
+					</div>
+				</span>
 			</div>
 		</div>
 	</nav>
 </template>
 <script>
-import { onMounted, onUpdated, ref } from "vue";
+import { onMounted, onUpdated, ref, reactive } from "vue";
 import { useStore } from "vuex";
 import Drawer from "./Drawer.vue";
-import { useAuth } from "../../services/auth-middleware";
+import { useRouter } from "vue-router";
+import { auth } from "../Account/auth-module";
 export default {
 	components: {
 		Drawer,
 	},
-
 	setup() {
-		const use_auth = useAuth();
-		// const store = useStore();
-		// const store_auth = store.state.auth;
-		// let auth_role = ref(false);
-		// onMounted(() => {
-		// 	if (store_auth.status.loggedIn) {
-		// 		auth_role.value = store_auth.user.role.localeCompare("ROLE_ADMIN") == 0 ? true : false;
-		// 		// auth_role = "ROLE_ADMIN".localeCompare("ROLE_ADMIN");
-		// 		// console.log(auth_role);
-		// 	}
-		// });
-		// onUpdated(() => {
-		// 	if (use_auth.store_auth.status.loggedIn) {
-		// 		auth_role.value = store_auth.user.role.localeCompare("ROLE_ADMIN") == 0 ? true : false;
-		// 		// console.log(auth_role);
-		// 	}
-		// });
-		return { use_auth };
+		// const use_auth = useAuth();
+		const store = useStore();
+		const router = useRouter();
+		const store_auth = reactive(store.state.auth);
+		let auth_userName = ref("");
+		let auth_role = ref(false);
+
+		const checkLoggedIn = () => {
+			if (store_auth.status.loggedIn) {
+				auth_role.value = store_auth.user.role.localeCompare("ROLE_ADMIN") == 0 ? true : false;
+				auth_userName.value = store_auth.user.userName;
+			} else if (store_auth.status.loggedIn === false) {
+				auth.userName = null;
+				store_auth.user = null;
+			}
+		};
+		checkLoggedIn(); // created
+		onMounted(() => checkLoggedIn()); // mounted ==> call function 'checkLoggedIn';
+		onUpdated(() => checkLoggedIn()); // update ==>  call function 'checkLoggedIn'
+
+		const showDropDown = ref(false);
+
+		const clicktoLogout = () => {
+			store.dispatch("auth/logout");
+			router.push("/main");
+		};
+		return { auth_role, auth_userName, store_auth, showDropDown, clicktoLogout };
 	},
 };
 </script>
+<style>
+.namjaired {
+	color: #d45343;
+}
+</style>

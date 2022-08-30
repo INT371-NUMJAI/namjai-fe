@@ -4,29 +4,16 @@
 			<w-icon color="white">fa fa-bars</w-icon>
 		</w-button>
 		<w-drawer v-model="showDrawer" bg-color="namjaigreen" width="187" class="z-50">
-			<w-button
-				class="button--close"
-				@click="showDrawer = false"
-				sm
-				outline
-				round
-				absolute
-				color="black"
-				icon="wi-cross"
-			></w-button>
+			<w-button class="button--close" @click="showDrawer = false" sm outline round absolute color="black" icon="wi-cross"></w-button>
 			<div class="space-y-6 mx-5 mt-10 w-96">
 				<div class="flex justify-center">
 					<router-link to="/">
-						<w-button @click="showDrawer = !showDrawer" bg-color="transparent" outline round class="text-black py-1"
-							>เข้าสู่ระบบ</w-button
-						>
+						<w-button @click="showDrawer = !showDrawer" bg-color="transparent" outline round class="text-black py-1">เข้าสู่ระบบ</w-button>
 					</router-link>
 				</div>
 				<div class="flex justify-center">
 					<router-link to="/signup">
-						<w-button @click="showDrawer = !showDrawer" bg-color="transparent" outline round class="text-black py-1"
-							>สมัครสมาชิก</w-button
-						>
+						<w-button @click="showDrawer = !showDrawer" bg-color="transparent" outline round class="text-black py-1">สมัครสมาชิก</w-button>
 					</router-link>
 				</div>
 				<w-divider class="w-36" color="grey" />
@@ -39,13 +26,7 @@
 					</div>
 					<div class="flex justify-end">
 						<router-link to="/volunteer">
-							<w-button
-								@click="showDrawer = !showDrawer"
-								bg-color="transparent"
-								color="info-light1"
-								class="block w-auto"
-								>จิตอาสา
-							</w-button>
+							<w-button @click="showDrawer = !showDrawer" bg-color="transparent" color="info-light1" class="block w-auto">จิตอาสา </w-button>
 						</router-link>
 					</div>
 					<div class="flex justify-end">
@@ -63,15 +44,15 @@
 	</div>
 </template>
 <script>
-import { defineComponent } from "vue";
-export default defineComponent({
-	data() {
-		return {
-			showDrawer: false,
-			showDropDown: false,
-		};
+import { ref } from "vue";
+
+export default {
+	setup() {
+		const showDrawer = ref(false);
+		const showDropDown = ref(false);
+		return { showDrawer, showDropDown };
 	},
-});
+};
 </script>
 <style scoped>
 .namjaigreen--bg {

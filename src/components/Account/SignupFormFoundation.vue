@@ -120,10 +120,9 @@
 
 <!-- :validators="[() => files.length || 'Please add a file']" -->
 <script>
-import { defineComponent } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import authService from "@/services/auth-service";
-export default defineComponent({
+export default {
 	data() {
 		return {
 			foundation: { fdnUUid: uuidv4(), fdnName: "", addressDetail: "", subDistrict: "", district: "", province: "", postalCode: "", founderName: "", fdnDetail: "", fdnSize: "", establishDate: "", email: "", contactNo: "", password: "" },
@@ -190,5 +189,5 @@ export default defineComponent({
 				});
 		},
 	},
-});
+};
 </script>

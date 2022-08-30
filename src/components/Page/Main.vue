@@ -10,8 +10,8 @@
 				<p class="pt-5 text-xl font-bold text-[#6A6A6A]">หากคุณกำลังมองหาโครงการที่กำลังเปิดอยู่</p>
 				<p class="pt-2 text-xl font-bold text-[#6A6A6A]">นี่คือบางส่วนของโครงการที่กำลังเปิดอยู่ในขณะนี้ บริจาคเลย</p>
 				<div class="pt-10 space-y-[30px]">
-					<volunteer-activity-block />
-					<volunteer-activity-block />
+					<volunteer-activity-card />
+					<volunteer-activity-card />
 				</div>
 				<!-- <div class=" justify-center items-center">
 					<w-button bg-color="transparent" class="py-10 space-x-2 mx-auto justify-center items-center">

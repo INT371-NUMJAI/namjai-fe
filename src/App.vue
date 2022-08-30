@@ -1,7 +1,7 @@
 <template>
 	<w-app>
 		<div>
-			<nav-bar class="z-40" navText="testttt" />
+			<nav-bar class="z-40" />
 			<router-view />
 			<!-- <foo-ter class="z-50" /> -->
 		</div>

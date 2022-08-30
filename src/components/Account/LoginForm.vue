@@ -16,14 +16,14 @@
 				<w-input :validators="[validators.required]" class="mb-8" type="email" color="black" placeholder="เช่น abc@gmail.com" v-model="loginRequest.email" />
 
 				<label class="text-sm lg:text-base mb-2">รหัสผ่าน</label>
-				<w-input :validators="[validators.required, validators.minLength]" class="mb-6" type="password" color="black" placeholder="*******" v-model="loginRequest.password" />
+				<w-input :validators="[validators.required]" class="mb-6" type="password" color="black" placeholder="*******" v-model="loginRequest.password" />
 
 				<div class="flex justify-end mb-5">
 					<button class="-mt-2 text-sm lg:text-base underline underline-offset-2">ลืมรหัสผ่าน?</button>
 				</div>
 				<!-- <base-button class="w-80" /> -->
 
-				<base-button buttonLabel="เข้าสู่ระบบ" :isValid="valid === false" buttonType="submit" @click="sayHi()" />
+				<base-button buttonLabel="เข้าสู่ระบบ" :isValid="valid === false" buttonType="submit" @click="sentRequest" />
 				<!-- <base-button class="text-white text-lg font-semibold" @click="sentRequest" buttonLabel="เข้าสู่ระบบ" :isValid="valid === false" />
 				</div> -->
 			</w-form>
