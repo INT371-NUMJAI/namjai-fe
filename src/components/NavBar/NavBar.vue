@@ -30,7 +30,8 @@
 				</span>
 				<span v-if="store_auth.user !== null">
 					<w-button bg-color="transparent" round outline class="py-4 font-medium" @click="showDropDown = !showDropDown">
-						<p class="text-white">{{ auth_userName }}</p>
+						<!-- <p class="text-white">{{ auth_userName }}</p> -->
+						<p class="text-white">test</p>
 						<div class="ml-2 -mt-[2px]">
 							<w-icon md color="white" v-if="showDropDown == false">fa fa-caret-down</w-icon>
 							<w-icon md color="white" v-if="showDropDown">fa fa-caret-up</w-icon>
