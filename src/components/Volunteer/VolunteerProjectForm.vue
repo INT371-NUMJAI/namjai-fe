@@ -84,21 +84,7 @@ export default {
   setup() {
     const valid = ref(null);
     const { validators } = useValidation();
-    const items = ref([
-      { label: "Online", value: 1 },
-      { label: "On-site", value: 2 },
-    ]);
-    const categories = ref([
-      { label: "โควิด-19", id: 1 },
-      { label: "เด็กและเยาวชน", id: 2 },
-      { label: "ผู้สูงอายุ", id: 3 },
-      { label: "ผู้พิการและผู้ป่วย", id: 4 },
-      { label: "กลุ่มคนเปราะบาง", id: 5 },
-      { label: "สัตว์", id: 6 },
-      { label: "สิ่งแวดล้อม", id: 7 },
-      { label: "ภัยพิบัติ", id: 8 },
-    ]);
-    return { validators, valid, items, categories };
+    return { validators, valid };
   },
 };
 </script>
