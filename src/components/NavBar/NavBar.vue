@@ -15,7 +15,7 @@
 			<drawer />
 		</div>
 		<div class="hidden lg:flex lg:space-x-11 items-center text-white lg:text-base">
-			<router-link to="/admin-management"> <w-button bg-color="transparent" class="font-medium">จัดการ</w-button></router-link>
+			<router-link to="/admin-management"> <w-button bg-color="transparent" class="font-medium" v-if="auth_role && store_auth.status.loggedIn">จัดการ</w-button></router-link>
 			<w-button bg-color="transparent" class="font-medium">มูลนิธิ</w-button>
 			<w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
 			<router-link to="/volunteer">
