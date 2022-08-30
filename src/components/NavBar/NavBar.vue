@@ -78,7 +78,10 @@ export default {
 			}
 		};
 		checkLoggedIn(); // created
-		onMounted(() => checkLoggedIn()); // mounted ==> call function 'checkLoggedIn';
+		onMounted(() => {
+			checkLoggedIn();
+			console.log(store_auth);
+		}); // mounted ==> call function 'checkLoggedIn';
 		onUpdated(() => checkLoggedIn()); // update ==>  call function 'checkLoggedIn'
 
 		const showDropDown = ref(false);
