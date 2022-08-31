@@ -40,11 +40,12 @@
 </template>
 
 <script>
+import { ref } from "vue";
+
 export default {
-	data() {
-		return {
-			clicked: [false, false],
-		};
+	setup() {
+		const clicked = ref([false, false]);
+		return { clicked };
 	},
 };
 </script>

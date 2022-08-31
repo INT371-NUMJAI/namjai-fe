@@ -36,7 +36,6 @@
 			<!-- <w-button @click="$waveui.notify('Information.')" bg-color="info"> Notify info </w-button> -->
 		</div>
 		<!-- <w-button @click="$waveui.notify('Information.')" bg-color="info"> Notify info </w-button> -->
-		{{ loginRequest }}
 	</div>
 	<img class="hidden lg:block lg:w-2/5 lg:absolute lg:top-44 lg:right-48 lg:z-10" src="@/assets/pic1.png" />
 	<img class="hidden lg:block lg:w-3/5 lg:absolute lg:top-24 lg:right-14 lg:-z-0" src="@/assets/pic2.png" />
