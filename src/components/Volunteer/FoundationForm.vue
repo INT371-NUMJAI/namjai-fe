@@ -34,7 +34,7 @@
         label-color="black"
         placeholder=" "
       />
-      <div class="flex space-x-[20px]">
+      <div class="flex space-x-[20px] lg:space-x-[30px]">
         <!-- <label class="text-sm">แขวง</label> -->
         <w-input
           :validators="[validators.required]"
@@ -56,7 +56,7 @@
           placeholder=" "
         />
       </div>
-      <div class="flex space-x-[20px]">
+      <div class="flex space-x-[20px] lg:space-x-[30px]">
         <!-- <label class="text-sm">แขวง</label> -->
         <w-input
           :validators="[validators.required]"
@@ -87,7 +87,7 @@
         label-color="black"
         placeholder=" "
       />
-      <div class="flex space-x-[20px]">
+      <div class="flex space-x-[20px] lg:space-x-[30px]">
         <w-input
           :validators="[validators.required]"
           class="mb-10 lg:text-base md:text-base text-sm"
@@ -108,7 +108,7 @@
           placeholder=" "
         />
       </div>
-      <div class="flex space-x-[20px]">
+      <div class="flex space-x-[20px] lg:space-x-[30px]">
         <w-select
           class="mb-10 lg:text-base md:text-base text-sm"
           :items="items"
@@ -142,7 +142,7 @@
           </template>
         </w-select>
       </div>
-      <div class="flex space-x-[20px]">
+      <!-- <div class="flex space-x-[20px] lg:space-x-[30px]"> -->
         <w-input
           :validators="[validators.required]"
           class="mb-10 lg:text-base md:text-base text-sm"
@@ -152,7 +152,7 @@
           label-color="black"
           placeholder=" "
         />
-        <w-input
+        <!-- <w-input
           :validators="[validators.required]"
           class="mb-10 lg:text-base md:text-base text-sm"
           type="time"
@@ -160,8 +160,8 @@
           label="เวลา"
           label-color="black"
           placeholder=" "
-        />
-      </div>
+        /> -->
+      <!-- </div> -->
       <w-input
         :validators="[validators.required]"
         class="mb-10 lg:text-base md:text-base text-sm"
