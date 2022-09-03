@@ -16,6 +16,29 @@ const router = createRouter({
 			component: () => import("../components/Page/Main.vue"),
 		},
 		{
+			path: "/profile",
+			name: "profile",
+			component: () => import("../components/Post/ViewProfile.vue"),
+			children: [
+				// {
+				// 	path: 'post',
+				// 	component: PostDetailBlock,
+				// },
+				// // {
+				// // 	path: 'project',
+				// // 	component: ,
+				// // },
+				// {
+				// 	path: 'volunteer',
+				// 	component: VolunteerActivityBlock,
+				// },
+				// {
+				// 	path: 'about',
+				// 	component: FoundationProfile,
+				// },
+			],
+		},
+		{
 			path: "/login",
 			name: "login",
 			component: () => import("../components/Account/LoginForm.vue"),
