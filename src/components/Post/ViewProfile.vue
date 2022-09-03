@@ -17,9 +17,8 @@
       <button class="active:border-b-4 active:border-namjaigreen">
         <router-link to="/profile/about"><p>เกี่ยวกับ</p></router-link>
       </button>
-      <router-view />
     </div>
-
+    <router-view />
     <!-- <div name="post" class="space-y-2.5 lg:space-y-5">
       <post-block />
       <post-detail-block />

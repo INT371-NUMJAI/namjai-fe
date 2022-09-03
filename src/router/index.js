@@ -20,22 +20,22 @@ const router = createRouter({
 			name: "profile",
 			component: () => import("../components/Post/ViewProfile.vue"),
 			children: [
+				{
+					path: 'post',
+					component: () => import("../components/Post/PostDetailBlock.vue"),
+				},
 				// {
-				// 	path: 'post',
-				// 	component: PostDetailBlock,
+				// 	path: 'project',
+				// 	component: ,
 				// },
-				// // {
-				// // 	path: 'project',
-				// // 	component: ,
-				// // },
-				// {
-				// 	path: 'volunteer',
-				// 	component: VolunteerActivityBlock,
-				// },
-				// {
-				// 	path: 'about',
-				// 	component: FoundationProfile,
-				// },
+				{
+					path: 'volunteer',
+					component:() => import("../components/Volunteer/VolunteerActivityBlock.vue"),
+				},
+				{
+					path: 'about',
+					component:() => import("../components/Foundation/FoundationProfile.vue"),
+				},
 			],
 		},
 		{
