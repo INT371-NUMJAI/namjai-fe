@@ -14,7 +14,7 @@ export default {
 	setup(props) {
 		const statusText = props.statusText;
 		const statusProps = reactive({ statusColor: "", statusText: "" });
-		let statusWord = ["ACTIVE", "REJECTED", "PENDING"];
+		let statusWord = ["APPROVED", "REJECTED", "PENDING"];
 		const setStatus = (status) => {
 			if (statusWord[0].localeCompare(status) == 0) {
 				statusProps.statusColor = "bg-namjaigreen";
@@ -29,9 +29,9 @@ export default {
 				statusProps.statusText = "รออนุมัติ";
 			}
 		};
-		onMounted(() => {
-			setStatus(statusText);
-		});
+		// onMounted(() => {
+		setStatus(statusText);
+		// });
 
 		return { statusProps };
 	},

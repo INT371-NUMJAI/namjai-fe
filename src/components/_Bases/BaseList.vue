@@ -2,16 +2,22 @@
 	<table class="mx-[177px]">
 		<thead class="text-black bg-white" v-for="(objectProp, index) in objectProps" :key="index">
 			<!-- <router-link to="objectProp.uuid"> -->
+			<!-- <router-link :to="'/view-customer/' + customer.ID"></router-link> -->
+
 			<tr>
-				<th class="py-3 w-[83px]">{{ index + 1 }}</th>
-				<th>
-					<p class="overflow-hidden truncate py-3 w-[300px]">{{ objectProp.name }}</p>
-				</th>
-				<th class="py-3 w-[260px]">{{ objectProp.realName }}</th>
-				<th class="py-3 w-[185px]">{{ objectProp.registedDate }}</th>
-				<th class="py-3 w-[95px]"><verification-status :statusText="objectProp.status" /></th>
+				<router-link :to="'/verify/fdn/' + objectProp.fdnUUID">
+					<th class="py-3 w-[83px]">{{ index + 1 }}</th>
+					<!-- <th class="py-3 w-[83px]">{{ objectProp.fdnUUID }}</th> -->
+					<th>
+						<p class="overflow-hidden truncate py-3 w-[300px]">{{ objectProp.fdnName }}</p>
+					</th>
+					<th class="py-3 w-[260px]">-</th>
+					<th class="py-3 w-[185px]">{{ objectProp.createDate }}</th>
+					<th class="py-3 w-[95px]"><verification-status :statusText="objectProp.status" /></th>
+				</router-link>
 				<th class="py-3 w-[250px]">{{ objectProp.approval }}</th>
 			</tr>
+
 			<!-- </router-link> -->
 		</thead>
 	</table>

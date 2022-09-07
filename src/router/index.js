@@ -53,7 +53,7 @@ const router = createRouter({
 			component: () => import("../components/Verification/AdminApprove.vue"),
 		},
 		{
-			path: "/fdn",
+			path: "/verify/fdn/:id",
 			name: "fdn-detail-verify",
 			component: () => import("../components/Verification/AdminVerifyAccountDetail.vue"),
 		},

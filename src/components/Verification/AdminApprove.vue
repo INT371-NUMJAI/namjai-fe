@@ -7,25 +7,29 @@
 			</div>
 		</div>
 		<base-table />
-		<router-link to="/fdn"> <base-list :objectProps="fdnList" /></router-link>
+		<base-list :objectProps="fdnList" />
 	</div>
 </template>
 
 <script>
 import BaseList from "@/components/_Bases/BaseList.vue";
 import BaseTable from "@/components/_Bases/BaseTable.vue";
-import { reactive } from "vue";
-
+import { ref } from "vue";
+import approveService from "./approve-service";
 export default {
 	components: {
 		BaseList,
 		BaseTable,
 	},
 	setup() {
-		const fdnList = reactive([
-			{ order: 1, name: "jane", realName: "jane doe", registedDate: "00/00/00", status: "PENDING", approval: "JIMMY" },
-			{ order: 2, name: "jane2", realName: "jane doe2", registedDate: "00/00/002", status: "REJECTED", approval: "JIMMY2" },
-		]);
+		const fdnList = ref([]);
+		const fetchFdnList = () => {
+			approveService.getFDNShortList().then((response) => {
+				fdnList.value = response.data;
+			});
+		};
+		fetchFdnList();
+
 		return { fdnList };
 	},
 };

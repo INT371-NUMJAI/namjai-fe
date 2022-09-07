@@ -45,7 +45,6 @@
 import authService from "@/services/auth-service";
 import { reactive, ref } from "vue";
 import { useValidation } from "./validator";
-import BaseButton from "../_Bases/BaseButton.vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { getCurrentInstance } from "vue";
@@ -81,6 +80,5 @@ export default {
 			sayHi,
 		};
 	},
-	components: { BaseButton },
 };
 </script>
