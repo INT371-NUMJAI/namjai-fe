@@ -3,7 +3,7 @@
     <foundation-name />
     <div class="my-5 px-[30px] py-3 lg:py-4 space-x-[30px] md:space-x-[50px] lg:space-x-[60px] bg-namjaiwhite rounded-lg flex text-center text-[14px] lg:text-[16px] font-black text-[#5A5A5A]">
       <button class="active:border-b-4 active:border-namjaigreen">
-        <router-link to="/profile/post"><p clas>โพสต์</p></router-link>
+        <router-link to="/profile/post"><p class="text-black">โพสต์</p></router-link>
       </button>
 
       <button class="active:border-b-4 active:border-namjaigreen">
