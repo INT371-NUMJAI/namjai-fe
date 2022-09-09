@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-[30px] my-[60px] lg:mt-[120px] lg:mx-[177px] md:grid lg:grid md:grid-cols-12 lg:grid-cols-12 md:gap-5 lg:gap-[30px]">
+  <div class="md:grid lg:grid md:grid-cols-12 lg:grid-cols-12 md:gap-5 lg:gap-[30px]">
     <div class="bg-white rounded-lg drop-shadow-md hover:shadow-md md:col-span-5 lg:col-span-4">
       <img class="rounded-t-lg object-center" src="@/assets/pic1.png" />
       <div class="p-5">
