@@ -92,6 +92,7 @@
             placeholder=" "
           />
         </div>
+        <div class="flex space-x-[20px] lg:space-x-[30px]">
         <w-select
           class="mb-10 lg:text-base md:text-base text-sm"
           :items="categories"
@@ -109,8 +110,7 @@
             <div>{{ item.label }}</div>
           </template>
         </w-select>
-        <div class="flex space-x-[20px] lg:space-x-[30px]">
-          <w-input
+        <w-input
             :validators="[validators.required]"
             class="mb-10 lg:text-base md:text-base text-sm"
             type="number"
@@ -119,12 +119,23 @@
             label-color="black"
             placeholder=" "
           />
+        </div>
+        <div class="flex space-x-[20px] lg:space-x-[30px]">
           <w-input
             :validators="[validators.required]"
             class="mb-10 lg:text-base md:text-base text-sm"
             type="date"
             color="black"
-            label="ระยะเวลา"
+            label="วันที่เริ่มโครงการ"
+            label-color="black"
+            placeholder=" "
+          />
+          <w-input
+            :validators="[validators.required]"
+            class="mb-10 lg:text-base md:text-base text-sm"
+            type="date"
+            color="black"
+            label="วันที่สิ้นสุดโครงการ"
             label-color="black"
             placeholder=" "
           />
