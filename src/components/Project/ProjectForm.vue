@@ -23,75 +23,6 @@
           label-color="black"
           placeholder=" "
         />
-        <w-input
-          :validators="[validators.required]"
-          class="mb-10 lg:text-base md:text-base text-sm"
-          type="text"
-          color="black"
-          label="ที่อยู่"
-          label-color="black"
-          placeholder=" "
-        />
-        <div class="flex space-x-[20px] lg:space-x-[30px]">
-          <w-input
-            :validators="[validators.required]"
-            class="mb-10 lg:text-base md:text-base text-sm"
-            type="text"
-            color="black"
-            label="แขวง"
-            label-color="black"
-            placeholder=" "
-          />
-          <w-input
-            :validators="[validators.required]"
-            class="mb-10 lg:text-base md:text-base text-sm"
-            type="text"
-            color="black"
-            label="เขต"
-            label-color="black"
-            placeholder=" "
-          />
-        </div>
-        <div class="flex space-x-[20px] lg:space-x-[30px]">
-          <w-input
-            :validators="[validators.required]"
-            class="mb-10 lg:text-base md:text-base text-sm"
-            type="text"
-            color="black"
-            label="จังหวัด"
-            label-color="black"
-            placeholder=" "
-          />
-          <w-input
-            :validators="[validators.required]"
-            class="mb-10 lg:text-base md:text-base text-sm"
-            type="text"
-            color="black"
-            label="รหัสไปรษณีย์"
-            label-color="black"
-            placeholder=" "
-          />
-        </div>
-        <div class="flex space-x-[20px] lg:space-x-[30px]">
-          <w-input
-            :validators="[validators.required]"
-            class="mb-10 lg:text-base md:text-base text-sm"
-            type="text"
-            color="black"
-            label="เบอร์โทรศัพท์"
-            label-color="black"
-            placeholder=" "
-          />
-          <w-input
-            :validators="[validators.required]"
-            class="mb-10 lg:text-base md:text-base text-sm"
-            type="text"
-            color="black"
-            label="อีเมล"
-            label-color="black"
-            placeholder=" "
-          />
-        </div>
         <div class="flex space-x-[20px] lg:space-x-[30px]">
         <w-select
           class="mb-10 lg:text-base md:text-base text-sm"
@@ -140,6 +71,18 @@
             placeholder=" "
           />
         </div>
+        <w-textarea
+        :validators="[validators.required]"
+        class="mb-10 lg:text-base md:text-base text-sm"
+        outline
+        rows="9"
+        color="black"
+        bg-color="white"
+        label="สถานที่และเวลาดำเนินโครงการ"
+        label-color="black"
+        placeholder=" "
+        no-autogrow
+      />
         <w-textarea
         :validators="[validators.required]"
         class="mb-10 lg:text-base md:text-base text-sm"
