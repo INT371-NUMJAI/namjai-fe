@@ -2,9 +2,9 @@
   <div
     class="mx-[30px] md:mx-[40px] lg:mx-[177px] mt-[60px] lg:mt-[120px] h-auto"
   >
+  {{ foundationVolunteerBody }}
     <h1 class="text-xl lg:text-5xl mb-[40px]">ส่งจิตอาสา</h1>
     <w-form v-model="valid">
-      <!-- <label class="text-sm">ชื่อกิจกรรม</label> -->
       <w-input
         :validators="[validators.required]"
         class="mb-10 lg:text-base md:text-base text-sm"
@@ -13,8 +13,8 @@
         label="ชื่อกิจกรรม"
         label-color="black"
         placeholder=" "
+        v-model="foundationVolunteerBody.activityName"
       />
-      <!-- <label class="text-sm">ชื่อมูลนิธิ</label> -->
       <w-input
         :validators="[validators.required]"
         class="mb-10 lg:text-base md:text-base text-sm"
@@ -23,6 +23,7 @@
         label="ชื่อมูลนิธิ"
         label-color="black"
         placeholder=" "
+        v-model="foundationVolunteerBody.foundationName"
       />
       <!-- <label class="text-sm">ที่อยู่</label> -->
       <w-input
@@ -33,6 +34,7 @@
         label="ที่อยู่"
         label-color="black"
         placeholder=" "
+        v-model="foundationVolunteerBody.address"
       />
       <div class="flex space-x-[20px] lg:space-x-[30px]">
         <!-- <label class="text-sm">แขวง</label> -->
@@ -44,6 +46,7 @@
           label="แขวง"
           label-color="black"
           placeholder=" "
+          v-model="foundationVolunteerBody.subDistrict"
         />
         <!-- <label class="text-sm">เขต</label> -->
         <w-input
@@ -54,6 +57,7 @@
           label="เขต"
           label-color="black"
           placeholder=" "
+          v-model="foundationVolunteerBody.district"
         />
       </div>
       <div class="flex space-x-[20px] lg:space-x-[30px]">
@@ -66,6 +70,7 @@
           label="จังหวัด"
           label-color="black"
           placeholder=" "
+          v-model="foundationVolunteerBody.province"
         />
         <!-- <label class="text-sm">เขต</label> -->
         <w-input
@@ -76,6 +81,7 @@
           label="รหัสไปรษณีย์"
           label-color="black"
           placeholder=" "
+          v-model="foundationVolunteerBody.postalcode"
         />
       </div>
       <w-input
@@ -86,6 +92,7 @@
         label="เบอร์โทรศัพท์"
         label-color="black"
         placeholder=" "
+        v-model="foundationVolunteerBody.tel"
       />
       <div class="flex space-x-[20px] lg:space-x-[30px]">
         <w-input
@@ -96,6 +103,7 @@
           label="อีเมล"
           label-color="black"
           placeholder=" "
+          v-model="foundationVolunteerBody.email"
         />
 
         <w-input
@@ -106,6 +114,7 @@
           label="จำนวนจิตอาสา"
           label-color="black"
           placeholder=" "
+          v-model="foundationVolunteerBody.peopleNeeded"
         />
       </div>
       <div class="flex space-x-[20px] lg:space-x-[30px]">
@@ -118,6 +127,7 @@
           selection-color="grey"
           color="black"
           return-object
+          v-model="foundationVolunteerBody.activityTypes"
         >
           <template #item="{ item, selected }">
             <w-icon v-if="selected" class="black">wi-check</w-icon>
@@ -134,6 +144,8 @@
           selection-color="grey"
           color="black"
           return-object
+          multiple
+          v-model="foundationVolunteerBody.activityCategories"
         >
           <template #item="{ item, selected }">
             <w-icon v-if="selected" class="black">wi-check</w-icon>
@@ -151,6 +163,7 @@
           label="วันที่จัดกิจกรรม"
           label-color="black"
           placeholder=" "
+          v-model="foundationVolunteerBody.activityDate"
         />
         <!-- <w-input
           :validators="[validators.required]"
@@ -170,6 +183,7 @@
         label="คุณสมบัติ"
         label-color="black"
         placeholder=" "
+        v-model="foundationVolunteerBody.qualification"
       />
       <w-input
         :validators="[validators.required]"
@@ -179,6 +193,7 @@
         label="หน้าที่"
         label-color="black"
         placeholder=" "
+        v-model="foundationVolunteerBody.duty"
       />
       <w-textarea
         :validators="[validators.required]"
@@ -191,6 +206,7 @@
         label-color="black"
         placeholder=" "
         no-autogrow
+        v-model="foundationVolunteerBody.activityDetail"
       />
       <label class="lg:text-sm md:text-sm text-xs">รูปภาพประกอบ</label>
       <!-- <w-input
@@ -242,7 +258,25 @@ export default {
       { label: "สิ่งแวดล้อม", id: 7 },
       { label: "ภัยพิบัติ", id: 8 },
     ]);
-    return { validators, valid, items, categories };
+    const foundationVolunteerBody = reactive({
+      activityName: "",
+      foundationName: "",
+      address: "",
+      subDistrict: "",
+      district: "",
+      province: "",
+      postalcode: "",
+      tel: "",
+      email: "",
+      peopleNeeded: "",
+      activityTypes: "",
+      activityCategories: "",
+      activityDate: "",
+      qualification: "",
+      duty: "",
+      activityDetail: "",
+    });
+    return { validators, valid, items, categories, foundationVolunteerBody };
   },
 };
 </script>
