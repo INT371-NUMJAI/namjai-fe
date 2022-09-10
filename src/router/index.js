@@ -20,19 +20,19 @@ const router = createRouter({
 		{
 			path: "/profile",
 			name: "profile",
-			component: () => import("../components/Post/ViewProfile.vue"),
+			component: () => import("../components/Profile/ViewProfile.vue"),
 			children: [
 				{
 					path: 'post',
-					component: () => import("../components/Post/PostDetailBlock.vue"),
+					component: () => import("../components/Post/PostBlockDetail.vue"),
 				},
-				// {
-				// 	path: 'project',
-				// 	component: ,
-				// },
+				{
+					path: 'project',
+					component: () => import("../components/Project/ProjectAdd.vue"),
+				},
 				{
 					path: 'volunteer',
-					component:() => import("../components/Volunteer/VolunteerActivityBlock.vue"),
+					component:() => import("../components/Volunteer/VolunteerAdd.vue"),
 				},
 				{
 					path: 'about',
