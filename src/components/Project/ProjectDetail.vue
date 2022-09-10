@@ -16,6 +16,7 @@
         <h1 class="text-xl mb-[30px]">
           ซื้อชุดตรวจ ATK เพื่อน้องวัย อนุบาลที่สถานรับเลี้ยงเด็ก
         </h1>
+        <p class="text-sm mb-[30px]">ระยะเวลา: 12/12/2022 - 02/01/2023</p>
         <div class="grid grid-cols-2 mb-[20px]">
           <p>ยอดบริจาคปัจจุบัน</p>
           <h1 class="text-2xl text-namjaigreen text-right">23,500</h1>
@@ -28,7 +29,7 @@
           <h1 class="text-xl text-namjaired text-right">150,000</h1>
         </div>
         <img
-          class="w-[200px] mx-auto mt-[40px]"
+          class="w-[200px] mx-auto mt-[30px]"
           src="https://i.ibb.co/Nm7JDbS/qr-demo.png"
         />
       </div>
@@ -104,6 +105,11 @@
     </div>
     <div class="bg-white h-auto text-sm rounded-md mb-[30px] lg:hidden block">
       <div class="mx-[20px] py-[20px]">
+        <div class="grid grid-flow-col mb-[20px]">
+          <p>ระยะเวลา:</p>
+          <p class="text-right">12/12/2022 - 02/01/2023</p>
+        </div>
+        <!-- <p class="text-sm mb-[20px]">ระยะเวลา: 12/12/2022 - 02/01/2023</p> -->
         <div class="grid grid-cols-2 mb-[20px]">
           <p>ยอดบริจาคปัจจุบัน</p>
           <h1 class="text-2xl text-namjaigreen text-right">23,500</h1>
