@@ -112,7 +112,6 @@
         bg-color="amber-light1"
         :preview="false"
         outline
-        v-model="fdnProjectBody.projectImage"
         >เลือกไฟล์</w-input
       >
       <label class="lg:text-sm md:text-sm text-xs">คิวอาร์โค้ดพร้อมเพย์</label>
@@ -124,7 +123,6 @@
         bg-color="amber-light1"
         :preview="false"
         outline
-        v-model="fdnProjectBody.qrImage"
         >เลือกไฟล์</w-input
       >
         <base-button
@@ -164,8 +162,6 @@ export default {
       endDate: "",
       placeAndProjectDate: "",
       projectDetail: "",
-      projectImage: "",
-      qrImage: "",
     })
     return { validators, valid, categories, fdnProjectBody };
   },
