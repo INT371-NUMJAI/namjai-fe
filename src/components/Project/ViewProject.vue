@@ -8,7 +8,9 @@
         class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-4"
       ></div>
     </div>
-    <project-card />
+	<div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+    <project-card :projectCardProps="fdnProjectList" />
+</div>
     <div class="flex justify-center py-[60px]">
       <button
         class="bg-transparent hover:bg-namjaigreen text-namjaigreen font-medium hover:text-white py-2 px-10 border-2 border-namjaigreen hover:border-transparent rounded"
@@ -21,10 +23,23 @@
 
 <script>
 import ProjectCard from "./ProjectCard.vue";
+import projectService from "./project-service";
+import { ref } from "vue";
 
 export default {
   components: {
     ProjectCard,
   },
+  setup() {
+	const fdnProjectList = ref([]);
+	const fetchFdnProjectList = () => {
+		projectService.getProjectListInShort().then((response) => {
+			fdnProjectList.value = response.data;
+		})
+	};
+	fetchFdnProjectList();
+
+	return { fdnProjectList }
+  }
 };
 </script>

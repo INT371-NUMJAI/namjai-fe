@@ -1,10 +1,10 @@
 <template>
-  <div class="md:grid lg:grid md:grid-cols-12 lg:grid-cols-12 md:gap-5 lg:gap-[30px]">
-    <div class="bg-white rounded-lg drop-shadow-md hover:shadow-md md:col-span-5 lg:col-span-4">
+  <div class="md:w-[300px] w-[330px] md:gap-5 lg:w-[342px] mb-[20px]" v-for="(projectCardProp, index) in projectCardProps" :key="index">
+    <div class="bg-white rounded-lg drop-shadow-md hover:shadow-md">
       <img class="rounded-t-lg object-center" src="@/assets/pic1.png" />
       <div class="p-5">
-        <h1 class="mb-2 h-[46px] lg:h-[52px] overflow-hidden text-gray-900 text-[14px] lg:text-[16px]">ซื้อชุดตรวจ ATK เพื่อน้องวัยอนุบาลที่สถานรับเลี้ยงเด็กบ้านสันติสุข</h1>
-        <p class="mb-3 h-10 text-[12px] lg:text-[14px] overflow-hidden truncade text-namjaidarkgray tracking-wide">ต้องการที่จะจัดหาโรงน้ำดื่มที่สะอาดและปลอดภัยสำหรับเด็กๆเนื่องจากโรงเรียนวัดสวายน้อยวิทยาของ....</p>
+        <h1 class="mb-2 h-[46px] lg:h-[52px] overflow-hidden text-gray-900 text-[14px] lg:text-[16px]">{{ projectCardProp.projectName }}</h1>
+        <p class="mb-3 h-10 text-[12px] lg:text-[14px] overflow-hidden truncate text-namjaidarkgray tracking-wide">{{ projectCardProp.projectDetail }}</p>
         <div class="space-y-2.5">
           <div class="flex justify-between items-center">
             <h2 class="text-[12px] lg:text-[14px] font-black">ยอดบริจาคปัจจุบัน</h2>
@@ -17,7 +17,7 @@
           <div class="flex justify-between items-center">
             <div class="space-y-1">
               <h2 class="text-[12px] font-black">เป้าหมาย</h2>
-              <h1 class="text-xl text-namjaired">150,000</h1>
+              <h1 class="text-xl text-namjaired">{{ projectCardProp.goal }}</h1>
             </div>
             <button class="px-7 py-2 bg-namjaigreen font-bold text-white rounded-lg">บริจาค</button>
           </div>
@@ -38,5 +38,10 @@ export default {
 	components: {
 		"base-button": BaseButton,
 	},
+  props: {
+    projectCardProps: {
+      type: Array,
+    }
+  }
 };
 </script>
