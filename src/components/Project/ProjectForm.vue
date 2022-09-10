@@ -4,6 +4,7 @@
   >
     <h1 class="text-2xl lg:text-5xl mb-[40px]">ส่งโครงการ</h1>
     <div class="lg:mx-[183px] lg:mt-[60px]">
+      {{ fdnProjectBody }}
       <w-form v-model="valid">
         <w-input
           :validators="[validators.required]"
@@ -13,6 +14,7 @@
           label="ชื่อผู้รับผิดชอบโครงการ"
           label-color="black"
           placeholder=" "
+          v-model="fdnProjectBody.responsiblePerson"
         />
         <w-input
           :validators="[validators.required]"
@@ -22,6 +24,7 @@
           label="ชื่อโครงการ"
           label-color="black"
           placeholder=" "
+          v-model="fdnProjectBody.foundationProjectName"
         />
         <div class="flex space-x-[20px] lg:space-x-[30px]">
         <w-select
@@ -34,6 +37,7 @@
           color="black"
           return-object
           multiple
+          v-model="fdnProjectBody.categories"
         >
           <template #item="{ item, selected }">
             <w-icon v-if="selected" class="black">wi-check</w-icon>
@@ -49,6 +53,7 @@
             label="ค่าใช้จ่าย"
             label-color="black"
             placeholder=" "
+            v-model="fdnProjectBody.goal"
           />
         </div>
         <div class="flex space-x-[20px] lg:space-x-[30px]">
@@ -60,6 +65,7 @@
             label="วันที่เริ่มโครงการ"
             label-color="black"
             placeholder=" "
+            v-model="fdnProjectBody.startDate"
           />
           <w-input
             :validators="[validators.required]"
@@ -69,6 +75,7 @@
             label="วันที่สิ้นสุดโครงการ"
             label-color="black"
             placeholder=" "
+            v-model="fdnProjectBody.endDate"
           />
         </div>
         <w-textarea
@@ -82,6 +89,7 @@
         label-color="black"
         placeholder=" "
         no-autogrow
+        v-model="fdnProjectBody.placeAndProjectDate"
       />
         <w-textarea
         :validators="[validators.required]"
@@ -94,6 +102,7 @@
         label-color="black"
         placeholder=" "
         no-autogrow
+        v-model="fdnProjectBody.projectDetail"
       />
       <label class="lg:text-sm md:text-sm text-xs">รูปภาพประกอบ</label>
       <w-input
@@ -103,6 +112,7 @@
         bg-color="amber-light1"
         :preview="false"
         outline
+        v-model="fdnProjectBody.projectImage"
         >เลือกไฟล์</w-input
       >
       <label class="lg:text-sm md:text-sm text-xs">คิวอาร์โค้ดพร้อมเพย์</label>
@@ -114,6 +124,7 @@
         bg-color="amber-light1"
         :preview="false"
         outline
+        v-model="fdnProjectBody.qrImage"
         >เลือกไฟล์</w-input
       >
         <base-button
@@ -144,7 +155,19 @@ export default {
       { label: "สิ่งแวดล้อม", id: 7 },
       { label: "ภัยพิบัติ", id: 8 },
     ]);
-    return { validators, valid, categories };
+    const fdnProjectBody = reactive({
+      responsiblePerson: "",
+      foundationProjectName: "",
+      categories: "",
+      goal: "",
+      startDate: "",
+      endDate: "",
+      placeAndProjectDate: "",
+      projectDetail: "",
+      projectImage: "",
+      qrImage: "",
+    })
+    return { validators, valid, categories, fdnProjectBody };
   },
 };
 </script>
