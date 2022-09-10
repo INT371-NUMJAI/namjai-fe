@@ -1,22 +1,10 @@
 import { createStore } from "vuex";
-
+import { auth } from "../components/Account/auth-module.js";
 export default createStore({
-	state: {
-		counter: 0,
-	},
-	mutations: {
-		increaseCounter(state) {
-			state.counter++;
-		},
-		decreaseCounter(state) {
-			state.counter--;
-		},
-	},
+	state: {},
+	mutations: {},
 	actions: {},
-	getters: {
-		getCounter() {
-			return this.counter;
-		},
+	modules: {
+		auth,
 	},
-	modules: {},
 });

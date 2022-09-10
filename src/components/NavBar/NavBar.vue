@@ -8,31 +8,76 @@
 					<path d="M147.083 56.4828C140.083 46.3161 127.583 23.9828 133.583 15.9828C135.082 12.4828 139.882 6.88281 147.083 12.4828C154.283 18.0828 158.083 26.4828 159.083 29.9828C161.249 23.8161 166.283 10.7828 169.083 7.98281C172.583 4.48281 177.583 0.482811 183.583 9.48281C189.583 18.4828 183.083 45.4828 169.083 56.4828" stroke="#D45343" stroke-width="6" />
 				</svg>
 			</router-link>
-			<h1 class="mt-2">Admin</h1>
+			<h1 class="mt-2" v-if="use_auth.auth_role && use_auth.store_auth.status.loggedIn">Admin</h1>
 		</div>
 		<div class="lg:hidden">
 			<!-- <w-icon color="white">fa fa-bars</w-icon> -->
 			<drawer />
 		</div>
 		<div class="hidden lg:flex lg:space-x-11 items-center text-white lg:text-base">
-			<router-link to="/admin-management"> <w-button bg-color="transparent" class="font-medium">จัดการ</w-button></router-link>
+			<router-link to="/admin-management"> <w-button bg-color="transparent" class="font-medium" v-if="use_auth.auth_role && use_auth.store_auth.status.loggedIn">จัดการ</w-button></router-link>
 			<w-button bg-color="transparent" class="font-medium">มูลนิธิ</w-button>
 			<w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
 			<router-link to="/volunteer">
 				<w-button bg-color="transparent" class="font-medium">จิตอาสา</w-button>
 			</router-link>
-			<w-button bg-color="transparent" class="font-medium">เกี่ยวกับเรา</w-button>
-			<router-link to="/login">
-				<w-button bg-color="transparent" round outline class="py-4 font-medium">เข้าสู่ระบบ</w-button>
-			</router-link>
+			<w-button bg-color="transparent" class="font-medium">ข่าวสาร</w-button>
+			<div>
+				<!-- <span v-if="store_auth.user === null"> -->
+				<span v-if="use_auth.store_auth.user === null">
+					<router-link to="/login">
+						<w-button bg-color="transparent" round outline class="py-4 font-medium">เข้าสู่ระบบ</w-button>
+					</router-link>
+				</span>
+				<!-- <span v-if="store_auth.user !== null"> -->
+				<span v-if="use_auth.store_auth.user !== null">
+					<w-button bg-color="transparent" round outline class="py-4 font-medium" @click="showDropDown = !showDropDown">
+						<p class="text-white">{{ use_auth.auth_userName.value }}</p>
+						<!-- <p class="text-white">test</p> -->
+						<div class="ml-2 -mt-[2px]">
+							<w-icon md color="white" v-if="showDropDown == false">fa fa-caret-down</w-icon>
+							<w-icon md color="white" v-if="showDropDown">fa fa-caret-up</w-icon>
+						</div>
+					</w-button>
+					<div>
+						<div class="absolute mt-2 -ml-[21px] z-10 bg-white" v-if="showDropDown">
+							<div class="text-white font-medium">
+								<w-button color="black" bg-color="transparent" class="block text-sm ml-5 my-2">ข้อมูลส่วนตัว</w-button>
+								<w-button color="red" bg-color="transparent" class="block text-sm ml-[35px] my-2" @click="clicktoLogout">ลงชื่อออก</w-button>
+							</div>
+						</div>
+					</div>
+				</span>
+			</div>
 		</div>
 	</nav>
 </template>
 <script>
+import { ref } from "vue";
+import { useStore } from "vuex";
 import Drawer from "./Drawer.vue";
+import { useRouter } from "vue-router";
+import { useAuth } from "../../services/auth-middleware";
 export default {
 	components: {
 		Drawer,
 	},
+	setup() {
+		const showDropDown = ref(false);
+		const use_auth = useAuth();
+		const store = useStore();
+		const router = useRouter();
+
+		const clicktoLogout = () => {
+			store.dispatch("auth/logout");
+			router.push("/main");
+		};
+		return { use_auth, showDropDown, clicktoLogout };
+	},
 };
 </script>
+<style>
+.namjaired {
+	color: #d45343;
+}
+</style>

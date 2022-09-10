@@ -1,7 +1,7 @@
 <template>
 	<div class="mt-10">
-		<div>{{ foundation }} {{ fileUpload }}</div>
-		<w-form v-model="valid" name="foundationForm" class="hidden lg:inline">
+		<!-- <div>{{ foundation }} {{ fileUpload[0] }}</div> -->
+		<w-form v-model="valid" class="hidden lg:inline" @success="submitForm">
 			<div class="space-y-10 pb-10 pt-[30px]">
 				<div class="space-y-4">
 					<h1 class="text-[20px] text-namjaigreen">ข้อมูลผู้ใช้</h1>
@@ -10,30 +10,17 @@
 						<div class="flex space-x-[60px]">
 							<w-radio v-model="foundation.fdnSize" color="red-light1" label-color="black" return-value="small"><p class="mx-2">SMALL</p></w-radio>
 							<w-radio v-model="foundation.fdnSize" color="red-light1" label-color="black" return-value="big"><p class="mx-2">BIG</p></w-radio>
-
-							<!-- <div
-                class="w-32 h-10 border border-namjaibrown rounded-md py-2 text-center space-x-3"
-              >
-                <w-radio v-model="small" :validators="[validators.required]" color="red-light1"></w-radio>
-                <span class="font-medium">ขนาดเล็ก</span>
-              </div>
-              <div
-                class="w-32 h-10 border border-namjaibrown rounded-md py-2 text-center space-x-3"
-              >
-                <w-radio :validators="[validators.required]" color="red-light1"></w-radio>
-                <span class="font-medium">ขนาดใหญ่</span>
-              </div> -->
 						</div>
 					</div>
 				</div>
 				<div class="space-y-4">
 					<label class="font-medium">ชื่อองค์กร</label>
-					<w-input :validators="[validators.required, validators.foundation]" color="black" placeholder="ชื่อองค์กร" v-model="foundation.fdnName"></w-input>
+					<w-input :validators="[validators.required]" color="black" placeholder="ชื่อองค์กร" v-model="foundation.fdnName"></w-input>
 				</div>
 				<div class="grid grid-cols-2 gap-10">
 					<div class="space-y-4">
 						<label class="font-medium">อีเมล</label>
-						<w-input :validators="[validators.required, validators.email]" type="email" placeholder="อีเมล" color="black" v-model="foundation.email"></w-input>
+						<w-input :validators="[validators.required]" type="email" placeholder="อีเมล" color="black" v-model="foundation.email"></w-input>
 					</div>
 					<div class="space-y-4">
 						<label class="font-medium">รหัสผ่าน</label>
@@ -79,10 +66,6 @@
 						<label class="font-medium">เบอร์โทรศัพท์</label>
 						<w-input :validators="[validators.required]" type="tel" placeholder="เบอร์โทรศัพท์" color="black" v-model="foundation.contactNo"></w-input>
 					</div>
-					<!-- <div class="space-y-4">
-						<label class="font-medium">อีเมล</label>
-						<w-input :validators="[validators.required]" type="email" placeholder="อีเมล"></w-input>
-					</div> -->
 				</div>
 				<div class="space-y-4">
 					<label class="font-medium">รายละเอียด</label>
@@ -103,7 +86,8 @@
 				</div>
 			</div>
 			<div class="md:mx-auto mx-auto flex justify-center mt-1 mb-5 bg-namjaigreen h-[60px] w-80 my-10 rounded-xl">
-				<w-button :disabled="valid === false" color="white" bg-color="transparent" class="text-white text-lg font-semibold" type="submit" @click="submitForm"> ลงทะเบียน </w-button>
+				<!-- <w-button :disabled="valid === false" color="white" bg-color="transparent" class="text-white text-lg font-semibold" type="submit" @click="submitForm"> ลงทะเบียน </w-button> -->
+				<w-button :disabled="valid === false" color="white" bg-color="transparent" class="text-white text-lg font-semibold" type="submit"> ลงทะเบียน </w-button>
 			</div>
 		</w-form>
 		<div class="lg:block lg:w-80 lg:pb-[60px] lg:mx-auto">
@@ -116,79 +100,62 @@
 		</div>
 	</div>
 </template>
-<!-- <w-button :disabled="valid === false" color="white" bg-color="transparent" class="text-white text-lg font-semibold" type="submit" @click="submitForm"> ลงทะเบียน </w-button> -->
 
-<!-- :validators="[() => files.length || 'Please add a file']" -->
 <script>
-import { defineComponent } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import authService from "@/services/auth-service";
-export default defineComponent({
-	data() {
-		return {
-			foundation: { fdnUUid: uuidv4(), fdnName: "", addressDetail: "", subDistrict: "", district: "", province: "", postalCode: "", founderName: "", fdnDetail: "", fdnSize: "", establishDate: "", email: "", contactNo: "", password: "" },
-			valid: null,
-			fileUpload: null,
-			validators: {
-				required: (value) => !!value || "This field is required",
-				minLength: (value) => value.length >= 8 || "Your password must be minimum 8 characters",
-				username: (value) => {
-					let userlists = ["Qwanjai", "Faahhhhhhh", "Chutipaaaa"];
-					for (let i = 0; i < userlists.length; i++) {
-						if (userlists[i].toLowerCase() === value.toLowerCase()) {
-							return "This username is already in use";
-						}
-					}
-				},
-				email: (value) => {
-					let emails = ["abc@gmail.com", "def.1@hotmail.com"];
-					for (let i = 0; i < emails.length; i++) {
-						if (emails[i].toLowerCase() === value.toLowerCase()) {
-							return "This email already regitered";
-						}
-					}
-				},
-				foundation: (value) => {
-					let foundations = ["The Mirror Foundation", "Child Foundation"];
-					for (let i = 0; i < foundations.length; i++) {
-						if (foundations[i].toLowerCase() === value.toLowerCase()) {
-							return "This foundation name is already in use";
-						}
-					}
-				},
-			},
+import { useValidation } from "./validator";
+import { reactive, ref } from "vue";
+export default {
+	setup() {
+		const { validators } = useValidation();
+		const valid = ref(null);
+
+		const foundation = reactive({ fdnUUid: uuidv4(), fdnName: "", addressDetail: "", subDistrict: "", district: "", province: "", postalCode: "", founderName: "", fdnDetail: "", fdnSize: "", establishDate: "", email: "", contactNo: "", password: "" });
+
+		const fileUpload = ref([]);
+		const fileHandler = (event) => {
+			fileUpload[0] = event.target.files[0];
+			// console.log(input);
+			// fileUpload = input;
 		};
-	},
-	methods: {
-		fileHandler(event) {
-			const input = event.target.files[0];
-			this.fileUpload = input;
-		},
-		submitForm() {
+
+		const submitForm = () => {
 			authService
-				.registerFoundation(this.foundation)
-				.then((response) => {
-					if (response.status == 200) {
-						this.$waveui.notify("sign up profile successfully", "success");
-					}
-				})
+				.registerFoundation(foundation)
+				// .then((response) => {
+				// 	if (response.status == 200) {
+				// 		this.$waveui.notify("sign up profile successfully", "success");
+				// 	}
+				// })
 				.catch((error) => {
 					console.error(error);
 				});
+
 			const bodyFormData = new FormData();
-			bodyFormData.append("file", this.fileUpload);
-			bodyFormData.append("fdnUuid", this.foundation.fdnUUid);
+			bodyFormData.append("file", fileUpload[0]);
+			bodyFormData.append("fdnUuid", foundation.fdnUUid);
+
 			authService
 				.uploadFDNDocument(bodyFormData)
-				.then((response) => {
-					if (response.status == 200) {
-						this.$waveui.notify("sign up profile successfully", "success");
-					}
-				})
+				// .then((response) => {
+				// 	if (response.status == 200) {
+				// 		this.$waveui.notify("sign up profile successfully", "success");
+				// 	}
+				// })
 				.catch((error) => {
 					console.error(error);
 				});
-		},
+		};
+
+		return {
+			validators,
+			valid,
+			foundation,
+			fileUpload,
+			fileHandler,
+			submitForm,
+		};
 	},
-});
+};
 </script>

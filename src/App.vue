@@ -19,8 +19,7 @@ export default {
 };
 </script>
 <style>
-/* .w-notification-manager {
+.w-notification-manager {
 	@apply absolute z-50;
-	z-index: 100;
-} */
+}
 </style>
