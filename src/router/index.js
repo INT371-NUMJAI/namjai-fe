@@ -10,8 +10,8 @@ const router = createRouter({
 		{
 			path: "/",
 			name: "home",
-			// component: () => import("../components/Page/Landing.vue"),
-			component: () => import("../components/Project/ProjectDetail.vue"),
+			component: () => import("../components/Page/Landing.vue"),
+			// component: () => import("../components/Project/ProjectDetail.vue"),
 		},
 		{
 			path: "/main",
@@ -75,6 +75,11 @@ const router = createRouter({
 			path: "/project/:id",
 			name: "fdn-project-detail",
 			component: () => import("../components/Project/ViewProject.vue"),
+		},
+		{
+			path: "/add/foundationproject",
+			name: "fdn-project-form",
+			component: () => import("../components/Project/ProjectForm.vue"),
 		},
 		{
 			path: "/admin-management",

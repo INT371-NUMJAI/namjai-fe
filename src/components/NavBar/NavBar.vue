@@ -27,7 +27,7 @@
       </router-link>
       <h1
         class="mt-2"
-        v-if="use_auth.auth_role && use_auth.store_auth.status.loggedIn"
+        v-if="use_auth.auth_role.value && use_auth.store_auth.status.loggedIn"
       >
         Admin
       </h1>
@@ -43,7 +43,7 @@
         <w-button
           bg-color="transparent"
           class="font-medium"
-          v-if="use_auth.auth_role && use_auth.store_auth.status.loggedIn"
+          v-if="use_auth.auth_role.value && use_auth.store_auth.status.loggedIn"
           >จัดการ</w-button
         ></router-link
       >
@@ -98,6 +98,7 @@
                   color="black"
                   bg-color="transparent"
                   class="block text-sm ml-5 my-2"
+                  @click="routeToProfile"
                   >ข้อมูลส่วนตัว</w-button
                 >
                 <w-button
@@ -135,7 +136,18 @@ export default {
       store.dispatch("auth/logout");
       router.push("/main");
     };
-    return { use_auth, showDropDown, clicktoLogout };
+    const checkLoginStatus = () => {
+      if (use_auth.store_auth.status.loggedIn) {
+        store.dispatch("fdn/getUUID", store.state.auth.user.email);
+      }
+    };
+    checkLoginStatus();
+
+    const routeToProfile = () => {
+      router.push(`/profile`);
+    };
+
+    return { use_auth, showDropDown, clicktoLogout, routeToProfile };
   },
 };
 </script>

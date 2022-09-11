@@ -28,8 +28,18 @@ class AuthService {
 		http.defaults.headers["Content-type"] = "multipart/form-data";
 		return http.post("/auth/fdn/upload-doc", data);
 	}
+
 	getUsernameList() {
 		return http.get("/view/userlist");
+	}
+
+	getUUID(email) {
+		return http.get(`/view/getName?email=${email}`).then((response) => {
+			if (response.data) {
+				localStorage.setItem("uuid", JSON.stringify(response.data));
+				// console.log(localStorage.getItem("user"));
+			}
+		});
 	}
 }
 

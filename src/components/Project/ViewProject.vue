@@ -1,6 +1,6 @@
 <template>
   <div>
-    <project-detail :fdnProjectProps="fdnProject"></project-detail>
+    <project-detail :fdnProjectProps="fdnProject" :picturePathProps="fdnProject.picturePath"></project-detail>
   </div>
 </template>
 

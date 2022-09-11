@@ -1,12 +1,16 @@
 <template>
   <div class="mx-[30px] md:mx-24 lg:mx-44 mt-[50px] lg:mt-[120px]">
-    <p class="text-sm lg:text-base mb-[20px]">หมวดหมู่: เด็กและเยาวชน</p>
+    <div class="flex space-x-2">
+    <p>หมวดหมู่:</p>
+    <p v-for="fdnProjectProp in fdnProjectProps.targetCategoriesSet" :key="fdnProjectProp" class="text-sm lg:text-base mb-[20px]"> {{ fdnProjectProp.targetCategoriesName }}</p>
+    {{ fdnProjectProps.picturePath }}
+  </div>
     <h1 class="text-xl lg:text-3xl mb-[20px] lg:mb-[30px]">
       {{ fdnProjectProps.foundationProjectName }}
     </h1>
     <img
       class="mb-[30px] lg:w-[700px] float-left mr-[30px]"
-      src="https://images.unsplash.com/photo-1577897113479-2efe3749ccc8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+      :src="getImage(fdnProjectProps.picturePath)"
     />
     <div
       class="bg-white h-screen text-base ml-[730px] w-[342px] lg:block hidden fixed -mt-[190px]"
@@ -122,12 +126,23 @@
 </template>
 
 <script>
+import foundationProjectService from "./project-service";
 
 export default {
   props: {
         fdnProjectProps: {
             type: Object,
+        },
+        picturePathProps: {
+          type: String
         }
+    },
+  setup() {
+    const getImage = (path) => {
+      foundationProjectService.getPicturePath(path);
     }
+
+    return { getImage };
+  }
 };
 </script>
