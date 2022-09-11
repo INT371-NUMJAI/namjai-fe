@@ -1,5 +1,6 @@
 <template>
   <div class="md:w-[300px] w-[330px] md:gap-5 lg:w-[342px] mb-[20px]" v-for="(projectCardProp, index) in projectCardProps" :key="index">
+    <router-link :to="'/project/' + projectCardProp.projectUUID">
     <div class="bg-white rounded-lg drop-shadow-md hover:shadow-md">
       <img class="rounded-t-lg object-center" src="@/assets/pic1.png" />
       <div class="p-5">
@@ -28,16 +29,13 @@
         </a> -->
       </div>
     </div>
+  </router-link>
   </div>
 </template>
 
 <script>
-import BaseButton from "../_Bases/BaseButton.vue";
 
 export default {
-	components: {
-		"base-button": BaseButton,
-	},
   props: {
     projectCardProps: {
       type: Array,
