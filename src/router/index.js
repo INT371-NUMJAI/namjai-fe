@@ -11,7 +11,6 @@ const router = createRouter({
 			path: "/",
 			name: "home",
 			component: () => import("../components/Page/Landing.vue"),
-			// component: () => import("../components/Project/ProjectDetail.vue"),
 		},
 		{
 			path: "/main",
@@ -46,6 +45,8 @@ const router = createRouter({
 			name: "login",
 			component: () => import("../components/Account/LoginForm.vue"),
 		},
+		// 	component: () => import("../components/Page/Home.vue"),
+		// },
 		{
 			path: "/signup",
 			name: "signup",
