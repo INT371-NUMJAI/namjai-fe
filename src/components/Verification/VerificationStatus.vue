@@ -1,7 +1,6 @@
 <template>
-	<div class="text-namjaiwhite w-20 text-center rounded-xl py-1 -mt-1" :class="[statusProps.statusColor]">
-		{{ statusProps.statusText }}
-	</div>
+	<div class="text-namjaiwhite w-20 text-center rounded-xl py-1 -mt-1" :class="[statusProps.statusColor]">{{ statusProps.statusText }}</div>
+	<!-- <div class="text-namjaiwhite w-20 text-center rounded-xl py-1 -mt-1" :class="[statusProps.statusColor]">{{ setStatus }}</div> -->
 </template>
 <script>
 import { onMounted, onUpdated, reactive } from "vue";
@@ -14,7 +13,7 @@ export default {
 	setup(props) {
 		const statusText = props.statusText;
 		const statusProps = reactive({ statusColor: "", statusText: "" });
-		let statusWord = ["APPROVED", "REJECTED", "PENDING"];
+		let statusWord = ["VERIFIED", "REJECTED", "PENDING"];
 		const setStatus = (status) => {
 			if (statusWord[0].localeCompare(status) == 0) {
 				statusProps.statusColor = "bg-namjaigreen";
@@ -29,11 +28,15 @@ export default {
 				statusProps.statusText = "รออนุมัติ";
 			}
 		};
-		// onMounted(() => {
-		setStatus(statusText);
-		// });
+		onMounted(() => {
+			setStatus(statusText);
+		});
 
-		return { statusProps };
+		onUpdated(() => {
+			setStatus(statusText);
+		});
+		// setStatus(statusText);
+		return { statusProps, setStatus };
 	},
 };
 </script>

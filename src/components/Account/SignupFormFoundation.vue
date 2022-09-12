@@ -116,36 +116,20 @@ export default {
 		const fileUpload = ref([]);
 		const fileHandler = (event) => {
 			fileUpload[0] = event.target.files[0];
-			// console.log(input);
-			// fileUpload = input;
 		};
 
 		const submitForm = () => {
-			authService
-				.registerFoundation(foundation)
-				// .then((response) => {
-				// 	if (response.status == 200) {
-				// 		this.$waveui.notify("sign up profile successfully", "success");
-				// 	}
-				// })
-				.catch((error) => {
-					console.error(error);
-				});
+			authService.registerFoundation(foundation).catch((error) => {
+				console.error(error);
+			});
 
 			const bodyFormData = new FormData();
 			bodyFormData.append("file", fileUpload[0]);
 			bodyFormData.append("fdnUuid", foundation.fdnUUid);
 
-			authService
-				.uploadFDNDocument(bodyFormData)
-				// .then((response) => {
-				// 	if (response.status == 200) {
-				// 		this.$waveui.notify("sign up profile successfully", "success");
-				// 	}
-				// })
-				.catch((error) => {
-					console.error(error);
-				});
+			authService.uploadFDNDocument(bodyFormData).catch((error) => {
+				console.error(error);
+			});
 		};
 
 		return {

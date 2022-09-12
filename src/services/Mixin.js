@@ -12,8 +12,6 @@ export default {
 					returnMessage.typeRetuen("error");
 					break;
 			}
-			// return returnMessage;
-			this.$waveui.notify(message, typeReturn);
 		},
 	},
 };
