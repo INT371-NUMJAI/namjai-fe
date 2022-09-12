@@ -59,17 +59,9 @@ export default {
 			password: "",
 		});
 		const submitForm = () => {
-			authService
-				.register(this.user)
-				.then((response) => {
-					if (response.status == 200) {
-						this.$waveui.notify("sign up profile successfully", "success");
-					}
-				})
-				.catch((error) => {
-					console.error(error);
-				});
+			authService.register(user);
 		};
+
 		return { valid, validators, user, submitForm };
 	},
 };

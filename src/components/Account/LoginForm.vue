@@ -33,9 +33,7 @@
 				<p>ยังไม่มีบัญชีใช่หรือไม่?</p>
 				<router-link to="/signup"><button bg-color="transparent" class="ml-1 font-semibold underline underline-offset-2">ลงทะเบียน</button></router-link>
 			</div>
-			<!-- <w-button @click="$waveui.notify('Information.')" bg-color="info"> Notify info </w-button> -->
 		</div>
-		<!-- <w-button @click="$waveui.notify('Information.')" bg-color="info"> Notify info </w-button> -->
 	</div>
 	<img class="hidden lg:block lg:w-2/5 lg:absolute lg:top-44 lg:right-48 lg:z-10" src="@/assets/pic1.png" />
 	<img class="hidden lg:block lg:w-3/5 lg:absolute lg:top-24 lg:right-14 lg:-z-0" src="@/assets/pic2.png" />
@@ -47,13 +45,8 @@ import { reactive, ref } from "vue";
 import { useValidation } from "./validator";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
-import { getCurrentInstance } from "vue";
 export default {
 	setup() {
-		// const globals = getCurrentInstance().appContext.config.globalProperties.$waveui;
-		// console.log(globals);
-		const app = getCurrentInstance();
-		const waveui = app.appContext.config.globalProperties.$waveui;
 		const { validators } = useValidation();
 		const valid = ref(null);
 		const loginRequest = reactive({ email: "", password: "" });
@@ -69,15 +62,11 @@ export default {
 		const sentRequest = () => {
 			typeof valid !== false && valid !== null ? submitLogin() : true;
 		};
-		const sayHi = () => {
-			waveui.notify("Information.");
-		};
 		return {
 			validators,
 			valid,
 			loginRequest,
 			sentRequest,
-			sayHi,
 		};
 	},
 };
