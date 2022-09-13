@@ -138,8 +138,8 @@
           outline
           >เลือกไฟล์</w-input
         >
-        {{ fdnProjectBody }}
-        {{ fileUpload }}
+        <!-- {{ fdnProjectBody }}
+        {{ fileUpload }} -->
         <base-button
           class="w-[140px] mx-auto mt-[60px] mb-8"
           buttonLabel="ยืนยัน"
