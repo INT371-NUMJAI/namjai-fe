@@ -1,14 +1,45 @@
 <template>
-  <div name="postblock" class="grid grid-cols-5 md:grid-cols-10 lg:grid-cols-12 bg-namjaiwhite px-4 py-4 md:px-5 md:py-6 lg:px-6 lg:py-6 rounded-lg">
-    <img class="w-[45px] h-[45px] lg:w-[50px] lg:h-[50px] rounded-full object-cover" src="@/assets/pic1.png" />
+  <div
+    name="postblock"
+    class="grid grid-cols-5 md:grid-cols-10 lg:grid-cols-12 bg-namjaiwhite px-4 py-4 md:px-5 md:py-6 lg:px-6 lg:py-6 rounded-lg"
+  >
+    <img
+      class="w-[45px] h-[45px] lg:w-[50px] lg:h-[50px] rounded-full object-cover"
+      src="@/assets/pic1.png"
+    />
     <div class="col-span-4 md:col-span-9 lg:col-span-11 lg:px-1">
-      <w-textarea name="postblock" no-autogrow rows="2" class="w-full text-namjaiblack text-[14px] lg:text-[16px] pt-1 tracking-wide" placeholder="พิมพ์เนื้อหาประกาศที่นี่"> </w-textarea>
-      <div class="flex justify-between ">
+      <w-textarea
+        name="postblock"
+        no-autogrow
+        rows="2"
+        class="w-full text-namjaiblack text-[14px] lg:text-[16px] pt-1 tracking-wide"
+        placeholder="พิมพ์เนื้อหาประกาศที่นี่"
+      >
+      </w-textarea>
+      <div class="flex justify-between">
         <div class="w-[95px] lg:w-[100px] lg:h-5">
-          <w-input type="file" class="text-[12px] lg:text-[14px]" color="green-dark4" inner-icon-left="fa fa-picture-o"  :preview="false" outline>เพิ่มรูปภาพ</w-input>
+          <w-input
+            type="file"
+            class="text-[12px] lg:text-[14px]"
+            color="green-dark4"
+            inner-icon-left="fa fa-picture-o"
+            :preview="false"
+            outline
+            >เพิ่มรูปภาพ</w-input
+          >
         </div>
         <div class="mt-3 md:mt-2">
-          <w-button class="px-3 py-3.5 lg:py-4 text-[12px] lg:text-[14px] rounded-md" color="white" bg-color="green-dark4" md>ประกาศ</w-button>
+          <w-button
+            :disabled="
+              use_auth.store_auth.user.status === `DISABLE` &&
+              use_auth.store_auth.status.loggedIn
+            "
+            class="px-3 py-3.5 lg:py-4 text-[12px] lg:text-[14px] rounded-md"
+            color="white"
+            bg-color="green-dark4"
+            md
+            >ประกาศ</w-button
+          >
         </div>
 
         <!-- <w-input type="file" outline :preview="false" class="lg:mr-10">
@@ -33,3 +64,15 @@
     </div>
   </div>
 </template>
+
+<script>
+import { useAuth } from "../../services/auth-middleware";
+
+export default {
+  setup() {
+    const use_auth = useAuth();
+
+    return { use_auth };
+  },
+};
+</script>
