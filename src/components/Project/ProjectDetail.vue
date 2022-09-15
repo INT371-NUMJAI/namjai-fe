@@ -29,8 +29,7 @@
           {{ fdnProjectProps.foundationProjectName }}
         </h1>
         <p class="text-sm mb-[30px]">
-          ระยะเวลา: {{ fdnProjectProps.startDate }} -
-          {{ fdnProjectProps.endDate }}
+          ระยะเวลา: {{ formatStringDate }}
         </p>
         <div class="grid grid-cols-2 mb-[20px]">
           <p>ยอดบริจาคปัจจุบัน</p>
@@ -167,7 +166,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useValidation } from "../Account/validator";
 import BaseButton from "../_Bases/BaseButton.vue";
 import foundationProjectService from "./project-service";
@@ -182,16 +181,22 @@ export default {
       type: String,
     },
   },
-  setup() {
+  setup(props) {
+    const stringStartDate = ref(props.fdnProjectProps.startDate);
+    const stringEndDate = ref(props.fdnProjectProps.endDate);
     const showQR = ref(false);
     const { validators } = useValidation();
     const valid = ref(null);
+    
+    const formatStringDate = computed(() => {
+      return `${stringStartDate.value.toString().slice(0, 10)} - ${stringEndDate.value.toString().slice(0, 10)}`;
+    })
 
     const getImage = (path) => {
       foundationProjectService.getPicturePath(path);
     };
 
-    return { getImage, showQR, validators, valid };
+    return { getImage, showQR, validators, valid, formatStringDate };
   },
 };
 </script>
