@@ -9,7 +9,7 @@
       ></div>
     </div>
     <div
-      class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[136px] py-[10px] rounded-lg mb-[60px] shadow-md"
+      class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[136px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md"
     >
       <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
         <svg
