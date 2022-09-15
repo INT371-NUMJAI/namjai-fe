@@ -48,7 +48,7 @@
           <div class="flex mt-[30px]">
             <h1 class="my-auto pr-[10px]">จำนวนเงิน</h1>
             <w-input
-              :validators="[validators.required]"
+              :validators="[validators.required, validators.negativeNumber]"
               class="my-auto text-center"
               type="number"
               bg-color="white"
@@ -93,13 +93,14 @@
         <h1 class="mb-[10px]">ติดต่อ</h1>
         <w-divider color="black" class="mb-[10px]"></w-divider>
         <p class="mb-[10px]">
-          {{ fdnProjectProps.foundationContactDTO.fdnName }}
+          {{ formatFdnAddress }}
+          <!-- {{ fdnProjectProps.foundationContactDTO.fdnName }}
           {{ fdnProjectProps.foundationContactDTO.addressDetail }} แขวง
           {{ fdnProjectProps.foundationContactDTO.subDistrict }} เขต
           {{ fdnProjectProps.foundationContactDTO.district }}
           {{ fdnProjectProps.foundationContactDTO.province }}
           {{ fdnProjectProps.foundationContactDTO.postalCode }} <br />
-          {{ fdnProjectProps.foundationContactDTO.email }}
+          {{ fdnProjectProps.foundationContactDTO.email }} -->
         </p>
         <p>{{ fdnProjectProps.foundationContactDTO.contactNumber }}</p>
       </div>
@@ -109,7 +110,7 @@
         <div class="grid grid-flow-col mb-[20px]">
           <p>ระยะเวลา:</p>
           <p class="text-right">
-            {{ fdnProjectProps.startDate }} - {{ fdnProjectProps.endDate }}
+            {{ formatStringDate }}
           </p>
         </div>
         <!-- <p class="text-sm mb-[20px]">ระยะเวลา: 12/12/2022 - 02/01/2023</p> -->
@@ -134,7 +135,7 @@
           <div class="flex mt-[30px] mx-auto">
             <h1 class="my-auto pr-[15px]">จำนวนเงิน</h1>
             <w-input
-              :validators="[validators.required]"
+              :validators="[validators.required, validators.negativeNumber]"
               class="my-auto text-center"
               type="number"
               bg-color="white"
@@ -182,21 +183,26 @@ export default {
     },
   },
   setup(props) {
-    const stringStartDate = ref(props.fdnProjectProps.startDate);
-    const stringEndDate = ref(props.fdnProjectProps.endDate);
     const showQR = ref(false);
     const { validators } = useValidation();
     const valid = ref(null);
     
+    const stringStartDate = ref(props.fdnProjectProps.startDate);
+    const stringEndDate = ref(props.fdnProjectProps.endDate);
     const formatStringDate = computed(() => {
       return `${stringStartDate.value.toString().slice(0, 10)} - ${stringEndDate.value.toString().slice(0, 10)}`;
     })
+
+    const fdnAddress = ref(props.fdnProjectProps.foundationContactDTO);
+    const formatFdnAddress = computed(() => {
+      return `${fdnAddress.value.addressDetail} แขวง ${fdnAddress.value.subDistrict} เขต ${fdnAddress.value.district} ${fdnAddress.value.province} ${fdnAddress.value.postalCode} ${fdnAddress.value.email}`
+    });
 
     const getImage = (path) => {
       foundationProjectService.getPicturePath(path);
     };
 
-    return { getImage, showQR, validators, valid, formatStringDate };
+    return { getImage, showQR, validators, valid, formatStringDate, formatFdnAddress };
   },
 };
 </script>
