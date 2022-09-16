@@ -5,7 +5,7 @@
 				<div class="relative cursor-pointer">
 					<img class="rounded-t-lg object-center" src="@/assets/pic1.png" />
 					<div class="absolute top-0 right-0 p-3">
-						<h3 class="px-4 py-1.5 bg-[#21BB7A] text-white rounded-lg font-bold text-[14px] lg:text-[16px]">เปิดอยู่</h3>
+						<h3 class="px-4 py-1.5 bg-[#21BB7A] text-white rounded-lg font-bold text-[14px] lg:text-[16px]">{{ projectCardProp.status }}</h3>
 					</div>
 				</div>
 
