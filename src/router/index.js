@@ -77,6 +77,11 @@ const router = createRouter({
 			component: () => import("../components/Project/ViewProject.vue"),
 		},
 		{
+			path: "/project/targetCategories/:id",
+			name: "fdn-project-targetCat",
+			component: () => import("../components/Project/ViewProjectsByTargetCat.vue"),
+		},
+		{
 			path: "/add/foundationproject",
 			name: "fdn-project-form",
 			component: () => import("../components/Project/ProjectForm.vue"),

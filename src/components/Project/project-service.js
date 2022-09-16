@@ -22,6 +22,9 @@ class FoundationProjectService {
     async getPicturePath(path) {
         return http.get(`/view/img?imagePath=${path}`);
     }
+    async getFoundationProjectsByTargetCatID(id) {
+        return http.get(`/view/foundationproject/target?targetCatID=${id}`);
+    }
 }
 
 export default new FoundationProjectService();

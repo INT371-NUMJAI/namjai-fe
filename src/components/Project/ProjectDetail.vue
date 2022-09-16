@@ -9,17 +9,18 @@
       >
         {{ fdnProjectProp.targetCategoriesName }}
       </p>
-      {{ fdnProjectProps.picturePath }}
     </div>
     <h1 class="text-xl lg:text-3xl mb-[20px] lg:mb-[30px]">
       {{ fdnProjectProps.foundationProjectName }}
     </h1>
+    <div class="overflow-hidden lg:w-[500px]">
     <img
-      class="mb-[30px] lg:w-[700px] float-left mr-[30px]"
-      :src="getImage(fdnProjectProps.picturePath)"
+      class="mb-[30px] w-full lg:h-[500px] lg:object-cover float-left mr-[30px]"
+      :src="getImage()"
     />
+  </div>
     <div
-      class="bg-white h-screen text-base ml-[730px] w-[342px] lg:block hidden fixed -mt-[190px]"
+      class="bg-white h-screen text-base ml-[730px] w-[342px] lg:block hidden fixed   "
     >
       <div class="mx-[30px] py-[150px]">
         <h1 class="text-base mb-[20px]">
@@ -183,7 +184,7 @@ export default {
     const stringStartDate = ref(props.fdnProjectProps.startDate);
     const stringEndDate = ref(props.fdnProjectProps.endDate);
     const formatStringDate = computed(() => {
-      return `${stringStartDate.value.toString().slice(0, 10)} - ${stringEndDate.value.toString().slice(0, 10)}`;
+      return `${stringStartDate.value} - ${stringEndDate.value}`;
     })
 
     const fdnAddress = ref(props.fdnProjectProps.foundationContactDTO);
@@ -192,12 +193,12 @@ export default {
     });
 
     const imagePath = ref(props.fdnProjectProps.picturePath)
-    const getImage = (path) => {
+    const getImage = () => {
       // return imagePath.value;
-      return projectService.getPicturePath(path);
+      return `${import.meta.env.VITE_APP_BACKEND_URL}/view/img?imagePath=${imagePath.value}`;
     };
-
-
+    // {{baseUrl}}/view/img?imagePath=./foundation/มูลนิธิไก่ต้มน้ำปลา/FOb4myuacAooNVZ.jpg
+    console.log(imagePath.value);
 
     return { getImage, showQR, validators, valid, formatStringDate, formatFdnAddress };
   },
