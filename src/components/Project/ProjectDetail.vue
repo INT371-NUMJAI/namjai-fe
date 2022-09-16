@@ -94,13 +94,6 @@
         <w-divider color="black" class="mb-[10px]"></w-divider>
         <p class="mb-[10px]">
           {{ formatFdnAddress }}
-          <!-- {{ fdnProjectProps.foundationContactDTO.fdnName }}
-          {{ fdnProjectProps.foundationContactDTO.addressDetail }} แขวง
-          {{ fdnProjectProps.foundationContactDTO.subDistrict }} เขต
-          {{ fdnProjectProps.foundationContactDTO.district }}
-          {{ fdnProjectProps.foundationContactDTO.province }}
-          {{ fdnProjectProps.foundationContactDTO.postalCode }} <br />
-          {{ fdnProjectProps.foundationContactDTO.email }} -->
         </p>
         <p>{{ fdnProjectProps.foundationContactDTO.contactNumber }}</p>
       </div>
@@ -170,7 +163,7 @@
 import { computed, ref } from "vue";
 import { useValidation } from "../Account/validator";
 import BaseButton from "../_Bases/BaseButton.vue";
-import foundationProjectService from "./project-service";
+import projectService from "./project-service";
 
 export default {
   components: { BaseButton },
@@ -198,9 +191,13 @@ export default {
       return `${fdnAddress.value.addressDetail} แขวง ${fdnAddress.value.subDistrict} เขต ${fdnAddress.value.district} ${fdnAddress.value.province} ${fdnAddress.value.postalCode} ${fdnAddress.value.email}`
     });
 
+    const imagePath = ref(props.fdnProjectProps.picturePath)
     const getImage = (path) => {
-      foundationProjectService.getPicturePath(path);
+      // return imagePath.value;
+      return projectService.getPicturePath(path);
     };
+
+
 
     return { getImage, showQR, validators, valid, formatStringDate, formatFdnAddress };
   },
