@@ -8,21 +8,30 @@
         class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-4"
       ></div>
     </div>
-    <div class="flex overflow-x-auto space-x-3">
-    <div
-      v-for="targetCat in targetList" :key="targetCat.targetCategoriesID"
-      class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[136px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md"
-    >
-    <div>
-      <router-link :to="`/project/targetCategories/${targetCat.targetCategoriesID}`">
-      <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-        <img src="@/assets/peep-1.png">
+    <div class="flex overflow-x-auto space-x-4 ">
+      <div
+        v-for="targetCat in targetList"
+        :key="targetCat.targetCategoriesID"
+        class="bg-white hover:text-white hover:bg-namjaigreen h-[160px] py-[10px] px-[10px] mx-[5px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md grid grid-flow-row"
+      >
+        <div class="">
+          <router-link
+            :to="`/project/targetCategories/${targetCat.targetCategoriesID}`"
+          >
+            <div
+              class="mx-auto rounded-full overflow-hidden w-[75px] bg-namjaibrown"
+            >
+              <img src="@/assets/peep-1.png" />
+            </div>
+            <div class="py-[10px]">
+            <h1 class="text-center w-[90px]">
+              {{ targetCat.targetCategoriesName }}
+            </h1>
+          </div>
+          </router-link>
+        </div>
       </div>
-      <h1 class="text-center pt-[10px]">{{ targetCat.targetCategoriesName }}</h1>
-    </router-link>
     </div>
-    </div>
-  </div>
     <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
       <project-card :projectCardProps="fdnProjectList" />
     </div>
@@ -54,52 +63,60 @@ export default {
     };
     fetchFdnProjectList();
 
-    const targetList = ref([ {
-        "targetCategoriesID": "1",
-        "targetCategoriesName": "การแพทย์"
-    },
-    {
-        "targetCategoriesID": "2",
-        "targetCategoriesName": "การศึกษา"
-    },
-    {
-        "targetCategoriesID": "3",
-        "targetCategoriesName": "เด็กและสตรี"
-    },
-    {
-        "targetCategoriesID": "4",
-        "targetCategoriesName": "บรรเทาสาธารณะภัย"
-    },
-    {
-        "targetCategoriesID": "5",
-        "targetCategoriesName": "ผู้พิการ"
-    },
-    {
-        "targetCategoriesID": "6",
-        "targetCategoriesName": "ผู้สูงอายุ"
-    },
-    {
-        "targetCategoriesID": "7",
-        "targetCategoriesName": "พัฒนาชุมชน"
-    },
-    {
-        "targetCategoriesID": "8",
-        "targetCategoriesName": "ศิลปะและวัฒนธรรม"
-    },
-    {
-        "targetCategoriesID": "9",
-        "targetCategoriesName": "สัตว์"
-    },
-    {
-        "targetCategoriesID": "10",
-        "targetCategoriesName": "สิ่งแวดล้อม"
-    },
-    {
-        "targetCategoriesID": "11",
-        "targetCategoriesName": "สิทธิมนุษยชน"
-    }]);
+    const targetList = ref([
+      {
+        targetCategoriesID: "1",
+        targetCategoriesName: "การแพทย์",
+      },
+      {
+        targetCategoriesID: "2",
+        targetCategoriesName: "การศึกษา",
+      },
+      {
+        targetCategoriesID: "3",
+        targetCategoriesName: "เด็กและสตรี",
+      },
+      {
+        targetCategoriesID: "4",
+        targetCategoriesName: "บรรเทาสาธารณะภัย",
+      },
+      {
+        targetCategoriesID: "5",
+        targetCategoriesName: "ผู้พิการ",
+      },
+      {
+        targetCategoriesID: "6",
+        targetCategoriesName: "ผู้สูงอายุ",
+      },
+      {
+        targetCategoriesID: "7",
+        targetCategoriesName: "พัฒนาชุมชน",
+      },
+      {
+        targetCategoriesID: "8",
+        targetCategoriesName: "ศิลปะและวัฒนธรรม",
+      },
+      {
+        targetCategoriesID: "9",
+        targetCategoriesName: "สัตว์",
+      },
+      {
+        targetCategoriesID: "10",
+        targetCategoriesName: "สิ่งแวดล้อม",
+      },
+      {
+        targetCategoriesID: "11",
+        targetCategoriesName: "สิทธิมนุษยชน",
+      },
+    ]);
 
     return { fdnProjectList, targetList };
   },
 };
 </script>
+
+<style scoped>
+  ::-webkit-scrollbar {
+	display: none;
+}
+</style>

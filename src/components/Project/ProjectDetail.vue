@@ -1,11 +1,11 @@
 <template>
   <div class="mx-[30px] md:mx-24 lg:mx-44 mt-[50px] lg:mt-[120px]">
-    <div class="flex space-x-2">
+    <div class="flex space-x-2 text-sm lg:text-base">
       <p>หมวดหมู่:</p>
       <p
         v-for="fdnProjectProp in fdnProjectProps.targetCategoriesSet"
         :key="fdnProjectProp"
-        class="text-sm lg:text-base mb-[20px]"
+        class="mb-[20px]"
       >
         {{ fdnProjectProp.targetCategoriesName }}
       </p>
@@ -13,14 +13,21 @@
     <h1 class="text-xl lg:text-3xl mb-[20px] lg:mb-[30px]">
       {{ fdnProjectProps.foundationProjectName }}
     </h1>
-    <div class="overflow-hidden lg:w-[500px]">
+    <!-- <div class="overflow-hidden lg:w-[500px]">
     <img
-      class="mb-[30px] w-full lg:h-[500px] lg:object-cover float-left mr-[30px]"
+      class="mb-[30px] w-fill lg:h-[500px] lg:object-cover float-left mr-[30px]"
+      :src="getImage()"
+    />
+  </div> -->
+  <div class="flex">
+  <div class="w-[100%] md:w-[100%] lg:w-[65%] overflow-hidden">
+    <img
+      class="mb-[30px] w-full lg:w-[700px] lg:object-cover float-left mr-[30px]"
       :src="getImage()"
     />
   </div>
     <div
-      class="bg-white h-screen text-base ml-[730px] w-[342px] lg:block hidden fixed   "
+      class="bg-white h-screen text-base ml-[730px] w-[342px] lg:block hidden fixed -mt-[200px]"
     >
       <div class="mx-[30px] py-[150px]">
         <h1 class="text-base mb-[20px]">
@@ -77,8 +84,9 @@
         </div>
       </div>
     </div>
+  </div>
     <div
-      class="bg-white h-auto text-sm rounded-md mb-[30px] lg:mb-[40px] lg:w-[700px] lg:mt-[530px] mt-[270px] md:mt-[480px]"
+      class="bg-white h-auto text-sm rounded-md mb-[30px] lg:mb-[40px] lg:w-[700px]"
     >
       <div class="mx-[20px] py-[20px]">
         <h1 class="mb-[10px]">รายละเอียด</h1>
