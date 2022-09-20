@@ -11,7 +11,7 @@ const router = createRouter({
 			path: "/",
 			name: "home",
 			component: () => import("../components/Page/Landing.vue"),
-			// component: () => import("../components/Project/ProjectDetail.vue"),
+			// component: () => import("../components/Report/ViewReportList.vue"),
 		},
 		{
 			path: "/main",
@@ -90,6 +90,11 @@ const router = createRouter({
 			path: "/verify/fdn/:id",
 			name: "fdn-detail-verify",
 			component: () => import("../components/Verification/AdminVerifyAccountDetail.vue"),
+		},
+		{
+			path: "/report",
+			name: "report",
+			component: () => import("../components/Report/ReportForm.vue"),
 		},
 	],
 });
