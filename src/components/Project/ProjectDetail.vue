@@ -3,28 +3,28 @@
     <div class="flex space-x-2">
       <p>หมวดหมู่:</p>
       <p
-        v-for="fdnProjectProp in fdnProjectProps.targetCategoriesSet"
+        v-for="fdnProjectProp in fdnProject.targetCategoriesSet"
         :key="fdnProjectProp"
         class="text-sm lg:text-base mb-[20px]"
       >
         {{ fdnProjectProp.targetCategoriesName }}
       </p>
-      {{ fdnProjectProps.picturePath }}
+      {{ fdnProject.picturePath }}
     </div>
     <h1 class="text-xl lg:text-3xl mb-[20px] lg:mb-[30px]">
-      {{ fdnProjectProps.foundationProjectName }}
+      {{ fdnProject.foundationProjectName }}
     </h1>
-    <img
+    <!-- <img
       class="mb-[30px] lg:w-[700px] float-left mr-[30px]"
-      :src="getImage(fdnProjectProps.picturePath)"
-    />
+      :src="getImage(fdnProject.picturePath)"
+    /> -->
     <div
       class="bg-white h-screen text-base ml-[730px] w-[342px] lg:block hidden fixed -mt-[190px]"
     >
       <div class="mx-[30px] py-[150px]">
         <div class="flex mb-[20px]">
           <h1 class="text-base">
-            {{ fdnProjectProps.foundationContactDTO.fdnName }}
+            {{ fdnProject.foundationContactDTO.fdnName }}
           </h1>
           <w-switch
             v-model="value"
@@ -37,11 +37,11 @@
           </w-switch>
         </div>
         <h1 class="text-xl mb-[30px]">
-          {{ fdnProjectProps.foundationProjectName }}
+          {{ fdnProject.foundationProjectName }}
         </h1>
         <p class="text-sm mb-[30px]">
-          ระยะเวลา: {{ fdnProjectProps.startDate }} -
-          {{ fdnProjectProps.endDate }}
+          ระยะเวลา: {{ fdnProject.startDate }} -
+          {{ fdnProject.endDate }}
         </p>
         <div class="grid grid-cols-2 mb-[20px]">
           <p>ยอดบริจาคปัจจุบัน</p>
@@ -53,7 +53,7 @@
         <div class="grid grid-cols-2">
           <p>เป้าหมาย</p>
           <h1 class="text-xl text-namjaired text-right">
-            {{ fdnProjectProps.goal }}
+            {{ fdnProject.goal }}
           </h1>
         </div>
         <w-form v-model="valid" v-if="showQR === false">
@@ -95,25 +95,25 @@
         <h1 class="mb-[10px]">รายละเอียด</h1>
         <w-divider color="black" class="mb-[10px]"></w-divider>
         <p class="mb-[30px]">
-          {{ fdnProjectProps.foundationProjectDetail }}
+          {{ fdnProject.foundationProjectDetail }}
         </p>
         <h1 class="mb-[10px]">สถานที่และเวลาดำเนินโครงการ</h1>
         <w-divider color="black" class="mb-[10px]"></w-divider>
         <p class="mb-[10px]">
-          {{ fdnProjectProps.foundationProjectDetailPlace }}
+          {{ fdnProject.foundationProjectDetailPlace }}
         </p>
         <h1 class="mb-[10px]">ติดต่อ</h1>
         <w-divider color="black" class="mb-[10px]"></w-divider>
         <p class="mb-[10px]">
-          {{ fdnProjectProps.foundationContactDTO.fdnName }}
-          {{ fdnProjectProps.foundationContactDTO.addressDetail }} แขวง
-          {{ fdnProjectProps.foundationContactDTO.subDistrict }} เขต
-          {{ fdnProjectProps.foundationContactDTO.district }}
-          {{ fdnProjectProps.foundationContactDTO.province }}
-          {{ fdnProjectProps.foundationContactDTO.postalCode }} <br />
-          {{ fdnProjectProps.foundationContactDTO.email }}
+          {{ fdnProject.foundationContactDTO.fdnName }}
+          {{ fdnProject.foundationContactDTO.addressDetail }} แขวง
+          {{ fdnProject.foundationContactDTO.subDistrict }} เขต
+          {{ fdnProject.foundationContactDTO.district }}
+          {{ fdnProject.foundationContactDTO.province }}
+          {{ fdnProject.foundationContactDTO.postalCode }} <br />
+          {{ fdnProject.foundationContactDTO.email }}
         </p>
-        <p>{{ fdnProjectProps.foundationContactDTO.contactNumber }}</p>
+        <p>{{ fdnProject.foundationContactDTO.contactNumber }}</p>
       </div>
     </div>
     <div class="bg-white h-auto text-sm rounded-md mb-[30px] lg:hidden block">
@@ -121,7 +121,7 @@
         <div class="grid grid-flow-col mb-[20px]">
           <p>ระยะเวลา:</p>
           <p class="text-right">
-            {{ fdnProjectProps.startDate }} - {{ fdnProjectProps.endDate }}
+            {{ fdnProject.startDate }} - {{ fdnProject.endDate }}
           </p>
         </div>
         <!-- <p class="text-sm mb-[20px]">ระยะเวลา: 12/12/2022 - 02/01/2023</p> -->
@@ -135,7 +135,7 @@
         <div class="grid grid-cols-2 mb-[20px]">
           <p>เป้าหมาย</p>
           <h1 class="text-lg text-namjaired text-right">
-            {{ fdnProjectProps.goal }}
+            {{ fdnProject.goal }}
           </h1>
         </div>
         <!-- <base-button
@@ -174,21 +174,21 @@ export default {
 	// setup(props) {
 	setup() {
 		const showQR = ref(false);
+    const value = ref(false);
 		const { validators } = useValidation();
 		const valid = ref(null);
 
 		const route = useRoute();
-		const { project, getProjectByID } = useProjects();
+		const { fdnProject, getProjectByID } = useProjects();
 		getProjectByID(route.params.id);
-		console.log(project[0]);
 
-		const stringStartDate = ref(project.startDate);
-		const stringEndDate = ref(project.endDate);
+		const stringStartDate = fdnProject.startDate;
+		const stringEndDate = fdnProject.endDate;
 		const formatStringDate = computed(() => {
-			return `${stringStartDate.value} - ${stringEndDate.value}`;
+			return `${stringStartDate} - ${stringEndDate}`;
 		});
-
-		const fdnAddress = project.value.foundationContactDTO;
+    console.log(fdnProject.value);
+		const fdnAddress = fdnProject.foundationContactDTO;
 		const formatFdnAddress = computed(() => {
 			return `${fdnAddress.addressDetail}`;
 			// return `${fdnAddress.addressDetail} แขวง ${fdnAddress.value.subDistrict} เขต ${fdnAddress.value.district} ${fdnAddress.value.province} ${fdnAddress.value.postalCode} ${fdnAddress.value.email}`;
@@ -204,12 +204,13 @@ export default {
 
 		return {
 			// getImage,
-			project,
+			fdnProject,
 			showQR,
 			validators,
 			valid,
 			formatStringDate,
 			formatFdnAddress,
+      value
 		};
 	},
 };

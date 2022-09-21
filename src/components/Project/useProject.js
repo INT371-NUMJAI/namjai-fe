@@ -4,13 +4,13 @@ http.defaults.headers["Content-type"] = "application/json";
 http.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
 export default function useProjects() {
-	const project = reactive([]);
+	const fdnProject = ref({});
 
 	const getProjectByID = async (id) => {
 		let response = await http.get(`/view/foundationprojects/${id}`);
-		project[0] = response.data;
-		console.log(project[0]);
+		fdnProject.value = response.data;
+		console.log(fdnProject.value);
 	};
 
-	return { project, getProjectByID };
+	return { fdnProject, getProjectByID };
 }
