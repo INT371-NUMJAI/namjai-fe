@@ -74,7 +74,12 @@ const router = createRouter({
 		{
 			path: "/project/:id",
 			name: "fdn-project-detail",
-			component: () => import("../components/Project/ViewProject.vue"),
+			component: () => import("../components/Project/ProjectDetail.vue"),
+		},
+		{
+			path: "/project/targetCategories/:id",
+			name: "fdn-project-targetCat",
+			component: () => import("../components/Project/ViewProjectsByTargetCat.vue"),
 		},
 		{
 			path: "/add/foundationproject",

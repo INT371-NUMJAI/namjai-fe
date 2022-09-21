@@ -142,71 +142,76 @@
           class="w-[140px] md:w-[356px] mb-[30px]"
           buttonLabel="บริจาค"
         ></base-button> -->
-        <w-form v-model="valid" v-if="showQR === false">
-          <div class="flex mt-[30px] mx-auto">
-            <h1 class="my-auto pr-[15px]">จำนวนเงิน</h1>
-            <w-input
-              :validators="[validators.required]"
-              class="my-auto text-center"
-              type="number"
-              bg-color="white"
-              color="black"
-            ></w-input>
-            <h1 class="pl-[15px] my-auto">บาท</h1>
-          </div>
-          <base-button
-            :isValid="valid === false"
-            @click="showQR = true"
-            class="mt-[30px] w-[150px]"
-            buttonLabel="บริจาค"
-          ></base-button>
-        </w-form>
-        <div v-if="showQR === true">
-          <img
-            class="w-[150px] mx-auto mt-[20px]"
-            src="https://i.ibb.co/Nm7JDbS/qr-demo.png"
-          />
-          <base-button
-            @click="showQR = false"
-            class="w-[150px]"
-            buttonLabel="ระบุจำนวนเงิน"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
+				<w-form v-model="valid" v-if="showQR === false">
+					<div class="flex mt-[30px] mx-auto">
+						<h1 class="my-auto pr-[15px]">จำนวนเงิน</h1>
+						<w-input :validators="[validators.required, validators.negativeNumber]" class="my-auto text-center" type="number" bg-color="white" color="black"></w-input>
+						<h1 class="pl-[15px] my-auto">บาท</h1>
+					</div>
+					<base-button :isValid="valid === false" @click="showQR = true" class="mt-[30px] w-[150px]" buttonLabel="บริจาค"></base-button>
+				</w-form>
+				<div v-if="showQR === true">
+					<img class="w-[150px] mx-auto mt-[20px]" src="https://i.ibb.co/Nm7JDbS/qr-demo.png" />
+					<base-button @click="showQR = false" class="w-[150px]" buttonLabel="ระบุจำนวนเงิน" />
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { computed, ref } from "vue";
+import { useRoute } from "vue-router";
 import { useValidation } from "../Account/validator";
-import BaseButton from "../_Bases/BaseButton.vue";
-import foundationProjectService from "./project-service";
-import { useAuth } from "../../services/auth-middleware";
-import { useStore } from "vuex";
-
+// import project[0]Service from "./project-service";
+import useProjects from "./useProject";
 export default {
-  components: { BaseButton },
-  props: {
-    fdnProjectProps: {
-      type: Object,
-    },
-    picturePathProps: {
-      type: String,
-    },
-  },
-  setup() {
-    const showQR = ref(false);
-    const value = ref(true);
-    const { validators } = useValidation();
-    const valid = ref(null);
+	// props: {
+	// 	project: {
+	// 		type: Object,
+	// 	},
+	// },
+	// setup(props) {
+	setup() {
+		const showQR = ref(false);
+		const { validators } = useValidation();
+		const valid = ref(null);
 
-    const getImage = (path) => {
-      foundationProjectService.getPicturePath(path);
-    };
+		const route = useRoute();
+		const { project, getProjectByID } = useProjects();
+		getProjectByID(route.params.id);
+		console.log(project[0]);
 
-    return { getImage, showQR, validators, valid, value };
-  },
+		const stringStartDate = ref(project.startDate);
+		const stringEndDate = ref(project.endDate);
+		const formatStringDate = computed(() => {
+			return `${stringStartDate.value} - ${stringEndDate.value}`;
+		});
+
+		const fdnAddress = project.value.foundationContactDTO;
+		const formatFdnAddress = computed(() => {
+			return `${fdnAddress.addressDetail}`;
+			// return `${fdnAddress.addressDetail} แขวง ${fdnAddress.value.subDistrict} เขต ${fdnAddress.value.district} ${fdnAddress.value.province} ${fdnAddress.value.postalCode} ${fdnAddress.value.email}`;
+		});
+
+		// const imagePath = ref(props.project.picturePath)
+		// const getImage = () => {
+		// 	// return imagePath.value;
+		// 	return `${import.meta.env.VITE_APP_BACKEND_URL}/view/img?imagePath=${imagePath.value}`;
+		// };
+		// {{baseUrl}}/view/img?imagePath=./foundation/มูลนิธิไก่ต้มน้ำปลา/FOb4myuacAooNVZ.jpg
+		// console.log(imagePath.value);
+
+		return {
+			// getImage,
+			project,
+			showQR,
+			validators,
+			valid,
+			formatStringDate,
+			formatFdnAddress,
+		};
+	},
 };
 </script>
 
