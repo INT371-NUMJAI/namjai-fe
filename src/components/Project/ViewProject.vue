@@ -26,6 +26,8 @@ export default {
     };
     fetchFdnProjectById(route.params.id);
 
+    console.log(fdnProject.value.foundationContactDTO);
+
     return { route, fdnProject };
   }
 };

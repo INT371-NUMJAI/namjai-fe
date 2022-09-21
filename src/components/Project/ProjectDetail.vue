@@ -22,9 +22,20 @@
       class="bg-white h-screen text-base ml-[730px] w-[342px] lg:block hidden fixed -mt-[190px]"
     >
       <div class="mx-[30px] py-[150px]">
-        <h1 class="text-base mb-[20px]">
-          {{ fdnProjectProps.foundationContactDTO.fdnName }}
-        </h1>
+        <div class="flex mb-[20px]">
+          <h1 class="text-base">
+            {{ fdnProjectProps.foundationContactDTO.fdnName }}
+          </h1>
+          <w-switch
+            v-model="value"
+            color="namjai-green"
+            class="ml-[170px] w-switch--wide"
+          >
+            <template #track>
+              <p>{{ value ? "on" : "off" }}</p>
+            </template>
+          </w-switch>
+        </div>
         <h1 class="text-xl mb-[30px]">
           {{ fdnProjectProps.foundationProjectName }}
         </h1>
@@ -171,6 +182,8 @@ import { ref } from "vue";
 import { useValidation } from "../Account/validator";
 import BaseButton from "../_Bases/BaseButton.vue";
 import foundationProjectService from "./project-service";
+import { useAuth } from "../../services/auth-middleware";
+import { useStore } from "vuex";
 
 export default {
   components: { BaseButton },
@@ -184,6 +197,7 @@ export default {
   },
   setup() {
     const showQR = ref(false);
+    const value = ref(true);
     const { validators } = useValidation();
     const valid = ref(null);
 
@@ -191,7 +205,26 @@ export default {
       foundationProjectService.getPicturePath(path);
     };
 
-    return { getImage, showQR, validators, valid };
+    return { getImage, showQR, validators, valid, value };
   },
 };
 </script>
+
+<style scoped>
+.w-switch__track {
+  color: #666;
+}
+.w-switch--on .w-switch__track {
+  color: #fff;
+}
+.w-switch--wide .w-switch__input {
+  width: 100px;
+}
+.w-switch--wide .w-switch__track {
+  width: 150px;
+  text-align: center;
+}
+.namjai-green {
+  color: #00715d;
+}
+</style>
