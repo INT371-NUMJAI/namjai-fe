@@ -1,206 +1,171 @@
 <template>
-  <div class="mx-[30px] md:mx-24 lg:mx-44 mt-[50px] lg:mt-[120px]">
-    <div class="flex space-x-2">
-      <p>หมวดหมู่:</p>
-      <p
-        v-for="fdnProjectProp in fdnProjectProps.targetCategoriesSet"
-        :key="fdnProjectProp"
-        class="text-sm lg:text-base mb-[20px]"
-      >
-        {{ fdnProjectProp.targetCategoriesName }}
-      </p>
-    </div>
-    <h1 class="text-xl lg:text-3xl mb-[20px] lg:mb-[30px]">
-      {{ fdnProjectProps.foundationProjectName }}
-    </h1>
-    <div class="overflow-hidden lg:w-[500px]">
-    <img
+	<div class="mx-[30px] md:mx-24 lg:mx-44 mt-[50px] lg:mt-[120px]">
+		<div class="flex space-x-2">
+			<p>หมวดหมู่:</p>
+			<!-- <p v-for="fdnProjectProp in project.targetCategoriesSet" :key="fdnProjectProp" class="text-sm lg:text-base mb-[20px]">
+				{{ fdnProjectProp.targetCategoriesName }}
+			</p> -->
+		</div>
+		<h1 class="text-xl lg:text-3xl mb-[20px] lg:mb-[30px]">
+			{{ project.foundationProjectName }}
+		</h1>
+		<div class="overflow-hidden lg:w-[500px]">
+			<!-- <img
       class="mb-[30px] w-full lg:h-[500px] lg:object-cover float-left mr-[30px]"
       :src="getImage()"
-    />
-  </div>
-    <div
-      class="bg-white h-screen text-base ml-[730px] w-[342px] lg:block hidden fixed   "
-    >
-      <div class="mx-[30px] py-[150px]">
-        <h1 class="text-base mb-[20px]">
-          {{ fdnProjectProps.foundationContactDTO.fdnName }}
-        </h1>
-        <h1 class="text-xl mb-[30px]">
-          {{ fdnProjectProps.foundationProjectName }}
-        </h1>
-        <p class="text-sm mb-[30px]">
-          ระยะเวลา: {{ formatStringDate }}
-        </p>
-        <div class="grid grid-cols-2 mb-[20px]">
-          <p>ยอดบริจาคปัจจุบัน</p>
-          <h1 class="text-2xl text-namjaigreen text-right">0</h1>
-        </div>
-        <div class="w-full bg-gray-300 rounded-full h-3 mb-[20px]">
-          <div class="bg-namjaigreen h-3 rounded-full" style="width: 25%"></div>
-        </div>
-        <div class="grid grid-cols-2">
-          <p>เป้าหมาย</p>
-          <h1 class="text-xl text-namjaired text-right">
-            {{ fdnProjectProps.goal }}
-          </h1>
-        </div>
-        <w-form v-model="valid" v-if="showQR === false">
-          <div class="flex mt-[30px]">
-            <h1 class="my-auto pr-[10px]">จำนวนเงิน</h1>
-            <w-input
-              :validators="[validators.required, validators.negativeNumber]"
-              class="my-auto text-center"
-              type="number"
-              bg-color="white"
-              color="black"
-            ></w-input>
-            <h1 class="pl-[5px] my-auto">บาท</h1>
-          </div>
-          <base-button
-            @click="showQR = true"
-            class="mt-[30px] w-[150px]"
-            buttonLabel="บริจาค"
-            :isValid="valid === false"
-          />
-        </w-form>
-        <div v-if="showQR === true">
-          <img
-            class="w-[150px] mx-auto mt-[20px]"
-            src="https://i.ibb.co/Nm7JDbS/qr-demo.png"
-          />
-          <base-button
-            @click="showQR = false"
-            class="w-[150px]"
-            buttonLabel="ระบุจำนวนเงิน"
-          />
-        </div>
-      </div>
-    </div>
-    <div
-      class="bg-white h-auto text-sm rounded-md mb-[30px] lg:mb-[40px] lg:w-[700px] lg:mt-[530px] mt-[270px] md:mt-[480px]"
-    >
-      <div class="mx-[20px] py-[20px]">
-        <h1 class="mb-[10px]">รายละเอียด</h1>
-        <w-divider color="black" class="mb-[10px]"></w-divider>
-        <p class="mb-[30px]">
-          {{ fdnProjectProps.foundationProjectDetail }}
-        </p>
-        <h1 class="mb-[10px]">สถานที่และเวลาดำเนินโครงการ</h1>
-        <w-divider color="black" class="mb-[10px]"></w-divider>
-        <p class="mb-[10px]">
-          {{ fdnProjectProps.foundationProjectDetailPlace }}
-        </p>
-        <h1 class="mb-[10px]">ติดต่อ</h1>
-        <w-divider color="black" class="mb-[10px]"></w-divider>
-        <p class="mb-[10px]">
-          {{ formatFdnAddress }}
-        </p>
-        <p>{{ fdnProjectProps.foundationContactDTO.contactNumber }}</p>
-      </div>
-    </div>
-    <div class="bg-white h-auto text-sm rounded-md mb-[30px] lg:hidden block">
-      <div class="mx-[20px] py-[20px]">
-        <div class="grid grid-flow-col mb-[20px]">
-          <p>ระยะเวลา:</p>
-          <p class="text-right">
-            {{ formatStringDate }}
-          </p>
-        </div>
-        <!-- <p class="text-sm mb-[20px]">ระยะเวลา: 12/12/2022 - 02/01/2023</p> -->
-        <div class="grid grid-cols-2 mb-[20px]">
-          <p>ยอดบริจาคปัจจุบัน</p>
-          <h1 class="text-2xl text-namjaigreen text-right">0</h1>
-        </div>
-        <div class="w-full bg-gray-300 rounded-full h-3 mb-[20px]">
-          <div class="bg-namjaigreen h-3 rounded-full" style="width: 25%"></div>
-        </div>
-        <div class="grid grid-cols-2 mb-[20px]">
-          <p>เป้าหมาย</p>
-          <h1 class="text-lg text-namjaired text-right">
-            {{ fdnProjectProps.goal }}
-          </h1>
-        </div>
-        <!-- <base-button
+    /> -->
+		</div>
+		<div class="bg-white h-screen text-base ml-[730px] w-[342px] lg:block hidden fixed">
+			<div class="mx-[30px] py-[150px]">
+				<h1 class="text-base mb-[20px]">
+					{{ project.foundationContactDTO }}
+				</h1>
+				<h1 class="text-xl mb-[30px]">
+					{{ project.foundationProjectName }}
+				</h1>
+				<p class="text-sm mb-[30px]">ระยะเวลา: {{ formatStringDate }}</p>
+				<div class="grid grid-cols-2 mb-[20px]">
+					<p>ยอดบริจาคปัจจุบัน</p>
+					<h1 class="text-2xl text-namjaigreen text-right">0</h1>
+				</div>
+				<div class="w-full bg-gray-300 rounded-full h-3 mb-[20px]">
+					<div class="bg-namjaigreen h-3 rounded-full" style="width: 25%"></div>
+				</div>
+				<div class="grid grid-cols-2">
+					<p>เป้าหมาย</p>
+					<h1 class="text-xl text-namjaired text-right">
+						{{ project.goal }}
+					</h1>
+				</div>
+				<w-form v-model="valid" v-if="showQR === false">
+					<div class="flex mt-[30px]">
+						<h1 class="my-auto pr-[10px]">จำนวนเงิน</h1>
+						<w-input :validators="[validators.required, validators.negativeNumber]" class="my-auto text-center" type="number" bg-color="white" color="black"></w-input>
+						<h1 class="pl-[5px] my-auto">บาท</h1>
+					</div>
+					<base-button @click="showQR = true" class="mt-[30px] w-[150px]" buttonLabel="บริจาค" :isValid="valid === false" />
+				</w-form>
+				<div v-if="showQR === true">
+					<img class="w-[150px] mx-auto mt-[20px]" src="https://i.ibb.co/Nm7JDbS/qr-demo.png" />
+					<base-button @click="showQR = false" class="w-[150px]" buttonLabel="ระบุจำนวนเงิน" />
+				</div>
+			</div>
+		</div>
+		<div class="bg-white h-auto text-sm rounded-md mb-[30px] lg:mb-[40px] lg:w-[700px] lg:mt-[530px] mt-[270px] md:mt-[480px]">
+			<div class="mx-[20px] py-[20px]">
+				<h1 class="mb-[10px]">รายละเอียด</h1>
+				<w-divider color="black" class="mb-[10px]"></w-divider>
+				<p class="mb-[30px]">
+					{{ project.foundationProjectDetail }}
+				</p>
+				<h1 class="mb-[10px]">สถานที่และเวลาดำเนินโครงการ</h1>
+				<w-divider color="black" class="mb-[10px]"></w-divider>
+				<p class="mb-[10px]">
+					{{ project.foundationProjectDetailPlace }}
+				</p>
+				<h1 class="mb-[10px]">ติดต่อ</h1>
+				<w-divider color="black" class="mb-[10px]"></w-divider>
+				<p class="mb-[10px]">
+					{{ formatFdnAddress }}
+				</p>
+				<!-- <p>{{ project[0].foundationContactDTO.contactNumber }}</p> -->
+			</div>
+		</div>
+		<div class="bg-white h-auto text-sm rounded-md mb-[30px] lg:hidden block">
+			<div class="mx-[20px] py-[20px]">
+				<div class="grid grid-flow-col mb-[20px]">
+					<p>ระยะเวลา:</p>
+					<p class="text-right">
+						{{ formatStringDate }}
+					</p>
+				</div>
+				<!-- <p class="text-sm mb-[20px]">ระยะเวลา: 12/12/2022 - 02/01/2023</p> -->
+				<div class="grid grid-cols-2 mb-[20px]">
+					<p>ยอดบริจาคปัจจุบัน</p>
+					<h1 class="text-2xl text-namjaigreen text-right">0</h1>
+				</div>
+				<div class="w-full bg-gray-300 rounded-full h-3 mb-[20px]">
+					<div class="bg-namjaigreen h-3 rounded-full" style="width: 25%"></div>
+				</div>
+				<div class="grid grid-cols-2 mb-[20px]">
+					<p>เป้าหมาย</p>
+					<h1 class="text-lg text-namjaired text-right">
+						{{ project[0].goal }}
+					</h1>
+				</div>
+				<!-- <base-button
           class="w-[140px] md:w-[356px] mb-[30px]"
           buttonLabel="บริจาค"
         ></base-button> -->
-        <w-form v-model="valid" v-if="showQR === false">
-          <div class="flex mt-[30px] mx-auto">
-            <h1 class="my-auto pr-[15px]">จำนวนเงิน</h1>
-            <w-input
-              :validators="[validators.required, validators.negativeNumber]"
-              class="my-auto text-center"
-              type="number"
-              bg-color="white"
-              color="black"
-            ></w-input>
-            <h1 class="pl-[15px] my-auto">บาท</h1>
-          </div>
-          <base-button
-            :isValid="valid === false"
-            @click="showQR = true"
-            class="mt-[30px] w-[150px]"
-            buttonLabel="บริจาค"
-          ></base-button>
-        </w-form>
-        <div v-if="showQR === true">
-          <img
-            class="w-[150px] mx-auto mt-[20px]"
-            src="https://i.ibb.co/Nm7JDbS/qr-demo.png"
-          />
-          <base-button
-            @click="showQR = false"
-            class="w-[150px]"
-            buttonLabel="ระบุจำนวนเงิน"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
+				<w-form v-model="valid" v-if="showQR === false">
+					<div class="flex mt-[30px] mx-auto">
+						<h1 class="my-auto pr-[15px]">จำนวนเงิน</h1>
+						<w-input :validators="[validators.required, validators.negativeNumber]" class="my-auto text-center" type="number" bg-color="white" color="black"></w-input>
+						<h1 class="pl-[15px] my-auto">บาท</h1>
+					</div>
+					<base-button :isValid="valid === false" @click="showQR = true" class="mt-[30px] w-[150px]" buttonLabel="บริจาค"></base-button>
+				</w-form>
+				<div v-if="showQR === true">
+					<img class="w-[150px] mx-auto mt-[20px]" src="https://i.ibb.co/Nm7JDbS/qr-demo.png" />
+					<base-button @click="showQR = false" class="w-[150px]" buttonLabel="ระบุจำนวนเงิน" />
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
 import { computed, ref } from "vue";
+import { useRoute } from "vue-router";
 import { useValidation } from "../Account/validator";
-import BaseButton from "../_Bases/BaseButton.vue";
-import projectService from "./project-service";
-
+// import project[0]Service from "./project-service";
+import useProjects from "./useProject";
 export default {
-  components: { BaseButton },
-  props: {
-    fdnProjectProps: {
-      type: Object,
-    },
-    picturePathProps: {
-      type: String,
-    },
-  },
-  setup(props) {
-    const showQR = ref(false);
-    const { validators } = useValidation();
-    const valid = ref(null);
-    
-    const stringStartDate = ref(props.fdnProjectProps.startDate);
-    const stringEndDate = ref(props.fdnProjectProps.endDate);
-    const formatStringDate = computed(() => {
-      return `${stringStartDate.value} - ${stringEndDate.value}`;
-    })
+	// props: {
+	// 	project: {
+	// 		type: Object,
+	// 	},
+	// },
+	// setup(props) {
+	setup() {
+		const showQR = ref(false);
+		const { validators } = useValidation();
+		const valid = ref(null);
 
-    const fdnAddress = ref(props.fdnProjectProps.foundationContactDTO);
-    const formatFdnAddress = computed(() => {
-      return `${fdnAddress.value.addressDetail} แขวง ${fdnAddress.value.subDistrict} เขต ${fdnAddress.value.district} ${fdnAddress.value.province} ${fdnAddress.value.postalCode} ${fdnAddress.value.email}`
-    });
+		const route = useRoute();
+		const { project, getProjectByID } = useProjects();
+		getProjectByID(route.params.id);
+		console.log(project[0]);
 
-    const imagePath = ref(props.fdnProjectProps.picturePath)
-    const getImage = () => {
-      // return imagePath.value;
-      return `${import.meta.env.VITE_APP_BACKEND_URL}/view/img?imagePath=${imagePath.value}`;
-    };
-    // {{baseUrl}}/view/img?imagePath=./foundation/มูลนิธิไก่ต้มน้ำปลา/FOb4myuacAooNVZ.jpg
-    console.log(imagePath.value);
+		const stringStartDate = ref(project.startDate);
+		const stringEndDate = ref(project.endDate);
+		const formatStringDate = computed(() => {
+			return `${stringStartDate.value} - ${stringEndDate.value}`;
+		});
 
-    return { getImage, showQR, validators, valid, formatStringDate, formatFdnAddress };
-  },
+		const fdnAddress = project.value.foundationContactDTO;
+		const formatFdnAddress = computed(() => {
+			return `${fdnAddress.addressDetail}`;
+			// return `${fdnAddress.addressDetail} แขวง ${fdnAddress.value.subDistrict} เขต ${fdnAddress.value.district} ${fdnAddress.value.province} ${fdnAddress.value.postalCode} ${fdnAddress.value.email}`;
+		});
+
+		// const imagePath = ref(props.project.picturePath)
+		// const getImage = () => {
+		// 	// return imagePath.value;
+		// 	return `${import.meta.env.VITE_APP_BACKEND_URL}/view/img?imagePath=${imagePath.value}`;
+		// };
+		// {{baseUrl}}/view/img?imagePath=./foundation/มูลนิธิไก่ต้มน้ำปลา/FOb4myuacAooNVZ.jpg
+		// console.log(imagePath.value);
+
+		return {
+			// getImage,
+			project,
+			showQR,
+			validators,
+			valid,
+			formatStringDate,
+			formatFdnAddress,
+		};
+	},
 };
 </script>
