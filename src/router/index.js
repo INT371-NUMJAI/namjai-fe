@@ -91,6 +91,12 @@ const router = createRouter({
 			name: "fdn-detail-verify",
 			component: () => import("../components/Verification/AdminVerifyAccountDetail.vue"),
 		},
+		{
+			path: "/suggestion",
+			name: "fdn-select-suggestion",
+			component: () => import("../components/FoundationSuggestion/Suggestion.vue"),
+		},
+		
 	],
 });
 export default router;

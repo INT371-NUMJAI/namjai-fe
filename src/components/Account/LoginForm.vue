@@ -56,7 +56,7 @@ export default {
 		const submitLogin = () => {
 			authService.login(loginRequest);
 			store.dispatch("auth/login", loginRequest).then(() => {
-				router.push("/project");
+				router.push("/suggestion");
 			});
 		};
 		const sentRequest = () => {
