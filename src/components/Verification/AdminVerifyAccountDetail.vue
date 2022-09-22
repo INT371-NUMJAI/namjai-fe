@@ -6,7 +6,7 @@
 				<h1 class="text-xl px-[5px]">ข้อมูลการจัดตั้งองค์กร</h1>
 			</legend>
 			<div class="flex space-x-[20px] mb-[20px]">
-				<h2 class="font-semibold">ชื่อมูลนิธิ</h2>
+				<h2 class="font-semibold">ชื่อมูลนิธิ:</h2>
 				<p>{{ fdnVerify.fdnName }}</p>
 			</div>
 			<div class="flex space-x-[20px] mb-[20px]">
@@ -86,7 +86,7 @@
 import VerificationStatus from "./VerificationStatus.vue";
 import approveService from "./approve-service";
 import { useRoute } from "vue-router";
-import { reactive, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import { useValidation } from "../Account/validator";
 
 export default {
@@ -104,7 +104,9 @@ export default {
 			});
 		};
 
-		fetchFoundationDetail(route.params.id);
+		onMounted(() => {
+			fetchFoundationDetail(route.params.id);
+		})
 
 		const clickToDownloadFile = (id) => {
 			approveService.getFDNDocumentFileByFDNUUID(id);
@@ -128,6 +130,8 @@ export default {
 		};
 
 		const { validators } = useValidation();
+
+		console.log(fdnVerify.value.status);
 
 		return { fdnVerify, clickToDownloadFile, valid, dialog, validators, clickToApprove, apiVerificationFDN, clickToVerify, clickToRejected };
 	},

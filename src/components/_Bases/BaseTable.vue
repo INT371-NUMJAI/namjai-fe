@@ -5,7 +5,7 @@
             <tr>
               <th class="py-3 w-[75px]">ลำดับ</th>
               <th>
-                 <p class="py-3 w-[300px]"> มูลนิธิ</p></th>
+                 <p class="py-3 w-[300px]">มูลนิธิ</p></th>
               <th class="py-3 w-[250px]">ชื่อ-สกุล</th>
               <th class="py-3 w-[200px]">วันที่สมัคร</th>
               <th class="py-3 w-[100px]">สถานะ</th>

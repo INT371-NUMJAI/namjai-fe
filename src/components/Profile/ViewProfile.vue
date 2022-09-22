@@ -1,7 +1,7 @@
 <template>
 	<div class="mx-[30px] lg:mx-[177px] mt-[120px] mb-[60px] space-y-2.5 lg:space-y-5">
 		<foundation-name :foundationNameProps="foundationName" />
-		<div class="my-5 px-[30px] py-3 lg:py-4 space-x-[30px] md:space-x-[50px] lg:space-x-[60px] bg-namjaiwhite rounded-lg flex text-center text-[14px] lg:text-[16px] font-black text-[#5A5A5A]">
+		<div class="container mx-auto px-[30px] py-3 lg:py-4 flex justify-center lg:justify-start space-x-[30px] md:space-x-[50px] lg:space-x-[60px] bg-namjaiwhite rounded-lg text-center text-[14px] lg:text-[16px] font-black text-[#5A5A5A] duration-200 easy-in-out">
 			<button class="active:border-b-4 active:border-namjaigreen">
 				<router-link to="/profile/post"><p>โพสต์</p></router-link>
 			</button>

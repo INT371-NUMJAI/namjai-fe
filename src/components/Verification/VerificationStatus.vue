@@ -32,9 +32,9 @@ export default {
 			setStatus(statusText);
 		});
 
-		onUpdated(() => {
-			setStatus(statusText);
-		});
+		// onUpdated(() => {
+		// 	setStatus(statusText);
+		// });
 		// setStatus(statusText);
 		return { statusProps, setStatus };
 	},
