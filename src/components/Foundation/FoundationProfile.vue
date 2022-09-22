@@ -1,5 +1,3 @@
-
-
 <template>
 	<div class="py-[30px] md:py-[32px] px-[30px] md:px-[34px] lg:px-[34px] bg-white rounded-lg space-y-5">
 		<span class="font-black">ทุกวันปัญหาในสังคมเราควรเกิด"การเปลี่ยนแปลง" แม้การเปลี่ยนแปลงนั้น จะเกิดทีละน้อยนิดแต่เป็น การเปลี่ยนแปลงที่เกิดขึ้นต่อเนื่องเป็นลูกโซ่ เราจึงขออาสาเป็นเงาในการสะท้อนเรื่องราวปัญหา เพื่อขับเคลื่อนสังคมของเราสู่การเปลี่ยนแปลง “สร้างคน สร้างนวัตกรรม สร้างการเปลี่ยนแปลง”</span>
@@ -22,8 +20,10 @@
   </template>
   
   <script>
+import BaseButton from '../_Bases/BaseButton.vue';
   export default {
 	components: {
+BaseButton
 	  
 	},
   };
