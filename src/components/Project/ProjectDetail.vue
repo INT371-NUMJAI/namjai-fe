@@ -105,6 +105,7 @@
         <p>{{ fdnProjectProps.foundationContactDTO.contactNumber }}</p>
       </div>
     </div>
+    <h1 class="text-namjaired">text</h1>
     <div class="bg-white h-auto text-sm rounded-md mb-[30px] lg:hidden block">
       <div class="mx-[20px] py-[20px]">
         <div class="grid grid-flow-col mb-[20px]">

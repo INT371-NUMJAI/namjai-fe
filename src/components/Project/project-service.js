@@ -25,6 +25,9 @@ class FoundationProjectService {
     async getRandomSixProjects(){
         return http.get("/view/random");
     }
+    getFoundationProjectByFDNUUID(id) {
+        return http.get(`/view/project/user?fdnUUID=${id}`);
+    }
 }
 
 export default new FoundationProjectService();
