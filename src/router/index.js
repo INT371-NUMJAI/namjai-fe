@@ -25,7 +25,7 @@ const router = createRouter({
 			children: [
 				{
 					path: "post",
-					component: () => import("../components/Post/PostBlockDetail.vue"),
+					component: () => import("../components/Post/ViewPostBlockDetail.vue"),
 				},
 				{
 					path: "project",
@@ -103,7 +103,6 @@ const router = createRouter({
 			name: "fdn-select-suggestion",
 			component: () => import("../components/FoundationSuggestion/Suggestion.vue"),
 		},
-		
 	],
 });
 export default router;
