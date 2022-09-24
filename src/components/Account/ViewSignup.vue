@@ -18,15 +18,22 @@
 							<div class="hidden lg:block">
 								<span>
 									<router-link to="/signup/user">
-										<w-checkbox color="amber" round v-model="clicked[0]" @click="clicked[1] = false" class="border border-amber-400 bg-white rounded-md py-2 px-3 text-center space-x-3">
+										<!-- <w-button color="amber"  v-model="clicked[0]" @click="clicked[1] = false" class="border border-amber-400 bg-white rounded-md py-2 px-3 text-center space-x-3"> -->
+										<w-button color="amber" class="border border-amber-400 bg-white rounded-md py-5 px-4 text-center space-x-3" @click="(selectedRouteUser = !selectedRouteUser), (selectedRouteFdn = false)">
+											<w-icon class="mr1" lg color="grey-light3" v-if="selectedRouteUser == false"> fa fa-circle-thin </w-icon>
+											<w-icon class="mr1" lg color="amber-light2" v-if="selectedRouteUser"> fa fa-check-circle </w-icon>
 											<p class="font-bold text-black">บุคคลทั่วไป</p>
-										</w-checkbox>
+										</w-button>
 									</router-link>
 								</span>
 								<span>
-									<w-checkbox color="amber" round v-model="clicked[1]" @click="clicked[0] = false" class="w-32 h-10 border border-amber-400 bg-white rounded-md py-2 pl-3 pr-8 space-x-3 ml-14">
-										<router-link to="/signup/foundation"> <p class="font-bold text-black">มูลนิธิ</p></router-link>
-									</w-checkbox>
+									<router-link to="/signup/foundation">
+										<w-button color="amber" class="w-32 h-10 border border-amber-400 bg-white rounded-md py-5 px-4 space-x-3 ml-14" @click="(selectedRouteFdn = !selectedRouteFdn), (selectedRouteUser = false)">
+											<w-icon class="mr1" lg color="grey-light3" v-if="selectedRouteFdn == false"> fa fa-circle-thin </w-icon>
+											<w-icon class="mr1" lg color="amber-light2" v-if="selectedRouteFdn"> fa fa-check-circle </w-icon>
+											<p class="font-bold text-black">มูลนิธิ</p>
+										</w-button></router-link
+									>
 								</span>
 
 								<router-view></router-view>
@@ -45,7 +52,17 @@ import { ref } from "vue";
 export default {
 	setup() {
 		const clicked = ref([false, false]);
-		return { clicked };
+		const selectedRouteUser = ref(false);
+		const selectedRouteFdn = ref(false);
+		const swapValueIcon = () => {
+			if (true === selectedRouteUser) {
+				selectedRouteFdn = false;
+			}
+			if (true === selectedRouteFdn) {
+				selectedRouteUser = false;
+			}
+		};
+		return { clicked, selectedRouteUser, selectedRouteFdn, swapValueIcon };
 	},
 };
 </script>
