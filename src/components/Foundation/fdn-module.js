@@ -10,7 +10,7 @@ export const fdn = {
         getUUID({commit}, email) {
             return AuthService.getUUID(email).then(
                 (UUID) => {
-                    console.log(initialState.UUID);
+                    // console.log(initialState.UUID);
                     commit("getUUIDSuccess", UUID);
                     return Promise.resolve(UUID);
                 },
@@ -19,14 +19,22 @@ export const fdn = {
 					return Promise.reject(error);
 				}
             )
-        }
+        },
+        logout({ commit }) {
+            localStorage.removeItem("uuid");
+			commit("logout");
+		},
     },
     mutations: {
         getUUIDSuccess(state, UUID) {
             state.UUID = UUID
+            console.log(initialState.UUID);
         },
         getUUIDFailure(state) {
             state.UUID = null;
-        }
+        },
+        logout(state) {
+			state.UUID = null;
+		},
     }
 }
