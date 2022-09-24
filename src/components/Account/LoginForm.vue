@@ -23,7 +23,7 @@
 				</div>
 				<!-- <base-button class="w-80" /> -->
 
-				<base-button buttonLabel="เข้าสู่ระบบ" :isValid="valid === false" buttonType="submit" @click="sentRequest" />
+				<base-button class="w-[342px]" buttonLabel="เข้าสู่ระบบ" :isValid="valid === false" buttonType="submit" @click="sentRequest" />
 				<!-- <base-button class="text-white text-lg font-semibold" @click="sentRequest" buttonLabel="เข้าสู่ระบบ" :isValid="valid === false" />
 				</div> -->
 			</w-form>

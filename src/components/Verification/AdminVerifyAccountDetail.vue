@@ -7,58 +7,60 @@
 			</legend>
 			<div class="flex space-x-[20px] mb-[20px]">
 				<h2 class="font-semibold">ชื่อมูลนิธิ</h2>
-				<p>{{ fdnVerify.fdnName }}</p>
+				<p>{{ foundation.fdnName }}</p>
 			</div>
 			<div class="flex space-x-[20px] mb-[20px]">
 				<h2 class="font-semibold">สถานะ:</h2>
-				<verification-status :statusText="fdnVerify.status" />
+				<!-- <verification-status /> -->
+				<verification-status :statusText="foundation.status" />
 			</div>
 			<div class="flex space-x-[20px] mb-[20px]">
 				<h2 class="font-semibold">ขนาดองค์กร:</h2>
-				<p>{{ fdnVerify.fdnSize }}</p>
+				<p>{{ foundation.fdnSize }}</p>
 			</div>
 			<div class="flex space-x-[20px] mb-[20px]">
 				<h2 class="font-semibold">ชื่อองค์กร:</h2>
-				<p>{{ fdnVerify.fdnName }}</p>
+				<p>{{ foundation.fdnName }}</p>
 			</div>
 			<div class="flex space-x-[20px] mb-[20px]">
 				<h2 class="font-semibold">สถานที่ตั้งองค์กร:</h2>
-				<p>{{ fdnVerify.addressDetail }} แขวง {{ fdnVerify.subDistrict }} เขต {{ fdnVerify.district }} จังหวัด {{ fdnVerify.province }} {{ fdnVerify.postalCode }}</p>
+				<p>{{ foundation.addressDetail }} แขวง {{ foundation.subDistrict }} เขต {{ foundation.district }} จังหวัด {{ foundation.province }} {{ foundation.postalCode }}</p>
 			</div>
 			<div class="flex space-x-[20px] mb-[20px]">
 				<h2 class="font-semibold">วัน/เดือน/ปี ที่จัดตั้ง:</h2>
-				<p>{{ fdnVerify.establishDate }}</p>
+				<p>{{ foundation.establishDate }}</p>
 			</div>
 			<div class="flex space-x-[20px] mb-[20px]">
 				<h2 class="font-semibold">ชื่อ-นามสกุล ผู้บริหาร:</h2>
-				<p>{{ fdnVerify.founderName }}</p>
+				<p>{{ foundation.founderName }}</p>
 			</div>
 			<div class="flex space-x-[20px] mb-[20px]">
 				<h2 class="font-semibold">เบอร์ติดต่อ:</h2>
-				<p>{{ fdnVerify.contactNumber }}</p>
+				<p>{{ foundation.contactNumber }}</p>
 			</div>
 			<div class="flex space-x-[20px] mb-[20px]">
 				<h2 class="font-semibold">อีเมล์:</h2>
-				<p>{{ fdnVerify.email }}</p>
+				<p>{{ foundation.email }}</p>
 			</div>
 			<div class="mb-[20px] space-y-[20px]">
 				<h2 class="font-semibold">รายละเอียดองค์กร:</h2>
-				<p>{{ fdnVerify.fdnDetail }}</p>
+				<p>{{ foundation.fdnDetail }}</p>
 			</div>
 			<div class="flex space-x-[20px] mb-[30px]">
 				<h2 class="font-semibold">เอกสารยืนยันตัวตน:</h2>
-				<button @click="clickToDownloadFile(fdnVerify.fdnUUid)" class="underline">click to download</button>
+				<button @click="clickToDownloadFile(foundation.fdnUUid)" class="underline">click to download</button>
 				<!-- <w-button color="primary" outline xs>extra small</w-button> -->
 				<w-icon>fa fa-download</w-icon>
 			</div>
-			{{ apiVerificationFDN }} {{ fdnVerify }}
+			<!-- {{ apiVerificationFDN }} {{ foundation }} -->
 		</fieldset>
-		<div class="flex mb-[60px] mx-auto justify-center space-x-[50px]">
+		<!-- <span v-if="role.name == 'Admin'">Yes</span> -->
+		<div class="flex mb-[60px] mx-auto justify-center space-x-[50px]" v-if="foundation.status === 'PENDING'">
 			<div class="flex">
-				<base-button class="w-[150px] h-[50px]" buttonLabel="อนุมัติ" @click="clickToVerify(fdnVerify.fdnUUid)" />
+				<base-button class="w-[150px] h-[50px]" buttonLabel="อนุมัติ" @click="clickToVerify(foundation.fdnUUid)" />
 			</div>
 			<div class="flex">
-				<base-button @click="(dialog.show = true), clickToRejected(fdnVerify.fdnUUid)" buttonColor="bg-namjaired" class="w-[150px] h-[50px] justify-start" buttonLabel="ไม่อนุมัติ" />
+				<base-button @click="(dialog.show = true), clickToRejected(foundation.fdnUUid)" buttonColor="bg-namjaired" class="w-[150px] h-[50px] justify-start" buttonLabel="ไม่อนุมัติ" />
 			</div>
 		</div>
 		<w-dialog v-model="dialog.show" :width="dialog.width" bg-color="namajai-green">
@@ -86,9 +88,9 @@
 import VerificationStatus from "./VerificationStatus.vue";
 import approveService from "./approve-service";
 import { useRoute } from "vue-router";
-import { reactive, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import { useValidation } from "../Account/validator";
-
+import useFoundation from "./useFoundation";
 export default {
 	components: {
 		VerificationStatus,
@@ -96,15 +98,19 @@ export default {
 
 	setup() {
 		const route = useRoute();
-		// const fdnVerify = reactive({ addressDetail: "", approval: "", contactNumber: "", createDate: "", district: "", email: "", establishDate: "", fdnDetail: "", fdnName: "", fdnSize: "", fdnUUid: "", founderName: "", postalCode: "", province: "", resource: null, status: "", subDistrict: "" });
-		const fdnVerify = reactive({});
-		const fetchFoundationDetail = (id) => {
-			approveService.getFDNByID(id).then((response) => {
-				fdnVerify = response.data;
-			});
-		};
 
-		fetchFoundationDetail(route.params.id);
+		// const foundation = reactive({ addressDetail: "", approval: "", contactNumber: "", createDate: "", district: "", email: "", establishDate: "", fdnDetail: "", fdnName: "", fdnSize: "", fdnUUid: "", founderName: "", postalCode: "", province: "", resource: null, status: "", subDistrict: "" });
+		const { foundation, getFDNByID, loading } = useFoundation();
+		const fdnStatus = ref("");
+		// fetchFoundationDetail(route.params.id);
+
+		// onMounted(() => {
+		getFDNByID(route.params.id);
+
+		const isPending = ref(false);
+		// const showButtons=()=>{
+		isPending.value = foundation.status === "PENDING" ? true : false;
+		// }
 
 		const clickToDownloadFile = (id) => {
 			approveService.getFDNDocumentFileByFDNUUID(id);
@@ -129,7 +135,7 @@ export default {
 
 		const { validators } = useValidation();
 
-		return { fdnVerify, clickToDownloadFile, valid, dialog, validators, clickToApprove, apiVerificationFDN, clickToVerify, clickToRejected };
+		return { fdnStatus, loading, foundation, clickToDownloadFile, valid, dialog, validators, clickToApprove, apiVerificationFDN, clickToVerify, clickToRejected, isPending };
 	},
 };
 </script>
