@@ -52,12 +52,14 @@ const router = createRouter({
 			component: () => import("../components/Account/ViewSignup.vue"),
 			children: [
 				{
+					// import SignupFormUser from "../components/Account/SignupFormUser.vue";
 					path: "user",
-					component: SignupFormUser,
+					component: () => import("../components/Account/SignupFormUser.vue"),
 				},
 				{
 					path: "foundation",
-					component: SignupFormFoundation,
+
+					component: () => import("../components/Account/SignupFormFoundation.vue"),
 				},
 			],
 		},
@@ -74,7 +76,12 @@ const router = createRouter({
 		{
 			path: "/project/:id",
 			name: "fdn-project-detail",
-			component: () => import("../components/Project/ViewProject.vue"),
+			component: () => import("../components/Project/ProjectDetail.vue"),
+		},
+		{
+			path: "/project/targetCategories/:id",
+			name: "fdn-project-targetCat",
+			component: () => import("../components/Project/ViewProjectsByTargetCat.vue"),
 		},
 		{
 			path: "/add/foundationproject",
