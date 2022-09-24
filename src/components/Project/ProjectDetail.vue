@@ -2,9 +2,9 @@
 	<div class="mx-[30px] md:mx-24 lg:mx-44 mt-[50px] lg:mt-[120px]">
 		<div class="flex space-x-2">
 			<p>หมวดหมู่:</p>
-			<!-- <p v-for="fdnProjectProp in project.targetCategoriesSet" :key="fdnProjectProp" class="text-sm lg:text-base mb-[20px]">
+			<p v-for="fdnProjectProp in project.targetCategoriesSet" :key="fdnProjectProp" class="text-sm lg:text-base mb-[20px]">
 				{{ fdnProjectProp.targetCategoriesName }}
-			</p> -->
+			</p>
 		</div>
 		<h1 class="text-xl lg:text-3xl mb-[20px] lg:mb-[30px]">
 			{{ project.foundationProjectName }}
@@ -17,16 +17,16 @@
 		</div>
 		<div class="bg-white h-screen text-base ml-[730px] w-[342px] lg:block hidden fixed">
 			<div class="mx-[30px] py-[150px]">
-				<h1 class="text-base mb-[20px]">
-					{{ project.foundationContactDTO }}
-				</h1>
 				<h1 class="text-xl mb-[30px]">
 					{{ project.foundationProjectName }}
 				</h1>
-				<p class="text-sm mb-[30px]">ระยะเวลา: {{ formatStringDate }}</p>
+				<!-- <p class="text-sm mb-[30px]">ระยะเวลา: {{ formatStringDate }}</p> -->
 				<div class="grid grid-cols-2 mb-[20px]">
 					<p>ยอดบริจาคปัจจุบัน</p>
 					<h1 class="text-2xl text-namjaigreen text-right">0</h1>
+					<p>ระยะเวลา:</p>
+
+					<p class="text-left">{{ formatStringDate }}</p>
 				</div>
 				<div class="w-full bg-gray-300 rounded-full h-3 mb-[20px]">
 					<div class="bg-namjaigreen h-3 rounded-full" style="width: 25%"></div>
@@ -65,19 +65,21 @@
 				</p>
 				<h1 class="mb-[10px]">ติดต่อ</h1>
 				<w-divider color="black" class="mb-[10px]"></w-divider>
-				<p class="mb-[10px]">
+				<p class="mb-[10px]" v-if="project.picturePath">
 					{{ formatFdnAddress }}
+					<!-- {{ project.foundationContactDTO.addressDetail }} -->
 				</p>
 				<!-- <p>{{ project[0].foundationContactDTO.contactNumber }}</p> -->
 			</div>
 		</div>
 		<div class="bg-white h-auto text-sm rounded-md mb-[30px] lg:hidden block">
 			<div class="mx-[20px] py-[20px]">
-				<div class="grid grid-flow-col mb-[20px]">
-					<p>ระยะเวลา:</p>
-					<p class="text-right">
+				<div class="grid grid-flow-col mb-[20px] bg-red-500">
+					<!-- <p class="bg-yellow-800">ระยะเวลา:</p> -->
+					<!-- <p class="text-right">
 						{{ formatStringDate }}
-					</p>
+						{{ project.startDate }}
+					</p> -->
 				</div>
 				<!-- <p class="text-sm mb-[20px]">ระยะเวลา: 12/12/2022 - 02/01/2023</p> -->
 				<div class="grid grid-cols-2 mb-[20px]">
@@ -90,7 +92,7 @@
 				<div class="grid grid-cols-2 mb-[20px]">
 					<p>เป้าหมาย</p>
 					<h1 class="text-lg text-namjaired text-right">
-						{{ project[0].goal }}
+						{{ project.goal }}
 					</h1>
 				</div>
 				<!-- <base-button
@@ -115,10 +117,9 @@
 </template>
 
 <script>
-import { computed, ref } from "vue";
+import { computed, ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useValidation } from "../Account/validator";
-// import project[0]Service from "./project-service";
 import useProjects from "./useProject";
 export default {
 	// props: {
@@ -134,32 +135,28 @@ export default {
 
 		const route = useRoute();
 		const { project, getProjectByID } = useProjects();
+
+		// getProjectByID(route.params.id);
 		getProjectByID(route.params.id);
-		console.log(project[0]);
 
-		const stringStartDate = ref(project.startDate);
-		const stringEndDate = ref(project.endDate);
 		const formatStringDate = computed(() => {
-			return `${stringStartDate.value} - ${stringEndDate.value}`;
+			return `${project.value.startDate} - ${project.value.endDate}`;
 		});
 
-		const fdnAddress = project.value.foundationContactDTO;
 		const formatFdnAddress = computed(() => {
-			return `${fdnAddress.addressDetail}`;
-			// return `${fdnAddress.addressDetail} แขวง ${fdnAddress.value.subDistrict} เขต ${fdnAddress.value.district} ${fdnAddress.value.province} ${fdnAddress.value.postalCode} ${fdnAddress.value.email}`;
+			return `${project.value.foundationContactDTO.addressDetail} แขวง ${project.value.foundationContactDTO.subDistrict} เขต ${project.value.foundationContactDTO.district} ${project.value.foundationContactDTO.province} ${project.value.foundationContactDTO.postalCode} ${project.value.foundationContactDTO.email}`;
 		});
 
-		// const imagePath = ref(props.project.picturePath)
-		// const getImage = () => {
-		// 	// return imagePath.value;
-		// 	return `${import.meta.env.VITE_APP_BACKEND_URL}/view/img?imagePath=${imagePath.value}`;
-		// };
-		// {{baseUrl}}/view/img?imagePath=./foundation/มูลนิธิไก่ต้มน้ำปลา/FOb4myuacAooNVZ.jpg
-		// console.log(imagePath.value);
+		// onMounted(() => {
+		// 	getProjectByID(route.params.id);
+		// 	formatStringDate;
+		// 	formatFdnAddress;
+		// });
 
 		return {
 			// getImage,
 			project,
+			// getProjectByID,
 			showQR,
 			validators,
 			valid,
