@@ -25,6 +25,11 @@
 						<label class="text-sm lg:text-base font-medium">รหัสผ่าน</label>
 						<w-input :validators="[validators.required, validators.minLength]" type="password" color="black" placeholder="รหัสผ่าน" v-model="user.password"></w-input>
 					</div>
+					<div class="space-y-2 lg:space-y-4">
+						<label class="text-sm lg:text-base font-medium">ยืนยันรหัสผ่าน</label>
+						<w-input :validators="[validators.required, validators.minLength]" type="password" color="black" placeholder="รหัสผ่าน" v-model="confirmPassword"></w-input>
+						<span class="text-namjaired" v-if="user.password.localeCompare(confirmPassword) != 0">Password incorrect</span>
+					</div>
 				</div>
 			</div>
 			<div class="lg:block lg:w-80 lg:mt-10 lg:pb-[60px] lg:mx-auto">
@@ -58,11 +63,12 @@ export default {
 			lastName: "",
 			password: "",
 		});
+		const confirmPassword = ref("");
 		const submitForm = () => {
 			authService.register(user);
 		};
 
-		return { valid, validators, user, submitForm };
+		return { valid, validators, user, confirmPassword, submitForm };
 	},
 };
 </script>

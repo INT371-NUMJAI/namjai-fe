@@ -12,6 +12,8 @@
 import ProjectCard from "./ProjectCard.vue";
 import { useRouter } from "vue-router";
 import { useAuth } from "../../services/auth-middleware";
+import { ref } from "vue";
+import projectService from "./project-service";
 
 export default {
   components: {
@@ -20,6 +22,11 @@ export default {
   setup() {
     const router = useRouter();
     const use_auth = useAuth();
+
+    const fdnProjectList = ref([]);
+    const fethFoundationProjectByFDNUUID = () => {
+      projectService.getFoundationProjectByFDNUUID
+    }
 
     const routeToProjectForm = () => {
       router.push(`/add/foundationproject`);

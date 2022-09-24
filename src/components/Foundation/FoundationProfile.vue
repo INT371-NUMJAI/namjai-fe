@@ -39,7 +39,14 @@
         >
       </div>
     </div>
-    <div class="pt-4">
+    <div class="flex space-x-3">
+		<router-link to="/editprofile">
+      <base-button
+        class="w-[150px] py-3 md:mx-0 lg:mx-0 lg:text-base"
+        buttonColor="bg-namjaibrown"
+        buttonLabel="แก้ไขข้อมูลส่วนตัว"
+      />
+	</router-link>
       <base-button
         class="w-[150px] py-3 md:mx-0 lg:mx-0 lg:text-base"
         buttonColor="bg-namjaired"
@@ -47,10 +54,19 @@
         @click="showDialog = true"
       />
       <w-dialog v-model="showDialog" :width="350">
-       <p class="text-center">คุณต้องการลบบัญชีใช่หรือไม่</p>
+        <p class="text-center">คุณต้องการลบบัญชีใช่หรือไม่</p>
         <div class="flex pt-4">
-          <base-button class="text-base w-[100px] py-2" buttonLabel="ยกเลิก" @click="showDialog = false"></base-button>
-          <base-button class="text-base w-[100px] py-2" buttonLabel="ยืนยัน" buttonColor="bg-namjaired" @click="deleteAccountByEmail"></base-button>
+          <base-button
+            class="text-base w-[100px] py-2"
+            buttonLabel="ยกเลิก"
+            @click="showDialog = false"
+          ></base-button>
+          <base-button
+            class="text-base w-[100px] py-2"
+            buttonLabel="ยืนยัน"
+            buttonColor="bg-namjaired"
+            @click="deleteAccountByEmail"
+          ></base-button>
         </div>
       </w-dialog>
     </div>
@@ -62,8 +78,8 @@ import { ref } from "vue";
 import BaseButton from "../_Bases/BaseButton.vue";
 import profileService from "../Profile/profile-service";
 import { useAuth } from "../../services/auth-middleware";
-import { useStore } from 'vuex';
-import { useRouter } from 'vue-router';
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
 export default {
   components: {
@@ -71,24 +87,25 @@ export default {
   },
   setup() {
     const showDialog = ref(false);
-	const use_auth = useAuth();
-	const store = useStore();
-	const router = useRouter();
-	
-	const email = use_auth.store_auth.user.email;
+    const use_auth = useAuth();
+    const store = useStore();
+    const router = useRouter();
 
-	console.log(use_auth.store_auth.user.email);
-	const deleteAccountByEmail = () => {
-		profileService.deleteProfile(email).then((response) => {
-			if (response.status === 200) {
-				showDialog.value = false;
-				store.dispatch("auth/logout");
-				router.push("/main");
-			}
-		})
-	}
+    const email = use_auth.store_auth.user.email;
+
+    console.log(use_auth.store_auth.user.email);
+    const deleteAccountByEmail = () => {
+      profileService.deleteProfile(email).then((response) => {
+        if (response.status === 200) {
+          showDialog.value = false;
+          store.dispatch("auth/logout");
+          router.push("/main");
+        }
+      });
+    };
 
     return { showDialog, deleteAccountByEmail };
   },
 };
 </script>
+t
