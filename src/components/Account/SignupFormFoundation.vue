@@ -10,12 +10,12 @@
 						<div class="flex space-x-[60px]">
 							<!--<w-radio v-model="foundation.fdnSize" bg-color="white" color="amber-light2" label-color="black" return-value="small"><p class="mx-2">SMALL</p></w-radio>
 								<w-radio v-model="foundation.fdnSize" bg-color="white" color="amber-light2" label-color="black" return-value="big"><p class="mx-2">BIG</p></w-radio> -->
-							<div class="px-5 py-2 border border-amber-400 bg-white rounded-md">
-								<w-radio v-model="foundation.fdnSize" bg-color="white" color="amber-light2" label-color="black" return-value="small"><p class="mx-2">ขนาดเล็ก</p></w-radio>
-							</div>
-							<div class="px-5 py-2 border border-amber-400 bg-white rounded-md">
-								<w-radio v-model="foundation.fdnSize" bg-color="white" color="amber-light2" label-color="black" return-value="big"><p class="mx-2">ขนาดใหญ่</p></w-radio>
-							</div>
+							<!-- <div class="px-5 py-2 border border-amber-400 bg-white rounded-md"> -->
+							<w-radio v-model="foundation.fdnSize" bg-color="white" color="amber-light2" label-color="black" return-value="small"><p class="mx-2">ขนาดเล็ก</p></w-radio>
+							<!-- </div> -->
+							<!-- <div class="px-5 py-2 border border-amber-400 bg-white rounded-md"> -->
+							<w-radio v-model="foundation.fdnSize" bg-color="white" color="amber-light2" label-color="black" return-value="big"><p class="mx-2">ขนาดใหญ่</p></w-radio>
+							<!-- </div> -->
 						</div>
 					</div>
 				</div>

@@ -26,9 +26,7 @@
 
 				<div v-if="showManage" class="absolute mt-2 -ml-4 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu">
 					<div class="py-1" role="none">
-						<router-link to="/admin-management">
-							<div class="text-gray-700 block text-center px-4 py-2 text-sm cursor-pointer">มูลนิธิ</div>
-						</router-link>
+						<div class="text-gray-700 block text-center px-4 py-2 text-sm cursor-pointer" @click="routeToManageFDN">มูลนิธิ</div>
 						<div class="text-gray-700 block text-left px-4 py-2 text-sm cursor-pointer">คำร้องเรียน</div>
 					</div>
 				</div>
@@ -104,9 +102,15 @@ export default {
 
 		const routeToProfile = () => {
 			router.push(`/profile`);
+			showDropDown.value = false;
 		};
 
-		return { use_auth, showDropDown, showManage, clicktoLogout, routeToProfile };
+		const routeToManageFDN = () => {
+			router.push("/admin-management");
+			showManage.value = false;
+		};
+
+		return { use_auth, showDropDown, showManage, clicktoLogout, routeToProfile, routeToManageFDN };
 	},
 };
 </script>

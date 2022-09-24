@@ -1,6 +1,4 @@
 <template>
-	<!-- <div class="text-namjaiwhite w-20 text-center rounded-xl py-1 -mt-1" :class="[statusProps.statusColor]">{{ statusProps.statusText }}</div> -->
-	<!-- <div class="text-black w-20 text-center rounded-xl py-1 -mt-1 bg-white" :class="[statusColor]">{{ statusText }}</div> -->
 	<div class="text-namjaiwhite w-20 text-center rounded-xl py-1 -mt-1" :class="color">{{ setStatus }}</div>
 </template>
 <script>
@@ -40,7 +38,6 @@ export default {
 			// console.log(message.value);
 			// console.log(pendingStatus.value === props.statusText);
 			return (message.value = "N/A");
-			// }
 		});
 		return { setStatus, color };
 	},
