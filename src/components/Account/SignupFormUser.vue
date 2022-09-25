@@ -1,5 +1,5 @@
 <template>
-	<div class="mt-10">
+	<div class="mt-10 lg:mt-0">
 		<w-form v-model="valid" name="donorForm" class="py-7 lg:py-10">
 			<div class="space-y-8 lg:space-y-10">
 				<div class="space-y-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0">

@@ -25,9 +25,9 @@
 				</w-button>
 
 				<div v-if="showManage" class="absolute mt-2 -ml-4 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu">
-					<div class="py-1" role="none">
-						<div class="text-gray-700 block text-center px-4 py-2 text-sm cursor-pointer" @click="routeToManageFDN">มูลนิธิ</div>
-						<div class="text-gray-700 block text-left px-4 py-2 text-sm cursor-pointer">คำร้องเรียน</div>
+					<div class="text-gray-700 text-center text-sm" role="none">
+						<div class="block rounded-t-md px-4 py-2 cursor-pointer hover:bg-gray-200" @click="routeToManageFDN">มูลนิธิ</div>
+						<div class="block rounded-b-md px-4 py-2 cursor-pointer hover:bg-gray-200">คำร้องเรียน</div>
 					</div>
 				</div>
 			</div>
@@ -58,10 +58,10 @@
 						</div>
 					</w-button>
 					<div>
-						<div class="absolute mt-2 -ml-[21px] z-10 bg-white" v-if="showDropDown">
-							<div class="text-white font-medium">
-								<div class="block text-sm ml-5 my-2 text-black cursor-pointer" @click="routeToProfile">ข้อมูลส่วนตัว</div>
-								<div class="block text-sm ml-[35px] my-2 text-red-600 cursor-pointer" @click="clicktoLogout">ลงชื่อออก</div>
+						<div class="absolute mt-2 right-12 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" v-if="showDropDown">
+							<div class="text-gray-700 text-center text-sm">
+								<div class="block rounded-t-md px-4 py-2 cursor-pointer hover:bg-gray-200" @click="routeToProfile">ข้อมูลส่วนตัว</div>
+								<div class="block rounded-b-md px-4 py-2 cursor-pointer text-red-600 hover:bg-gray-200" @click="clicktoLogout">ลงชื่อออก</div>
 							</div>
 						</div>
 					</div>
