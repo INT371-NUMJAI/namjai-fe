@@ -10,7 +10,7 @@
       <w-icon class="mr-1" md color="white">fa fa-plus</w-icon>
       <p class="text-[14px] text-white">เพิ่มโครงการบริจาค</p>
     </button>
-    <div class="flex lg:gird lg:grid-cols-3 md:grid md:grid-cols-2 md:gap-x-40">
+    <div class="lg:gird lg:grid-cols-3 md:grid md:grid-cols-2 lg:gap-x-8 md:gap-x-40">
       <project-card :projectCardProps="projects" />
     </div>
     <span
