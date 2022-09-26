@@ -6,7 +6,7 @@
 				<div class="w-16 border-4 border-t border-namjaired"></div>
 			</div>
 		</div>
-		<base-table />
+		<base-table> <th class="py-3 w-[250px]">ผู้อนุมัติ2</th></base-table>
 		<base-list :objectProps="fdnList" />
 	</div>
 </template>

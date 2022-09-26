@@ -11,7 +11,7 @@ const router = createRouter({
 			path: "/",
 			name: "home",
 			component: () => import("../components/Page/Landing.vue"),
-			// component: () => import("../components/Project/ProjectDetail.vue"),
+			// component: () => import("../components/Report/ViewReportList.vue"),
 		},
 		{
 			path: "/main",
@@ -102,6 +102,11 @@ const router = createRouter({
 			path: "/suggestion",
 			name: "fdn-select-suggestion",
 			component: () => import("../components/FoundationSuggestion/Suggestion.vue"),
+		},
+		{
+			path: "/report",
+			name: "report",
+			component: () => import("../components/Report/ReportForm.vue"),
 		},
 	],
 });
