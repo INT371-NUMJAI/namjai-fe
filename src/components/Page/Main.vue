@@ -1,11 +1,12 @@
 <template>
-  <div class="">
-    <div id="sec1" class="lg:mx-[177px] lg:mt-[146px] lg:mb-[80px]">
+  <div class="lg:w-1/9">
+    <div id="sec1" class="lg:flex lg:flex-wrap lg:justify-center lg:mx-[177px] lg:mt-[146px] lg:mb-[80px]">
       <img class="object-cover w-full h-[770px] lg:w-[1086px] lg:h-[460px] lg:rounded-[20px]" src="@/assets/pic8.png" />
     </div>
-
+    
+    <div class="flex justify-center"></div>
     <div id="sec2" class="bg-[#FFFCF4] pt-[30px] md:pt-[60px] lg:pt-[60px]">
-      <div class="mx-[30px] md:mx-[40px] lg:mx-[177px]">
+      <div class="lg:max-w-6xl mx-[30px] md:mx-[40px] lg:mx-auto">
         <h1 class="text-[20px] md:text-[25px] lg:text-[30px] font-black text-namjaidarkgray">สานต่อโครงการที่กำลังดำเนินอยู่</h1>
         <p class="pt-3 md:pt-5 lg:pt-5 text-[14px] md:text-xl lg:text-xl font-bold text-[#6A6A6A]">หากคุณกำลังมองหาโครงการที่กำลังเปิดอยู่</p>
         <p class="pt-2 text-[14px] md:text-xl lg:text-xl font-bold text-[#6A6A6A]">นี่คือบางส่วนของโครงการที่กำลังเปิดอยู่ในขณะนี้ บริจาคเลย</p>
