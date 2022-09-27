@@ -25,6 +25,9 @@ class FoundationProjectService {
     async getRandomSixProjects(){
         return http.get("/view/random");
     }
+    async editFoundationProjectStatus(payload) {
+        return http.post("/view/foundationproject/edit", payload);
+    }
 }
 
 export default new FoundationProjectService();
