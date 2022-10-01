@@ -15,7 +15,23 @@
 			<drawer />
 		</div>
 		<div class="hidden lg:flex lg:space-x-11 items-center text-white lg:text-base">
-			<router-link to="/admin-management"> <w-button bg-color="transparent" class="font-medium" v-if="use_auth.auth_role.value === `ADMIN` && use_auth.store_auth.status.loggedIn">จัดการ</w-button></router-link>
+			<div name="manage" class="container inline-block">
+				<w-button bg-color="transparent" class="font-medium" @click="showManage = !showManage" v-if="use_auth.auth_role.value === `ADMIN` && use_auth.store_auth.status.loggedIn">
+					<p>จัดการ</p>
+					<div class="ml-2 -mt-[2px]">
+						<w-icon md color="white" v-if="showManage == false">fa fa-caret-down</w-icon>
+						<w-icon md color="white" v-if="showManage">fa fa-caret-up</w-icon>
+					</div>
+				</w-button>
+
+				<div v-if="showManage" class="absolute mt-2 -ml-4 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu">
+					<div class="text-gray-700 text-center text-sm" role="none">
+						<div class="block rounded-t-md px-4 py-2 cursor-pointer hover:bg-gray-200" @click="routeToManageFDN">มูลนิธิ</div>
+						<div class="block rounded-b-md px-4 py-2 cursor-pointer hover:bg-gray-200">คำร้องเรียน</div>
+					</div>
+				</div>
+			</div>
+
 			<w-button bg-color="transparent" class="font-medium">มูลนิธิ</w-button>
 			<router-link to="/project">
 				<w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
@@ -42,10 +58,10 @@
 						</div>
 					</w-button>
 					<div>
-						<div class="absolute mt-2 -ml-[21px] z-10 bg-white" v-if="showDropDown">
-							<div class="text-white font-medium">
-								<w-button color="black" bg-color="transparent" class="block text-sm ml-5 my-2" @click="routeToProfile">ข้อมูลส่วนตัว</w-button>
-								<w-button color="red" bg-color="transparent" class="block text-sm ml-[35px] my-2" @click="clicktoLogout">ลงชื่อออก</w-button>
+						<div class="absolute mt-2 right-12 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" v-if="showDropDown">
+							<div class="text-gray-700 text-center text-sm">
+								<div class="block rounded-t-md px-4 py-2 cursor-pointer hover:bg-gray-200" @click="routeToProfile">ข้อมูลส่วนตัว</div>
+								<div class="block rounded-b-md px-4 py-2 cursor-pointer text-red-600 hover:bg-gray-200" @click="clicktoLogout">ลงชื่อออก</div>
 							</div>
 						</div>
 					</div>
@@ -66,11 +82,14 @@ export default {
 	},
 	setup() {
 		const showDropDown = ref(false);
+		const showManage = ref(false);
 		const use_auth = useAuth();
 		const store = useStore();
 		const router = useRouter();
 
 		const clicktoLogout = () => {
+			showManage.value = false;
+			showDropDown.value = false;
 			store.dispatch("auth/logout");
 			router.push("/main");
 		};
@@ -83,9 +102,15 @@ export default {
 
 		const routeToProfile = () => {
 			router.push(`/profile`);
+			showDropDown.value = false;
 		};
 
-		return { use_auth, showDropDown, clicktoLogout, routeToProfile };
+		const routeToManageFDN = () => {
+			router.push("/admin-management");
+			showManage.value = false;
+		};
+
+		return { use_auth, showDropDown, showManage, clicktoLogout, routeToProfile, routeToManageFDN };
 	},
 };
 </script>

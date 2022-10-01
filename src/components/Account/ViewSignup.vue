@@ -13,25 +13,65 @@
 				<hr class="w-16 border-4 border-t border-namjaired md:-mt-4 lg:mt-2" />
 				<div class="lg:grid lg:grid-cols-4 lg:gap-8 lg:mt-3">
 					<div name="formContent" class="lg:col-span-3 lg:mt-8 lg:space-y-4">
-						<div class="hidden md:hidden lg:block lg:font-medium">ประเภทผู้ใช้</div>
-						<div>
-							<div class="hidden lg:block">
-								<span>
-									<router-link to="/signup/user">
-										<w-checkbox color="amber" round v-model="clicked[0]" @click="clicked[1] = false" class="border border-amber-400 bg-white rounded-md py-2 px-3 text-center space-x-3">
-											<p class="font-bold text-black">บุคคลทั่วไป</p>
-										</w-checkbox>
-									</router-link>
-								</span>
-								<span>
-									<w-checkbox color="amber" round v-model="clicked[1]" @click="clicked[0] = false" class="w-32 h-10 border border-amber-400 bg-white rounded-md py-2 pl-3 pr-8 space-x-3 ml-14">
-										<router-link to="/signup/foundation"> <p class="font-bold text-black">มูลนิธิ</p></router-link>
-									</w-checkbox>
-								</span>
-
-								<router-view></router-view>
-							</div>
+						<h1 class="hidden md:hidden lg:block lg:text-[20px] lg:font-medium text-namjaigreen">ประเภทผู้ใช้</h1>
+						<div class="hidden lg:block">
+							<router-link to="/signup/user">
+								<button class="border border-amber-400 focus:drop-shadow bg-white rounded-md px-2 py-1 inline-flex items-center space-x-3" @click="(selectedRouteUser = !selectedRouteUser), (selectedRouteFdn = false)">
+									<w-icon md color="grey-light3" v-if="selectedRouteUser == false"> fa fa-circle-thin </w-icon>
+									<w-icon md color="amber-light2" v-if="selectedRouteUser"> fa fa-check-circle </w-icon>
+									<p class="font-bold text-black">บุคคลทั่วไป</p>
+								</button>
+							</router-link>
+							<router-link to="/signup/foundation">
+								<button class="ml-6 border border-amber-400 focus:drop-shadow bg-white rounded-md px-2 py-1 inline-flex items-center space-x-3" @click="(selectedRouteFdn = !selectedRouteFdn), (selectedRouteUser = false)">
+									<w-icon md color="grey-light3" v-if="selectedRouteFdn == false"> fa fa-circle-thin </w-icon>
+									<w-icon md color="amber-light2" v-if="selectedRouteFdn"> fa fa-check-circle </w-icon>
+									<p class="font-bold text-black">มูลนิธิ</p>
+								</button>
+							</router-link>
+							<router-view></router-view>
 						</div>
+
+						<!-- <div class="hidden lg:block">
+              <router-link to="/signup/user">
+                <div class="inline-flex items-center space-x-3">
+                  <w-icon class="mr1" lg color="grey-light3" v-if="selectedRouteUser == false"> fa fa-circle-thin </w-icon>
+                  <w-icon class="mr1" lg color="amber-light2" v-if="selectedRouteUser"> fa fa-check-circle </w-icon>
+                  <span class="">บุคคลทั่วไป</span>
+                </div>
+              </router-link>
+
+              <router-link to="/signup/foundation">
+                <div class="inline-flex items-center space-x-3 ">
+                  <input type="radio" class="form-radio" name="radio" value="2" />
+                  <span class="">มูลนิธิ</span>
+				</div>
+				</router-link
+              >
+              <router-view></router-view>
+            </div> -->
+
+						<!-- <div class="hidden lg:block">
+              <div>
+                <router-link to="/signup/user">
+                  <button color="amber" class="border border-amber-400 bg-white rounded-md flex space-x-3" @click="(selectedRouteUser = !selectedRouteUser), (selectedRouteFdn = false)">
+                    <w-icon class="mr1" lg color="grey-light3" v-if="selectedRouteUser == false"> fa fa-circle-thin </w-icon>
+                    <w-icon class="mr1" lg color="amber-light2" v-if="selectedRouteUser"> fa fa-check-circle </w-icon>
+                    <p class="font-bold text-black">บุคคลทั่วไป</p>
+                  </button>
+                </router-link>
+              </div>
+              <div>
+                <router-link to="/signup/foundation">
+                  <button color="amber" class="border border-amber-400 bg-white rounded-md flex space-x-3" @click="(selectedRouteFdn = !selectedRouteFdn), (selectedRouteUser = false)">
+                    <w-icon class="mr1" lg color="grey-light3" v-if="selectedRouteFdn == false"> fa fa-circle-thin </w-icon>
+                    <w-icon class="mr1" lg color="amber-light2" v-if="selectedRouteFdn"> fa fa-check-circle </w-icon>
+                    <p class="font-bold text-black">มูลนิธิ</p>
+                  </button></router-link
+                >
+              </div>
+              <router-view></router-view>
+            </div> -->
 					</div>
 				</div>
 			</div>
@@ -45,7 +85,17 @@ import { ref } from "vue";
 export default {
 	setup() {
 		const clicked = ref([false, false]);
-		return { clicked };
+		const selectedRouteUser = ref(false);
+		const selectedRouteFdn = ref(false);
+		const swapValueIcon = () => {
+			if (true === selectedRouteUser) {
+				selectedRouteFdn.value = false;
+			}
+			if (true === selectedRouteFdn) {
+				selectedRouteUser.value = false;
+			}
+		};
+		return { clicked, selectedRouteUser, selectedRouteFdn, swapValueIcon };
 	},
 };
 </script>

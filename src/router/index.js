@@ -11,7 +11,7 @@ const router = createRouter({
 			path: "/",
 			name: "home",
 			component: () => import("../components/Page/Landing.vue"),
-			// component: () => import("../components/Project/ProjectDetail.vue"),
+			// component: () => import("../components/Report/ViewReportList.vue"),
 		},
 		{
 			path: "/main",
@@ -25,7 +25,7 @@ const router = createRouter({
 			children: [
 				{
 					path: "post",
-					component: () => import("../components/Post/PostBlockDetail.vue"),
+					component: () => import("../components/Post/ViewPostBlockDetail.vue"),
 				},
 				{
 					path: "project",
@@ -72,7 +72,18 @@ const router = createRouter({
 			path: "/project",
 			name: "project",
 			component: () => import("../components/Project/ViewProjects.vue"),
+			children: [
+				{
+					path: "catergories/:id",
+					component: () => import("../components/Project/ViewProjectsByTargetCat.vue"),
+				},
+			],
 		},
+		// {
+		// 	path: "/project/catergories/:id",
+		// 	name: "fdn-catergories-projects",
+		// 	component: () => import("../components/Project/ViewProjectsByTargetCat.vue"),
+		// },
 		{
 			path: "/project/:id",
 			name: "fdn-project-detail",
@@ -98,7 +109,18 @@ const router = createRouter({
 			name: "fdn-detail-verify",
 			component: () => import("../components/Verification/AdminVerifyAccountDetail.vue"),
 		},
+		{
+			path: "/suggestion",
+			name: "fdn-select-suggestion",
+			component: () => import("../components/FoundationSuggestion/Suggestion.vue"),
+		},
+		{
+			path: "/report",
+			name: "report",
+			component: () => import("../components/Report/ReportForm.vue"),
+		},
 	],
+	// linkActiveClass:'namjai-active-link'
 });
 export default router;
 

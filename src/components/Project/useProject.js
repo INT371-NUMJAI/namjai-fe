@@ -10,6 +10,5 @@ export default function useProjects() {
 		let response = await http.get(`/view/foundationprojects/${id}`);
 		project.value = response.data;
 	};
-
 	return { project, getProjectByID };
 }
