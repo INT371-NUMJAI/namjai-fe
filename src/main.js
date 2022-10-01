@@ -19,7 +19,7 @@ app.component("base-button", BaseButton);
 app.mixin(globalMixins);
 new WaveUI(app, {
 	colors: {
-		primary: "#ff8149",
+		primary: "#9ac332",
 		secondary: "#5d9a26",
 	},
 });
