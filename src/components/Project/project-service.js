@@ -22,6 +22,9 @@ class FoundationProjectService {
     async getPicturePath(path) {
         return http.get(`/view/img?imagePath=${path}`);
     }
+    async getRandomSixProjects(){
+        return http.get("/view/random");
+    }
 }
 
 export default new FoundationProjectService();

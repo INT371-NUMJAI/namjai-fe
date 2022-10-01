@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-2.5 lg:space-y-5">
+  <div class="container mx-auto space-y-2.5 lg:space-y-5">
     <post-block />
     <post-detail-block />
   </div>

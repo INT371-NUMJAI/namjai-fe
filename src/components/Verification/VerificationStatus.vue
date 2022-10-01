@@ -1,9 +1,10 @@
 <template>
-	<div class="text-namjaiwhite w-20 text-center rounded-xl py-1 -mt-1" :class="[statusProps.statusColor]">{{ statusProps.statusText }}</div>
-	<!-- <div class="text-namjaiwhite w-20 text-center rounded-xl py-1 -mt-1" :class="[statusProps.statusColor]">{{ setStatus }}</div> -->
+	<!-- <div class="text-namjaiwhite w-20 text-center rounded-xl py-1 -mt-1" :class="[statusProps.statusColor]">{{ statusProps.statusText }}</div> -->
+	<!-- <div class="text-black w-20 text-center rounded-xl py-1 -mt-1 bg-white" :class="[statusColor]">{{ statusText }}</div> -->
+	<div class="text-namjaiwhite w-20 text-center rounded-xl py-1 -mt-1" :class="color">{{ setStatus }}</div>
 </template>
 <script>
-import { onMounted, onUpdated, reactive } from "vue";
+import { computed, ref } from "vue";
 export default {
 	props: {
 		statusText: {
@@ -11,32 +12,37 @@ export default {
 		},
 	},
 	setup(props) {
-		const statusText = props.statusText;
-		const statusProps = reactive({ statusColor: "", statusText: "" });
-		let statusWord = ["VERIFIED", "REJECTED", "PENDING"];
-		const setStatus = (status) => {
-			if (statusWord[0].localeCompare(status) == 0) {
-				statusProps.statusColor = "bg-namjaigreen";
-				statusProps.statusText = "อนุมัติ";
-			}
-			if (statusWord[1].localeCompare(status) == 0) {
-				statusProps.statusColor = "bg-namjaired";
-				statusProps.statusText = "ไม่อนุมัติ";
-			}
-			if (statusWord[2].localeCompare(status) == 0) {
-				statusProps.statusColor = "bg-yellow-500";
-				statusProps.statusText = "รออนุมัติ";
-			}
-		};
-		onMounted(() => {
-			setStatus(statusText);
-		});
+		const color = ref("");
 
-		onUpdated(() => {
-			setStatus(statusText);
+		const setStatus = computed(() => {
+			const message = ref("");
+			if ("VERIFIED" === props.statusText) {
+				color.value = "bg-namjaigreen";
+				return (message.value = "อนุมัติ");
+			}
+			if ("REJECTED" === props.statusText) {
+				color.value = "bg-namjaired";
+				return (message.value = "ไม่อนุมัติ");
+			}
+			if ("PENDING" === props.statusText) {
+				color.value = "bg-yellow-500";
+				return (message.value = "รออนุมัติ");
+			}
+			// if (typeof props.statusText === "undefined") {
+			// 	color.value = " bg-slate-400";
+			// 	return (message.value = "UNDEFINED");
+			// }
+			//  else {
+			// color.value = " bg-indigo-500";
+
+			// console.log(typeof props.statusText);
+			// console.log(typeof message.value);
+			// console.log(message.value);
+			// console.log(pendingStatus.value === props.statusText);
+			return (message.value = "N/A");
+			// }
 		});
-		// setStatus(statusText);
-		return { statusProps, setStatus };
+		return { setStatus, color };
 	},
 };
 </script>
