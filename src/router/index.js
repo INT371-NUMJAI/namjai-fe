@@ -109,6 +109,7 @@ const router = createRouter({
 			component: () => import("../components/Report/ReportForm.vue"),
 		},
 	],
+	// linkActiveClass:'namjai-active-link'
 });
 export default router;
 
