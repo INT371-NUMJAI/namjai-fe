@@ -28,28 +28,6 @@
         v-model="volunteerAttendanceBody.lname"
       />
       </div>
-      <div class="flex space-x-[20px] lg:space-x-[30px]">
-      <w-input
-        :validators="[validators.required]"
-        class="mb-10 lg:text-base md:text-base text-sm"
-        type="text"
-        color="black"
-        label="ชื่อเล่น"
-        label-color="black"
-        placeholder=" "
-        v-model="volunteerAttendanceBody.nickname"
-      />
-        <w-input
-          :validators="[validators.required]"
-          class="mb-10 lg:text-base md:text-base text-sm"
-          type="text"
-          color="black"
-          label="อายุ"
-          label-color="black"
-          placeholder=" "
-          v-model="volunteerAttendanceBody.age"
-        />
-        </div>
         <div class="flex space-x-[20px] lg:space-x-[30px]">
         <w-input
           :validators="[validators.required]"
@@ -94,8 +72,6 @@ export default {
     const volunteerAttendanceBody = reactive({
       fname: "",
       lname: "",
-      nickname: "",
-      age: "",
       phoneNumber: "",
       email: "",
     });
