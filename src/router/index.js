@@ -100,6 +100,11 @@ const router = createRouter({
 			component: () => import("../components/Project/ProjectForm.vue"),
 		},
 		{
+			path: "/foundation",
+			name: "foundation",
+			component: () => import("../components/Foundation/ViewFoundation.vue"),
+		},
+		{
 			path: "/admin-management",
 			name: "admin-management",
 			component: () => import("../components/Verification/AdminApprove.vue"),
