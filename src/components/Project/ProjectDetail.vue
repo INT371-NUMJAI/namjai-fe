@@ -1,5 +1,5 @@
 <template>
-	<div class="mx-[30px] md:mx-24 lg:mx-44 mt-[50px] lg:mt-[120px]">
+	<div v-if="project" class="mx-[30px] md:mx-24 lg:mx-44 mt-[50px] lg:mt-[120px]">
 		<div class="flex space-x-2">
 			<p>หมวดหมู่:</p>
 			<p v-for="fdnProjectProp in project.targetCategoriesSet" :key="fdnProjectProp" class="text-sm lg:text-base mb-[20px]">
