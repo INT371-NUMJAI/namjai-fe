@@ -1,5 +1,4 @@
 <template>
-	<<<<<<< HEAD
 	<div class="mx-[30px] md:mx-24 lg:mx-44 mt-[50px] lg:mt-[120px]">
 		<div class="flex space-x-2">
 			<p>หมวดหมู่:</p>

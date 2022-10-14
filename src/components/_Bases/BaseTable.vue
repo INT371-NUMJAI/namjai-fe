@@ -1,5 +1,4 @@
 <template>
-	<<<<<<< HEAD
 	<div class="mt-[40px] mb-[10px]">
 		<table class="text-center mx-[177px]">
 			<thead class="text-white bg-namjaibrown">

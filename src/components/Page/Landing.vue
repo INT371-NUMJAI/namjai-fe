@@ -30,7 +30,6 @@
           </div>
         </w-image>
         </div> -->
-				<<<<<<< HEAD
 				<div class="">
 					<w-image class="lg:w-screen h-screen" :src="`https://images.unsplash.com/photo-1504598578017-40d9b776f1bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80`" :ratio="500 / 1000" content-class="justify-start" no-spinner transition="">
 						<div class="lg:mx-44 md:mx-[40px] mx-[30px] absolute lg:top-[150px] top-[100px] space-y-10 text-white">

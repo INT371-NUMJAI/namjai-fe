@@ -112,7 +112,7 @@ export default {
 		// }
 		onMounted(() => {
 			fetchFoundationDetail(route.params.id);
-		})
+		});
 
 		const clickToDownloadFile = (id) => {
 			approveService.getFDNDocumentFileByFDNUUID(id);
@@ -137,13 +137,7 @@ export default {
 
 		const { validators } = useValidation();
 
-<<<<<<< HEAD
 		return { fdnStatus, loading, foundation, clickToDownloadFile, valid, dialog, validators, clickToApprove, apiVerificationFDN, clickToVerify, clickToRejected, isPending };
-=======
-		console.log(fdnVerify.value.status);
-
-		return { fdnVerify, clickToDownloadFile, valid, dialog, validators, clickToApprove, apiVerificationFDN, clickToVerify, clickToRejected };
->>>>>>> origin/sprint5/feature/int-178-component-editfdnprojectstatus
 	},
 };
 </script>
