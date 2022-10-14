@@ -98,7 +98,6 @@ export default {
 
 	setup() {
 		const route = useRoute();
-
 		// const foundation = reactive({ addressDetail: "", approval: "", contactNumber: "", createDate: "", district: "", email: "", establishDate: "", fdnDetail: "", fdnName: "", fdnSize: "", fdnUUid: "", founderName: "", postalCode: "", province: "", resource: null, status: "", subDistrict: "" });
 		const { foundation, getFDNByID, loading } = useFoundation();
 		const fdnStatus = ref("");
@@ -111,6 +110,9 @@ export default {
 		// const showButtons=()=>{
 		isPending.value = foundation.status === "PENDING" ? true : false;
 		// }
+		onMounted(() => {
+			fetchFoundationDetail(route.params.id);
+		})
 
 		const clickToDownloadFile = (id) => {
 			approveService.getFDNDocumentFileByFDNUUID(id);
@@ -135,7 +137,13 @@ export default {
 
 		const { validators } = useValidation();
 
+<<<<<<< HEAD
 		return { fdnStatus, loading, foundation, clickToDownloadFile, valid, dialog, validators, clickToApprove, apiVerificationFDN, clickToVerify, clickToRejected, isPending };
+=======
+		console.log(fdnVerify.value.status);
+
+		return { fdnVerify, clickToDownloadFile, valid, dialog, validators, clickToApprove, apiVerificationFDN, clickToVerify, clickToRejected };
+>>>>>>> origin/sprint5/feature/int-178-component-editfdnprojectstatus
 	},
 };
 </script>

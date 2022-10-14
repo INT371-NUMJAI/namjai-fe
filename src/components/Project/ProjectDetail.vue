@@ -1,4 +1,5 @@
 <template>
+	<<<<<<< HEAD
 	<div class="mx-[30px] md:mx-24 lg:mx-44 mt-[50px] lg:mt-[120px]">
 		<div class="flex space-x-2">
 			<p>หมวดหมู่:</p>
@@ -180,10 +181,12 @@ export default {
 	// setup(props) {
 	setup() {
 		const showQR = ref(false);
+		const value = ref(false);
 		const { validators } = useValidation();
 		const valid = ref(null);
 
 		const route = useRoute();
+
 		const { project, getProjectByID } = useProjects();
 
 		// getProjectByID(route.params.id);
@@ -197,28 +200,7 @@ export default {
 			return `${project.value.foundationContactDTO.addressDetail} แขวง ${project.value.foundationContactDTO.subDistrict} เขต ${project.value.foundationContactDTO.district} ${project.value.foundationContactDTO.province} ${project.value.foundationContactDTO.postalCode} ${project.value.foundationContactDTO.email}`;
 		});
 
-		const clickOmise = () => {
-			// omise.charges.create(
-			// 	{
-			// 		description: "Charge for order ID: 888",
-			// 		amount: "100000", // 1,000 Baht
-			// 		currency: "thb",
-			// 		capture: false,
-			// 		card: tokenId,
-			// 	},
-			// 	function (err, resp) {
-			// 		if (resp.paid) {
-			// 			//Success
-			// 		} else {
-			// 			//Handle failure
-			// 			throw resp.failure_code;
-			// 		}
-			// 	}
-			// );
-		};
-
 		return {
-			clickOmise,
 			// getImage,
 			project,
 			// getProjectByID,
@@ -227,7 +209,27 @@ export default {
 			valid,
 			formatStringDate,
 			formatFdnAddress,
+			value,
 		};
 	},
 };
 </script>
+
+<style scoped>
+.w-switch__track {
+	color: #666;
+}
+.w-switch--on .w-switch__track {
+	color: #fff;
+}
+.w-switch--wide .w-switch__input {
+	width: 100px;
+}
+.w-switch--wide .w-switch__track {
+	width: 150px;
+	text-align: center;
+}
+.namjai-green {
+	color: #00715d;
+}
+</style>
