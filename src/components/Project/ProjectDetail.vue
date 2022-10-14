@@ -155,11 +155,11 @@
 						<w-input :validators="[validators.required]" class="my-auto text-center" type="number" bg-color="white" color="black"></w-input>
 						<h1 class="pl-[15px] my-auto">บาท</h1>
 					</div>
-					<base-button :isValid="valid === false" @click="showQR = true" class="mt-[30px] w-[150px]" buttonLabel="บริจาค"></base-button>
+					<base-button :isValid="valid === false" @click="showQR = true" class="mt-[30px] w-[150px] py-3" buttonLabel="บริจาค"></base-button>
 				</w-form>
 				<div v-if="showQR === true">
 					<img class="w-[150px] mx-auto mt-[20px]" src="https://i.ibb.co/Nm7JDbS/qr-demo.png" />
-					<base-button @click="showQR = false" class="w-[150px]" buttonLabel="ระบุจำนวนเงิน" />
+					<base-button @click="showQR = false" class="w-[150px] py-2" buttonLabel="ระบุจำนวนเงิน" />
 				</div>
 			</div>
 		</div>
