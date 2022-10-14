@@ -10,15 +10,32 @@
 			<th class="py-3 w-[250px]">ประเภท</th>
 			<th class="py-3 w-[250px]">สถานะ</th>
 		</base-table>
+		<report-list :reportProps="reportList" />
 	</div>
 </template>
 
 <script>
+import { ref } from "vue";
 import BaseTable from "../_Bases/BaseTable.vue";
+import ReportList from "./ReportList.vue";
+import reportService from "./report-service";
 
 export default {
 	components: {
 		BaseTable,
+		ReportList,
+	},
+	setup() {
+		const reportList = ref([]);
+		const fetchReportList = () => {
+			reportService.getReportList().then((response) => {
+				reportList.value = response.data;
+			});
+		};
+		fetchReportList();
+		console.log(reportList);
+
+		return { reportList };
 	},
 };
 </script>
@@ -36,14 +53,4 @@ tr:last-child th:last-child,
 tbody:last-child tr:last-child td:last-child {
 	border-radius: 0 10px 10px 0;
 }
-
-/* tr td:nth-child(n + 6),
-tr th:nth-child(n + 6) {
-	border-radius: 0 0.625rem 0.625rem 0;
-}
-
-tr td:nth-child(1),
-tr th:nth-child(1) {
-	border-radius: 0.625rem 0 0 0.625rem;
-} */
 </style>
