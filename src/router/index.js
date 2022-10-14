@@ -10,8 +10,8 @@ const router = createRouter({
 		{
 			path: "/",
 			name: "home",
-			component: () => import("../components/Page/Landing.vue"),
-			// component: () => import("../components/Report/ViewReportList.vue"),
+			// component: () => import("../components/Page/Landing.vue"),
+			component: () => import("../components/Volunteer/ViewVolunteerPostDetail.vue"),
 		},
 		{
 			path: "/main",
@@ -20,6 +20,29 @@ const router = createRouter({
 		},
 		{
 			path: "/profile",
+			name: "profile",
+			component: () => import("../components/Profile/ViewProfile.vue"),
+			children: [
+				{
+					path: "post",
+					component: () => import("../components/Post/ViewPostBlockDetail.vue"),
+				},
+				{
+					path: "project",
+					component: () => import("../components/Project/ProjectAdd.vue"),
+				},
+				{
+					path: "volunteer",
+					component: () => import("../components/Volunteer/VolunteerAdd.vue"),
+				},
+				{
+					path: "about",
+					component: () => import("../components/Foundation/FoundationProfile.vue"),
+				},
+			],
+		},
+		{
+			path: "/profile/:id",
 			name: "profile",
 			component: () => import("../components/Profile/ViewProfile.vue"),
 			children: [
