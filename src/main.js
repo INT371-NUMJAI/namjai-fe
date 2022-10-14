@@ -15,6 +15,7 @@ const app = createApp(App);
 app.use(router);
 app.use(store);
 app.use(VueAxios, axios);
+// app.use(base);
 app.component("base-button", BaseButton);
 app.mixin(globalMixins);
 new WaveUI(app, {

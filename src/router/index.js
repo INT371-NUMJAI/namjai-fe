@@ -9,7 +9,6 @@ const router = createRouter({
 			path: "/",
 			name: "home",
 			component: () => import("../components/Page/Landing.vue"),
-			// component: () => import("../components/Report/ViewReportList.vue"),
 		},
 		{
 			path: "/main",
@@ -38,6 +37,11 @@ const router = createRouter({
 					component: () => import("../components/Foundation/FoundationProfile.vue"),
 				},
 			],
+		},
+		{
+			path: "/editprofile",
+			name: "editprofile",
+			component: () => import("../components/Profile/EditProfile.vue"),
 		},
 		{
 			path: "/login",

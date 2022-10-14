@@ -3,8 +3,8 @@
 		<div>
 			<nav-bar class="z-40" />
 			<router-view />
-			<!-- <foo-ter class="z-50" /> -->
 		</div>
+		<!-- <foo-ter class="z-50" /> -->
 	</w-app>
 </template>
 

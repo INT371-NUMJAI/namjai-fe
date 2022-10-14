@@ -71,7 +71,7 @@
 	</nav>
 </template>
 <script>
-import { ref } from "vue";
+import { onMounted, onUpdated, ref } from "vue";
 import { useStore } from "vuex";
 import Drawer from "./Drawer.vue";
 import { useRouter } from "vue-router";
