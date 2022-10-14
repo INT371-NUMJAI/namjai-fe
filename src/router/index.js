@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import SignupFormFoundation from "../components/Account/SignupFormFoundation.vue";
-import SignupFormUser from "../components/Account/SignupFormUser.vue";
 import { useAuth } from "../services/auth-middleware";
 import { Role } from "@/_helpers/Role";
 
@@ -119,8 +117,14 @@ const router = createRouter({
 			name: "report",
 			component: () => import("../components/Report/ReportForm.vue"),
 		},
+		{
+			path: "/:pathMatch(.*)*",
+			name: "not-found",
+			component: () => import("../components/PageError/Notfound.vue"),
+		},
 	],
-	// linkActiveClass:'namjai-active-link'
+	// linkActiveClass: "namjai-active-link",
+	// linkExactActiveClass: "namjai-active-link",
 });
 export default router;
 

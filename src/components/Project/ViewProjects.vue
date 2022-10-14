@@ -1,19 +1,20 @@
 <template>
 	<div class="mx-[30px] md:mx-24 lg:mx-44">
-		<div class="my-10">
+		<div class="my-10 cursor-pointer" @click="routeToProjects">
 			<h1 class="mt-10 text-2xl lg:text-[48px] lg:mt-[120px] font-semibold">โครงการ</h1>
 			<div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-4"></div>
 		</div>
-		<div class="flex overflow-x-auto space-x-3" v-for="target in targetList" :key="target.targetCategoriesID">
+		<div class="flex overflow-x-auto space-x-3 cursor-pointer" v-for="target in targetList" :key="target.targetCategoriesID">
 			<div @click="routeToCategories(target.targetCategoriesID)" class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[136px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
 				<div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-					<img :src="'src/assets/' + target.icon" />
+					<img :src="`src/assets/${target.icon}`" />
 					<!-- <img src="@/assets/medical.svg" /> -->
 				</div>
 				<h1 class="text-center pt-[10px]">{{ target.targetCategoriesName }}</h1>
 			</div>
 		</div>
-		<router-view :key="$route.fullPath"></router-view>
+		<router-view :key="$route.path" />
+		<!-- <router-view :key="$route.fullPath"></router-view> -->
 	</div>
 </template>
 
@@ -98,7 +99,16 @@ export default {
 			router.push(`/project/catergories/${id}`);
 		};
 
-		return { fdnProjectList, targetList, routeToCategories };
+		const routeToProjects = () => {
+			router.push(`/project`);
+		};
+
+		return { fdnProjectList, targetList, routeToCategories, routeToProjects };
 	},
 };
 </script>
+<style>
+/* .namjai-active-link {
+	color: white;
+} */
+</style>

@@ -76,20 +76,14 @@
 								<img class="lg:-mx-5 mx-0 lg:w-[528px] md:w-[367px] w-[330px] z-20" src="@/assets/pic1.png" alt="" />
 								<div class="lg:my-auto">
 									<h1 class="block lg:hidden text-namjaigreen text-2xl mt-[40px] mb-[10px]">DONOR</h1>
-									<p class="w-[372px] z-20 my-auto">
-										{{ div1 }}
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									</p>
+									<p class="w-[372px] z-20 my-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 								</div>
 							</div>
 							<div class="lg:grid lg:grid-cols-2 md:grid md:grid-cols-2 snap-center">
 								<img class="lg:-mx-5 mx-0 lg:w-[528px] md:w-[367px] w-[330px] z-20" src="@/assets/pic1.png" alt="" />
 								<div class="lg:my-auto">
 									<h1 class="block lg:hidden text-namjaigreen text-2xl mt-[40px] mb-[10px]">VOLUNTEER</h1>
-									<p class="w-[372px] z-20 my-auto">
-										{{ div2 }}
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									</p>
+									<p class="w-[372px] z-20 my-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 								</div>
 							</div>
 						</div>
@@ -253,88 +247,95 @@ export default {
 		};
 	},
 	beforeMount() {
-		window.addEventListener("scroll", this.handleScroll);
+		if (window) {
+			window.addEventListener("scroll", this.handleScroll);
+		}
 	},
 	methods: {
 		handleScroll() {
 			var scrollDemo = document.querySelector("#scrollDemo");
+			if (scrollDemo) {
+				scrollDemo.addEventListener("scroll", (event) => {
+					var scrollPostition = scrollDemo.scrollTop;
 
-			scrollDemo.addEventListener("scroll", (event) => {
-				var scrollPostition = scrollDemo.scrollTop;
-
-				if (scrollPostition > 100 && scrollPostition <= 200) {
-					if (this.view.topOfPage) {
-						this.view.topOfPage = false;
-					} else {
-						if (!this.view.middleOfPage) this.view.middleOfPage = true;
+					if (scrollPostition > 100 && scrollPostition <= 200) {
+						if (this.view.topOfPage) {
+							this.view.topOfPage = false;
+						} else {
+							if (!this.view.middleOfPage) this.view.middleOfPage = true;
+						}
+					} else if (scrollPostition >= 300) {
+						if (this.view.middleOfPage) {
+							this.view.middleOfPage = false;
+						} else {
+							if (!this.view.topOfPage) this.view.topOfPage = true;
+						}
 					}
-				} else if (scrollPostition >= 300) {
-					if (this.view.middleOfPage) {
-						this.view.middleOfPage = false;
+					if (scrollPostition > 600) {
+						if (this.view.bottomOfPage) {
+							this.view.bottomOfPage = false;
+						} else {
+							if (!this.view.middleOfPage) this.view.middleOfPage = true;
+						}
 					} else {
-						if (!this.view.topOfPage) this.view.topOfPage = true;
+						if (!this.view.bottomOfPage) this.view.bottomOfPage = true;
 					}
-				}
-				if (scrollPostition > 600) {
-					if (this.view.bottomOfPage) {
-						this.view.bottomOfPage = false;
-					} else {
-						if (!this.view.middleOfPage) this.view.middleOfPage = true;
-					}
-				} else {
-					if (!this.view.bottomOfPage) this.view.bottomOfPage = true;
-				}
-			});
-			// if (scrollDemo.scrollTop > 300) {
-			//   if (this.view.topOfPage) {
-			//     this.view.topOfPage = false;
-			//   }
-			// } else {
-			//   if (!this.view.topOfPage) this.view.topOfPage = true;
-			// }
+				});
+				// if (scrollDemo.scrollTop > 300) {
+				//   if (this.view.topOfPage) {
+				//     this.view.topOfPage = false;
+				//   }
+				// } else {
+				//   if (!this.view.topOfPage) this.view.topOfPage = true;
+				// }
+			}
 		},
 		scrollfunc() {
 			var scrollDemo = document.querySelector("#scrollMenu");
 			var output = document.querySelector(".output");
 
-			scrollDemo.addEventListener(
-				"scroll",
-				(event) => {
-					output.innerHTML = `scrollTop: ${scrollDemo.scrollTop} <br>
+			if (scrollDemo) {
+				scrollDemo.addEventListener(
+					"scroll",
+					(event) => {
+						output.innerHTML = `scrollTop: ${scrollDemo.scrollTop} <br>
                                 scrollLeft: ${scrollDemo.scrollLeft} `;
-				},
-				{ passive: true }
-			);
+					},
+					{ passive: true }
+				);
+			}
 		},
 		scrollFeature() {
 			var scrollCard = document.querySelector("#scrollMenu");
 
-			scrollCard.addEventListener("scroll", (event) => {
-				var scrollPos = scrollCard.scrollLeft;
+			if (scrollCard) {
+				scrollCard.addEventListener("scroll", (event) => {
+					var scrollPos = scrollCard.scrollLeft;
 
-				if (scrollPos > 100 && scrollPos <= 200) {
-					if (this.card.left) {
-						this.card.left = false;
-					} else {
-						if (!this.card.middle) this.card.middle = true;
+					if (scrollPos > 100 && scrollPos <= 200) {
+						if (this.card.left) {
+							this.card.left = false;
+						} else {
+							if (!this.card.middle) this.card.middle = true;
+						}
+					} else if (scrollPos >= 300) {
+						if (this.card.middle) {
+							this.card.middle = false;
+						} else {
+							if (!this.card.left) this.card.left = true;
+						}
 					}
-				} else if (scrollPos >= 300) {
-					if (this.card.middle) {
-						this.card.middle = false;
+					if (scrollPos > 650) {
+						if (this.card.right) {
+							this.card.right = false;
+						} else {
+							if (!this.card.middle) this.card.middle = true;
+						}
 					} else {
-						if (!this.card.left) this.card.left = true;
+						if (!this.card.right) this.card.right = true;
 					}
-				}
-				if (scrollPos > 650) {
-					if (this.card.right) {
-						this.card.right = false;
-					} else {
-						if (!this.card.middle) this.card.middle = true;
-					}
-				} else {
-					if (!this.card.right) this.card.right = true;
-				}
-			});
+				});
+			}
 		},
 	},
 };

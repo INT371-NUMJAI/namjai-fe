@@ -36,16 +36,25 @@
 						{{ project.goal }}
 					</h1>
 				</div>
-				<w-form v-model="valid" v-if="showQR === false">
+				<!-- <w-form v-model="valid" v-if="showQR === false">
 					<div class="flex mt-[30px]">
 						<h1 class="my-auto pr-[10px]">จำนวนเงิน</h1>
 						<w-input :validators="[validators.required, validators.negativeNumber]" class="my-auto text-center" type="number" bg-color="white" color="black"></w-input>
 						<h1 class="pl-[5px] my-auto">บาท</h1>
-					</div>
-					<base-button @click="showQR = true" class="mt-[30px] w-[150px]" buttonLabel="บริจาค" :isValid="valid === false" />
-				</w-form>
+					</div> -->
+				<base-button
+					@click="
+						showQR = true;
+						clickOmise();
+					"
+					class="mt-[30px] w-[150px]"
+					buttonLabel="บริจาค"
+					:isValid="valid === false"
+				/>
+				<!-- </w-form> -->
 				<div v-if="showQR === true">
-					<img class="w-[150px] mx-auto mt-[20px]" src="https://i.ibb.co/Nm7JDbS/qr-demo.png" />
+					<!-- <img class="w-[150px] mx-auto mt-[20px]" src="https://i.ibb.co/Nm7JDbS/qr-demo.png" /> -->
+					<!-- <base-button @click="showQR = false" class="w-[150px]" buttonLabel="ระบุจำนวนเงิน" /> -->
 					<base-button @click="showQR = false" class="w-[150px]" buttonLabel="ระบุจำนวนเงิน" />
 				</div>
 				<div name="shareDt" class="space-y-3 pt-[30px]">
@@ -188,13 +197,28 @@ export default {
 			return `${project.value.foundationContactDTO.addressDetail} แขวง ${project.value.foundationContactDTO.subDistrict} เขต ${project.value.foundationContactDTO.district} ${project.value.foundationContactDTO.province} ${project.value.foundationContactDTO.postalCode} ${project.value.foundationContactDTO.email}`;
 		});
 
-		// onMounted(() => {
-		// 	getProjectByID(route.params.id);
-		// 	formatStringDate;
-		// 	formatFdnAddress;
-		// });
+		const clickOmise = () => {
+			// omise.charges.create(
+			// 	{
+			// 		description: "Charge for order ID: 888",
+			// 		amount: "100000", // 1,000 Baht
+			// 		currency: "thb",
+			// 		capture: false,
+			// 		card: tokenId,
+			// 	},
+			// 	function (err, resp) {
+			// 		if (resp.paid) {
+			// 			//Success
+			// 		} else {
+			// 			//Handle failure
+			// 			throw resp.failure_code;
+			// 		}
+			// 	}
+			// );
+		};
 
 		return {
+			clickOmise,
 			// getImage,
 			project,
 			// getProjectByID,
