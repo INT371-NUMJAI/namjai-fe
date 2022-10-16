@@ -36,6 +36,10 @@ const router = createRouter({
 					path: "about",
 					component: () => import("../components/Foundation/FoundationProfile.vue"),
 				},
+				{
+					path: "transaction",
+					component: () => import("../components/Transaction/ViewTransactionRequestList.vue"),
+				},
 			],
 		},
 		{

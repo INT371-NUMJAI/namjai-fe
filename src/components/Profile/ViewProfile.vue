@@ -17,6 +17,9 @@
 			<button class="active:border-b-4 active:border-namjaigreen">
 				<router-link to="/profile/about"><p>เกี่ยวกับ</p></router-link>
 			</button>
+      <button class="active:border-b-4 active:border-namjaigreen">
+				<router-link to="/profile/transaction"><p>การเงิน</p></router-link>
+			</button>
 		</div>
 		<router-view />
 	</div>
