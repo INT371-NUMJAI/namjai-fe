@@ -17,8 +17,13 @@ const router = createRouter({
 		},
 		// {
 		// 	path: "/trdl",
-		// 	name: "main",
+		// 	name: "trdl",
 		// 	component: () => import("../components/Transaction/TransactionRequestDialog.vue"),
+		// },
+		// {
+		// 	path: "/withdrawreq",
+		// 	name: "withdrawreq",
+		// 	component: () => import("../components/Transaction/ViewTransactionRequest.vue"),
 		// },
 		{
 			path: "/profile",
