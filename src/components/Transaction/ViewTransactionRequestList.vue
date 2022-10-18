@@ -2,13 +2,15 @@
   <div class="container mx-auto p-5 md:py-8 lg:py-7 md:px-[34px] lg:px-[34px] bg-white rounded-lg space-y-5">
     <div class="flex justify-between items-center">
       <h2 class="text-sm lg:text-base">รายการโครงการ</h2>
+      <transaction-request-drawer />
+      <!-- <router-link to="/trd">
       <button class="flex justify-center items-center px-2 py-1 lg:px-4 lg:py-2 bg-green-500 space-x-2 rounded-md">
-        <!-- <w-icon class="mr1" md color="white">fa fa-plus</w-icon> -->
         <svg class="w-3 h-3 lg:w-4 lg:h-4" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M6.5 11.5V6.5M6.5 6.5V1.5M6.5 6.5H11.5M6.5 6.5H1.5" stroke="white" stroke-width="2" stroke-linecap="round" />
         </svg>
         <h2 class="text-white text-sm lg:text-base">เพิ่มรายการถอน</h2>
-      </button>
+      </button></router-link> -->
+
     </div>
     <hr />
     <div>
@@ -25,7 +27,7 @@
             </svg>
           </div>
         </div>
-        <div name="sortBy" class="hidden lg:flex relative items-center space-x-2">
+        <div name="sortBy" class="hidden lg:flex text-sm relative items-center space-x-2">
           <p>เรียงโดย :</p>
           <select name="sort" id="sort" class="p-1 bg-slate-200 rounded-md">
             <option value="projectName">ชื่อโครงการ</option>
@@ -46,13 +48,13 @@
                 <th class="hidden md:table-cell lg:table-cell py-3 px-6 text-left">สถานะ</th>
                 <th class="hidden md:table-cell lg:table-cell py-3 px-6 text-left">วันที่ถอน</th>
                 <th class="hidden md:table-cell lg:table-cell py-3 px-6 text-left">วันที่อนุมัติ</th>
-                <th class="hidden lg:table-cell py-3 px-6 text-left"></th>
+                <!-- <th class="hidden lg:table-cell py-3 px-6 text-left"></th> -->
               </tr>
             </thead>
             <tbody class="text-gray-600 text-sm font-light">
               <tr class="border-b border-gray-200 hover:bg-gray-100 odd:bg-white even:bg-gray-100">
                 <td class="py-4 text-left whitespace-nowrap">
-                  <p class="px-4 lg:px-6 w-[300px] md:w-[250px] lg:w-[300px] truncate font-medium">บริจาค ATK ให้น้องอนุบาลที่ห่างไกล</p>
+                  <p class="px-4 lg:px-6 w-[300px] md:w-[250px] lg:w-[300px] truncate font-medium">บริจาค ATK ให้น้องอนุบาลที่ห่างไกล dfgjdfjgidfj</p>
                 </td>
                 <td class="hidden md:table-cell lg:table-cell py-4 px-6 text-left">
                   <span>9,578,095</span>
@@ -66,7 +68,7 @@
                 <td class="hidden md:table-cell lg:table-cell py-4 px-6 text-left">
                   <span>31/12/65</span>
                 </td>
-                <td class="hidden lg:table-cell py-4 text-center">
+                <!-- <td class="hidden lg:table-cell py-4 text-center">
                   <div class="flex item-center justify-cente space-x-2">
                     <button class="px-3.5 py-2 bg-green-500 rounded-md">
                       <svg class="w-3.5 h-3.5" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +84,7 @@
                       </svg>
                     </button>
                   </div>
-                </td>
+                </td> -->
               </tr>
             </tbody>
           </table>
@@ -91,3 +93,17 @@
     </div>
   </div>
 </template>
+
+<script>
+
+import TransactionRequestDrawer from "@/components/Transaction/TransactionRequestDrawer.vue";
+
+export default {
+  components:{
+    TransactionRequestDrawer,
+},
+  setup() {
+    
+  },
+}
+</script>

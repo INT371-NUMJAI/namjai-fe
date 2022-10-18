@@ -15,6 +15,11 @@ const router = createRouter({
 			name: "main",
 			component: () => import("../components/Page/Main.vue"),
 		},
+		// {
+		// 	path: "/trdl",
+		// 	name: "main",
+		// 	component: () => import("../components/Transaction/TransactionRequestDialog.vue"),
+		// },
 		{
 			path: "/profile",
 			name: "profile",
