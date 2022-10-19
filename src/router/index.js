@@ -60,7 +60,6 @@ const router = createRouter({
 				},
 				{
 					path: "foundation",
-
 					component: () => import("../components/Account/SignupFormFoundation.vue"),
 				},
 			],
@@ -70,11 +69,11 @@ const router = createRouter({
 			name: "volunteer",
 			component: () => import("../components/Volunteer/ViewVolunteer.vue"),
 		},
-		// {
-		// 	path: "/volunteerdetail",
-		// 	name: "volunteer-detail",
-		// 	component: () => import("../components/Volunteer/ViewVolunteerPostDetail.vue"),
-		// },
+		{
+			path: "/volunteer/detail",
+			name: "volunteer-detail",
+			component: () => import("../components/Volunteer/ViewVolunteerPostDetail.vue"),
+		},
 		{
 			path: "/project",
 			name: "project",
