@@ -1,7 +1,7 @@
 <template>
 	<div class="lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 grid grid-cols-1 gap-5 md:gap-6">
 		<div class="lg:max-w-sm md:max-w-md rounded-lg overflow-hidden bg-namjaiwhite">
-			<img class="w-full" src="@/assets/pic1.png" />
+			<img class="w-full" src="@/assets/pic1.png" @click="routeToVolunteerProjectDetail()" />
 			<div class="lg:px-6 lg:py-4 px-4 py-3 md:py-5">
 				<div class="flex justify-between items-center">
 					<div class="font-medium mb-1 overflow-hidden truncate w-[180px] md:[20px]">จ้างวาน.dskvamdflbkmlfdkbmlkfeblkfmข้า</div>
@@ -32,6 +32,24 @@
 		</div>
 	</div>
 </template>
+
+<script>
+import { reactive, toRefs } from "vue";
+import { useRouter } from "vue-router";
+
+export default {
+	setup() {
+		const route = useRouter();
+		const routeToVolunteerProjectDetail = () => {
+			route.push("/volunteerdetail");
+		};
+
+		return {
+			routeToVolunteerProjectDetail,
+		};
+	},
+};
+</script>
 
 <style scoped>
 .namjaigreen {
