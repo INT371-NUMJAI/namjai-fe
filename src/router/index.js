@@ -70,11 +70,11 @@ const router = createRouter({
 			name: "volunteer",
 			component: () => import("../components/Volunteer/ViewVolunteer.vue"),
 		},
-		{
-			path: "/volunteerdetail",
-			name: "volunteer-detail",
-			component: () => import("../components/Volunteer/ViewVolunteerPostDetail.vue"),
-		},
+		// {
+		// 	path: "/volunteerdetail",
+		// 	name: "volunteer-detail",
+		// 	component: () => import("../components/Volunteer/ViewVolunteerPostDetail.vue"),
+		// },
 		{
 			path: "/project",
 			name: "project",
