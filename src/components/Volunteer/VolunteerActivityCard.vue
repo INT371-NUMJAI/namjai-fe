@@ -41,7 +41,7 @@ export default {
 	setup() {
 		const route = useRouter();
 		const routeToVolunteerProjectDetail = () => {
-			route.push("/volunteer/detail");
+			route.push("/volunteer-detail");
 		};
 
 		return {
