@@ -8,7 +8,7 @@
 				</div>
 			</div>
 			<h2 class="mt-5 text-xl lg:text-[30px] font-black">อาสาจัดเต็มช่วยขนย้ายสิ่งของและต้อนรับผู้บริจาค</h2>
-			<img class="w-[330px] h-[186px] md:w-full lg:w-full md:h-[379px] lg:h-[402px] my-[30px] object-cover" src="@/assets/pic1.png" />
+			<!-- <img class="w-[330px] h-[186px] md:w-full lg:w-full md:h-[379px] lg:h-[402px] my-[30px] object-cover" src="@/assets/pic1.png" /> -->
 			<div name="category" class="w-full h-full lg:h-[110px] bg-white py-[30px] md:py-5 lg:py-5 lg:px-5 md:grid lg:grid md:grid-cols-2 lg:grid-cols-2 space-y-[30px] md:space-y-0 lg:space-y-0">
 				<div class="grid grid-cols-2 gap-5 md:gap-0 lg:gap-0 text-center">
 					<div class="space-y-5">
