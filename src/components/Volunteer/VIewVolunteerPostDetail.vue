@@ -192,9 +192,3 @@ export default {
 	},
 };
 </script>
-
-<style scoped>
-.namjai-red {
-	color: #d45343;
-}
-</style>
