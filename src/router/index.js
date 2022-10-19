@@ -74,17 +74,17 @@ const router = createRouter({
 			name: "volunteer-detail",
 			component: () => import("../components/Volunteer/ViewVolunteerPostDetail.vue"),
 		},
-		{
-			path: "/project",
-			name: "project",
-			component: () => import("../components/Project/ViewProjects.vue"),
-			children: [
-				{
-					path: "catergories/:id",
-					component: () => import("../components/Project/ViewProjectsByTargetCat.vue"),
-				},
-			],
-		},
+		// {
+		// 	path: "/project",
+		// 	name: "project",
+		// 	component: () => import("../components/Project/ViewProjects.vue"),
+		// 	children: [
+		// 		{
+		// 			path: "catergories/:id",
+		// 			component: () => import("../components/Project/ViewProjectsByTargetCat.vue"),
+		// 		},
+		// 	],
+		// },
 		// {
 		// 	path: "/project/catergories/:id",
 		// 	name: "fdn-catergories-projects",
