@@ -130,6 +130,11 @@ const router = createRouter({
 			name: "not-found",
 			component: () => import("../components/PageError/Notfound.vue"),
 		},
+		{
+			path: "/volunteerlist",
+			name: "volunteerlist",
+			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
+		},
 	],
 	// linkActiveClass: "namjai-active-link",
 	// linkExactActiveClass: "namjai-active-link",
