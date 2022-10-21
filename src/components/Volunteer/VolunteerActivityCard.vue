@@ -8,6 +8,8 @@
 					<div class="items-end bg-namjaigreen text-namjaiwhite text-center rounded-md py-1 px-4">เปิดอยู่</div>
 				</div>
 				<div class="mb-4">มูลนิธิกระจกเงา</div>
+				<!-- <li>testtt</li> -->
+				<div class="mb-4" v-html="testV"></div>
 				<div class="space-y-3">
 					<div class="flex space-x-1">
 						<w-icon color="namjaigreen">fa fa-map-marker</w-icon>
@@ -34,7 +36,7 @@
 </template>
 
 <script>
-import { reactive, toRefs } from "vue";
+import { reactive, ref, toRefs } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
@@ -43,9 +45,11 @@ export default {
 		const routeToVolunteerProjectDetail = () => {
 			route.push("/volunteer-detail");
 		};
-
+		const testV = ref("<li>quick brown fox jumps</li> <li>quick brown fox jumpsfdf</li>");
+		//  เป็นคนสัญชาติไทย,อายุไม่เกิน22ปี,
 		return {
 			routeToVolunteerProjectDetail,
+			testV,
 		};
 	},
 };
