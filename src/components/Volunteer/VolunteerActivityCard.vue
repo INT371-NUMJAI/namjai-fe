@@ -1,6 +1,6 @@
 <template>
 	<div class="lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 grid grid-cols-1 gap-5 md:gap-6">
-		<div class="lg:max-w-sm md:max-w-md rounded-lg overflow-hidden bg-namjaiwhite">
+		<div class="lg:max-w-sm md:max-w-md rounded-lg overflow-hidden bg-namjaiwhite drop-shadow-md hover:shadow-md cursor-pointer">
 			<img class="w-full" src="@/assets/pic1.png" @click="routeToVolunteerProjectDetail()" />
 			<div class="lg:px-6 lg:py-4 px-4 py-3 md:py-5">
 				<div class="flex justify-between items-center">

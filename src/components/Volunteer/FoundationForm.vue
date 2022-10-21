@@ -2,7 +2,7 @@
   <div
     class="mx-[30px] md:mx-[40px] lg:mx-[177px] mt-[60px] lg:mt-[120px] h-auto"
   >
-  {{ foundationVolunteerBody }}
+    {{ addVolunteerBody }}
     <h1 class="text-xl lg:text-5xl mb-[40px]">ส่งจิตอาสา</h1>
     <w-form v-model="valid">
       <w-input
@@ -13,9 +13,9 @@
         label="ชื่อกิจกรรม"
         label-color="black"
         placeholder=" "
-        v-model="foundationVolunteerBody.activityName"
+        v-model="addVolunteerBody.volunteerProjectName"
       />
-      <w-input
+      <!-- <w-input
         :validators="[validators.required]"
         class="mb-10 lg:text-base md:text-base text-sm"
         type="text"
@@ -23,8 +23,8 @@
         label="ชื่อมูลนิธิ"
         label-color="black"
         placeholder=" "
-        v-model="foundationVolunteerBody.foundationName"
-      />
+        v-model="addVolunteerBody.foundationName"
+      /> -->
       <!-- <label class="text-sm">ที่อยู่</label> -->
       <w-input
         :validators="[validators.required]"
@@ -34,7 +34,7 @@
         label="ที่อยู่"
         label-color="black"
         placeholder=" "
-        v-model="foundationVolunteerBody.address"
+        v-model="addVolunteerBody.locationDetail"
       />
       <div class="flex space-x-[20px] lg:space-x-[30px]">
         <!-- <label class="text-sm">แขวง</label> -->
@@ -46,7 +46,7 @@
           label="แขวง"
           label-color="black"
           placeholder=" "
-          v-model="foundationVolunteerBody.subDistrict"
+          v-model="addVolunteerBody.locationSubDistrict"
         />
         <!-- <label class="text-sm">เขต</label> -->
         <w-input
@@ -57,7 +57,7 @@
           label="เขต"
           label-color="black"
           placeholder=" "
-          v-model="foundationVolunteerBody.district"
+          v-model="addVolunteerBody.locationDistrict"
         />
       </div>
       <div class="flex space-x-[20px] lg:space-x-[30px]">
@@ -70,7 +70,7 @@
           label="จังหวัด"
           label-color="black"
           placeholder=" "
-          v-model="foundationVolunteerBody.province"
+          v-model="addVolunteerBody.locationProvince"
         />
         <!-- <label class="text-sm">เขต</label> -->
         <w-input
@@ -81,10 +81,10 @@
           label="รหัสไปรษณีย์"
           label-color="black"
           placeholder=" "
-          v-model="foundationVolunteerBody.postalcode"
+          v-model="addVolunteerBody.locationPostalCode"
         />
       </div>
-      <w-input
+      <!-- <w-input
         :validators="[validators.required]"
         class="mb-10 lg:text-base md:text-base text-sm"
         type="tel"
@@ -92,10 +92,10 @@
         label="เบอร์โทรศัพท์"
         label-color="black"
         placeholder=" "
-        v-model="foundationVolunteerBody.tel"
-      />
+        v-model="addVolunteerBody.tel"
+      /> -->
       <div class="flex space-x-[20px] lg:space-x-[30px]">
-        <w-input
+        <!-- <w-input
           :validators="[validators.required]"
           class="mb-10 lg:text-base md:text-base text-sm"
           type="email"
@@ -103,8 +103,8 @@
           label="อีเมล"
           label-color="black"
           placeholder=" "
-          v-model="foundationVolunteerBody.email"
-        />
+          v-model="addVolunteerBody.email"
+        /> -->
 
         <w-input
           :validators="[validators.required]"
@@ -114,7 +114,7 @@
           label="จำนวนจิตอาสา"
           label-color="black"
           placeholder=" "
-          v-model="foundationVolunteerBody.peopleNeeded"
+          v-model="addVolunteerBody.peopleNeeded"
         />
       </div>
       <div class="flex space-x-[20px] lg:space-x-[30px]">
@@ -127,12 +127,12 @@
           selection-color="grey"
           color="black"
           return-object
-          v-model="foundationVolunteerBody.activityTypes"
+          v-model="addVolunteerBody.activityType"
         >
           <template #item="{ item, selected }">
             <w-icon v-if="selected" class="black">wi-check</w-icon>
             <span v-else></span>
-            <div>{{ item.label }}</div>
+            <div>{{ item.activityType }}</div>
           </template>
         </w-select>
         <w-select
@@ -145,25 +145,35 @@
           color="black"
           return-object
           multiple
-          v-model="foundationVolunteerBody.activityCategories"
+          v-model="addVolunteerBody.targetCategoriesSet"
         >
           <template #item="{ item, selected }">
             <w-icon v-if="selected" class="black">wi-check</w-icon>
             <span v-else></span>
-            <div>{{ item.label }}</div>
+            <div>{{ item.targetCategoriesName }}</div>
           </template>
         </w-select>
       </div>
-      <!-- <div class="flex space-x-[20px] lg:space-x-[30px]"> -->
+      <div class="flex space-x-[20px] lg:space-x-[30px]">
         <w-input
           :validators="[validators.required]"
           class="mb-10 lg:text-base md:text-base text-sm"
           type="date"
           color="black"
-          label="วันที่จัดกิจกรรม"
+          label="วันที่เริ่มกิจกรรม"
           label-color="black"
           placeholder=" "
-          v-model="foundationVolunteerBody.activityDate"
+          v-model="addVolunteerBody.activityStartDate"
+        />
+        <w-input
+          :validators="[validators.required]"
+          class="mb-10 lg:text-base md:text-base text-sm"
+          type="date"
+          color="black"
+          label="วันที่สิ้นสุดกิจกรรม"
+          label-color="black"
+          placeholder=" "
+          v-model="addVolunteerBody.activityEndDate"
         />
         <!-- <w-input
           :validators="[validators.required]"
@@ -174,7 +184,7 @@
           label-color="black"
           placeholder=" "
         /> -->
-      <!-- </div> -->
+      </div>
       <w-input
         :validators="[validators.required]"
         class="mb-10 lg:text-base md:text-base text-sm"
@@ -183,18 +193,32 @@
         label="คุณสมบัติ"
         label-color="black"
         placeholder=" "
-        v-model="foundationVolunteerBody.qualification"
+        v-model="addVolunteerBody.volunteerProjectQualifies"
       />
-      <w-input
-        :validators="[validators.required]"
+      <div id="room_fileds" class="space-x-[30px]">
+        <div class="flex content row">
+      <input
         class="mb-10 lg:text-base md:text-base text-sm"
         type="text"
         color="black"
         label="หน้าที่"
         label-color="black"
         placeholder=" "
-        v-model="foundationVolunteerBody.duty"
+        v-model="addVolunteerBody.dutyDetail"
       />
+      <w-button type="button" id="more_fields" @click="add_fields" value="Add More">+</w-button>
+    </div>
+    </div>
+<!-- 
+<div id="room_fileds">
+    <div>
+     <div class='label'>Room 1:</div>
+     <div class="content">
+         <w-input type="text" style="width:48px;" name="width[]" value=""></w-input>
+         <w-input type="text" style="width:48px;" name="length[]" value=""></w-input>
+     </div>
+    </div>
+ </div> -->
       <w-textarea
         :validators="[validators.required]"
         class="mb-10 lg:text-base md:text-base text-sm"
@@ -206,7 +230,7 @@
         label-color="black"
         placeholder=" "
         no-autogrow
-        v-model="foundationVolunteerBody.activityDetail"
+        v-model="addVolunteerBody.description"
       />
       <label class="lg:text-sm md:text-sm text-xs">รูปภาพประกอบ</label>
       <!-- <w-input
@@ -228,55 +252,90 @@
         >เลือกไฟล์</w-input
       >
       <base-button
-        class="w-[140px] mx-auto mt-[60px] mb-8"
+        @click="addVolunteerBody"
+        class="w-[140px] mx-auto mt-[60px] mb-8 py-3"
         buttonLabel="ยืนยัน"
         :isValid="valid === false"
       />
     </w-form>
+    
+
+    
   </div>
 </template>
 
 <script>
 import { reactive, ref } from "vue";
 import { useValidation } from "../Account/validator";
+import volunteerService from "./volunteer-service.js";
+import { v4 as uuidv4 } from "uuid";
 
 export default {
   setup() {
     const valid = ref(null);
     const { validators } = useValidation();
     const items = ref([
-      { label: "Online", value: 1 },
-      { label: "On-site", value: 2 },
+      { activityType: "Online", value: 1 },
+      { activityType: "On-site", value: 2 },
     ]);
     const categories = ref([
-      { label: "โควิด-19", id: 1 },
-      { label: "เด็กและเยาวชน", id: 2 },
-      { label: "ผู้สูงอายุ", id: 3 },
-      { label: "ผู้พิการและผู้ป่วย", id: 4 },
-      { label: "กลุ่มคนเปราะบาง", id: 5 },
-      { label: "สัตว์", id: 6 },
-      { label: "สิ่งแวดล้อม", id: 7 },
-      { label: "ภัยพิบัติ", id: 8 },
+      { targetCategoriesName: "โควิด-19", targetCategoriesID: 1 },
+      { targetCategoriesName: "เด็กและเยาวชน", targetCategoriesID: 2 },
+      { targetCategoriesName: "ผู้สูงอายุ", targetCategoriesID: 3 },
+      { targetCategoriesName: "ผู้พิการและผู้ป่วย", targetCategoriesID: 4 },
+      { targetCategoriesName: "กลุ่มคนเปราะบาง", targetCategoriesID: 5 },
+      { targetCategoriesName: "สัตว์", targetCategoriesID: 6 },
+      { targetCategoriesName: "สิ่งแวดล้อม", targetCategoriesID: 7 },
+      { targetCategoriesName: "ภัยพิบัติ", targetCategoriesID: 8 },
     ]);
-    const foundationVolunteerBody = reactive({
-      activityName: "",
-      foundationName: "",
-      address: "",
-      subDistrict: "",
-      district: "",
-      province: "",
-      postalcode: "",
-      tel: "",
-      email: "",
-      peopleNeeded: "",
-      activityTypes: "",
-      activityCategories: "",
-      activityDate: "",
-      qualification: "",
-      duty: "",
-      activityDetail: "",
+
+    // const foundationName =
+
+    const addVolunteerBody = reactive({
+      volunteerProjectsUUID: uuidv4(),
+      volunteerProjectName: "",
+      peopleNeeded: 0,
+      description: "",
+      activityType: "",
+      startDate: "",
+      endDate: "",
+      activityStartDate: "",
+      activityEndDate: "",
+      locationDetail: "",
+      locationDistrict: "",
+      locationSubDistrict: "",
+      locationProvince: "",
+      locationPostalCode: "",
+      targetCategoriesSet: [],
+      volunteerProjectQualifies: [],
+      volunteerProjectDuties: [{dutyDetail}],
     });
-    return { validators, valid, items, categories, foundationVolunteerBody };
+
+    const submitAddVolunteerForm = () => {
+      volunteerService.addVolunteer(addVolunteerBody);
+    };
+    
+    const add_fields = () => {
+    var objTo = document.getElementById('room_fileds')
+    var divtest = document.createElement("div");
+    divtest.innerHTML = '<div class="content"><input class="mb-10 lg:text-base md:text-base text-sm" type="text" color="black" label="หน้าที่" label-color="black" placeholder=" " v-model="addVolunteerBody.volunteerProjectDuties" /></div>';
+    
+    objTo.appendChild(divtest)
+};
+     const parseStringtoObj = () => {
+      let result = [...document.querySelectorAll('.row')].map( div => ({text:div.children[0].value, float:div.children[1].value}) )
+      console.log(result);
+     }
+    return {
+      validators,
+      valid,
+      items,
+      categories,
+      addVolunteerBody,
+      submitAddVolunteerForm,
+      add_fields,
+      parseStringtoObj
+    };
   },
 };
 </script>

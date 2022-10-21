@@ -15,7 +15,7 @@
         label="ชื่อ"
         label-color="black"
         placeholder=" "
-        v-model="volunteerAttendanceBody.fname"
+        v-model="volunteerAttendanceBody.firstName"
       />
       <w-input
         :validators="[validators.required]"
@@ -25,7 +25,7 @@
         label="นามสกุล"
         label-color="black"
         placeholder=" "
-        v-model="volunteerAttendanceBody.lname"
+        v-model="volunteerAttendanceBody.lastName"
       />
       </div>
         <div class="flex space-x-[20px] lg:space-x-[30px]">
@@ -37,7 +37,7 @@
           label="เบอร์โทรศัพท์"
           label-color="black"
           placeholder=" "
-          v-model="volunteerAttendanceBody.phoneNumber"
+          v-model="volunteerAttendanceBody.contactNumber"
         />
         <!-- <label class="text-sm">แขวง</label> -->
         <w-input
@@ -52,9 +52,10 @@
         />
         </div>
       <base-button
-        class="w-[140px] mx-auto mt-[60px] mb-8"
+        class="w-[140px] mx-auto mt-[60px] mb-8 py-3"
         buttonLabel="ยืนยัน"
         :isValid="valid === false"
+        @click="submitRegisterVolunteerForm"
       />
     </w-form>
     </div>
@@ -64,18 +65,30 @@
 <script>
 import { reactive, ref } from "vue";
 import { useValidation } from "../Account/validator";
+import volunteerService from './volunteer-service';
+import { useStore } from 'vuex';
 
 export default {
   setup() {
     const valid = ref(null);
     const { validators } = useValidation();
+
+    const store = useStore();
+    const fname = store.state.auth.user.firstName;
+    console.log(fname)
+
     const volunteerAttendanceBody = reactive({
-      fname: "",
-      lname: "",
-      phoneNumber: "",
+      firstName: "",
+      lastName: "",
+      contactNumber: "",
       email: "",
     });
-    return { validators, valid, volunteerAttendanceBody };
+
+    const submitRegisterVolunteerForm = () => {
+      volunteerService.unregisterVolunteerApply(volunteerAttendanceBody);
+    }
+
+    return { validators, valid, volunteerAttendanceBody, submitRegisterVolunteerForm, fname };
   },
 };
 </script>

@@ -1,9 +1,11 @@
 <template>
     <div class="container mx-auto space-y-2.5 lg:space-y-5">
+      <router-link to="/volunteer-add">
       <button :disabled="use_auth.store_auth.user.status === `DISABLE` && use_auth.store_auth.status.loggedIn" class="bg-namjaired w-full lg:w-[186px] py-3 flex justify-center space-x-3 rounded-lg">
         <w-icon class="mr1" md color="white">fa fa-plus</w-icon>
         <p class="text-[14px] text-white">เพิ่มโครงการจิตอาสา</p>
       </button>
+    </router-link>
       <volunteer-activity-card />
     </div>
   </template>

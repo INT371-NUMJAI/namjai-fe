@@ -70,9 +70,19 @@ const router = createRouter({
 			component: () => import("../components/Volunteer/ViewVolunteer.vue"),
 		},
 		{
-			path: "/volunteer-detail",
+			path: "/volunteer-detail/:id",
 			name: "volunteer-detail",
 			component: () => import("../components/Volunteer/ViewVolunteerDetail.vue"),
+		},
+		{
+			path: "/volunteer-add",
+			name: "volunteer-add",
+			component: () => import("../components/Volunteer/FoundationForm.vue"),
+		},
+		{
+			path: "/volunteer-unregistered-user",
+			name: "volunteer-unregistered-user",
+			component: () => import("../components/Volunteer/VolunteerProjectForm.vue"),
 		},
 		{
 			path: "/project",
