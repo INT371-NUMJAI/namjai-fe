@@ -91,6 +91,9 @@ export default {
 			showManage.value = false;
 			showDropDown.value = false;
 			store.dispatch("auth/logout");
+			if (use_auth.auth_role.value === `FDN`) {
+				store.dispatch("fdn/logout");
+			}
 			router.push("/main");
 		};
 		const checkLoginStatus = () => {
@@ -98,10 +101,10 @@ export default {
 				store.dispatch("fdn/getUUID", store.state.auth.user.email);
 			}
 		};
-		checkLoginStatus();
 
 		const routeToProfile = () => {
 			router.push(`/profile`);
+			checkLoginStatus();
 			showDropDown.value = false;
 		};
 

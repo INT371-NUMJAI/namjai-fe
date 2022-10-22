@@ -2,7 +2,6 @@
   <div
     class="mx-[30px] md:mx-[40px] lg:mx-[177px] mt-[60px] lg:mt-[120px] h-auto"
   >
-    {{ addVolunteerBody }}
     <h1 class="text-xl lg:text-5xl mb-[40px]">ส่งจิตอาสา</h1>
     <w-form v-model="valid">
       <w-input
@@ -126,14 +125,8 @@
           placeholder=" "
           selection-color="grey"
           color="black"
-          return-object
           v-model="addVolunteerBody.activityType"
         >
-          <template #item="{ item, selected }">
-            <w-icon v-if="selected" class="black">wi-check</w-icon>
-            <span v-else></span>
-            <div>{{ item.activityType }}</div>
-          </template>
         </w-select>
         <w-select
           class="mb-10 lg:text-base md:text-base text-sm"
@@ -185,6 +178,7 @@
           placeholder=" "
         /> -->
       </div>
+      <div class="flex space-x-[30px]">
       <w-input
         :validators="[validators.required]"
         class="mb-10 lg:text-base md:text-base text-sm"
@@ -192,22 +186,19 @@
         color="black"
         label="คุณสมบัติ"
         label-color="black"
-        placeholder=" "
-        v-model="addVolunteerBody.volunteerProjectQualifies"
+        placeholder="ใส่ `,` ขั้นแต่ละุณสมบัติ เช่น คนเก่ง,คนดี"
+        v-model="qualifyBefore"
       />
-      <div id="room_fileds" class="space-x-[30px]">
-        <div class="flex content row">
-      <input
+      <!-- {{ qualifyFormat }} -->
+      <w-input
         class="mb-10 lg:text-base md:text-base text-sm"
         type="text"
         color="black"
         label="หน้าที่"
         label-color="black"
-        placeholder=" "
-        v-model="addVolunteerBody.dutyDetail"
+        placeholder="ใส่ `,` ขั้นแต่ละหน้าที่ เช่น ยกของ,ทาสี"
+        v-model="dutyBefore"
       />
-      <w-button type="button" id="more_fields" @click="add_fields" value="Add More">+</w-button>
-    </div>
     </div>
 <!-- 
 <div id="room_fileds">
@@ -252,31 +243,37 @@
         >เลือกไฟล์</w-input
       >
       <base-button
-        @click="addVolunteerBody"
+        @click="submitAddVolunteerForm"
         class="w-[140px] mx-auto mt-[60px] mb-8 py-3"
         buttonLabel="ยืนยัน"
         :isValid="valid === false"
       />
     </w-form>
-    
-
-    
   </div>
 </template>
 
 <script>
-import { reactive, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 import { useValidation } from "../Account/validator";
 import volunteerService from "./volunteer-service.js";
 import { v4 as uuidv4 } from "uuid";
+import { useStore } from "vuex";
+import { useAuth } from "../../services/auth-middleware";
 
 export default {
   setup() {
     const valid = ref(null);
     const { validators } = useValidation();
+    const store = useStore();
+    const store_fdn = store.state.fdn.fdn_uuid;
+    // const store_fdn = store.state.fdn.fdn_uuid.UUID;
+    
+
+    // console.log(`From FoundationForm ${store_fdn}`)
+
     const items = ref([
-      { activityType: "Online", value: 1 },
-      { activityType: "On-site", value: 2 },
+      { label: "Online", },
+      { label: "On-site" },
     ]);
     const categories = ref([
       { targetCategoriesName: "โควิด-19", targetCategoriesID: 1 },
@@ -290,6 +287,15 @@ export default {
     ]);
 
     // const foundationName =
+    const qualifyBefore = ref("");
+    const qualifyFormat = computed(() => {
+      return `<li> ${qualifyBefore.value.replace(/,/g, '</li><li>')} </li>`
+    });
+
+    const dutyBefore = ref("");
+    const dutyFormat = computed(() => {
+      return `<li> ${dutyBefore.value.replace(/,/g, '</li><li>')} </li>`
+    });
 
     const addVolunteerBody = reactive({
       volunteerProjectsUUID: uuidv4(),
@@ -307,25 +313,18 @@ export default {
       locationProvince: "",
       locationPostalCode: "",
       targetCategoriesSet: [],
-      volunteerProjectQualifies: [],
-      volunteerProjectDuties: [{dutyDetail}],
+      qualify: qualifyFormat,
+      duty: dutyFormat,
+      foundationUUID: store_fdn.UUID,
+      userUUID: null,
+      
     });
 
     const submitAddVolunteerForm = () => {
       volunteerService.addVolunteer(addVolunteerBody);
     };
-    
-    const add_fields = () => {
-    var objTo = document.getElementById('room_fileds')
-    var divtest = document.createElement("div");
-    divtest.innerHTML = '<div class="content"><input class="mb-10 lg:text-base md:text-base text-sm" type="text" color="black" label="หน้าที่" label-color="black" placeholder=" " v-model="addVolunteerBody.volunteerProjectDuties" /></div>';
-    
-    objTo.appendChild(divtest)
-};
-     const parseStringtoObj = () => {
-      let result = [...document.querySelectorAll('.row')].map( div => ({text:div.children[0].value, float:div.children[1].value}) )
-      console.log(result);
-     }
+     
+
     return {
       validators,
       valid,
@@ -333,8 +332,10 @@ export default {
       categories,
       addVolunteerBody,
       submitAddVolunteerForm,
-      add_fields,
-      parseStringtoObj
+      qualifyBefore,
+      dutyBefore,
+      qualifyFormat,
+      dutyFormat,
     };
   },
 };

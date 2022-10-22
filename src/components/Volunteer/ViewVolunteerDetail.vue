@@ -1,55 +1,28 @@
 <template>
   <div
+    v-if="volunteer"
     class="mx-[30px] md:mx-24 lg:mx-44 lg:grid lg:grid-cols-12 lg:gap-[30px] my-10 lg:my-0"
   >
     <div name="detail" class="lg:col-span-8 lg:mt-[120px]">
       <div class="grid grid-flow-col text-sm lg:text-base font-medium">
         <div class="flex space-x-2">
           <p>หมวดหมู่:</p>
-          <p v-for="category in volunteer.targetCategoriesSet" :key="category" class="text-namjaigreen">{{ category.targetCategoriesName }}</p>
+          <p
+            v-for="category in volunteer.targetCategoriesSet"
+            :key="category"
+            class="text-namjaigreen"
+          >
+            {{ category.targetCategoriesName }}
+          </p>
         </div>
       </div>
       <h2 class="mt-5 text-xl lg:text-[30px] font-black">
         {{ volunteer.volunteerProjectName }}
       </h2>
-      <!-- <img class="w-[330px] h-[186px] md:w-full lg:w-full md:h-[379px] lg:h-[402px] my-[30px] object-cover" src="@/assets/pic1.png" /> -->
-      <div
-        name="category"
-        class="w-full h-full lg:h-[110px] bg-white py-[30px] md:py-5 lg:py-5 lg:px-5 md:grid lg:grid md:grid-cols-2 lg:grid-cols-2 space-y-[30px] md:space-y-0 lg:space-y-0"
-      >
-        <div class="grid grid-cols-2 gap-5 md:gap-0 lg:gap-0 text-center">
-          <div class="space-y-5">
-            <p class="text-[14px] lg:text-[16px] font-medium">จำนวน</p>
-            <h1 class="text-[16px] lg:text-[20px] text-namjaigreen">
-              <a href=""
-                >{{ volunteer.peopleRegistered }}/{{
-                  volunteer.peopleNeeded
-                }}</a
-              >
-            </h1>
-          </div>
-          <div class="space-y-5">
-            <p class="text-[14px] lg:text-[16px] font-medium">ประเภทกิจกรรม</p>
-            <h1 class="text-[16px] lg:text-[20px] text-namjaigreen">
-              <a href="">{{ volunteer.activityType }}</a>
-            </h1>
-          </div>
-        </div>
-        <div class="grid grid-cols-2 gap-5 lg:gap-0 text-center">
-          <div class="space-y-5">
-            <p class="text-[14px] lg:text-[16px] font-medium">ประเภทเวลา</p>
-            <h1 class="text-[16px] lg:text-[20px] text-namjaigreen">
-              <a href="">เลือกช่วงเวลาเอง</a>
-            </h1>
-          </div>
-          <div class="space-y-5">
-            <p class="text-[14px] lg:text-[16px] font-medium">หมวดหมู่</p>
-            <h1 class="text-[16px] lg:text-[20px] text-namjaigreen">
-              <a href="">ผู้สูงอายุ</a>
-            </h1>
-          </div>
-        </div>
-      </div>
+      <img
+        class="w-[330px] h-[186px] md:w-full lg:w-full md:h-[379px] lg:h-[402px] my-[30px] object-cover"
+        src="@/assets/pic1.png"
+      />
       <div
         class="bg-white mt-[30px] py-[30px] lg:py-10 px-6 text-namjaidarkgray space-y-[30px] lg:space-y-10"
       >
@@ -61,34 +34,25 @@
         <div class="space-y-2 lg:space-y-5 text-[14px] lg:text-[16px]">
           <p class="font-black">คุณสมบัติ</p>
           <hr class="bg-namjaidarkgray" />
-          <p
-            v-for="(qualify, index) in volunteer.volunteerProjectQualifies"
-            :key="index"
-            class="font-normal"
-          >
-            {{ index + 1 }}. {{ qualify.qualifiesDetail }}
-          </p>
+          <p class="font-normal" v-html="volunteer.qualify"></p>
         </div>
         <div class="space-y-2 lg:space-y-5 text-[14px] lg:text-[16px]">
           <p class="font-black">หน้าที่</p>
           <hr class="bg-namjaidarkgray" />
-          <p
-            v-for="(duty, index) in volunteer.volunteerProjectDuties"
-            :key="index"
-            class="font-normal"
-          >
-            {{ index + 1 }}. {{ duty.dutyDetail }}
-          </p>
+          <p class="font-normal" v-html="volunteer.duty"></p>
         </div>
         <div class="space-y-2 lg:space-y-5 text-[14px] lg:text-[16px]">
-          <p class="font-black">สาถนที่จัดกิจกรรม</p>
+          <p class="font-black">สถานที่จัดกิจกรรม</p>
           <hr class="bg-namjaidarkgray" />
           <p class="font-normal">{{ formatLocationAddress }}</p>
         </div>
-        <div class="space-y-2 lg:space-y-5 text-[14px] lg:text-[16px]">
+        <div
+          v-if="volunteer.volunteerProjectName"
+          class="space-y-2 lg:space-y-5 text-[14px] lg:text-[16px]"
+        >
           <p class="font-black">ติดต่อ</p>
           <hr class="bg-namjaidarkgray" />
-          <p class="font-normal">{{ volunteer.foundationContactDTO }}</p>
+          <p class="font-normal">{{ formatFdnAddress }}</p>
         </div>
         <div class="space-y-3 mt-[60px] lg:hidden">
           <div class="grid grid-rows-2 grid-cols-2">
@@ -185,10 +149,18 @@
       name="regist"
       class="h-full lg:h-full lg:col-span-4 bg-white my-[30px] lg:my-0 py-[30px] px-6 text-namjaidarkgray"
     >
-      <div class="lg:my-24">
-        <div class="flex justify-between text-[14px] lg:text-[16px]">
-          <h1 class="">{{ volunteer.foundationContactDTO }}</h1>
-          <div class="lg:block hidden">
+      <div class="lg:my-24 lg:fixed">
+        <div
+          class="w-[80px] mb-5 px-4 py-1 bg-green-500 text-center rounded-md text-white text-[14px]"
+        >
+          เปิดอยู่
+        </div>
+        <div
+          v-if="volunteer.volunteerProjectName"
+          class="flex justify-between text-[14px] lg:text-[16px]"
+        >
+          <h1 class="">{{ volunteer.foundationContactDTO.fdnName }}</h1>
+          <div class="lg:block lg:ml-[140px] hidden">
             <svg
               v-if="isFav"
               @click="isFav = false"
@@ -231,19 +203,17 @@
         <h1 class="font-black py-[20px] text-[14px] lg:text-[20px]">
           {{ volunteer.volunteerProjectName }}
         </h1>
-        <div
-          class="w-[80px] mb-5 px-4 py-1 bg-green-500 text-center rounded-md text-white text-[14px]"
-        >
-          เปิดอยู่
-        </div>
         <div class="space-y-3 lg:space-y-4 text-[14px] lg:text-[16px]">
-          <div class="flex space-x-2 lg:mt-[40px]">
+          <div class="flex space-x-2">
             <w-icon color="green-dark3">fa fa-map-marker</w-icon>
             <p>{{ volunteer.locationProvince }}</p>
           </div>
           <div class="flex space-x-2">
             <w-icon color="green-dark3">fa fa-calendar-o</w-icon>
-            <p>{{ volunteer.activityStartDate }} - {{ volunteer.activityEndDate }}</p>
+            <p>
+              {{ volunteer.activityStartDate }} -
+              {{ volunteer.activityEndDate }}
+            </p>
           </div>
           <div class="flex justify-between">
             <!-- <div class="flex space-x-2">
@@ -252,49 +222,66 @@
             </div> -->
             <div class="flex space-x-2 justify-end">
               <w-icon class="" color="green-dark3n">fa fa-user-o</w-icon>
-              <p>{{ volunteer.peopleNeeded }}</p>
+              <p>
+                {{ volunteer.peopleRegistered }}/{{ volunteer.peopleNeeded }}
+              </p>
             </div>
           </div>
-        </div>
-        <!-- <div class="mt-6 lg:ml-3 space-y-2 lg:flex lg:space-y-0 lg:space-x-3">
-          <h2 class="text-sm">รายชื่อผู้สมัคร</h2>
-          <button class="flex space-x-3 lg:space-x-2">
-            <svg
-              class="w-[16px] h-[14px] lg:w-[18px] lg:h-[16px]"
-              viewBox="0 0 22 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          <div class="pt-2 text-sm flex space-x-2">
+            <h2>ดูรายชื่ออาสาสมัคร:</h2>
+
+            <h2
+              @click="
+                routeToVolunteerListDetail(volunteer.volunteerProjectsUUID)
+              "
+              class="cursor-pointer underline underline-offset-2 text-namjaigreen hover:text-emerald-500"
             >
-              <path
-                d="M11 13V1M11 13L7 9M11 13L15 9M1 15L1.621 17.485C1.72915 17.9177 1.97882 18.3018 2.33033 18.5763C2.68184 18.8508 3.11501 18.9999 3.561 19H18.439C18.885 18.9999 19.3182 18.8508 19.6697 18.5763C20.0212 18.3018 20.2708 17.9177 20.379 17.485L21 15"
-                stroke="#5B5B5B"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <h2 class="text-sm lg:text-base font-bold text-namjaigreen">
-              ดาวน์โหลดรายชื่อผู้สมัคร
+              คลิกที่นี่
             </h2>
-          </button>
-        </div> -->
-        <!-- <div
-          class="w-[156px] h-[50px] border bg-namjaiyellow rounded-md py-3 text-center mx-auto mt-[30px] lg:mt-10"
-        >
-          <w-button class="ma1" bg-color="transparent" color="white"
-            >สมัครเลย</w-button
-          >
-        </div> -->
-		<router-link to="/volunteer-unregistered-user">
+          </div>
+        </div>
         <base-button
-          @click="showQR = false"
+          v-if="use_auth.store_auth.status.loggedIn === false"
+          @click="showDialogUnregister = true"
           class="w-[156px] py-3 mt-[30px] lg:mt-10"
           buttonLabel="สมัครเลย"
           buttonColor="bg-namjaiyellow"
         />
-	</router-link>
-		<base-button
-		  v-if="false"
+		<w-dialog v-model="showDialogUnregister" :width="800" bg-color="namjai-beige">
+			<w-button class="button--close mt-[20px] mx-[20px]" @click="showDialogUnregister = false" sm outline round absolute color="namjai-red" icon="wi-cross"></w-button>
+		  <volunteer-project-form :volunteerNameProps="volunteer.volunteerProjectName" :volunteerUUIDProps="volunteer.volunteerProjectsUUID"></volunteer-project-form>
+        </w-dialog>
+
+        <base-button
+          v-if="use_auth.store_auth.status.loggedIn === true"
+		  @click="showDialogRegistered = true"
+          class="w-[156px] py-3 mt-[30px] lg:mt-10"
+          buttonLabel="สมัครเลย"
+          buttonColor="bg-namjaiyellow"
+        />
+		<w-dialog v-model="showDialogRegistered" :width="500" bg-color="namjai-beige">
+			<div class="text-center mt-[20px] space-y-[20px]">
+			<h2 class="text-2xl">คุณต้องการสมัครจิตอาสาใช่หรือไม่</h2>
+			<p class="text-lg">ระบบจะใช้ข้อมูลที่คุณได้ลงทะเบียนไว้ในการสมัคร</p>
+		</div>
+			<w-button class="button--close mt-[10px] mx-[20px]" @click="showDialogRegistered = false" sm outline round absolute color="namjai-red" icon="wi-cross"></w-button>
+			<div class="flex mt-[30px] lg:mt-10 mx-[60px]">
+			<base-button
+          class="w-[130px] py-2"
+          buttonLabel="ยกเลิก"
+          buttonColor="bg-namjaired"
+		  @click="showDialogRegistered = false"
+        />
+			<base-button
+          class="w-[130px] py-2"
+          buttonLabel="สมัครเลย"
+          buttonColor="bg-namjaigreen"
+		  @click="submitRegisteredVolunteerForm"
+        />
+	</div>
+        </w-dialog>
+        <base-button
+          v-if="false"
           class="w-[156px] py-3 mt-[30px] lg:mt-10"
           buttonLabel="ยกเลิกการสมัคร"
           buttonColor="bg-namjaired"
@@ -352,33 +339,71 @@
 </template>
 
 <script>
-import { computed, ref } from "vue";
+import { computed, ref, reactive } from "vue";
 import { useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 import useVolunteer from "./useVolunteer";
+import { useAuth } from "../../services/auth-middleware";
+import VolunteerProjectForm from "./VolunteerProjectForm.vue";
+import volunteerService from "./volunteer-service";
 
 export default {
+  components: {
+	VolunteerProjectForm,
+  },
   setup() {
     const isFav = ref(true);
 
     const route = useRoute();
-    const { volunteer, getVolunteerDetailByID } = useVolunteer();
+    const router = useRouter();
+    const use_auth = useAuth();
+    const { volunteer, getVolunteerDetailByID, volunteerUUID } = useVolunteer();
 
     getVolunteerDetailByID(route.params.id);
 
-    // const formatFdnAddress = computed(() => {
-    //   return `${volunteer.value.foundationContactDTO.addressDetail} แขวง ${volunteer.value.foundationContactDTO.subDistrict} เขต ${volunteer.value.foundationContactDTO.district} ${volunteer.value.foundationContactDTO.province} ${volunteer.value.foundationContactDTO.postalCode} ${volunteer.value.foundationContactDTO.email}`;
-    // });
+    const routeToVolunteerListDetail = (id) => {
+      router.push(`/volunteer-detail/${id}/volunteerlistdetail`);
+    };
 
-	const formatLocationAddress = computed(() => {
-		return `${volunteer.value.locationDetail} แขวง ${volunteer.value.locationSubDistrict} เขต ${volunteer.value.locationDistrict} จังหวัด ${volunteer.value.locationProvince} ${volunteer.value.locationPostalCode}`;
-	});
+    const formatFdnAddress = computed(() => {
+      return `${volunteer.value.foundationContactDTO.addressDetail} แขวง ${volunteer.value.foundationContactDTO.subDistrict} เขต ${volunteer.value.foundationContactDTO.district} ${volunteer.value.foundationContactDTO.province} ${volunteer.value.foundationContactDTO.postalCode} ${volunteer.value.foundationContactDTO.email}`;
+    });
+
+    const formatLocationAddress = computed(() => {
+      return `${volunteer.value.locationDetail} แขวง ${volunteer.value.locationSubDistrict} เขต ${volunteer.value.locationDistrict} จังหวัด ${volunteer.value.locationProvince} ${volunteer.value.locationPostalCode}`;
+    });
+
+	const showDialogUnregister = ref(false);
+	const showDialogRegistered = ref(false);
+
+	const userEmail = use_auth.auth_login ? use_auth.store_auth.user.email  : null
+
+	const volunteerAttendanceBody = reactive({
+		volunteerProjectUUID: volunteerUUID,
+		email: userEmail,
+	})
+	const submitRegisteredVolunteerForm = () => {
+		volunteerService.registeredVolunteerApply(volunteerAttendanceBody);
+	}
 
     return {
       isFav,
       volunteer,
-    //   formatFdnAddress,
-	  formatLocationAddress
+      formatFdnAddress,
+      formatLocationAddress,
+      use_auth,
+      showDialogUnregister,
+	  showDialogRegistered,
+	  volunteerAttendanceBody,
+      routeToVolunteerListDetail,
+	  submitRegisteredVolunteerForm,
     };
   },
 };
 </script>
+
+<style scoped>
+.namjai-beige--bg {
+	background-color: #F9F4E8;
+}
+</style>

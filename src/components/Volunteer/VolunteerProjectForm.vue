@@ -1,10 +1,10 @@
 <template>
   <div
-    class="mx-[30px] md:mx-[40px] lg:mx-[177px] mt-[60px] lg:mt-[120px] h-auto"
+    class="mx-[30px] md:mx-[40px] my-[40px] h-auto"
   >
   {{ volunteerAttendanceBody }}
-    <h1 class="text-2xl lg:text-2xl mb-[40px]">อาสาจัดเต็มช่วยขนย้ายสิ่งของและต้อนรับผู้บริจาค</h1>
-    <div class="lg:mx-[183px] lg:mt-[60px]">
+    <h1 class="text-2xl lg:text-2xl mb-[40px]">{{ volunteerNameProps }}</h1>
+    <div class="lg:mt-[60px]">
     <w-form v-model="valid">
       <div class="flex space-x-[20px] lg:space-x-[30px]">
       <w-input
@@ -16,7 +16,7 @@
         label-color="black"
         placeholder=" "
         v-model="volunteerAttendanceBody.firstName"
-      />
+     />
       <w-input
         :validators="[validators.required]"
         class="mb-10 lg:text-base md:text-base text-sm"
@@ -55,7 +55,7 @@
         class="w-[140px] mx-auto mt-[60px] mb-8 py-3"
         buttonLabel="ยืนยัน"
         :isValid="valid === false"
-        @click="submitRegisterVolunteerForm"
+        @click="submitunregisterVolunteerForm"
       />
     </w-form>
     </div>
@@ -66,29 +66,35 @@
 import { reactive, ref } from "vue";
 import { useValidation } from "../Account/validator";
 import volunteerService from './volunteer-service';
-import { useStore } from 'vuex';
 
 export default {
-  setup() {
+  props: {
+		volunteerNameProps: {
+			type: String,
+		},
+    volunteerUUIDProps: {
+      type: String,
+    }
+	},
+  setup(props) {
     const valid = ref(null);
     const { validators } = useValidation();
 
-    const store = useStore();
-    const fname = store.state.auth.user.firstName;
-    console.log(fname)
+    const uuid = props.volunteerUUIDProps;
 
     const volunteerAttendanceBody = reactive({
+      volunteerProjectUUID: uuid,
       firstName: "",
       lastName: "",
       contactNumber: "",
       email: "",
     });
 
-    const submitRegisterVolunteerForm = () => {
+    const submitunregisterVolunteerForm = () => {
       volunteerService.unregisterVolunteerApply(volunteerAttendanceBody);
     }
 
-    return { validators, valid, volunteerAttendanceBody, submitRegisterVolunteerForm, fname };
+    return { validators, valid, volunteerAttendanceBody, submitunregisterVolunteerForm };
   },
 };
 </script>

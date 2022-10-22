@@ -85,6 +85,11 @@ const router = createRouter({
 			component: () => import("../components/Volunteer/VolunteerProjectForm.vue"),
 		},
 		{
+			path: "/volunteer-detail/:id/volunteerlistdetail",
+			name: "volunteerlistdetail",
+			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
+		},
+		{
 			path: "/project",
 			name: "project",
 			component: () => import("../components/Project/ViewProjects.vue"),
@@ -139,6 +144,11 @@ const router = createRouter({
 			path: "/:pathMatch(.*)*",
 			name: "not-found",
 			component: () => import("../components/PageError/Notfound.vue"),
+		},
+		{
+			path: "/volunteerlist",
+			name: "volunteerlist",
+			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
 		},
 	],
 	// linkActiveClass: "namjai-active-link",

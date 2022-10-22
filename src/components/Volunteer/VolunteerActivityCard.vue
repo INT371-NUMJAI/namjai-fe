@@ -5,7 +5,7 @@
 			<div class="lg:px-6 lg:py-4 px-4 py-3 md:py-5">
 				<div class="flex justify-between items-center">
 					<div class="font-medium mb-1 overflow-hidden truncate w-[180px] md:[20px]">จ้างวาน.dskvamdflbkmlfdkbmlkfeblkfmข้า</div>
-					<div class="items-end bg-namjaigreen text-namjaiwhite text-center rounded-md py-1 px-4">เปิดอยู่</div>
+					<div class="items-end bg-green-500 text-namjaiwhite text-center rounded-md py-1 px-4">เปิดอยู่</div>
 				</div>
 				<div class="mb-4">มูลนิธิกระจกเงา</div>
 				<div class="space-y-3">

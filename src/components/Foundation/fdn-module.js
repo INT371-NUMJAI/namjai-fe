@@ -1,7 +1,7 @@
 import AuthService from "@/services/auth-service.js";
 
-const UUID = JSON.parse(localStorage.getItem("uuid"));
-const initialState = UUID ? UUID : null ;
+const fdn_uuid = JSON.parse(localStorage.getItem("uuid"));
+const initialState = fdn_uuid ?  {fdn_uuid}  :  null ;
 
 export const fdn = {
     namespaced: true,
@@ -9,10 +9,10 @@ export const fdn = {
     actions: {
         getUUID({commit}, email) {
             return AuthService.getUUID(email).then(
-                (UUID) => {
+                (fdn_uuid) => {
                     // console.log(initialState.UUID);
-                    commit("getUUIDSuccess", UUID);
-                    return Promise.resolve(UUID);
+                    commit("getUUIDSuccess", fdn_uuid);
+                    return Promise.resolve(fdn_uuid);
                 },
                 (error) => {
 					commit("getUUIDFailure");
@@ -21,20 +21,21 @@ export const fdn = {
             )
         },
         logout({ commit }) {
-            localStorage.removeItem("uuid");
+            
 			commit("logout");
 		},
     },
     mutations: {
-        getUUIDSuccess(state, UUID) {
-            state.UUID = UUID
-            console.log(initialState.UUID);
+        getUUIDSuccess(state, fdn_uuid) {
+            state.fdn_uuid = fdn_uuid;
+            console.log(initialState.fdn_uuid);
         },
         getUUIDFailure(state) {
-            state.UUID = null;
+            state.fdn_uuid = null;
         },
         logout(state) {
-			state.UUID = null;
+            localStorage.removeItem("uuid");
+			state.fdn_uuid = null;
 		},
     }
 }
