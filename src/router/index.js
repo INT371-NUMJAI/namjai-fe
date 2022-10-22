@@ -15,6 +15,16 @@ const router = createRouter({
 			name: "main",
 			component: () => import("../components/Page/Main.vue"),
 		},
+		// {
+		// 	path: "/trdl",
+		// 	name: "trdl",
+		// 	component: () => import("../components/Transaction/TransactionRequestDialog.vue"),
+		// },
+		// {
+		// 	path: "/withdrawreq",
+		// 	name: "withdrawreq",
+		// 	component: () => import("../components/Transaction/ViewTransactionRequest.vue"),
+		// },
 		{
 			path: "/profile",
 			name: "profile",
@@ -35,6 +45,10 @@ const router = createRouter({
 				{
 					path: "about",
 					component: () => import("../components/Foundation/FoundationProfile.vue"),
+				},
+				{
+					path: "transaction",
+					component: () => import("../components/Transaction/ViewTransactionRequestList.vue"),
 				},
 			],
 		},
