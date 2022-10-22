@@ -43,12 +43,16 @@ const router = createRouter({
 					component: () => import("../components/Volunteer/VolunteerAdd.vue"),
 				},
 				{
-					path: "about",
-					component: () => import("../components/Foundation/FoundationProfile.vue"),
+					path: "activity",
+					component: () => import("../components/Activity/ActivityList.vue"),
 				},
 				{
 					path: "transaction",
 					component: () => import("../components/Transaction/ViewTransactionRequestList.vue"),
+				},
+				{
+					path: "about",
+					component: () => import("../components/Foundation/FoundationProfile.vue"),
 				},
 			],
 		},
@@ -84,9 +88,14 @@ const router = createRouter({
 			component: () => import("../components/Volunteer/ViewVolunteer.vue"),
 		},
 		{
-			path: "/volunteer-detail",
+			path: "/volunteer-detail/:id",
 			name: "volunteer-detail",
 			component: () => import("../components/Volunteer/ViewVolunteerDetail.vue"),
+		},
+		{
+			path: "/volunteer-add",
+			name: "volunteer-add",
+			component: () => import("../components/Volunteer/FoundationForm.vue"),
 		},
 		{
 			path: "/project",
