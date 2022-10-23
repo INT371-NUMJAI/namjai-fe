@@ -155,13 +155,13 @@
             <w-input :validators="[validators.required]" class="my-auto text-center" type="number" bg-color="white" color="black"></w-input>
             <h1 class="pl-[15px] my-auto">บาท</h1>
           </div>
-          <base-button :isValid="valid === false" @click="showQR = true" class="mt-[30px] w-[150px] py-3" buttonLabel="บริจาค"></base-button>
-          <credit-card />
+          <!-- <base-button :isValid="valid === false" @click="showQR = true" class="mt-[30px] w-[150px] py-3" buttonLabel="บริจาค"></base-button> -->
+          <credit-card :isValid="valid === false" />
         </w-form>
-        <div v-if="showQR === true">
+        <!-- <div v-if="showQR === true">
           <img class="w-[150px] mx-auto mt-[20px]" src="https://i.ibb.co/Nm7JDbS/qr-demo.png" />
           <base-button @click="showQR = false" class="w-[150px] py-3" buttonLabel="ระบุจำนวนเงิน" />
-        </div>
+        </div> -->
         <div name="shareDt" class="hidden lg:block pt-16">
           <h2 class="text-[14px]">แชร์ต่อ</h2>
           <div class="flex space-x-3">

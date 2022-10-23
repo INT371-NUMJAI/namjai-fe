@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="">
-      <w-button class="px4" @click="showDialog = true"> Open dialog </w-button>
+      <base-button @click="showDialog = true" class="mt-[30px] w-[150px] py-3" buttonLabel="บริจาค"></base-button>
 
-      <w-dialog v-model="showDialog" :width="400"  >
+      <w-dialog v-model="showDialog" :width="400">
         <w-button name="closeButton" class="m-2" @click="showDialog = false" sm outline round absolute color="black" icon="wi-cross"></w-button>
         <div class="my-10 mx-6">
           <div class="flex space-x-5">
@@ -57,16 +57,16 @@ import { ref, reactive } from "vue";
 export default {
   setup() {
     const showDialog = ref(false);
-    return { showDialog, };
+    return { showDialog };
   },
-//   data: () => ({
-//     dialog: {
-//       show: false,
-//       fullscreen: false,
-//       persistent: false,
-//       persistentNoAnimation: false,
-//       width: 300,
-//     },
-//   }),
+  //   data: () => ({
+  //     dialog: {
+  //       show: false,
+  //       fullscreen: false,
+  //       persistent: false,
+  //       persistentNoAnimation: false,
+  //       width: 300,
+  //     },
+  //   }),
 };
 </script>
