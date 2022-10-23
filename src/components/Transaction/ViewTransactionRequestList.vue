@@ -51,7 +51,7 @@
               </tr>
             </thead>
             <tbody class="text-gray-600 text-sm font-light">
-              <tr class="border-b border-gray-200 hover:bg-gray-100 odd:bg-white even:bg-gray-100">
+              <tr @click="showDialog = true" class="border-b border-gray-200 hover:bg-gray-100 odd:bg-white even:bg-gray-100 cursor-pointer">
                 <td class="py-4 text-left whitespace-nowrap">
                   <p class="px-4 lg:px-6 w-[300px] md:w-[250px] lg:w-[300px] truncate font-medium">บริจาค ATK ให้น้องอนุบาลที่ห่างไกล dfgjdfjgidfj</p>
                 </td>
@@ -109,10 +109,18 @@
 
 <script>
 import TransactionRequestDrawer from "@/components/Transaction/TransactionRequestDrawer.vue";
+import TransactionRequestDialog from "./TransactionRequestDialog.vue";
+import { ref } from '@vue/reactivity';
 
 export default {
   components: {
     TransactionRequestDrawer,
+    TransactionRequestDialog,
+},
+  setup() {
+    const showDialog = ref(false);
+
+    return { showDialog };
   },
   setup() {},
 };
