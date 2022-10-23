@@ -10,7 +10,6 @@
         </svg>
         <h2 class="text-white text-sm lg:text-base">เพิ่มรายการถอน</h2>
       </button></router-link> -->
-
     </div>
     <hr />
     <div>
@@ -39,16 +38,16 @@
       </div>
 
       <div name="table" class="w-full">
-        <div class="bg-white shadow-md rounded my-6">
+        <div class="bg-white overflow-x-auto shadow-md rounded my-6">
           <table class="min-w-max w-full table-auto">
             <thead>
               <tr class="bg-[#E9F1F0] text-gray-600 uppercase text-sm leading-normal">
                 <th class="py-3 px-4 text-center md:text-left lg:px-6">ชื่อโครงการ</th>
-                <th class="hidden md:table-cell lg:table-cell py-3 px-6 text-left">จำนวนเงิน</th>
-                <th class="hidden md:table-cell lg:table-cell py-3 px-6 text-left">สถานะ</th>
-                <th class="hidden md:table-cell lg:table-cell py-3 px-6 text-left">วันที่ถอน</th>
-                <th class="hidden md:table-cell lg:table-cell py-3 px-6 text-left">วันที่อนุมัติ</th>
-                <!-- <th class="hidden lg:table-cell py-3 px-6 text-left"></th> -->
+                <th class="py-3 px-6 text-left">จำนวนเงิน</th>
+                <th class="py-3 px-6 text-left">สถานะ</th>
+                <th class="py-3 px-6 text-left">วันที่ถอน</th>
+                <th class="py-3 px-6 text-left">วันที่อนุมัติ</th>
+                <th class="py-3 px-6 text-left"></th>
               </tr>
             </thead>
             <tbody class="text-gray-600 text-sm font-light">
@@ -56,17 +55,31 @@
                 <td class="py-4 text-left whitespace-nowrap">
                   <p class="px-4 lg:px-6 w-[300px] md:w-[250px] lg:w-[300px] truncate font-medium">บริจาค ATK ให้น้องอนุบาลที่ห่างไกล dfgjdfjgidfj</p>
                 </td>
-                <td class="hidden md:table-cell lg:table-cell py-4 px-6 text-left">
+                <td class="h py-4 px-6 text-left">
                   <span>9,578,095</span>
                 </td>
-                <td class="hidden md:table-cell lg:table-cell py-4 px-6 text-left">
+                <td class="py-4 px-6 text-left">
                   <span>รอการอนุมัติ</span>
                 </td>
-                <td class="hidden md:table-cell lg:table-cell py-4 px-6 text-left">
+                <td class="py-4 px-6 text-left">
                   <span>29/09/65</span>
                 </td>
-                <td class="hidden md:table-cell lg:table-cell py-4 px-6 text-left">
+                <td class="py-4 px-6 text-left">
                   <span>31/12/65</span>
+                </td>
+                <td class="py-4 px-3 text-left">
+                  <button type="button" title="ดูรายละเอียด">
+                    <svg class="w-4 h-5" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M6 12H12M6 16H9M1 3V19C1 19.5304 1.21071 20.0391 1.58579 20.4142C1.96086 20.7893 2.46957 21 3 21H15C15.5304 21 16.0391 20.7893 16.4142 20.4142C16.7893 20.0391 17 19.5304 17 19V7.342C17 7.07556 16.9467 6.81181 16.8433 6.56624C16.7399 6.32068 16.5885 6.09824 16.398 5.912L11.958 1.57C11.5844 1.20466 11.0826 1.00007 10.56 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3V3Z"
+                        stroke="#363636"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path d="M11 1V5C11 5.53043 11.2107 6.03914 11.5858 6.41421C11.9609 6.78929 12.4696 7 13 7H17" stroke="#363636" stroke-width="2" stroke-linejoin="round" />
+                    </svg>
+                  </button>
                 </td>
                 <!-- <td class="hidden lg:table-cell py-4 text-center">
                   <div class="flex item-center justify-cente space-x-2">
@@ -95,15 +108,12 @@
 </template>
 
 <script>
-
 import TransactionRequestDrawer from "@/components/Transaction/TransactionRequestDrawer.vue";
 
 export default {
-  components:{
+  components: {
     TransactionRequestDrawer,
-},
-  setup() {
-    
   },
-}
+  setup() {},
+};
 </script>
