@@ -39,6 +39,7 @@ class AuthService {
 				localStorage.setItem("uuid", JSON.stringify(response.data));
 				// console.log(localStorage.getItem("user"));
 			}
+			return response.data;
 		});
 	}
 }

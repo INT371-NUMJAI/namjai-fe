@@ -1,10 +1,10 @@
 <template>
   <div
-    class="mx-[30px] md:mx-[40px] lg:mx-[177px] mt-[60px] lg:mt-[120px] h-auto"
+    class="mx-[30px] md:mx-[40px] my-[40px] h-auto"
   >
   {{ volunteerAttendanceBody }}
-    <h1 class="text-2xl lg:text-2xl mb-[40px]">อาสาจัดเต็มช่วยขนย้ายสิ่งของและต้อนรับผู้บริจาค</h1>
-    <div class="lg:mx-[183px] lg:mt-[60px]">
+    <h1 class="text-2xl lg:text-2xl mb-[40px]">{{ volunteerNameProps }}</h1>
+    <div class="lg:mt-[60px]">
     <w-form v-model="valid">
       <div class="flex space-x-[20px] lg:space-x-[30px]">
       <w-input
@@ -15,8 +15,8 @@
         label="ชื่อ"
         label-color="black"
         placeholder=" "
-        v-model="volunteerAttendanceBody.fname"
-      />
+        v-model="volunteerAttendanceBody.firstName"
+     />
       <w-input
         :validators="[validators.required]"
         class="mb-10 lg:text-base md:text-base text-sm"
@@ -25,7 +25,7 @@
         label="นามสกุล"
         label-color="black"
         placeholder=" "
-        v-model="volunteerAttendanceBody.lname"
+        v-model="volunteerAttendanceBody.lastName"
       />
       </div>
         <div class="flex space-x-[20px] lg:space-x-[30px]">
@@ -37,7 +37,7 @@
           label="เบอร์โทรศัพท์"
           label-color="black"
           placeholder=" "
-          v-model="volunteerAttendanceBody.phoneNumber"
+          v-model="volunteerAttendanceBody.contactNumber"
         />
         <!-- <label class="text-sm">แขวง</label> -->
         <w-input
@@ -52,9 +52,10 @@
         />
         </div>
       <base-button
-        class="w-[140px] mx-auto mt-[60px] mb-8"
+        class="w-[140px] mx-auto mt-[60px] mb-8 py-3"
         buttonLabel="ยืนยัน"
         :isValid="valid === false"
+        @click="submitunregisterVolunteerForm"
       />
     </w-form>
     </div>
@@ -64,18 +65,37 @@
 <script>
 import { reactive, ref } from "vue";
 import { useValidation } from "../Account/validator";
+import volunteerService from './volunteer-service';
 
 export default {
-  setup() {
+  props: {
+		volunteerNameProps: {
+			type: String,
+		},
+    volunteerUUIDProps: {
+      type: String,
+    }
+	},
+  setup(props, { emit }) {
     const valid = ref(null);
     const { validators } = useValidation();
+
+    const uuid = props.volunteerUUIDProps;
+
     const volunteerAttendanceBody = reactive({
-      fname: "",
-      lname: "",
-      phoneNumber: "",
+      volunteerProjectUUID: uuid,
+      firstName: "",
+      lastName: "",
+      contactNumber: "",
       email: "",
     });
-    return { validators, valid, volunteerAttendanceBody };
+
+    const submitunregisterVolunteerForm = () => {
+      volunteerService.unregisterVolunteerApply(volunteerAttendanceBody);
+      emit('closeThisComp', false);
+    }
+
+    return { validators, valid, volunteerAttendanceBody, submitunregisterVolunteerForm };
   },
 };
 </script>

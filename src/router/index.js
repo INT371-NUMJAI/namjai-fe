@@ -70,9 +70,24 @@ const router = createRouter({
 			component: () => import("../components/Volunteer/ViewVolunteer.vue"),
 		},
 		{
-			path: "/volunteer-detail",
+			path: "/volunteer-detail/:id",
 			name: "volunteer-detail",
 			component: () => import("../components/Volunteer/ViewVolunteerDetail.vue"),
+		},
+		{
+			path: "/volunteer-add",
+			name: "volunteer-add",
+			component: () => import("../components/Volunteer/FoundationForm.vue"),
+		},
+		{
+			path: "/volunteer-unregistered-user",
+			name: "volunteer-unregistered-user",
+			component: () => import("../components/Volunteer/VolunteerProjectForm.vue"),
+		},
+		{
+			path: "/volunteer-detail/:id/volunteerlistdetail",
+			name: "volunteerlistdetail",
+			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
 		},
 		{
 			path: "/project",
@@ -129,6 +144,11 @@ const router = createRouter({
 			path: "/:pathMatch(.*)*",
 			name: "not-found",
 			component: () => import("../components/PageError/Notfound.vue"),
+		},
+		{
+			path: "/volunteerlist",
+			name: "volunteerlist",
+			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
 		},
 	],
 	// linkActiveClass: "namjai-active-link",
