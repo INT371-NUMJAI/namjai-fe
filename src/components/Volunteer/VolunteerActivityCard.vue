@@ -7,7 +7,7 @@
 					<h2 class="font-medium text-xl mb-1 overflow-hidden truncate w-[180px] md:[20px]">{{ volunteerProp.volunteerProjectName }}</h2>
 					<div class="items-end bg-green-500 text-namjaiwhite text-center rounded-md py-1 px-4">เปิดอยู่</div>
 				</div>
-				<div class="mb-4">{{ volunteerProp.foundationName }}</div>
+				<div class="mb-4">{{ volunteerProp.foundationName }}</div>	
 				<div class="space-y-3">
 					<div class="flex space-x-1">
 						<w-icon color="namjaigreen">fa fa-map-marker</w-icon>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { reactive, toRefs } from "vue";
+import { reactive, ref, toRefs } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
@@ -42,9 +42,11 @@ export default {
 		const routeToVolunteerProjectDetail = (id) => {
 			route.push(`/volunteer-detail/${id}`);
 		};
-
+		const testV = ref("<li>quick brown fox jumps</li> <li>quick brown fox jumpsfdf</li>");
+		//  เป็นคนสัญชาติไทย,อายุไม่เกิน22ปี,
 		return {
 			routeToVolunteerProjectDetail,
+			testV,
 		};
 	},
 };
