@@ -1,7 +1,8 @@
 <template>
     <div v-for="(foundationCardProp, index) in foundationCardProps" :key="index" class="container bg-white rounded-md md:rounded-2xl lg:rounded-2xl flex md:flex-col lg:flex-col drop-shadow-md hover:shadow-lg">
       <div class="w-1/2 h-[180px] md:w-full lg:w-full">
-        <img class="w-full h-full rounded-l-md md:rounded-bl-none md:rounded-t-2xl lg:rounded-bl-none lg:rounded-t-2xl transition-all duration-500 ease-in-out transform bg-center object-cover" :src="foundationCardProp.profilePath" />
+        <img v-if="foundationCardProp.profilePath != null" class="w-full h-full rounded-l-md md:rounded-bl-none md:rounded-t-2xl lg:rounded-bl-none lg:rounded-t-2xl transition-all duration-500 ease-in-out transform bg-center object-cover" :src="foundationCardProp.profilePath" />
+        <img v-else-if="foundationCardProp.profilePath === null" class="w-full h-full rounded-l-md md:rounded-bl-none md:rounded-t-2xl lg:rounded-bl-none lg:rounded-t-2xl transition-all duration-500 ease-in-out transform bg-center object-cover" src="@/assets/image-unavailable.jpeg" />
       </div>
       {{ $route.params.id }}
       <div class="w-1/2 md:w-full lg:w-full py-3 px-5 lg:px-4 grid grid-rows-4 md:grid-rows-none lg:grid-rows-none md:space-y-2 lg:space-y-1">
