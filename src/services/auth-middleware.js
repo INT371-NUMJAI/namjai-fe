@@ -11,6 +11,7 @@ export function useAuth() {
 	// let auth_role_fdn = ref(false);
 	let auth_role = ref("");
 	let auth_login = ref(false);
+	let auth_email = ref("");
 	const checkLoggedIn = () => {
 		if (true === store_auth.status.loggedIn) {
 			if (store_auth.user.role.localeCompare("ROLE_ADMIN") === 0) {
@@ -22,15 +23,18 @@ export function useAuth() {
 				auth_role.value = "USER";
 			}
 			auth_userName.value = store_auth.user.userName;
+			auth_email.value = store_auth.user.email;
 			auth_login.value = true;
+			// console.log(auth_email.value);
 		} else if (false === store_auth.status.loggedIn || null === store_auth.status.loggedIn) {
 			auth_userName.value = null;
+			auth_email.value = null;
 			store_auth.user = null;
 		}
 	};
 
 	onMounted(() => checkLoggedIn());
 	onUpdated(() => checkLoggedIn());
-	return { auth_role, auth_userName, store_auth, auth_login, checkLoggedIn };
+	return { auth_role, auth_userName, store_auth, auth_login, auth_email, checkLoggedIn };
 }
 // auth_role.value = store_auth.user.role.localeCompare("ROLE_ADMIN") === 0 ? true : false;

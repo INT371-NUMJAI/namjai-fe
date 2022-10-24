@@ -5,7 +5,7 @@
     <div class="container mx-auto lg:max-w-6xl">
       <h2 class="text-xl pb-[20px] text-namjaidarkgrays">รายชื่ออาสาสมัคร</h2>
       <h1 class="text-[25px] pb-[30px] text-namjaidarkgray">
-        อาสาจัดเต็มช่วยขนย้ายสิ่งของและต้อนรับผู้บริจาค
+        {{ volunteerList.volunteerProjectName }}
       </h1>
 
       <div
@@ -17,7 +17,7 @@
           <div class="lg:flex space-y-2 lg:space-y-0 lg:space-x-2">
             <h2 class="text-sm lg:text-base">อาสาสมัครโครงการ:</h2>
             <h2 class="text-base">
-              อาสาจัดเต็มช่วยขนย้ายสิ่งของและต้อนรับผู้บริจาค
+              {{ volunteerList.volunteerProjectName }}
             </h2>
           </div>
           <button class="lg:flex lg:items-center lg:space-x-2">
@@ -68,7 +68,7 @@
                 </thead>
                 <tbody class="text-gray-600 text-sm font-light">
                   <tr
-                    v-for="(list, index) in volunteerList" :key="index"
+                    v-for="(list, index) in volunteerList.enrolledListVolunteerProjectList" :key="index"
                     class="border-b border-gray-200 hover:bg-gray-100 odd:bg-white even:bg-gray-100 cursor-default"
                   >
                     <td class="p-4 text-center">

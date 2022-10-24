@@ -1,32 +1,26 @@
 <template>
-	<div class="lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 grid grid-cols-1 gap-5 md:gap-6">
+	<div v-for="volunteerProp in volunteerProps" :key="volunteerProp.volunteerProjectUUID">
 		<div class="lg:max-w-sm md:max-w-md rounded-lg overflow-hidden bg-namjaiwhite drop-shadow-md hover:shadow-md cursor-pointer">
-			<img class="w-full" src="@/assets/pic1.png" @click="routeToVolunteerProjectDetail()" />
+			<img class="w-full" src="@/assets/pic1.png" @click="routeToVolunteerProjectDetail(volunteerProp.volunteerProjectUUID)" />
 			<div class="lg:px-6 lg:py-4 px-4 py-3 md:py-5">
 				<div class="flex justify-between items-center">
-					<div class="font-medium mb-1 overflow-hidden truncate w-[180px] md:[20px]">จ้างวาน.dskvamdflbkmlfdkbmlkfeblkfmข้า</div>
+					<h2 class="font-medium text-xl mb-1 overflow-hidden truncate w-[180px] md:[20px]">{{ volunteerProp.volunteerProjectName }}</h2>
 					<div class="items-end bg-green-500 text-namjaiwhite text-center rounded-md py-1 px-4">เปิดอยู่</div>
 				</div>
-				<div class="mb-4">มูลนิธิกระจกเงา</div>
+				<div class="mb-4">{{ volunteerProp.foundationName }}</div>
 				<div class="space-y-3">
 					<div class="flex space-x-1">
 						<w-icon color="namjaigreen">fa fa-map-marker</w-icon>
-						<p>กรุงเทพมหานคร</p>
+						<p>{{ volunteerProp.locationProvince }}</p>
 					</div>
 					<div class="flex space-x-1">
 						<w-icon color="namjaigreen">fa fa-calendar-o</w-icon>
-						<p>00/00/0000 - 00/00/0000</p>
+						<p>{{ volunteerProp.activityStartDate.slice(0, 10) }} ถึง {{ volunteerProp.activityEndDate.slice(0, 10) }}</p>
 					</div>
-					<div class="grid grid-cols-2">
 						<div class="flex space-x-1">
-							<w-icon color="namjaigreen">fa fa-clock-o</w-icon>
-							<p>11:00 - 13:00</p>
-						</div>
-						<div class="flex space-x-1 justify-end">
 							<w-icon class="" color="namjaigreen">fa fa-user-o</w-icon>
-							<p>13</p>
+							<p>{{ volunteerProp.peopleRegistered }}/{{ volunteerProp.peopleNeeded }}</p>
 						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -38,10 +32,15 @@ import { reactive, toRefs } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
+	props: {
+		volunteerProps: {
+			type: Array,
+		}
+	},
 	setup() {
 		const route = useRouter();
-		const routeToVolunteerProjectDetail = () => {
-			route.push("/volunteer-detail");
+		const routeToVolunteerProjectDetail = (id) => {
+			route.push(`/volunteer-detail/${id}`);
 		};
 
 		return {

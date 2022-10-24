@@ -76,7 +76,7 @@ export default {
       type: String,
     }
 	},
-  setup(props) {
+  setup(props, { emit }) {
     const valid = ref(null);
     const { validators } = useValidation();
 
@@ -92,6 +92,7 @@ export default {
 
     const submitunregisterVolunteerForm = () => {
       volunteerService.unregisterVolunteerApply(volunteerAttendanceBody);
+      emit('closeThisComp', false);
     }
 
     return { validators, valid, volunteerAttendanceBody, submitunregisterVolunteerForm };

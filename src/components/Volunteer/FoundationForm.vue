@@ -248,6 +248,7 @@
         buttonLabel="ยืนยัน"
         :isValid="valid === false"
       />
+      {{ addVolunteerBody }}
     </w-form>
   </div>
 </template>
@@ -256,9 +257,10 @@
 import { computed, reactive, ref } from "vue";
 import { useValidation } from "../Account/validator";
 import volunteerService from "./volunteer-service.js";
-import { v4 as uuidv4 } from "uuid";
 import { useStore } from "vuex";
 import { useAuth } from "../../services/auth-middleware";
+import { useUtil } from "../../services/useUtil";
+
 
 export default {
   setup() {
@@ -297,8 +299,9 @@ export default {
       return `<li> ${dutyBefore.value.replace(/,/g, '</li><li>')} </li>`
     });
 
+    const { generateFiveDigitsUUID } = useUtil();
     const addVolunteerBody = reactive({
-      volunteerProjectsUUID: uuidv4(),
+      volunteerProjectsUUID: generateFiveDigitsUUID(),
       volunteerProjectName: "",
       peopleNeeded: 0,
       description: "",

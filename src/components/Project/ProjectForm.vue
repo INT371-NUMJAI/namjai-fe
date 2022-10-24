@@ -172,11 +172,12 @@
 </template>
 
 <script>
-import { v4 as uuidv4 } from "uuid";
 import { onMounted, reactive, ref } from "vue";
 import { useValidation } from "../Account/validator";
 import { useStore } from "vuex";
 import foundationProjectService from "./project-service";
+import { useUtil } from "../../services/useUtil";
+
 
 export default {
   setup() {
@@ -203,11 +204,12 @@ export default {
 
     ])
 
+    const { generateFiveDigitsUUID } = useUtil();
     const foundationUUID = JSON.parse(localStorage.getItem("uuid"));
     // onMounted(() => (foundationUUID.value = store.state.fdn.UUID));
     const fdnProjectBody = reactive({
       fdnUUID: foundationUUID.uuid,
-      fdnProjectUUID: uuidv4(),
+      fdnProjectUUID: generateFiveDigitsUUID(),
       fdnProjectName: "",
       startDate: "",
       endDate: "",

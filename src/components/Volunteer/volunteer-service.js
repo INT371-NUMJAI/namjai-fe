@@ -13,6 +13,11 @@ class VolunteerService {
     registeredVolunteerApply(payload) {
         return http.post("/view/volunteer/registered-user", payload);
     }
+
+    deleteEnrolledVolunteer(email, volunteeruuid) {
+        return http.delete(`/view/volunteer-enrolled/remove/${email}/${volunteeruuid}`);
+    }
+
 }
 
 export default new VolunteerService();

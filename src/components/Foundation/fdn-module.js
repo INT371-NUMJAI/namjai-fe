@@ -9,10 +9,10 @@ export const fdn = {
     actions: {
         getUUID({commit}, email) {
             return AuthService.getUUID(email).then(
-                (fdn_uuid) => {
+                (UUID) => {
                     // console.log(initialState.UUID);
-                    commit("getUUIDSuccess", fdn_uuid);
-                    return Promise.resolve(fdn_uuid);
+                    commit("getUUIDSuccess", UUID);
+                    return Promise.resolve(UUID);
                 },
                 (error) => {
 					commit("getUUIDFailure");
@@ -26,9 +26,9 @@ export const fdn = {
 		},
     },
     mutations: {
-        getUUIDSuccess(state, fdn_uuid) {
-            state.fdn_uuid = fdn_uuid;
-            console.log(initialState.fdn_uuid);
+        getUUIDSuccess(state, UUID) {
+            state.fdn_uuid = UUID;
+            console.log(initialState.UUID);
         },
         getUUIDFailure(state) {
             state.fdn_uuid = null;

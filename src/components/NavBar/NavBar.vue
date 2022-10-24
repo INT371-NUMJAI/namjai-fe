@@ -97,11 +97,11 @@ export default {
 			router.push("/main");
 		};
 		const checkLoginStatus = () => {
-			if (use_auth.store_auth.status.loggedIn) {
+			if (use_auth.store_auth.status.loggedIn && use_auth.store_auth.user.role === "ROLE_FDN") {
 				store.dispatch("fdn/getUUID", store.state.auth.user.email);
 			}
 		};
-
+    checkLoginStatus();
 		const routeToProfile = () => {
 			router.push(`/profile`);
 			checkLoginStatus();
