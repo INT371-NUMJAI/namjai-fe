@@ -39,6 +39,27 @@ const router = createRouter({
 			],
 		},
 		{
+			path: "/profile/:id",
+			name: "profile",
+			component: () => import("../components/Profile/ViewProfile.vue"),
+			children: [
+				{
+					path: "post",
+					component: () => import("../components/Post/ViewPostBlockDetail.vue"),
+				},
+				{
+					path: "project",
+					component: () => import("../components/Project/ProjectAdd.vue"),
+				},
+				{
+					path: "volunteer",
+					component: () => import("../components/Volunteer/VolunteerAdd.vue"),
+				},
+				{
+					path: "about",
+					component: () => import("../components/Foundation/FoundationProfile.vue"),
+				},
+			],
 			path: "/editprofile",
 			name: "editprofile",
 			component: () => import("../components/Profile/EditProfile.vue"),
@@ -119,6 +140,11 @@ const router = createRouter({
 			path: "/add/foundationproject",
 			name: "fdn-project-form",
 			component: () => import("../components/Project/ProjectForm.vue"),
+		},
+		{
+			path: "/foundation",
+			name: "foundation",
+			component: () => import("../components/Foundation/ViewFoundation.vue"),
 		},
 		{
 			path: "/admin-management",

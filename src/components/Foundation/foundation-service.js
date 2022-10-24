@@ -5,6 +5,9 @@ class FoundationService {
     async getFoundationById(id) {
         return http.get(`/view/foundation/${id}`);
     }
+    getFoundationList() {
+        return http.get("/view/foundationlist/short");
+    }
 }
 
 
