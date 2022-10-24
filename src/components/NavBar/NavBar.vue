@@ -151,7 +151,7 @@
   </nav>
 </template>
 <script>
-import { ref } from "vue";
+import { onMounted, onUpdated, ref } from "vue";
 import { useStore } from "vuex";
 import Drawer from "./Drawer.vue";
 import { useRouter } from "vue-router";
@@ -167,24 +167,27 @@ export default {
     const store = useStore();
     const router = useRouter();
 
-    const clicktoLogout = () => {
-      showManage.value = false;
-      showDropDown.value = false;
-      store.dispatch("auth/logout");
-      router.push("/main");
-    };
-    const checkLoginStatus = () => {
-      if (use_auth.store_auth.status.loggedIn) {
-        store.dispatch("fdn/getUUID", store.state.auth.user.email);
-      }
-    };
+		const clicktoLogout = () => {
+			showManage.value = false;
+			showDropDown.value = false;
+			store.dispatch("auth/logout");
+			if (use_auth.auth_role.value === `FDN`) {
+				store.dispatch("fdn/logout");
+			}
+			router.push("/main");
+		};
+		const checkLoginStatus = () => {
+			if (use_auth.store_auth.status.loggedIn && use_auth.store_auth.user.role === "ROLE_FDN") {
+				store.dispatch("fdn/getUUID", store.state.auth.user.email);
+			}
+		};
     checkLoginStatus();
-
-    const routeToProfile = () => {
-      router.push(`/profile`);
-      showDropDown.value = false;
-    };
-
+		const routeToProfile = () => {
+			router.push(`/profile`);
+			checkLoginStatus();
+			showDropDown.value = false;
+		};
+    
     const routeToManageFDN = () => {
       router.push("/admin-management");
       showManage.value = false;

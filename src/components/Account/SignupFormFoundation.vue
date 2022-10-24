@@ -1,6 +1,6 @@
 <template>
 	<div class="">
-		<!-- <div>{{ foundation }} {{ fileUpload[0] }}</div> -->
+		<div>{{ foundation }}</div>
 		<w-form v-model="valid" class="hidden lg:inline" @success="submitForm">
 			<div class="space-y-10 pb-10 pt-[30px]">
 				<div class="space-y-4">
@@ -17,10 +17,16 @@
 						</div>
 					</div>
 				</div>
-				<div class="space-y-4">
-					<label class="font-medium">ชื่อองค์กร</label>
-					<w-input :validators="[validators.required]" color="black" placeholder="ชื่อองค์กร" v-model="foundation.fdnName"></w-input>
-				</div>
+				<div class="grid grid-cols-2 gap-10">
+					<div class="space-y-4">
+						<label class="font-medium">ชื่อองค์กร(ภาษาไทย)</label>
+						<w-input :validators="[validators.required]" color="black" placeholder="ชื่อองค์กร" v-model="foundation.fdnName"></w-input>
+					</div>
+					<div class="space-y-4">
+						<label class="font-medium">ชื่อองค์กร(ภาษาอังกฤษ)</label>
+						<w-input :validators="[validators.required]" color="black" placeholder="Foundation Name" v-model="foundation.fdnNameEn"></w-input>
+					</div>
+			</div>
 				<div class="grid grid-cols-2 gap-10">
 					<div class="space-y-4">
 						<label class="font-medium">อีเมล</label>
@@ -78,11 +84,11 @@
 					</div>
 				</div>
 				<div class="space-y-4">
-					<div name="smallfdn" class="grid grid-flow-row space-y-1">
+					<div v-if="foundation.fdnSize === `small`" name="smallfdn" class="grid grid-flow-row space-y-1">
 						<label>เอกสารที่เกี่ยวข้อง</label>
-						<span class="text-sm text-namjaidarkgray">** ส่งไฟล์ zip เพื่อตรวจสอบหลักฐานประกอบไปด้วย สำเนาบัตรประชาชนผู้บริหาร ,สำเนาหน้าสมุดบัญชีองค์กร</span>
+						<span class="text-sm text-namjaidarkgray">** ส่งไฟล์ zip เพื่อตรวจสอบหลักฐานประกอบไปด้วย สำเนาบัตรประชาชนผู้บริหาร, สำเนาหน้าสมุดบัญชีองค์กร</span>
 					</div>
-					<div name="hugefdn" class="grid grid-flow-row space-y-1">
+					<div v-if="foundation.fdnSize === `big`" name="hugefdn" class="grid grid-flow-row space-y-1">
 						<label>เอกสารที่เกี่ยวข้อง</label>
 						<span class="text-sm text-namjaidarkgray">** ส่งไฟล์ zip เพื่อตรวจสอบหลักฐานประกอบไปด้วย หนังสือการจัดตั้งองค์กร, สำเนาบัตรประชาชนผู้บริหาร ,สำเนาหน้าสมุดบัญชีองค์กร</span>
 					</div>
@@ -106,18 +112,22 @@
 </template>
 
 <script>
-import { v4 as uuidv4 } from "uuid";
 import authService from "@/services/auth-service";
 import { useValidation } from "./validator";
 import { reactive, ref } from "vue";
+import { useUtil } from "../../services/useUtil";
+import { useRouter } from 'vue-router';
+
 export default {
 	setup() {
+		const router = useRouter();
 		const { validators } = useValidation();
 		const valid = ref(null);
 
 		const province = reactive([{ label: "กระบี่" }, { label: "กรุงเทพมหานคร" }, { label: "กาญจนบุรี" }, { label: "กาฬสินธุ์" }, { label: "กำแพงเพชร" }, { label: "ขอนแก่น" }, { label: "จันทบุรี" }, { label: "ฉะเชิงเทรา" }, { label: "ชลบุรี" }, { label: "ชัยนาท" }, { label: "ชัยภูมิ" }, { label: "ชุมพร" }, { label: "เชียงราย" }, { label: "เชียงใหม่" }, { label: "ตรัง" }, { label: "ตราด" }, { label: "ตาก" }, { label: "นครนายก" }, { label: "นครปฐม" }, { label: "นครพนม" }, { label: "นครราชสีมา" }, { label: "นครศรีธรรมราช" }, { label: "นครสวรรค์" }, { label: "นนทบุรี" }, { label: "นราธิวาส" }, { label: "น่าน" }, { label: "บึงกาฬ" }, { label: "บุรีรัมย์" }, { label: "ปทุมธานี" }, { label: "ประจวบคีรีขันธ์" }, { label: "ปราจีนบุรี" }, { label: "ปัตตานี" }, { label: "พระนครศรีอยุธยา" }, { label: "พะเยา" }, { label: "พังงา" }, { label: "พัทลุง" }, { label: "พิจิตร" }, { label: "พิษณุโลก" }, { label: "เพชรบุรี" }, { label: "เพชรบูรณ์" }, { label: "แพร่" }, { label: "ภูเก็ต" }, { label: "มหาสารคาม" }, { label: "มุกดาหาร" }, { label: "แม่ฮ่องสอน" }, { label: "ยโสธร" }, { label: "ยะลา" }, { label: "ร้อยเอ็ด" }, { label: "ระนอง" }, { label: "ระยอง" }, { label: "ราชบุรี" }, { label: "ลพบุรี" }, { label: "ลำปาง" }, { label: "ลำพูน" }, { label: "เลย" }, { label: "ศรีสะเกษ" }, { label: "สกลนคร" }, { label: "สงขลา" }, { label: "สตูล" }, { label: "สมุทรปราการ" }, { label: "สมุทรสงคราม" }, { label: "สมุทรสาคร" }, { label: "สระแก้ว" }, { label: "สระบุรี" }, { label: "สิงห์บุรี" }, { label: "สุโขทัย" }, { label: "สุพรรณบุรี" }, { label: "สุราษฎร์ธานี" }, { label: "สุรินทร์" }, { label: "หนองคาย" }, { label: "หนองบัวลำภู" }, { label: "อ่างทอง" }, { label: "อำนาจเจริญ" }, { label: "อุดรธานี" }, { label: "อุตรดิตถ์" }, { label: "อุทัยธานี" }, { label: "อุบลราชธานี" }]);
 
-		const foundation = reactive({ fdnUUid: uuidv4(), fdnName: "", addressDetail: "", subDistrict: "", district: "", province: "", postalCode: "", founderName: "", fdnDetail: "", fdnSize: "", establishDate: "", email: "", contactNo: "", password: "" });
+		const { generateFiveDigitsUUID } = useUtil();
+		const foundation = reactive({ fdnUUid: generateFiveDigitsUUID(), fdnName: "", fdnNameEn: "", addressDetail: "", subDistrict: "", district: "", province: "", postalCode: "", founderName: "", fdnDetail: "", fdnSize: "", establishDate: "", email: "", contactNo: "", password: "" });
 
 		const fileUpload = ref([]);
 		const fileHandler = (event) => {
@@ -125,7 +135,11 @@ export default {
 		};
 
 		const submitForm = () => {
-			authService.registerFoundation(foundation).catch((error) => {
+			authService.registerFoundation(foundation).then(response => {
+				if(response.status === 200) {
+					router.push("/login");
+				}
+			}).catch((error) => {
 				console.error(error);
 			});
 

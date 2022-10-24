@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import SignupFormFoundation from "../components/Account/SignupFormFoundation.vue";
-import SignupFormUser from "../components/Account/SignupFormUser.vue";
 import { useAuth } from "../services/auth-middleware";
 import { Role } from "@/_helpers/Role";
 
@@ -10,8 +8,7 @@ const router = createRouter({
 		{
 			path: "/",
 			name: "home",
-			// component: () => import("../components/Page/Landing.vue"),
-			component: () => import("../components/Volunteer/ViewVolunteerPostDetail.vue"),
+			component: () => import("../components/Page/Landing.vue"),
 		},
 		{
 			path: "/main",
@@ -63,6 +60,9 @@ const router = createRouter({
 					component: () => import("../components/Foundation/FoundationProfile.vue"),
 				},
 			],
+			path: "/editprofile",
+			name: "editprofile",
+			component: () => import("../components/Profile/EditProfile.vue"),
 		},
 		{
 			path: "/login",
@@ -81,7 +81,6 @@ const router = createRouter({
 				},
 				{
 					path: "foundation",
-
 					component: () => import("../components/Account/SignupFormFoundation.vue"),
 				},
 			],
@@ -90,6 +89,26 @@ const router = createRouter({
 			path: "/volunteer",
 			name: "volunteer",
 			component: () => import("../components/Volunteer/ViewVolunteer.vue"),
+		},
+		{
+			path: "/volunteer-detail/:id",
+			name: "volunteer-detail",
+			component: () => import("../components/Volunteer/ViewVolunteerDetail.vue"),
+		},
+		{
+			path: "/volunteer-add",
+			name: "volunteer-add",
+			component: () => import("../components/Volunteer/FoundationForm.vue"),
+		},
+		{
+			path: "/volunteer-unregistered-user",
+			name: "volunteer-unregistered-user",
+			component: () => import("../components/Volunteer/VolunteerProjectForm.vue"),
+		},
+		{
+			path: "/volunteer-detail/:id/volunteerlistdetail",
+			name: "volunteerlistdetail",
+			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
 		},
 		{
 			path: "/project",
@@ -147,8 +166,19 @@ const router = createRouter({
 			name: "report",
 			component: () => import("../components/Report/ReportForm.vue"),
 		},
+		{
+			path: "/:pathMatch(.*)*",
+			name: "not-found",
+			component: () => import("../components/PageError/Notfound.vue"),
+		},
+		{
+			path: "/volunteerlist",
+			name: "volunteerlist",
+			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
+		},
 	],
-	// linkActiveClass:'namjai-active-link'
+	// linkActiveClass: "namjai-active-link",
+	// linkExactActiveClass: "namjai-active-link",
 });
 export default router;
 

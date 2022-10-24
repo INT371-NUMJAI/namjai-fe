@@ -16,7 +16,6 @@ export default {
 	},
 	setup() {
 		const router = useRoute();
-		console.log(router.params.id);
 		const fdnProjectList = ref([]);
 		const fetchFdnProjectList = () => {
 			projectService.getFoundationProjectsByTargetCatID(router.params.id).then((response) => {

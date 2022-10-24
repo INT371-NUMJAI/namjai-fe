@@ -28,11 +28,10 @@
             >เพิ่มรูปภาพ</w-input
           >
         </div>
-        <div class="mt-3 md:mt-2">
+        <div v-if="use_auth.store_auth.status.loggedIn" class="mt-3 md:mt-2">
           <w-button
             :disabled="
-              use_auth.store_auth.user.status === `DISABLE` &&
-              use_auth.store_auth.status.loggedIn
+              use_auth.store_auth.user.status === `DISABLE`
             "
             class="px-3 py-3.5 lg:py-4 text-[12px] lg:text-[14px] rounded-md"
             color="white"

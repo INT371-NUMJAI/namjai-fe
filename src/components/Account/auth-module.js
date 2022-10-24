@@ -10,7 +10,7 @@ export const auth = {
 		login({ commit }, user) {
 			return AuthService.login(user).then(
 				(user) => {
-					console.log(initialState.user);
+					// console.log(initialState.user);
 					commit("loginSuccess", user);
 					return Promise.resolve(user);
 				},
@@ -29,12 +29,14 @@ export const auth = {
 		loginSuccess(state, user) {
 			state.status.loggedIn = true;
 			state.user = user;
+			// console.log(initialState.user);
 		},
 		loginFailure(state) {
 			state.status.loggedIn = false;
 			state.user = null;
 		},
 		logout(state) {
+			localStorage.removeItem("user");
 			state.status.loggedIn = false;
 			state.user = null;
 		},

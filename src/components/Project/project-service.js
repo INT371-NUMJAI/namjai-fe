@@ -31,6 +31,9 @@ class FoundationProjectService {
 	async getFoundationProjectsByTargetCatID(id) {
 		return http.get(`/view/foundationproject/target?targetCatID=${id}`);
 	}
+	getFoundationProjectByFDNUUID(id) {
+		return http.get(`/view/project/user?fdnUUID=${id}`);
+	}
 }
 
 export default new FoundationProjectService();
