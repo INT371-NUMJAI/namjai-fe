@@ -1,7 +1,8 @@
 <template>
 	<div class="mx-[30px] lg:mx-[177px] mt-[120px] mb-[60px] space-y-2.5 lg:space-y-5">
 		<foundation-name :foundationNameProps="foundationName" />
-		<div class="container mx-auto px-[30px] py-3 lg:py-4 flex justify-center lg:justify-start space-x-[30px] md:space-x-[50px] lg:space-x-[60px] bg-namjaiwhite rounded-lg text-center text-[14px] lg:text-[16px] font-black text-[#5A5A5A] duration-200 easy-in-out">
+		<div class="whitespace-nowrap overflow-x-auto container mx-auto py-3 lg:py-4 justify-center lg:justify-start space-x-[30px] md:space-x-[50px] lg:space-x-[60px] bg-namjaiwhite rounded-lg text-center text-[14px] lg:text-[16px] font-black text-[#5A5A5A] duration-200 easy-in-out">
+			<div class="inline-block lg:flex md:flex space-x-[30px] px-[30px]">
 			<button class="active:border-b-4 active:border-namjaigreen">
 				<router-link to="/profile/post"><p>โพสต์</p></router-link>
 			</button>
@@ -13,10 +14,16 @@
 			<button class="active:border-b-4 active:border-namjaigreen">
 				<router-link to="/profile/volunteer"><p>จิตอาสา</p></router-link>
 			</button>
-
+			<button class="active:border-b-4 active:border-namjaigreen">
+				<router-link to="/profile/activity"><p>บันทึกกิจกรรม</p></router-link>
+			</button>
+			<button class="active:border-b-4 active:border-namjaigreen">
+				<router-link to="/profile/transaction"><p>การเงิน</p></router-link>
+			</button>
 			<button class="active:border-b-4 active:border-namjaigreen">
 				<router-link to="/profile/about"><p>เกี่ยวกับ</p></router-link>
 			</button>
+		</div>
 		</div>
 		<router-view />
 	</div>
@@ -51,3 +58,9 @@ export default {
 	},
 };
 </script>
+
+<style scoped>
+::-webkit-scrollbar {
+	display: none;
+}
+</style>

@@ -15,6 +15,16 @@ const router = createRouter({
 			name: "main",
 			component: () => import("../components/Page/Main.vue"),
 		},
+		// {
+		// 	path: "/trdl",
+		// 	name: "trdl",
+		// 	component: () => import("../components/Transaction/TransactionRequestDialog.vue"),
+		// },
+		// {
+		// 	path: "/withdrawreq",
+		// 	name: "withdrawreq",
+		// 	component: () => import("../components/Transaction/ViewTransactionRequest.vue"),
+		// },
 		{
 			path: "/profile",
 			name: "profile",
@@ -31,6 +41,14 @@ const router = createRouter({
 				{
 					path: "volunteer",
 					component: () => import("../components/Volunteer/VolunteerAdd.vue"),
+				},
+				{
+					path: "activity",
+					component: () => import("../components/Activity/ActivityList.vue"),
+				},
+				{
+					path: "transaction",
+					component: () => import("../components/Transaction/ViewTransactionRequestList.vue"),
 				},
 				{
 					path: "about",
@@ -111,6 +129,7 @@ const router = createRouter({
 			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
 		},
 		{
+
 			path: "/project",
 			name: "project",
 			component: () => import("../components/Project/ViewProjects.vue"),
