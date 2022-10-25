@@ -5,7 +5,6 @@
       <div class="fixed inset-x-0 inset-y-20 z-10 overflow-y-auto">
         <div class="flex items-center justify-center p-4 text-center">
           <div class="relative max-w-xl px-8 lg:px-20 py-5 transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all">
-            <w-button class="m-2" @click="showDailog = false" sm outline round absolute color="black" icon="wi-cross"></w-button>
             <div class="mt-3">
               <h2 class="text-lg text-center font-medium leading-6 text-gray-900" id="modal-title">ตรวจสอบความถูกต้อง</h2>
               <div class="mt-5 space-y-3 md:space-y-5 text-sm leading-relaxed">

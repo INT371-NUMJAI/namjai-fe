@@ -15,10 +15,10 @@
 					<div class="space-y-2.5">
 						<div class="flex justify-between items-center">
 							<h2 class="text-[12px] lg:text-[14px] font-black">ยอดบริจาคปัจจุบัน</h2>
-							<h1 class="text-xl text-namjaigreen">23,500</h1>
+							<h1 class="text-xl text-namjaigreen">{{ projectCardProp.received }}</h1>
 						</div>
 
-						<w-progress model-value="50" size="1em" bg-color="grey-light4" color="namjaigreen" round round-cap> </w-progress>
+						<w-progress :model-value="projectCardProp.percentage" size="1em" bg-color="grey-light4" color="namjaigreen" round round-cap> </w-progress>
 
 						<div class="flex justify-between items-center">
 							<div class="space-y-1">

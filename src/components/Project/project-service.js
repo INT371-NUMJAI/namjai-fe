@@ -34,6 +34,9 @@ class FoundationProjectService {
 	getFoundationProjectByFDNUUID(id) {
 		return http.get(`/view/project/user?fdnUUID=${id}`);
 	}
+	createPayment(payload) {
+		return http.post("/view/payment", payload);
+	}
 }
 
 export default new FoundationProjectService();
