@@ -60,7 +60,7 @@
 				<base-button class="w-[150px] h-[50px]" buttonLabel="อนุมัติ" @click="clickToVerify(foundation.fdnUUid)" />
 			</div>
 			<div class="flex">
-				<base-button @click="(dialog.show = true), clickToRejected(foundation.fdnUUid)" buttonColor="bg-namjaired" class="w-[150px] h-[50px] justify-start" buttonLabel="ไม่อนุมัติ" />
+				<base-button @click="(dialog.show = true)" buttonColor="bg-namjaired" class="w-[150px] h-[50px] justify-start" buttonLabel="ไม่อนุมัติ" />
 			</div>
 		</div>
 		<w-dialog v-model="dialog.show" :width="dialog.width" bg-color="namajai-green">
@@ -74,7 +74,7 @@
 				<div class="space-x-4 ml-[140px] mt-4">
 					<w-button @click="dialog.show = false" class="h-[40px]" bg-color="error">ยกเลิก</w-button>
 
-					<w-button @click="dialog.show = false" bg-color="success-dark1" color="white">ยืนยัน</w-button>
+					<w-button @click="dialog.show = false; clickToRejected(foundation.fdnUUid)" bg-color="success-dark1" color="white">ยืนยัน</w-button>
 				</div>
 				<!-- <w-button :disabled="valid === false" bg-color="namjai-green" color="white" @click="dialog.show = false">ยืนยัน</w-button> -->
 				<!-- </template> -->
@@ -110,9 +110,6 @@ export default {
 		// const showButtons=()=>{
 		isPending.value = foundation.status === "PENDING" ? true : false;
 		// }
-		onMounted(() => {
-			fetchFoundationDetail(route.params.id);
-		});
 
 		const clickToDownloadFile = (id) => {
 			approveService.getFDNDocumentFileByFDNUUID(id);
@@ -121,18 +118,19 @@ export default {
 		const valid = ref(null);
 		const dialog = reactive({ show: false, width: 300 });
 
-		const apiVerificationFDN = reactive({ fdnUUid: "", status: "", message: "" });
+		const apiVerificationFDN = reactive({ fdnUUid: "", status: "", message: "สวัสดีจ้า" });
 		const clickToVerify = (uuid) => {
 			apiVerificationFDN.fdnUUid = uuid;
-			apiVerificationFDN.status = "V";
+			apiVerificationFDN.status = "APPROVE";
 			approveService.approveFDN(apiVerificationFDN);
 		};
 		const clickToRejected = (uuid) => {
 			apiVerificationFDN.fdnUUid = uuid;
-			apiVerificationFDN.status = "R";
+			apiVerificationFDN.status = "REJECTED";
+			approveService.approveFDN(apiVerificationFDN);
 		};
-		const clickToApprove = (payload) => {
-			approveService.approveFDN(payload);
+		const clickToApprove = () => {
+			approveService.approveFDN(apiVerificationFDN);
 		};
 
 		const { validators } = useValidation();

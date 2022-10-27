@@ -18,7 +18,7 @@ export default {
 				color.value = "bg-namjaigreen";
 				return (message.value = "อนุมัติ");
 			}
-			if ("REJECTED" === props.statusText) {
+			if ("REJECTED" === props.statusText || "REJECT" === props.statusText) {
 				color.value = "bg-namjaired";
 				return (message.value = "ไม่อนุมัติ");
 			}

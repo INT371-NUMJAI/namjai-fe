@@ -2,7 +2,6 @@
   <div
     class="mx-[30px] md:mx-[40px] my-[40px] h-auto"
   >
-  {{ volunteerAttendanceBody }}
     <h1 class="text-2xl lg:text-2xl mb-[40px]">{{ volunteerNameProps }}</h1>
     <div class="lg:mt-[60px]">
     <w-form v-model="valid">

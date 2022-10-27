@@ -22,7 +22,7 @@
             </div>
             <div>
               <label class="text-sm text-gray-600">ชื่อบนบัตร</label>
-              <w-input :validators="[validators.required]" type="text" color="teal-dark2" placeholder="สุรพงศ์ ไมตรีจิตร" outline></w-input>
+              <w-input :validators="[validators.required]" type="text" color="teal-dark2" placeholder="Jennie Kim" outline></w-input>
             </div>
             <div class="grid grid-flow-col gap-8">
               <div>

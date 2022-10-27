@@ -293,7 +293,6 @@
 		<w-dialog v-model="showDialogDelete" class="px-[30px]" :width="500" bg-color="namjai-beige">
 			<div class="text-center mt-[20px] space-y-[20px]">
 			<h2 class="lg:text-2xl md:text-2xl text-xl">คุณต้องการยกเลิกการเข้าร่วมกิจกรรมนี้หรือไม่</h2>
-			{{ volunteerDeleteBody }}
 		</div>
 			<div class="flex mt-[30px] lg:mt-10 mx-[20px] lg:mx-[60px] md:mx-[60px]">
 			<base-button
