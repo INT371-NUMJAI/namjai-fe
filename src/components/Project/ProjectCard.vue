@@ -5,7 +5,7 @@
 				<div class="relative cursor-pointer">
 					<img class="rounded-t-lg object-center" src="@/assets/pic1.png" />
 					<div class="absolute top-0 right-0 p-3">
-						<h3 class="px-4 py-1.5 bg-[#21BB7A] text-white rounded-lg font-bold text-[14px] lg:text-[16px]">{{ projectCardProp.status }}</h3>
+						<h1 class="px-4 py-1.5 text-white rounded-lg font-bold text-[14px] lg:text-[20px]">{{ projectCardProp.status }}</h1>
 					</div>
 				</div>
 
@@ -15,10 +15,10 @@
 					<div class="space-y-2.5">
 						<div class="flex justify-between items-center">
 							<h2 class="text-[12px] lg:text-[14px] font-black">ยอดบริจาคปัจจุบัน</h2>
-							<h1 class="text-xl text-namjaigreen">23,500</h1>
+							<h1 class="text-xl text-namjaigreen">{{ projectCardProp.received }}</h1>
 						</div>
 
-						<w-progress model-value="50" size="1em" bg-color="grey-light4" color="namjaigreen" round round-cap> </w-progress>
+						<w-progress :model-value="projectCardProp.percentage" size="1em" bg-color="grey-light4" color="namjaigreen" round round-cap> </w-progress>
 
 						<div class="flex justify-between items-center">
 							<div class="space-y-1">
@@ -44,11 +44,33 @@
 }
 </style>
 <script>
+import { ref, computed } from 'vue';
+
+
 export default {
 	props: {
 		projectCardProps: {
 			type: Array,
 		},
 	},
+	setup(props) {
+		// const color = ref("");
+
+		// console.log(props.projectCardProps.status)
+		// const setStatus = computed(() => {
+		// 	const message = ref("");
+		// 	if ("OPEN" === props.statusProps) {
+		// 		color.value = "bg-namjaigreen";
+		// 		return (message.value = "OPEN");
+		// 	}
+		// 	if ("CLOSED" === props.statusProps) {
+		// 		color.value = "bg-namjaigray";
+		// 		return (message.value = "CLOSED");
+		// 	}
+		
+		// 	return (message.value = "N/A");
+		// });
+		// return { setStatus, color }
+	}
 };
 </script>

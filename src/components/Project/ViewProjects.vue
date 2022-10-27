@@ -8,7 +8,7 @@
 		<div v-for="target in targetList" :key="target.targetCategoriesID">
 			<div @click="routeToCategories(target.targetCategoriesID)" class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
 				<div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-					<img :src="`src/assets/${target.icon}`" />
+					<!-- <img :src="`src/assets/${target.icon}`" /> -->
 					<!-- <img src="@/assets/medical.svg" /> -->
 				</div>
 				<h1 class="text-center pt-[10px]">{{ target.targetCategoriesName }}</h1>
@@ -98,11 +98,11 @@ export default {
 
 		const router = useRouter();
 		const routeToCategories = (id) => {
-			router.push(`/project/catergories/${id}`);
+			router.push(`/projects/catergories/${id}`);
 		};
 
 		const routeToProjects = () => {
-			router.push(`/project`);
+			router.push(`/projects`);
 		};
 
 		return { fdnProjectList, targetList, routeToCategories, routeToProjects };

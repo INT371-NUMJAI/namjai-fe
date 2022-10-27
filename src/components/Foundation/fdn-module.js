@@ -28,7 +28,7 @@ export const fdn = {
     mutations: {
         getUUIDSuccess(state, UUID) {
             state.fdn_uuid = UUID;
-            console.log(initialState.UUID);
+            console.log(initialState.fdn_uuid.UUID);
         },
         getUUIDFailure(state) {
             state.fdn_uuid = null;
