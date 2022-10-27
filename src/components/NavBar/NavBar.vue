@@ -29,7 +29,7 @@
         <div v-if="showManage" class="absolute mt-2 -ml-4 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu">
           <div class="text-gray-700 text-center text-sm" role="none">
             <div class="block rounded-t-md px-4 py-2 cursor-pointer hover:bg-gray-200" @click="routeToManageFDN">มูลนิธิ</div>
-            <router-link to="/withdrawreq">
+            <router-link to="/withdraw">
               <div class="block rounded-b-md px-4 py-2 cursor-pointer hover:bg-gray-200">คำร้องถอนเงิน</div>
             </router-link>
             <div class="block rounded-b-md px-4 py-2 cursor-pointer hover:bg-gray-200">คำร้องเรียน</div>
@@ -37,7 +37,7 @@
         </div>
       </div>
       <w-button bg-color="transparent" class="font-medium">มูลนิธิ</w-button>
-      <router-link to="/project">
+      <router-link to="/projects">
         <w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
       </router-link>
       <router-link to="/volunteer">

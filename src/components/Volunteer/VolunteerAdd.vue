@@ -9,19 +9,24 @@
         <p class="text-[14px] text-white">เพิ่มโครงการจิตอาสา</p>
       </button>
     </router-link>
-    <volunteer-activity-card />
+    <div class="lg:grid lg:grid-cols-3 lg:gap-[30px] lg:space-y-0 space-y-[30px]">
+    <volunteer-activity-card :volunteerProps="volunteerShortList" />
+  </div>
   </div>
 </template>
 
 <script>
 import { useAuth } from "../../services/auth-middleware";
 import VolunteerActivityCard from "./VolunteerActivityCard.vue";
+import useVolunteer from "./useVolunteer";
+
 export default {
   components: {
     "volunteer-activity-card": VolunteerActivityCard,
   },
   setup() {
     const use_auth = useAuth();
+    const { volunteerShortList, getVolunteerShortListByFDNEmail } = useVolunteer();
 
     const checkAuthorized = () => {
       // let check = ""
@@ -32,12 +37,13 @@ export default {
         ) {
          return true;
         } 
-        // else if (
-        //   use_auth.store_auth.user.role === `ROLE_FDN` &&
-        //   use_auth.store_auth.user.status === `ACTIVE`
-        // ) {
-        //   check = "2"// return false;
-        // }
+        else if (
+          use_auth.store_auth.user.role === `ROLE_FDN` &&
+          use_auth.store_auth.user.status === `ACTIVE`
+        ) {
+          getVolunteerShortListByFDNEmail(use_auth.store_auth.user.email);
+          return false;
+        }
         else if (use_auth.store_auth.user.role === `ROLE_USER`) {
           return true;
         }
@@ -48,7 +54,9 @@ export default {
       // console.log(check);
     };
 
-    return { use_auth, checkAuthorized };
+    
+
+    return { use_auth, checkAuthorized, volunteerShortList };
   },
 };
 </script>

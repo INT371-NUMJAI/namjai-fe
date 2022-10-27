@@ -6,6 +6,13 @@ class TransactionService {
         return http.post("/view/bank-account/create", payload);
     }
 
+    createWithdrawRequest(payload) {
+        return http.post("/view/request-withdrawal/create", payload);
+    }
+
+    approveWithdrawRequest(payload) {
+        return http.post("/view/request-withdrawal/approve", payload);
+    }
 }
 
 export default new TransactionService();

@@ -130,7 +130,7 @@ const router = createRouter({
 		},
 		{
 
-			path: "/project",
+			path: "/projects",
 			name: "project",
 			component: () => import("../components/Project/ViewProjects.vue"),
 			children: [
@@ -184,6 +184,11 @@ const router = createRouter({
 			path: "/report",
 			name: "report",
 			component: () => import("../components/Report/ReportForm.vue"),
+		},
+		{
+			path: "/withdraw",
+			name: "withdraw",
+			component: () => import("../components/Transaction/ViewTransactionRequestAdmin.vue"),
 		},
 		{
 			path: "/:pathMatch(.*)*",

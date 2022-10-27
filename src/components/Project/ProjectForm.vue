@@ -2,7 +2,8 @@
   <div
     class="mx-[30px] md:mx-[40px] lg:mx-[177px] mt-[60px] lg:mt-[120px] h-auto"
   >
-    <h1 class="text-2xl lg:text-5xl mb-[40px]">ส่งโครงการ</h1>
+  
+    <h1 class="text-2xl lg:text-5xl mb-[40px]">ส่งโครงการ</h1> {{ fdnProjectBody }}
     <div class="lg:mx-[183px] lg:mt-[60px]">
       <w-form v-model="valid">
         <w-input
@@ -75,13 +76,8 @@
             placeholder=" "
             selection-color="grey"
             color="black"
-            return-object
+            v-model="fdnProjectBody.status"
           >
-            <template #item="{ item, selected }">
-              <w-icon v-if="selected" class="black">wi-check</w-icon>
-              <span v-else></span>
-              <div>{{ item.statusname }}</div>
-            </template>
           </w-select>
         </div>
         <div class="flex space-x-[20px] lg:space-x-[30px]">
@@ -177,12 +173,14 @@ import { useValidation } from "../Account/validator";
 import { useStore } from "vuex";
 import foundationProjectService from "./project-service";
 import { useUtil } from "../../services/useUtil";
+import { useRouter } from 'vue-router';
 
 
 export default {
   setup() {
     const valid = ref(null);
     const { validators } = useValidation();
+    const store = useStore();
 
     const categories = reactive([
       { targetCategoriesName: "การแพทย์", targetCategoriesID: "1" },
@@ -198,17 +196,16 @@ export default {
       { targetCategoriesName: "สิทธิมนุษยชน", targetCategoriesID: "11" },
     ]);
     const status = reactive([
-      {statusname: "Open", statusid: "1"},
-      {statusname: "Not showing", statusid: "2"},
-      {statusname: "Closed", statusid: "3"},
+      {label: "Open"},
+      {label: "Not showing"},
+      {label: "Closed"},
 
     ])
 
     const { generateFiveDigitsUUID } = useUtil();
-    const foundationUUID = JSON.parse(localStorage.getItem("uuid"));
     // onMounted(() => (foundationUUID.value = store.state.fdn.UUID));
     const fdnProjectBody = reactive({
-      fdnUUID: foundationUUID.uuid,
+      fdnUUID: store.state.fdn.fdn_uuid.UUID,
       fdnProjectUUID: generateFiveDigitsUUID(),
       fdnProjectName: "",
       startDate: "",
@@ -218,6 +215,7 @@ export default {
       fdnProjectDetailPlace: "",
       targetCategoriesSet: [],
       responsiblePerson: "",
+      status: "",
     });
 
     const fileUpload = ref([]);
@@ -234,11 +232,16 @@ export default {
       // fileUpload = input;
     };
 
-    const store = useStore();
     const foundationName = store.state.auth.user.userName;
 
+    const router = useRouter();
+
     const submitProjectForm = () => {
-      foundationProjectService.addProject(fdnProjectBody);
+      foundationProjectService.addProject(fdnProjectBody).then(response => {
+        if (response.status === 200) {
+          router.push("/projects");
+        }
+      });
 
       // const bodyFormData = new FormData();
       // bodyFormData.append("file", fileUpload[0]);

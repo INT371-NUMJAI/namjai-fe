@@ -11,7 +11,7 @@
         <!-- {{ project.picturePath }} -->
       </div>
       <h1 class="text-xl lg:text-3xl">
-        {{ project.foundationProjectName }}
+        {{ project.foundationProjectName }} ({{ project.status }})
       </h1>
       <!-- <img class="mb-[30px] lg:w-[700px] float-left mr-[30px]" :src="getImage(project.picturePath)" /> -->
       <img class="w-full aspect-video object-cover my-5 lg:my-[30px]" src="@/assets/pic1.png" />
@@ -124,10 +124,60 @@
               <svg v-if="!isFav" @click="isFav = true" class="cursor-pointer" width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z" stroke="#D45343" fill="#D45343" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
+              <w-icon 
+              v-if="project.foundationContactDTO.email === use_auth.store_auth.user.email"
+            class="justify-self-end cursor-pointer"
+            @click="showDialogStatus = true; setFDNProjectUUID(project.foundationProjectUUID)"
+            >fa fa-pencil-square-o</w-icon
+          >
+          <w-dialog width="450" v-model="showDialogStatus">
+              <div class="pb-[20px] mx-4">
+                <div class="grid grid-cols-2">
+                  <h1 class="my-4 text-xl">สถานะโครงการ</h1>
+                  <w-icon
+                    @click="showDialogStatus = false"
+                    class="cursor-pointer mt-[19px] justify-self-end"
+                    >fa fa-times</w-icon
+                  >
+                </div>
+                <w-radio
+                  v-model="editFDNStatusOBJ.newStatus"
+                  color="black"
+                  label-color="black"
+                  class="mr-[30px]"
+                  :return-value="'OPEN'"
+                >
+                  <p class="ml-3">Open</p>
+                </w-radio>
+                <w-radio
+                  v-model="editFDNStatusOBJ.newStatus"
+                  :return-value="'NOT_SHOWING'"
+                  label-color="black"
+                  color="black"
+                >
+                  <p class="ml-3">Not showing</p>
+                </w-radio>
+                <w-radio
+                  v-model="editFDNStatusOBJ.newStatus"
+                  :return-value="'CLOSED'"
+                  label-color="black"
+                  color="black"
+                >
+                  <p class="ml-3">Closed</p>
+                </w-radio>
+                <br>
+                {{ editFDNStatusOBJ }}
+              </div>
+              <base-button
+                class="px-[40px] lg:h-[45px] lg:pt-2"
+                buttonLabel="ยืนยัน"
+                @click="saveNewFDNProjectStatus"
+              ></base-button>
+          </w-dialog>
             </div>
           </div>
           <h1 class="text-xl mb-[30px]">
-            {{ project.foundationProjectName }}
+            {{ project.foundationProjectName }} ({{ project.status }})
           </h1>
         </div>
         <div class="grid grid-flow-col mb-5 lg:mb-[30px]">
@@ -163,10 +213,6 @@
         </w-dialog>
          
         </w-form>
-        <!-- <div v-if="showQR === true">
-          <img class="w-[150px] mx-auto mt-[20px]" src="https://i.ibb.co/Nm7JDbS/qr-demo.png" />
-          <base-button @click="showQR = false" class="w-[150px] py-3" buttonLabel="ระบุจำนวนเงิน" />
-        </div> -->
         <div name="shareDt" class="hidden lg:block pt-16">
           <h2 class="text-[14px]">แชร์ต่อ</h2>
           <div class="flex space-x-3">
@@ -226,6 +272,8 @@ import useProjects from "./useProject";
 import ProjectProgression from "./ProjectProgression.vue";
 import ProjectFinancialPlan from "./ProjectFinancialPlan.vue";
 import CreditCard from "../Transaction/CreditCard.vue";
+import projectService from "./project-service";
+import { useAuth } from '../../services/auth-middleware';
 
 export default {
   components: {
@@ -239,6 +287,7 @@ export default {
     const { validators } = useValidation();
     const valid = ref(false);
     const showDialog = ref(false);
+    const use_auth = useAuth();
 
     const route = useRoute();
     const { project, getProjectByID } = useProjects();
@@ -291,6 +340,17 @@ export default {
     navigator.clipboard.writeText(`https://namjai.site/project/${route.params.id}`);
   }
 
+  const showDialogStatus = ref(false);
+
+  const editFDNStatusOBJ = reactive({fdnProjectUUID: "", newStatus: ""});
+    const setFDNProjectUUID = (id) => {
+      editFDNStatusOBJ.fdnProjectUUID = id;
+    }
+    const saveNewFDNProjectStatus = () => {
+      projectService.editFoundationProjectStatus(editFDNStatusOBJ);
+      showDialogStatus.value = false;
+    }
+
     return {
       // getImage,
       project,
@@ -311,6 +371,11 @@ export default {
       close,
       linkShare,
     linkShareTwitter,
+    editFDNStatusOBJ,
+    showDialogStatus,
+    use_auth,
+    saveNewFDNProjectStatus,
+    setFDNProjectUUID,
     copyToClipboard,
     };
   },

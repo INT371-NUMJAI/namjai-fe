@@ -36,5 +36,10 @@ export default function volunteerService() {
 		volunteerShortList.value = response.data;
 	}
 
-	return { volunteer, getVolunteerDetailByID, volunteerList, volunteerUUID, getEnrolledVolunteerList, checkEnrolled, getIsEnrolledOrNot, volunteerShortList, getVolunteerShortList };
+	const getVolunteerShortListByFDNEmail = async (email) => {
+		let response = await http.get(`/view/volunteer-projects/?email=${email}`);
+		volunteerShortList.value = response.data;
+	}
+
+	return { volunteer, getVolunteerDetailByID, volunteerList, volunteerUUID, getEnrolledVolunteerList, checkEnrolled, getIsEnrolledOrNot, volunteerShortList, getVolunteerShortList, getVolunteerShortListByFDNEmail };
 }

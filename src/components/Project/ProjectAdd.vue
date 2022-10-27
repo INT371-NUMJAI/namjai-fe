@@ -6,7 +6,7 @@
 				<p class="text-[14px] text-white">เพิ่มโครงการบริจาค</p>
 			</button>
 			<div class="lg:gird lg:grid-cols-3 md:grid md:grid-cols-2 lg:gap-x-8 md:gap-x-40">
-				<project-card :projectCardProps="projects" />
+				<project-card :projectCardProps="projects" :statusProps="projects.status" />
 			</div>
 			<span v-if="use_auth.store_auth.user.status != `ACTIVE`">กรุณาติดต่อเราเพื่อทำการยืนยันมูลนิธิของท่าน</span>
 		</span>

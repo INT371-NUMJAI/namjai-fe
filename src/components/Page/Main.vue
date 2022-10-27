@@ -15,7 +15,7 @@
         </div>
 
         <div class="w-1/2 lg:w-1/6 mx-auto">
-          <router-link to="/project">
+          <router-link to="/projects">
             <div class="py-10 flex space-x-2 justify-center items-center">
               <p class="font-extrabold text-namjaigreen">ไปหน้าโครงการ</p>
               <w-icon class="animate-bounce" color="namjaigreen">fa fa-chevron-right</w-icon>
@@ -186,7 +186,7 @@
         </div>
 
         <div class="w-1/2 lg:w-1/6 mx-auto">
-          <router-link to="/project">
+          <router-link to="/projects">
             <div class="py-10 flex space-x-2 justify-center items-center">
               <p class="font-extrabold text-namjaigreen">ไปหน้ากระดานข่าว</p>
               <w-icon class="animate-bounce" color="namjaigreen">fa fa-chevron-right</w-icon>
