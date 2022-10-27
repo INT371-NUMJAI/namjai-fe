@@ -125,7 +125,7 @@
                 <path d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z" stroke="#D45343" fill="#D45343" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
               <w-icon 
-              v-if="project.foundationContactDTO.email === use_auth.store_auth.user.email"
+              v-if="use_auth.store_auth.status.loggedIn && project.foundationContactDTO.email === use_auth.store_auth.user.email"
             class="justify-self-end cursor-pointer"
             @click="showDialogStatus = true; setFDNProjectUUID(project.foundationProjectUUID)"
             >fa fa-pencil-square-o</w-icon
