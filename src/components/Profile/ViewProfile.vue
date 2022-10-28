@@ -7,7 +7,7 @@
 				<router-link to="/profile/post"><p>โพสต์</p></router-link>
 			</button>
 
-			<button class="active:border-b-4 active:border-namjaigreen" v-if="use_auth.auth_role.value === `FDN` && use_auth.store_auth.status.loggedIn">
+			<button class="active:border-b-4 active:border-namjaigreen" v-if="use_auth.store_auth.status.loggedIn && use_auth.auth_role.value === `FDN`">
 				<router-link to="/profile/project"><p>โครงการ</p></router-link>
 			</button>
 
@@ -17,7 +17,7 @@
 			<button class="active:border-b-4 active:border-namjaigreen">
 				<router-link to="/profile/activity"><p>บันทึกกิจกรรม</p></router-link>
 			</button>
-			<button class="active:border-b-4 active:border-namjaigreen">
+			<button v-if="use_auth.store_auth.status.loggedIn && use_auth.auth_role.value === `FDN`" class="active:border-b-4 active:border-namjaigreen">
 				<router-link to="/profile/transaction"><p>การเงิน</p></router-link>
 			</button>
 			<button class="active:border-b-4 active:border-namjaigreen">

@@ -36,7 +36,9 @@
           </div>
         </div>
       </div>
+      <router-link to="/foundation">
       <w-button bg-color="transparent" class="font-medium">มูลนิธิ</w-button>
+    </router-link>
       <router-link to="/projects">
         <w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
       </router-link>
