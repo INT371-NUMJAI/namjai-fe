@@ -166,7 +166,6 @@
                   <p class="ml-3">Closed</p>
                 </w-radio>
                 <br>
-                {{ editFDNStatusOBJ }}
               </div>
               <base-button
                 class="px-[40px] lg:h-[45px] lg:pt-2"

@@ -248,7 +248,6 @@
         buttonLabel="ยืนยัน"
         :isValid="valid === false"
       />
-      {{ addVolunteerBody }}
     </w-form>
   </div>
 </template>

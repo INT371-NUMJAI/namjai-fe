@@ -3,7 +3,7 @@
     class="mx-[30px] md:mx-[40px] lg:mx-[177px] mt-[60px] lg:mt-[120px] h-auto"
   >
   
-    <h1 class="text-2xl lg:text-5xl mb-[40px]">ส่งโครงการ</h1> {{ fdnProjectBody }}
+    <h1 class="text-2xl lg:text-5xl mb-[40px]">ส่งโครงการ</h1>
     <div class="lg:mx-[183px] lg:mt-[60px]">
       <w-form v-model="valid">
         <w-input
