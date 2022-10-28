@@ -1,6 +1,5 @@
 <template>
 	<div class="">
-		<div>{{ foundation }}</div>
 		<w-form v-model="valid" class="hidden lg:inline" @success="submitForm">
 			<div class="space-y-10 pb-10 pt-[30px]">
 				<div class="space-y-4">
