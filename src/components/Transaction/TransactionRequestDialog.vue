@@ -1,8 +1,7 @@
 <template>
   <div>
     <w-button @click="showDialog = true" class="text-sm mr-[30px] w-4/5" bg-color="green" color="white" height="32"> {{ buttonText }} </w-button>
-    <w-dialog v-model="showDialog">
-    <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div v-if="showDialog" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
       <div class="fixed inset-0 bg-black bg-opacity-25 transition-opacity"></div>
       <div class="fixed inset-x-0 inset-y-20 z-10 overflow-y-auto">
         <div class="flex items-center justify-center p-4 text-center">
@@ -49,7 +48,6 @@
         </div>
       </div>
     </div>
-  </w-dialog>
   </div>
 </template>
 

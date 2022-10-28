@@ -1,17 +1,18 @@
 <template>
     <div v-for="(requestProp, index) in requestProps" :key="index">
-    <base-list>
-      <th class="py-3 w-[75]">{{ index + 1 }}</th>
+    <base-list class="text-sm">
+      <th class="py-3 px-6">{{ index + 1 }}</th>
       <th>
-        <p class="py-3 w-[350px] truncate">{{ requestProp.foundationProjectName }}</p>
+        <p class="py-3 pl-8 w-[305px] text-left truncate">{{ requestProp.foundationProjectName }}</p>
       </th>
-      <th class="py-3 w-[150px]">{{ requestProp.totalAmount }}</th>
-      <th class="py-3 w-[100px]">
+      <th class="py-3 px-16 w-36 truncate">{{ requestProp.totalAmount }}</th>
+      <th class="py-3 px-">
         <verification-status :statusText="requestProp.status"></verification-status>
       </th>
-      <th class="py-3 w-[200px]">{{ requestProp.createDate.slice(0, 10) }}</th>
-      <th class="py-3 w-[200px]">{{ requestProp.approveDate ? requestProp.approveDate.slice(0, 10) : "-" }}</th>
-      <th class="py-3 w-[200px]"> <transaction-request-dialog buttonText="รายละเอียด" :id="requestProp.withdrawalUUID" :hiddenProp="true"></transaction-request-dialog> </th>
+      <th class="py-3 pl-8 w-[230px]">{{ requestProp.createDate.slice(0, 10) }}</th>
+      <th class="py-3 pl-8 w-[230px]">{{ requestProp.approveDate ? requestProp.approveDate.slice(0, 10) : "-" }}</th>
+      <th class="py-3 pl-3 w-[80px"> 
+        <transaction-request-dialog class="w-28" buttonText="รายละเอียด" :id="requestProp.withdrawalUUID" :hiddenProp="true"></transaction-request-dialog> </th>
     </base-list>
     </div>
 </template>

@@ -1,6 +1,7 @@
 <template>
+	<div class="w-full"></div>
 	<div class="mt-[40px] mb-[10px]">
-		<table class="text-center mx-auto">
+		<table class="text-center mx-auto min-w-max w-full table-auto">
 			<thead class="text-white bg-namjaibrown">
 				<tr>
 					<slot></slot>

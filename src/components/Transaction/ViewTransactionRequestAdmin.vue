@@ -4,17 +4,34 @@
     <div class="mt-4">
       <div class="w-16 border-4 border-t border-namjaired"></div>
     </div>
+
     <base-table>
-      <th class="py-3 w-[75px]">ลำดับ</th>
-      <th>
-        <p class="py-3 w-[350px]">ชื่อโครงการ</p>
-      </th>
-      <th class="py-3 w-[150px]">จำนวนเงิน</th>
-      <th class="py-3 w-[100px]">สถานะ</th>
-      <th class="py-3 w-[200px]">วันที่ถอน</th>
-      <th class="py-3 w-[200px]">วันที่อนุมัติ</th>
-      <th class="py-3 w-[200px]"></th>
+      <th class="py-3 w-16">ลำดับ</th>
+      <th class="py-3 px-7 text-left">ชื่อโครงการ</th>
+      <th class="py-3 w-32">จำนวนเงิน</th>
+      <th class="py-3 w-32 ">สถานะ</th>
+      <th class="py-3 w-[170px]">วันที่ถอน</th>
+      <th class="py-3 w-[170px]">วันที่อนุมัติ</th>
+      <th class="py-3 px-6"></th>
     </base-table>
+
+    <!-- <div name="table" class="w-full">
+      <table class="min-w-max w-full table-auto">
+        <thead>
+          <tr class="bg-[#E9F1F0] text-gray-600 uppercase text-sm leading-normal">
+            <th class="py-3 px-6 text-left">ลำดับ</th>
+            <th class="py-3 px-4 text-center md:text-left lg:px-6">ชื่อโครงการ</th>
+            <th class="py-3 px-6 text-left">จำนวนเงิน</th>
+            <th class="py-3 px-6 text-left">สถานะ</th>
+            <th class="py-3 px-6 text-left">วันทีส่งคำขอ</th>
+            <th class="py-3 px-6 text-left">วันที่อนุมัติ</th>
+            <th class="py-3 px-6 text-left"></th>
+          </tr>
+        </thead>
+        <transaction-request-list :requestProps="request"></transaction-request-list>
+      </table>
+    </div> -->
+
     <transaction-request-list :requestProps="request"></transaction-request-list>
   </div>
 </template>
