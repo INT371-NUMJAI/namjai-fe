@@ -1,53 +1,28 @@
 <template>
-	<div class="snap-y snap-mandatory h-screen overflow-scroll">
+	<div class="snap-y snap-mandatory h-screen overflow-scroll lg:max-w-full">
 		<div class="snap-start">
-			<div id="section1" class="h-screen overflow-hidden">
-				<!-- <div class="lg:hidden">
-          <w-image
-          :src="`src/assets/pic3.png`"
-          :ratio="9 / 16"
-          content-class="justify-start"
-          no-spinner
-          transition=""
-        >
-          <div class="mx-44 absolute top-[150px] space-y-10 text-white">
-            <h1 class="text-6xl">ร่วมเป็นส่วนหนึ่ง</h1>
-            <div class="flex space-x-6">
-              <h1 class="text-6xl mt-7">แบ่งปัน</h1>
-              <h1 class="text-8xl text-namjaiyellow">น้ำใจ</h1>
-            </div>
-            <div
-              class="absolute top-[160px] left-[212px] w-16 border-4 border-t border-namjaired"
-            ></div>
-            <p class="w-[480px]">
-              Lorem ipsum is placeholder text commonly used in the graphic,
-              print, and publishing industries for previewing layouts and visual
-              mockups.
-            </p>
-            <div class="-ml-[325px]">
-              <base-button class="w-[156px] -ml-[500px]" label="บริจาคเลย" />
-            </div>
-          </div>
-        </w-image>
-        </div> -->
-				<div class="">
-					<w-image class="lg:w-screen h-screen" :src="`https://images.unsplash.com/photo-1504598578017-40d9b776f1bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80`" :ratio="500 / 1000" content-class="justify-start" no-spinner transition="">
-						<div class="lg:mx-44 md:mx-[40px] mx-[30px] absolute lg:top-[150px] top-[100px] space-y-10 text-white">
+			<div id="section1" class="h-screen overflow-hidden bg-gradient-to-t from-[#D0FDFA] to-transparent">
+				<div class="lg:mx-44 md:mx-[40px] mx-[30px] relative lg:top-[150px] top-[50px] space-y-10 text-[#FD9F5B] z-10">
 							<h1 class="lg:text-6xl md:text-6xl text-5xl">ร่วมเป็นส่วนหนึ่ง</h1>
 							<div class="flex lg:space-x-6 md:space-x-6 space-x-2">
 								<h1 class="lg:text-6xl md:text-6xl text-5xl lg:mt-7 mt-5">แบ่งปัน</h1>
-								<h1 class="lg:text-8xl md:text-8xl text-7xl text-namjaiyellow">น้ำใจ</h1>
+								<h1 class="lg:text-8xl md:text-8xl text-7xl text-[#54C4AD]">น้ำใจ</h1>
 							</div>
-							<div class="absolute lg:top-[160px] md:top-[160px] top-[120px] lg:left-[212px] md:left-[210px] left-[160px] w-16 border-4 border-t border-namjaired"></div>
-							<p class="lg:w-[480px] md:w-[480px] w-[330px]">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
-							<div>
+							<div class="relative -top-[40px] lg:left-[212px] md:left-[210px] left-[160px] w-16 border-4 border-t border-namjaired"></div>
+							<p class="relative lg:w-[480px] md:w-[480px] w-[330px] text-[#573A25] -top-[50px]">ร่วมเป็นส่วนหนึ่งในการช่วยเหลือสังคม แบ่งปันเพื่อได้เป็นผู้ให้ น้ำใจจะช่วยให้การช่วยเหลือผู้อื่นไม่ใช่เรื่องยากอีกต่อไป ทั้งในเรื่องของปัจจัยต่าง ๆ และกำลังคน</p>
+							<div class="relative -top-[50px]">
 								<router-link to="/main">
-									<base-button class="w-[156px] lg:w-[156px] lg:ml-0 ml-0 md:ml-0" buttonLabel="บริจาคเลย" />
+									<base-button class="lg:w-[156px] lg:ml-0 ml-0 md:ml-0 py-2 px-5" buttonLabel="บริจาคเลย" />
 								</router-link>
 							</div>
 						</div>
-					</w-image>
+				<div class="relative bottom-[10px] md:bottom-[40px] lg:bottom-[380px] lg:left-[600px]">
+					<img class="w-full h-full lg:w-[800px]" src="/src/assets/Frame2151.png">
 				</div>
+				<!-- <div class="">
+					<w-image class="lg:w-screen h-screen" :src="`https://images.unsplash.com/photo-1504598578017-40d9b776f1bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80`" :ratio="500 / 1000" content-class="justify-start" no-spinner transition="">
+					</w-image>
+				</div> -->
 			</div>
 		</div>
 		<div class="snap-start">
@@ -114,9 +89,9 @@
 					<div class="mb-[65px]">
 						<h1 class="text-namjaidarkgray lg:text-xl md:text-xl text-base lg:w-[425px] md:w-[440px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h1>
 					</div>
-					<div @scroll="scrollFeature" id="scrollMenu" class="flex space-x-5 lg:space-x-[30px] snap-x snap-mandatory overflow-x-auto">
+					<div @scroll="scrollFeature" id="scrollMenu" class="flex space-x-5 md:space-x-3 lg:space-x-[30px] snap-x snap-mandatory overflow-x-auto">
 						<div class="snap-center">
-							<div class="bg-namjaibeige lg:w-[342px] md:w-[238px] w-[330px] h-[250px] rounded-lg hover:shadow-md transition-shadow duration-300 ease-in-out">
+							<div class="bg-namjaibeige mx-1 md:mx-0 lg:mx-0 lg:w-[342px] md:w-[238px] w-[330px] h-[250px] rounded-lg hover:shadow-md transition-shadow duration-300 ease-in-out">
 								<div class="flex p-[10px]">
 									<w-icon color="namjai-green" size="70">fa fa-mobile</w-icon>
 									<h1 class="text-xl my-auto mx-[10px]">โอนบริจาค</h1>
@@ -140,7 +115,7 @@
 							</div>
 						</div>
 						<div class="snap-center">
-							<div class="bg-namjaibeige lg:w-[342px] md:w-[238px] w-[330px] h-[250px] rounded-lg hover:shadow-md transition-shadow duration-300 ease-in-out">
+							<div class="bg-namjaibeige mx-1 md:mx-0 lg:mx-0 lg:w-[342px] md:w-[238px] w-[330px] h-[250px] rounded-lg hover:shadow-md transition-shadow duration-300 ease-in-out">
 								<div class="flex px-[30px] py-[20px]">
 									<w-icon color="namjai-green" size="50">fa fa-commenting</w-icon>
 									<h1 class="text-xl my-auto mx-[10px]">แชท</h1>
