@@ -154,10 +154,28 @@
           outline
           >เลือกไฟล์</w-input
         >
+        <label class="lg:text-sm md:text-sm text-xs"
+          ><div class="flex mb-2"> แผนการใช้เงิน <p class="text-namjaired mx-3">*ส่งไฟล์ .xls</p> </div>
+          <div class="flex justify-start lg:text-sm md:text-sm text-xs">ดาวน์โหลด template สำหรับแผนการเงิน: <p class="text-namjaigreen mx-2 underline"> คลิกที่นี่ </p></div>
+ </label
+        >
+        <div class="gap-[30px]">
+        <w-input
+          v-model="fileUpload[0]"
+          @change="fileHandler"
+          type="file"
+          class="w-20 h-20"
+          color="amber"
+          bg-color="amber-light1"
+          :preview="false"
+          outline
+          >เลือกไฟล์</w-input
+        >
+      </div>
         <!-- {{ fdnProjectBody }}
         {{ fileUpload }} -->
         <base-button
-          class="w-[140px] mx-auto mt-[60px] mb-8"
+          class="px-9 py-2 mx-auto mt-[30px] mb-[80px]"
           buttonLabel="ยืนยัน"
           :isValid="valid === false"
           @click="submitProjectForm"
