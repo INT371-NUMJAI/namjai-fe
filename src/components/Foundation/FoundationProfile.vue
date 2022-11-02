@@ -1,6 +1,6 @@
 <template>
   <div
-    class="py-[30px] md:py-[32px] px-[30px] md:px-[34px] lg:px-[34px] bg-white rounded-lg space-y-5"
+    class="container mx-auto py-[30px] md:py-[32px] px-[30px] md:px-[34px] lg:px-[34px] bg-white rounded-lg space-y-5"
   >
     <span class="font-black"
       >ทุกวันปัญหาในสังคมเราควรเกิด"การเปลี่ยนแปลง" แม้การเปลี่ยนแปลงนั้น

@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="container mx-auto">
     <h1 class="my-[30px] text-namjaigreen text-lg">บันทึกกิจกรรม</h1>
     <div class="bg-white rounded-md p-[20px]">
       <h2 class="text-base mb-[20px]">17 ตุลาคม 2565</h2>
