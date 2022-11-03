@@ -1,7 +1,7 @@
 <template>
-	<div class="mx-[30px] md:mx-24 lg:mx-44">
+	<div class="mx-[30px] md:mx-[40px] lg:mx-44">
 		<div class="my-10">
-			<h1 class="mt-10 text-2xl lg:text-[48px] lg:mt-[120px] font-semibold">จิตอาสา</h1>
+			<h1 class="mt-10 text-2xl md:text-4xl lg:text-[48px] lg:mt-[120px] font-semibold">จิตอาสา</h1>
 			<div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-4"></div>
 		</div>
 		<!-- <router-link to="/volunteerdetail"> -->

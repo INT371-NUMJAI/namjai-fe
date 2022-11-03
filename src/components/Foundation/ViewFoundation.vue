@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-[30px] md:mx-24 lg:mx-44">
+  <div class="mx-[30px] md:mx-[40px] lg:mx-44">
     <div class="my-10">
       <h1 class="mt-10 text-2xl md:text-4xl lg:text-5xl lg:mt-[120px] font-semibold">
         มูลนิธิ

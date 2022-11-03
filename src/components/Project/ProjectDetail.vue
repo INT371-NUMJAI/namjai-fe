@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-[30px] md:mx-24 lg:mx-44 lg:grid lg:grid-cols-12 lg:gap-[30px] my-10 lg:my-0">
+  <div class="mx-[30px] md:mx-[40px] lg:mx-44 lg:grid lg:grid-cols-12 lg:gap-[30px] my-10 lg:my-0">
     <div class="lg:col-span-8 lg:mt-[120px]">
       <div class="grid grid-flow-col mb-[20px] text-sm lg:text-base font-medium">
         <div class="flex space-x-2">
