@@ -15,70 +15,46 @@ const router = createRouter({
 			name: "main",
 			component: () => import("../components/Page/Main.vue"),
 		},
-		// {
-		// 	path: "/trdl",
-		// 	name: "trdl",
-		// 	component: () => import("../components/Transaction/TransactionRequestDialog.vue"),
-		// },
-		// {
-		// 	path: "/withdrawreq",
-		// 	name: "withdrawreq",
-		// 	component: () => import("../components/Transaction/ViewTransactionRequest.vue"),
-		// },
-		{
-			path: "/profile",
-			name: "profile",
-			component: () => import("../components/Profile/ViewProfile.vue"),
-			children: [
-				{
-					path: "post",
-					component: () => import("../components/Post/ViewPostBlockDetail.vue"),
-				},
-				{
-					path: "project",
-					component: () => import("../components/Project/ProjectAdd.vue"),
-				},
-				{
-					path: "volunteer",
-					component: () => import("../components/Volunteer/VolunteerAdd.vue"),
-				},
-				{
-					path: "activity",
-					component: () => import("../components/Activity/ActivityList.vue"),
-				},
-				{
-					path: "transaction",
-					component: () => import("../components/Transaction/ViewTransactionRequestList.vue"),
-				},
-				{
-					path: "about",
-					component: () => import("../components/Foundation/FoundationProfile.vue"),
-				},
-			],
-		},
 		{
 			path: "/profile/:id",
 			name: "profile",
 			component: () => import("../components/Profile/ViewProfile.vue"),
 			children: [
 				{
+					path: '',
+					// name: "profile",
+					redirect: {name: "profile.post"},
+				},
+				{
 					path: "post",
+					name: "profile.post",
 					component: () => import("../components/Post/ViewPostBlockDetail.vue"),
 				},
 				{
 					path: "project",
+					name: "profile.project",
 					component: () => import("../components/Project/ProjectAdd.vue"),
 				},
 				{
 					path: "volunteer",
+					name: "profile.volunteer",
 					component: () => import("../components/Volunteer/VolunteerAdd.vue"),
 				},
 				{
+					path: "transaction",
+					name: "profile.transaction",
+					component: () => import("../components/Transaction/ViewTransactionRequestList.vue"),
+				},
+				{
 					path: "about",
+					name: "profile.about",
 					component: () => import("../components/Foundation/FoundationProfile.vue"),
 				},
+				
 			],
-			path: "/editprofile",
+		},
+		{
+		path: "/editprofile",
 			name: "editprofile",
 			component: () => import("../components/Profile/EditProfile.vue"),
 		},

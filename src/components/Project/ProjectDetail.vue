@@ -13,8 +13,8 @@
       <h1 class="text-xl lg:text-3xl">
         {{ project.foundationProjectName }} ({{ project.status }})
       </h1>
-      <!-- <img class="mb-[30px] lg:w-[700px] float-left mr-[30px]" :src="getImage(project.picturePath)" /> -->
-      <img class="w-full aspect-video object-cover my-5 lg:my-[30px]" src="@/assets/pic1.png" />
+      <img v-if="project.picturePath != null" class="w-full aspect-video object-cover my-5 lg:my-[30px]" :src="getImage(project.picturePath)" />
+        <img v-else-if="project.picturePath === null" class="w-full aspect-video object-cover my-5 lg:my-[30px]" src="@/assets/image-unavailable.jpeg" />
       <div class="bg-white mt-[30px] lg:mt-[40px]">
         <div class="flex justify-center md:justify-start lg:justify-start space-x-8 md:space-x-12 lg:space-x-12 text-sm lg:text-base md:px-8 lg:px-10">
           <div class="flex-wrap space-y-3 pt-4 lg:pt-6 h-[54px] lg:h-[66px]" @click="(selectedDetail = !selectedDetail), (selectedProgression = false), (selectedFinancialPlan = false)">
@@ -125,7 +125,7 @@
                 <path d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z" stroke="#D45343" fill="#D45343" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
               <w-icon 
-              v-if="use_auth.store_auth.status.loggedIn && project.foundationContactDTO.email === use_auth.store_auth.user.email"
+              v-if="use_auth.store_auth.status.loggedIn && project.foundationProjectName != undefined && use_auth.store_auth.user.email === project.foundationContactDTO.email"
             class="justify-self-end cursor-pointer"
             @click="showDialogStatus = true; setFDNProjectUUID(project.foundationProjectUUID)"
             >fa fa-pencil-square-o</w-icon
@@ -350,8 +350,13 @@ export default {
       showDialogStatus.value = false;
     }
 
+    const getImage = (imagePath) => {
+      return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`
+    }
+
+    // === project.foundationContactDTO.email
     return {
-      // getImage,
+      getImage,
       project,
       // getProjectByID,
       showQR,

@@ -1,7 +1,9 @@
 <template>
 	<div v-for="volunteerProp in volunteerProps" :key="volunteerProp.volunteerProjectUUID">
 		<div class="lg:max-w-sm md:max-w-md rounded-lg overflow-hidden bg-namjaiwhite drop-shadow-md hover:shadow-md cursor-pointer">
-			<img class="w-full" src="@/assets/pic1.png" @click="routeToVolunteerProjectDetail(volunteerProp.volunteerProjectUUID)" />
+			<img v-if="volunteerProp.picturePath != null" class="w-full h-[250px] rounded-t-lg md:rounded-bl-none md:rounded-t-lg lg:rounded-bl-none lg:rounded-t-lg transition-all duration-500 ease-in-out transform bg-center object-cover" :src="getImage(volunteerProp.picturePath)" @click="routeToVolunteerProjectDetail(volunteerProp.volunteerProjectUUID)" />
+			<!-- <img v-if=" projectCardProp.picturePath != null" class="w-full h-[250px] rounded-t-lg md:rounded-bl-none md:rounded-t-lg lg:rounded-bl-none lg:rounded-t-lg transition-all duration-500 ease-in-out transform bg-center object-cover" :src="getImage(projectCardProp.picturePath)" /> -->
+        	<img v-else-if="volunteerProp.picturePath === null" class="w-full h-[250px] rounded-t-lg md:rounded-bl-none md:rounded-t-lg lg:rounded-bl-none lg:rounded-t-lg transition-all duration-500 ease-in-out transform bg-center object-cover" src="@/assets/image-unavailable.jpeg" @click="routeToVolunteerProjectDetail(volunteerProp.volunteerProjectUUID)" />
 			<div class="lg:px-6 lg:py-4 px-4 py-3 md:py-5">
 				<div class="flex justify-between items-center">
 					<h2 class="font-medium text-xl mb-1 overflow-hidden truncate w-[180px] md:[20px]">{{ volunteerProp.volunteerProjectName }}</h2>
@@ -42,11 +44,13 @@ export default {
 		const routeToVolunteerProjectDetail = (id) => {
 			route.push(`/volunteer-detail/${id}`);
 		};
-		const testV = ref("<li>quick brown fox jumps</li> <li>quick brown fox jumpsfdf</li>");
-		//  เป็นคนสัญชาติไทย,อายุไม่เกิน22ปี,
+
+		const getImage = (imagePath) => {
+      		return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`
+    	}
 		return {
 			routeToVolunteerProjectDetail,
-			testV,
+			getImage,
 		};
 	},
 };

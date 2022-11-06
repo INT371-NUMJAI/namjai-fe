@@ -39,7 +39,7 @@
         >
       </div>
     </div>
-    <div class="flex space-x-3">
+    <div v-if="route.params.id === use_auth.store_auth.user.email"  class="flex space-x-3">
 		<router-link to="/editprofile">
       <base-button
         class="w-[150px] py-3 md:mx-0 lg:mx-0 lg:text-base"
@@ -79,7 +79,7 @@ import BaseButton from "../_Bases/BaseButton.vue";
 import profileService from "../Profile/profile-service";
 import { useAuth } from "../../services/auth-middleware";
 import { useStore } from "vuex";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 export default {
   components: {
@@ -90,6 +90,7 @@ export default {
     const use_auth = useAuth();
     const store = useStore();
     const router = useRouter();
+    const route = useRoute();
 
     const email = use_auth.store_auth.user.email;
 
@@ -104,7 +105,7 @@ export default {
       });
     };
 
-    return { showDialog, deleteAccountByEmail };
+    return { showDialog, deleteAccountByEmail, route, use_auth };
   },
 };
 </script>

@@ -107,9 +107,11 @@ export default {
 				store.dispatch("fdn/getUUID", store.state.auth.user.email);
 			}
 		};
+
     checkLoginStatus();
+
 		const routeToProfile = () => {
-			router.push(`/profile`);
+			router.push(`/profile/${use_auth.store_auth.user.email}`);
 			checkLoginStatus();
 			showDropDown.value = false;
 		};

@@ -8,7 +8,7 @@
       <div class="w-1/2 md:w-full lg:w-full py-3 px-5 lg:px-4 grid grid-rows-4 md:grid-rows-none lg:grid-rows-none md:space-y-2 lg:space-y-1">
         <h2 class="row-span-4 pt-2 text-sm lg:text-base md:h-10 lg:h-14 lg:overflow-hidden">{{ foundationCardProp.fdnName }}</h2>
         <div class="flex justify-end lg:flex-none">
-          <button @click="routeToFoundationProfile(foundationCardProp.fdnUUID)" class="lg:w-full px-2 py-2 bg-namjaigreen rounded-lg text-[12px]  lg:text-sm text-white">ดูรายละเอียด</button>
+          <button @click="routeToFoundationProfile(foundationCardProp.fdnEmail)" class="lg:w-full px-2 py-2 bg-namjaigreen rounded-lg text-[12px]  lg:text-sm text-white">ดูรายละเอียด</button>
         </div>
       </div>
     </div>

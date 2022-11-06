@@ -2,6 +2,7 @@
   <div class="container mx-auto space-y-2.5 lg:space-y-5">
     <router-link to="/volunteer-add">
       <button
+        v-if="route.params.id === use_auth.store_auth.user.email"
         :disabled="checkAuthorized()"
         class="bg-namjaired w-full lg:w-[186px] py-3 flex justify-center space-x-3 rounded-lg"
       >
@@ -19,6 +20,7 @@
 import { useAuth } from "../../services/auth-middleware";
 import VolunteerActivityCard from "./VolunteerActivityCard.vue";
 import useVolunteer from "./useVolunteer";
+import { useRoute } from 'vue-router';
 
 export default {
   components: {
@@ -26,6 +28,7 @@ export default {
   },
   setup() {
     const use_auth = useAuth();
+    const route = useRoute();
     const { volunteerShortList, getVolunteerShortListByFDNEmail } = useVolunteer();
 
     const checkAuthorized = () => {
@@ -41,7 +44,7 @@ export default {
           use_auth.store_auth.user.role === `ROLE_FDN` &&
           use_auth.store_auth.user.status === `ACTIVE`
         ) {
-          getVolunteerShortListByFDNEmail(use_auth.store_auth.user.email);
+          getVolunteerShortListByFDNEmail(route.params.id);
           return false;
         }
         else if (use_auth.store_auth.user.role === `ROLE_USER`) {
@@ -56,7 +59,7 @@ export default {
 
     
 
-    return { use_auth, checkAuthorized, volunteerShortList };
+    return { use_auth, checkAuthorized, volunteerShortList, route };
   },
 };
 </script>

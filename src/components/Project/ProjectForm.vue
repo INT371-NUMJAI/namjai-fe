@@ -140,20 +140,6 @@
           outline
           >เลือกไฟล์</w-input
         >
-        <label class="lg:text-sm md:text-sm text-xs"
-          >คิวอาร์โค้ดพร้อมเพย์</label
-        >
-        <w-input
-          v-model="fileUpload[0]"
-          @change="fileHandler"
-          type="file"
-          class="w-20 h-20"
-          color="amber"
-          bg-color="amber-light1"
-          :preview="false"
-          outline
-          >เลือกไฟล์</w-input
-        >
         <!-- {{ fdnProjectBody }}
         {{ fileUpload }} -->
         <base-button
@@ -174,6 +160,7 @@ import { useStore } from "vuex";
 import foundationProjectService from "./project-service";
 import { useUtil } from "../../services/useUtil";
 import { useRouter } from 'vue-router';
+import utilService from "../../services/util-service";
 
 
 export default {
@@ -239,23 +226,19 @@ export default {
     const submitProjectForm = () => {
       foundationProjectService.addProject(fdnProjectBody).then(response => {
         if (response.status === 200) {
-          router.push("/projects");
+          // router.push("/projects");
+          const bodyFormData2 = new FormData();
+        bodyFormData2.append("file", fileUpload2[0]);
+        bodyFormData2.append("type", "project");
+      bodyFormData2.append("userName", "kaitomnampla");
+      bodyFormData2.append("uuid", fdnProjectBody.fdnProjectUUID);
+      utilService.uploadImage(bodyFormData2);
+
+      console.log(bodyFormData2);
         }
       });
 
-      // const bodyFormData = new FormData();
-      // bodyFormData.append("file", fileUpload[0]);
-      // bodyFormData.append("fdnName", foundationName);
-      // bodyFormData.append("fdnUUID", foundationUUID.uuid);
-      // foundationProjectService.uploadQRCodePicture(bodyFormData);
-
-      // const bodyFormData2 = new FormData();
-      // bodyFormData2.append("file", fileUpload2[0]);
-      // bodyFormData2.append("fdnName", foundationName);
-      // bodyFormData2.append("fdnProjectUUID", fdnProjectBody.fdnProjectUUID);
-      // foundationProjectService.uploadPicturePathFoundationProject(bodyFormData2);
-
-      // console.log(bodyFormData);
+      
     };
 
     return {

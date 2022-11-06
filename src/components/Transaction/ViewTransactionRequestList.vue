@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto p-5 md:py-8 lg:py-7 md:px-[34px] lg:px-[34px] bg-white rounded-lg space-y-5">
+  <div v-if="route.params.id === use_auth.store_auth.user.email" class="container mx-auto p-5 md:py-8 lg:py-7 md:px-[34px] lg:px-[34px] bg-white rounded-lg space-y-5">
     <div class="flex justify-between items-center">
       <h2 class="text-sm lg:text-base">รายการโครงการ</h2>
       <transaction-request-drawer />
@@ -103,6 +103,7 @@ import { ref } from '@vue/reactivity';
 import useTransaction from './useTransaction';
 import { useAuth } from '../../services/auth-middleware';
 import VerificationStatus from '../Verification/VerificationStatus.vue';
+import { useRoute } from 'vue-router';
 
 export default {
   components: {
@@ -113,11 +114,12 @@ export default {
   setup() {
     const showDialog = ref(false);
     const use_auth = useAuth();
+    const route = useRoute();
 
     const { requestByFDNEmail, getRequestByFDNEmail } = useTransaction();
-    getRequestByFDNEmail(use_auth.store_auth.user.email);
+    getRequestByFDNEmail(route.params.id);
 
-    return { showDialog, requestByFDNEmail };
+    return { showDialog, requestByFDNEmail, route, use_auth };
   },
 };
 </script>

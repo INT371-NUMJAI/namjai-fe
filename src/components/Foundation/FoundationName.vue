@@ -13,6 +13,7 @@
           />
 
           <w-button
+          v-if="route.params.id === use_auth.store_auth.user.email"
             @click="dropdown.show = !dropdown.show"
             bg-color="grey-light4"
             class="absolute w-7 h-7 flex justify-center items-center rounded-full -bottom-1 lg:bottom-0 lg:right-9"
@@ -104,6 +105,10 @@
 </style>
 <script>
 import { reactive, ref } from "vue";
+import { useRoute } from 'vue-router';
+import { useAuth } from '../../services/auth-middleware';
+
+
 export default {
   props: {
     foundationNameProps: {
@@ -114,6 +119,9 @@ export default {
     // }
   },
   setup() {
+    const route = useRoute();
+    const use_auth = useAuth();
+
     const dialog = reactive({ show: false, width: 300 });
     const dropdown = reactive({ show: false });
 
@@ -127,7 +135,7 @@ export default {
       }
     };
 
-    return { dialog, dropdown, fileHandler, blah, imgInp };
+    return { dialog, dropdown, fileHandler, blah, imgInp, route, use_auth };
   },
 };
 </script>

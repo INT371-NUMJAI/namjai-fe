@@ -3,7 +3,8 @@
 		<router-link :to="'/project/' + projectCardProp.projectUUID">
 			<div class="bg-white rounded-lg drop-shadow-md hover:shadow-md">
 				<div class="relative cursor-pointer">
-					<img class="rounded-t-lg object-center" src="@/assets/pic1.png" />
+					<img v-if=" projectCardProp.picturePath != null" class="w-full h-[250px] rounded-t-lg md:rounded-bl-none md:rounded-t-lg lg:rounded-bl-none lg:rounded-t-lg transition-all duration-500 ease-in-out transform bg-center object-cover" :src="getImage(projectCardProp.picturePath)" />
+        			<img v-else-if=" projectCardProp.picturePath === null" class="rounded-t-lg object-center" src="@/assets/image-unavailable.jpeg" />
 					<div class="absolute top-0 right-0 p-3">
 						<h1 class="px-4 py-1.5 text-white rounded-lg font-bold text-[14px] lg:text-[20px]">{{ projectCardProp.status }}</h1>
 					</div>
@@ -53,7 +54,11 @@ export default {
 			type: Array,
 		},
 	},
-	setup(props) {
+	setup() {
+
+		const getImage = (imagePath) => {
+      return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`
+    }
 		// const color = ref("");
 
 		// console.log(props.projectCardProps.status)
@@ -70,7 +75,7 @@ export default {
 		
 		// 	return (message.value = "N/A");
 		// });
-		// return { setStatus, color }
+		return { getImage }
 	}
 };
 </script>

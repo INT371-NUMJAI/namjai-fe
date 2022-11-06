@@ -1,12 +1,12 @@
 <template>
 	<div>
 		<span class="space-y-2.5 lg:space-y-5" v-if="use_auth.store_auth.status.loggedIn">
-			<button :disabled="use_auth.store_auth.user.status != `ACTIVE`" @click="routeToProjectForm" class="bg-namjaigreen w-full lg:w-[186px] py-3 flex justify-center space-x-3 rounded-lg">
+			<button v-if="route.params.id === use_auth.store_auth.user.email" :disabled="use_auth.store_auth.user.status != `ACTIVE`" @click="routeToProjectForm" class="bg-namjaigreen w-full lg:w-[186px] py-3 flex justify-center space-x-3 rounded-lg">
 				<w-icon class="mr-1" md color="white">fa fa-plus</w-icon>
 				<p class="text-[14px] text-white">เพิ่มโครงการบริจาค</p>
 			</button>
 			<div class="lg:gird lg:grid-cols-3 md:grid md:grid-cols-2 lg:gap-x-8 md:gap-x-40">
-				<project-card :projectCardProps="projects" :statusProps="projects.status" />
+				<project-card :projectCardProps="projects" />
 			</div>
 			<span v-if="use_auth.store_auth.user.status != `ACTIVE`">กรุณาติดต่อเราเพื่อทำการยืนยันมูลนิธิของท่าน</span>
 		</span>
@@ -15,9 +15,10 @@
 
 <script>
 import ProjectCard from "./ProjectCard.vue";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useAuth } from "../../services/auth-middleware";
 import useProjects from "./useProject";
+
 
 export default {
 	components: {
@@ -25,15 +26,16 @@ export default {
 	},
 	setup() {
 		const router = useRouter();
+		const route = useRoute();
 		const use_auth = useAuth();
 		const { projects, getProjectByFDNEmail } = useProjects();
 
-		getProjectByFDNEmail(use_auth.store_auth.user.email);
+		getProjectByFDNEmail(route.params.id);
 
 		const routeToProjectForm = () => {
 			router.push(`/add/foundationproject`);
 		};
-		return { routeToProjectForm, use_auth, projects };
+		return { routeToProjectForm, use_auth, projects, route };
 	},
 };
 </script>

@@ -19,9 +19,6 @@ class FoundationProjectService {
 		http.defaults.headers["Content-type"] = "multipart/form-data";
 		return http.post("/view/foundation/project/upload-pic", payload);
 	}
-	async getPicturePath(path) {
-		return http.get(`/view/img?imagePath=${path}`);
-	}
 	async getRandomSixProjects() {
 		return http.get("/view/random");
 	}

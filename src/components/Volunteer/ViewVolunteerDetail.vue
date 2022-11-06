@@ -18,10 +18,8 @@
       <h2 class="mt-5 text-xl lg:text-[30px] font-black">
         {{ volunteer.volunteerProjectName }}
       </h2>
-      <img
-        class="w-[330px] h-[186px] md:w-full lg:w-full md:h-[379px] lg:h-[402px] my-[30px] object-cover"
-        src="@/assets/pic1.png"
-      />
+      <img v-if="volunteer.picturePath != null" class="w-[330px] h-[186px] md:w-full lg:w-full md:h-[379px] lg:h-[402px] my-[30px] object-cover" :src="getImage(volunteer.picturePath)" />
+        <img v-else-if="volunteer.picturePath === null" class="w-[330px] h-[186px] md:w-full lg:w-full md:h-[379px] lg:h-[402px] my-[30px] object-cover" src="@/assets/image-unavailable.jpeg" />
       <div
         class="bg-white mt-[30px] py-[30px] lg:py-10 px-6 text-namjaidarkgray space-y-[30px] lg:space-y-10"
       >
@@ -471,6 +469,10 @@ export default {
     navigator.clipboard.writeText(`https://namjai.site/volunteer-detail/${route.params.id}`);
   }
 
+  const getImage = (imagePath) => {
+      return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`
+    }
+
     return {
       isFav,
       volunteer,
@@ -491,6 +493,7 @@ export default {
 	  submitRegisteredVolunteerForm,
 	  deleteVolunteer,
     close,
+    getImage,
     };
   },
 };
