@@ -1,7 +1,7 @@
 <template>
     <div v-for="(foundationCardProp, index) in foundationCardProps" :key="index" class="container bg-white rounded-md md:rounded-2xl lg:rounded-2xl flex md:flex-col lg:flex-col drop-shadow-md hover:shadow-lg">
       <div class="w-1/2 h-[180px] md:w-full lg:w-full">
-        <img v-if="foundationCardProp.profilePath != null" class="w-full h-full rounded-l-md md:rounded-bl-none md:rounded-t-2xl lg:rounded-bl-none lg:rounded-t-2xl transition-all duration-500 ease-in-out transform bg-center object-cover" :src="foundationCardProp.profilePath" />
+        <img v-if="foundationCardProp.profilePath != null" class="w-full h-full rounded-l-md md:rounded-bl-none md:rounded-t-2xl lg:rounded-bl-none lg:rounded-t-2xl transition-all duration-500 ease-in-out transform bg-center object-cover" :src="getImage(foundationCardProp.profilePath)" />
         <img v-else-if="foundationCardProp.profilePath === null" class="w-full h-full rounded-l-md md:rounded-bl-none md:rounded-t-2xl lg:rounded-bl-none lg:rounded-t-2xl transition-all duration-500 ease-in-out transform bg-center object-cover" src="@/assets/image-unavailable.jpeg" />
       </div>
       {{ $route.params.id }}
@@ -32,7 +32,11 @@ export default {
       router.push(`/profile/${id}`)
     }
 
-    return { favHeart, routeToFoundationProfile };
+    const getImage = (imagePath) => {
+      		return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`
+    	}
+
+    return { favHeart, routeToFoundationProfile, getImage };
 
   },
 };

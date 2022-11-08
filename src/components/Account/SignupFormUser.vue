@@ -25,7 +25,7 @@
 				<div class="space-y-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0">
 					<div class="space-y-2 lg:space-y-4">
 						<label class="text-sm lg:text-base font-medium">ชื่อผู้ใช้</label>
-						<w-input :validators="[validators.required, validators.username]" color="black" placeholder="ชื่อผู้ใช้" v-model="user.userName"></w-input>
+						<w-input :validators="[validators.required, validators.username]" color="black" placeholder="ชื่อผู้ใช้เป็นภาษาอังกฤษเท่านั้น" v-model="user.userName"></w-input>
 					</div>
 					<div class="space-y-2 lg:space-y-4">
 						<label class="text-sm lg:text-base font-medium">รหัสผ่าน</label>

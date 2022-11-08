@@ -1,4 +1,7 @@
 import { ref } from "vue";
+import http from "@/http-common";
+http.defaults.headers["Content-type"] = "application/json";
+http.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
 export function useUtil() {
     function generateFiveDigitsUUID() {
@@ -10,6 +13,12 @@ export function useUtil() {
         }
         return result;
     }
+    
+    const profile = ref([]);
+    const getUserNameByEmail = async (email) => {
+        let response = await http.get(`/util/user-name?email=${email}`)
+        profile.value = response.data
+    }
 
-    return { generateFiveDigitsUUID }
+    return { generateFiveDigitsUUID, profile, getUserNameByEmail }
 }

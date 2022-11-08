@@ -7,13 +7,19 @@
         <div
           class="relative flex justify-center lg:justify-start px-5 lg:-ml-5 -mt-16 lg:mt-0"
         >
-          <img
+        <img
+            v-if="profile.profilePath != null"
             class="h-[140px] w-[140px] bg-namjaibeige lg:bg-transparent p-2 lg:p-0 rounded-full object-cover"
-            src="@/assets/pic1.png"
+            :src="getImage(profile.profilePath)"
+          />
+          <img
+            v-else-if="profile.profilePath === null || profile.profilePath === undefined"
+            class="h-[140px] w-[140px] bg-namjaibeige lg:bg-transparent p-2 lg:p-0 rounded-full object-cover"
+            src="@/assets/placeholderpic.png"
           />
 
           <w-button
-          v-if="route.params.id === use_auth.store_auth.user.email"
+          v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && route.params.id === use_auth.store_auth.user.email"
             @click="dropdown.show = !dropdown.show"
             bg-color="grey-light4"
             class="absolute w-7 h-7 flex justify-center items-center rounded-full -bottom-1 lg:bottom-0 lg:right-9"
@@ -25,7 +31,7 @@
             v-if="dropdown.show"
             class="absolute -bottom-[60px] lg:-bottom-[55px] grid grid-flow-row text-[14px] lg:text-base rounded-lg bg-white drop-shadow-md duration-200 ease-in-out"
           >
-            <w-button class="px-8" color="primary"
+            <w-button @click="dialogViewProfilePicture = true" class="px-8" color="primary"
               ><p class="text-namjaidarkgray text-[14px]">
                 ดูรูปโปรไฟล์
               </p></w-button
@@ -59,10 +65,22 @@
           <h2
             class="text-namjaiblack font-medium md:text-2xl lg:text-[35px] md:font-semibold lg:font-semibold"
           >
-            {{ foundationNameProps }}
+            {{ profile.userName }}
           </h2>
         </div>
       </div>
+      <w-dialog 
+        v-model="dialogViewProfilePicture"
+        :width="1000"
+        title-class="green-dark3--bg white"
+        class="a">
+        <w-button class="button--close mt-[10px] mx-[20px]" @click="dialogViewProfilePicture = false" sm outline round absolute color="namjai-red" icon="wi-cross"></w-button>
+        <img
+            v-if="profile.profilePath != null"
+            class="h-full w-[500px] mx-auto bg-namjaibeige lg:bg-transparent p-2 lg:p-0 object-cover"
+            :src="getImage(profile.profilePath)"
+          />
+      </w-dialog>
       <w-dialog
         v-model="dialog.show"
         :width="dialog.width"
@@ -72,7 +90,7 @@
           <p class="text-[14px] lg:text-base">เปลี่ยนรูปภาพ</p>
         </template>
         <w-form v-model="valid">
-          <w-input preview="false" v-model="imgFile" @change="fileHandler" type="file" bg-color="white" outline
+          <w-input preview="false" v-model="imgFile[0]" @change="fileHandler" type="file" bg-color="white" outline
             ><p class="text-[12px] lg:text-[14px]">กดเพื่อเลือกรูป</p></w-input
           >
           <img id="blah" src="#" alt="" />
@@ -84,7 +102,7 @@
               >ยกเลิก</w-button
             >
             <w-button
-              @click="dialog.show = false"
+              @click="submitProfilePic();dialog.show = false"
               class="h-[40px] text-[14px]"
               bg-color="green-dark3"
               color="white"
@@ -107,35 +125,57 @@
 import { reactive, ref } from "vue";
 import { useRoute } from 'vue-router';
 import { useAuth } from '../../services/auth-middleware';
+import { useUtil } from '../../services/useUtil';
+import utilService from '../../services/util-service';
 
 
 export default {
   props: {
-    foundationNameProps: {
+    profileNameProps: {
       type: String,
     },
     // foundationProfilePicture: {
     //   type: String
     // }
   },
-  setup() {
+  setup(props) {
     const route = useRoute();
     const use_auth = useAuth();
+    const valid = ref(null);
 
     const dialog = reactive({ show: false, width: 300 });
     const dropdown = reactive({ show: false });
+    const dialogViewProfilePicture = ref(false);
 
     const imgInp = ref(null);
     const blah = ref(null);
 
+    const imgFile = ref([]);
     const fileHandler = (event) => {
-      const [file] = imgInp.files;
-      if (file) {
-        blah.src = URL.createObjectURL(file);
-      }
+      // const [file] = imgInp.files;
+      // if (file) {
+      //   blah.src = URL.createObjectURL(file);
+      // }
+      imgFile[0] = event.target.files[0];
     };
+    const submitProfilePic = () => {
+      const bodyFormData2 = new FormData();
+        bodyFormData2.append("file", imgFile[0]);
+        bodyFormData2.append("type", "profile");
+      bodyFormData2.append("userName", use_auth.store_auth.user.userName);
+      bodyFormData2.append("uuid", "pic");
+      utilService.uploadImage(bodyFormData2);
+      console.log(bodyFormData2);
+    }
 
-    return { dialog, dropdown, fileHandler, blah, imgInp, route, use_auth };
+    const { profile, getUserNameByEmail } = useUtil();
+    getUserNameByEmail(props.profileNameProps);
+
+    const getImage = (imagePath) => {
+      		return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`
+    	}
+
+    return { dialog, dropdown, valid, fileHandler, blah, imgInp, route, use_auth, profile, imgFile, dialogViewProfilePicture, submitProfilePic, getImage };
   },
 };
 </script>

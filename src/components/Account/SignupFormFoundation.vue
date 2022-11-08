@@ -28,9 +28,15 @@
 			</div>
 				<div class="grid grid-cols-2 gap-10">
 					<div class="space-y-4">
+						<label class="font-medium">ชื่อผู้ใช้(ภาษาอังกฤษ)</label>
+						<w-input :validators="[validators.required]" type="text" placeholder="ชื่อผู้ใช้" color="black" v-model="foundation.fdnUsername"></w-input>
+					</div>
+					<div class="space-y-4">
 						<label class="font-medium">อีเมล</label>
 						<w-input :validators="[validators.required]" type="email" placeholder="อีเมล" color="black" v-model="foundation.email"></w-input>
 					</div>
+				</div>
+				<div class="grid grid-cols-2 gap-10">
 					<div class="space-y-4">
 						<label class="font-medium">รหัสผ่าน</label>
 						<w-input :validators="[validators.required, validators.minLength]" type="password" placeholder="รหัสผ่าน" color="black" v-model="foundation.password"></w-input>
@@ -126,7 +132,7 @@ export default {
 		const province = reactive([{ label: "กระบี่" }, { label: "กรุงเทพมหานคร" }, { label: "กาญจนบุรี" }, { label: "กาฬสินธุ์" }, { label: "กำแพงเพชร" }, { label: "ขอนแก่น" }, { label: "จันทบุรี" }, { label: "ฉะเชิงเทรา" }, { label: "ชลบุรี" }, { label: "ชัยนาท" }, { label: "ชัยภูมิ" }, { label: "ชุมพร" }, { label: "เชียงราย" }, { label: "เชียงใหม่" }, { label: "ตรัง" }, { label: "ตราด" }, { label: "ตาก" }, { label: "นครนายก" }, { label: "นครปฐม" }, { label: "นครพนม" }, { label: "นครราชสีมา" }, { label: "นครศรีธรรมราช" }, { label: "นครสวรรค์" }, { label: "นนทบุรี" }, { label: "นราธิวาส" }, { label: "น่าน" }, { label: "บึงกาฬ" }, { label: "บุรีรัมย์" }, { label: "ปทุมธานี" }, { label: "ประจวบคีรีขันธ์" }, { label: "ปราจีนบุรี" }, { label: "ปัตตานี" }, { label: "พระนครศรีอยุธยา" }, { label: "พะเยา" }, { label: "พังงา" }, { label: "พัทลุง" }, { label: "พิจิตร" }, { label: "พิษณุโลก" }, { label: "เพชรบุรี" }, { label: "เพชรบูรณ์" }, { label: "แพร่" }, { label: "ภูเก็ต" }, { label: "มหาสารคาม" }, { label: "มุกดาหาร" }, { label: "แม่ฮ่องสอน" }, { label: "ยโสธร" }, { label: "ยะลา" }, { label: "ร้อยเอ็ด" }, { label: "ระนอง" }, { label: "ระยอง" }, { label: "ราชบุรี" }, { label: "ลพบุรี" }, { label: "ลำปาง" }, { label: "ลำพูน" }, { label: "เลย" }, { label: "ศรีสะเกษ" }, { label: "สกลนคร" }, { label: "สงขลา" }, { label: "สตูล" }, { label: "สมุทรปราการ" }, { label: "สมุทรสงคราม" }, { label: "สมุทรสาคร" }, { label: "สระแก้ว" }, { label: "สระบุรี" }, { label: "สิงห์บุรี" }, { label: "สุโขทัย" }, { label: "สุพรรณบุรี" }, { label: "สุราษฎร์ธานี" }, { label: "สุรินทร์" }, { label: "หนองคาย" }, { label: "หนองบัวลำภู" }, { label: "อ่างทอง" }, { label: "อำนาจเจริญ" }, { label: "อุดรธานี" }, { label: "อุตรดิตถ์" }, { label: "อุทัยธานี" }, { label: "อุบลราชธานี" }]);
 
 		const { generateFiveDigitsUUID } = useUtil();
-		const foundation = reactive({ fdnUUid: generateFiveDigitsUUID(), fdnName: "", fdnNameEn: "", addressDetail: "", subDistrict: "", district: "", province: "", postalCode: "", founderName: "", fdnDetail: "", fdnSize: "", establishDate: "", email: "", contactNo: "", password: "" });
+		const foundation = reactive({ fdnUUid: generateFiveDigitsUUID(), fdnName: "", fdnNameEn: "", fdnUsername: "", addressDetail: "", subDistrict: "", district: "", province: "", postalCode: "", founderName: "", fdnDetail: "", fdnSize: "", establishDate: "", email: "", contactNo: "", password: "" });
 
 		const fileUpload = ref([]);
 		const fileHandler = (event) => {

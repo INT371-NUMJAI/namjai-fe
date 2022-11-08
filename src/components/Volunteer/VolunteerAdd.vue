@@ -2,7 +2,7 @@
   <div class="container mx-auto space-y-2.5 lg:space-y-5">
     <router-link to="/volunteer-add">
       <button
-        v-if="route.params.id === use_auth.store_auth.user.email"
+        v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && route.params.id === use_auth.store_auth.user.email && use_auth.store_auth.user.role === `ROLE_FDN`"
         :disabled="checkAuthorized()"
         class="bg-namjaired w-full lg:w-[186px] py-3 flex justify-center space-x-3 rounded-lg"
       >
@@ -56,7 +56,7 @@ export default {
       //check fdn unverify
       // console.log(check);
     };
-
+    getVolunteerShortListByFDNEmail(route.params.id);
     
 
     return { use_auth, checkAuthorized, volunteerShortList, route };

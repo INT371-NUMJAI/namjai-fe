@@ -39,7 +39,7 @@
         >
       </div>
     </div>
-    <div v-if="route.params.id === use_auth.store_auth.user.email"  class="flex space-x-3">
+    <div v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && route.params.id === use_auth.store_auth.user.email"  class="flex space-x-3">
 		<router-link to="/editprofile">
       <base-button
         class="w-[150px] py-3 md:mx-0 lg:mx-0 lg:text-base"
@@ -92,11 +92,11 @@ export default {
     const router = useRouter();
     const route = useRoute();
 
-    const email = use_auth.store_auth.user.email;
+    // const email = use_auth.store_auth.user.email ? use_auth.store_auth.user.email : null;
 
-    console.log(use_auth.store_auth.user.email);
+    // console.log(use_auth.store_auth.user.email);
     const deleteAccountByEmail = () => {
-      profileService.deleteProfile(email).then((response) => {
+      profileService.deleteProfile(use_auth.store_auth.user.email).then((response) => {
         if (response.status === 200) {
           showDialog.value = false;
           store.dispatch("auth/logout");
