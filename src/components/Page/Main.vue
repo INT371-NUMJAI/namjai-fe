@@ -152,41 +152,10 @@
         <p class="pt-3 md:pt-5 lg:pt-5 text-[14px] md:text-xl lg:text-xl font-bold text-[#6A6A6A]">ให้คุณไม่พลาดทุกข่าวสารการทำบุญ</p>
         <p class="pt-2 text-[14px] md:text-xl lg:text-xl font-bold text-[#6A6A6A]">ติดตามและให้ข้อมูลบนกระดานข่าวสาร</p>
         <div name="card" class="pt-5 md:pt-10 lg:pt-10 lg:flex lg:gap-[30px]">
-          <post-detail-block />
-          <div name="subcard" class="hidden lg:block lg:shadow-md lg:rounded-[10px] lg:bg-white">
-            <div name="sub1" class="w-[342px] h-[110px] px-5 py-3 bg-white hover:ring-1 hover:ring-gray-600/25 hover:ring-inset hover:drop-shadow-xl hover:shadow-gray-600/25 space-y-[8px] rounded-[10px]">
-              <div class="flex justify-between items-center text-[10px]">
-                <h2 class="">มูลนิธิเพื่อนพึ่งพายามยาก</h2>
-                <span class="">23 เม.ย. 65</span>
-              </div>
-              <h2 class="text-xs leading-5 overflow-hidden">สภากาชาดไทยจับมือองค์กรชั้นนำร่วมพาประเทศไทยเข้าสู่นวัตกรรมส่งเสริมความยั่งยืนวงการแพทย์จากการ์ตูน กดเ้กดี้เีกด้เดก้เ</h2>
-            </div>
-            <div name="sub2" class="w-[342px] h-[110px] px-5 py-3 bg-white hover:ring-1 hover:ring-gray-600/25 hover:ring-inset hover:drop-shadow-xl hover:shadow-gray-600/25 space-y-[8px] rounded-[10px]">
-              <div class="flex justify-between items-center text-[10px]">
-                <h2 class="">มูลนิธิเพื่อนพึ่งพายามยาก</h2>
-                <span class="">23 เม.ย. 65</span>
-              </div>
-              <h2 class="text-xs leading-5 overflow-hidden">สภากาชาดไทยจับมือองค์กรชั้นนำร่วมพาประเทศไทยเข้าสู่นวัตกรรมส่งเสริมความยั่งยืนวงการแพทย์จากการ์ตูน กดเ้กดี้เีกด้เดก้เ</h2>
-            </div>
-            <div name="sub3" class="w-[342px] h-[110px] px-5 py-3 bg-white hover:ring-1 hover:ring-gray-600/25 hover:ring-inset hover:drop-shadow-xl hover:shadow-gray-600/25 space-y-[8px] rounded-[10px]">
-              <div class="flex justify-between items-center text-[10px]">
-                <h2 class="">มูลนิธิเพื่อนพึ่งพายามยาก</h2>
-                <span class="">23 เม.ย. 65</span>
-              </div>
-              <h2 class="text-xs leading-5 overflow-hidden">สภากาชาดไทยจับมือองค์กรชั้นนำร่วมพาประเทศไทยเข้าสู่นวัตกรรมส่งเสริมความยั่งยืนวงการแพทย์จากการ์ตูน กดเ้กดี้เีกด้เดก้เ</h2>
-            </div>
-            <div name="sub4" class="w-[342px] h-[110px] px-5 py-3 bg-white hover:ring-1 hover:ring-gray-600/25 hover:ring-inset hover:drop-shadow-xl hover:shadow-gray-600/25 space-y-[8px] rounded-[10px]">
-              <div class="flex justify-between items-center text-[10px]">
-                <h2 class="">มูลนิธิเพื่อนพึ่งพายามยาก</h2>
-                <span class="">23 เม.ย. 65</span>
-              </div>
-              <h2 class="text-xs leading-5 overflow-hidden">สภากาชาดไทยจับมือองค์กรชั้นนำร่วมพาประเทศไทยเข้าสู่นวัตกรรมส่งเสริมความยั่งยืนวงการแพทย์จากการ์ตูน กดเ้กดี้เีกด้เดก้เ</h2>
-            </div>
-          </div>
+          <article-big-card />
         </div>
-
         <div class="w-1/2 lg:w-1/6 mx-auto">
-          <router-link to="/projects">
+          <router-link to="/article">
             <div class="py-10 flex space-x-2 justify-center items-center">
               <p class="font-extrabold text-namjaigreen">ไปหน้ากระดานข่าว</p>
               <w-icon class="animate-bounce" color="namjaigreen">fa fa-chevron-right</w-icon>
@@ -232,13 +201,15 @@ import ProjectCard from "@/components/Project/ProjectCard.vue";
 import { ref } from "vue";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
-import PostDetailBlock from "../Post/PostDetailBlock.vue";
+// import PostDetailBlock from "../Post/PostDetailBlock.vue";
 import projectService from "../Project/project-service";
+import ArticleBigCard from "../Article/ArticleBigCard.vue";
 export default {
   components: {
     // "volunteer-activity-card": VolunteerActivityCard,
     "project-card": ProjectCard,
-    "post-detail-block": PostDetailBlock,
+    // "post-detail-block": PostDetailBlock,
+    "article-big-card": ArticleBigCard,
     VueperSlides,
     VueperSlide,
   },

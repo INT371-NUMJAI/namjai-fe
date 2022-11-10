@@ -45,7 +45,9 @@
       <router-link to="/volunteer">
         <w-button bg-color="transparent" class="font-medium">จิตอาสา</w-button>
       </router-link>
-      <w-button bg-color="transparent" class="font-medium">ข่าวสาร</w-button>
+      <router-link to="/article">
+        <w-button bg-color="transparent" class="font-medium">ข่าวสาร</w-button>
+      </router-link>
       <div>
         <!-- <span v-if="store_auth.user === null"> -->
         <span v-if="use_auth.store_auth.user === null">

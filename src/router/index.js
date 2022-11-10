@@ -176,6 +176,11 @@ const router = createRouter({
 			name: "volunteerlist",
 			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
 		},
+		{
+			path: "/article",
+			name: "article",
+			component: () => import("../components/Article/ViewArticles.vue"),
+		},
 	],
 	// linkActiveClass: "namjai-active-link",
 	// linkExactActiveClass: "namjai-active-link",
