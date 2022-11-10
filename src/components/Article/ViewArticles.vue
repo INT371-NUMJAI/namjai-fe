@@ -11,8 +11,8 @@
       <article-big-card class="lg:my-10" />
       <div class="container mx-auto my-5">
         <h1 class="text-lg lg:text-[30px]">ข่าวอื่นๆ</h1>
-        <div class="mt-5 lg:mt-10">
-          <article-card />
+        <div class="mt-5 lg:mt-10 space-y-[40px]">
+          <article-card :articleProps="articles" />
         </div>
       </div>
       <div class="flex justify-center py-[60px]">
@@ -25,11 +25,20 @@
 <script>
 import ArticleBigCard from "./ArticleBigCard.vue";
 import ArticleCard from "./ArticleCard.vue";
+import useArticle from './useArticle'
 
 export default {
   components: {
     "article-big-card": ArticleBigCard,
     "article-card": ArticleCard,
   },
+
+  setup() {
+    const { articles, getArticle } = useArticle();
+
+    getArticle();
+
+        return { articles };
+  }
 };
 </script>

@@ -7,7 +7,8 @@
 			<div class="lg:px-6 lg:py-4 px-4 py-3 md:py-5">
 				<div class="flex justify-between items-center">
 					<h2 class="font-medium text-xl mb-1 overflow-hidden truncate w-[180px] md:[20px]">{{ volunteerProp.volunteerProjectName }}</h2>
-					<div class="items-end bg-green-500 text-namjaiwhite text-center rounded-md py-1 px-4">เปิดอยู่</div>
+					<!-- <div class="items-end bg-green-500 text-namjaiwhite text-center rounded-md py-1 px-4">เปิดอยู่</div> -->
+					<base-status-button :statusText="volunteerProp.status"></base-status-button>
 				</div>
 				<div class="mb-4">{{ volunteerProp.foundationName }}</div>	
 				<div class="space-y-3">
@@ -42,7 +43,7 @@ export default {
 	setup() {
 		const route = useRouter();
 		const routeToVolunteerProjectDetail = (id) => {
-			route.push(`/volunteer-detail/${id}`);
+			route.push(`/volunteer/${id}`);
 		};
 
 		const getImage = (imagePath) => {

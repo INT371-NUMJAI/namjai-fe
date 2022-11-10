@@ -12,6 +12,12 @@ class ProfileService {
     deleteProfile(email) {
         return http.delete(`/auth/delete/user?email=${email}`);
     }
+    fav(payload) {
+        return http.post("/view/user-fav/add", payload);
+    }
+    unFav(type, refUUID, userEmail) {
+        return http.delete(`/view/user-fav/unfav?type=${type}&refUUID=${refUUID}&email=${userEmail}`)
+    }
 }
 
 

@@ -165,7 +165,6 @@ export default {
       bodyFormData2.append("userName", use_auth.store_auth.user.userName);
       bodyFormData2.append("uuid", "pic");
       utilService.uploadImage(bodyFormData2);
-      console.log(bodyFormData2);
     }
 
     const { profile, getUserNameByEmail } = useUtil();

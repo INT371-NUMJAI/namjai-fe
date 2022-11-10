@@ -4,6 +4,7 @@
         <w-form v-model="valid">
             <w-input
             :validators="[validators.required]"
+            v-model="articleFormBody.articleHeader"
             class="mb-[30px] lg:text-base md:text-base text-sm"
             type="text"
             color="black"
@@ -12,6 +13,7 @@
             placeholder=" "/>
             <w-textarea
             :validators="[validators.required]"
+            v-model="articleFormBody.articleBody"
             class="mb-[30px] lg:text-base md:text-base text-sm"
             outline
             rows="9"
@@ -31,15 +33,18 @@
             :preview="false"
             outline
             >เลือกไฟล์</w-input>
-            <base-button :isValid="valid === false" class="py-2 px-9 mt-[60px]" buttonLabel="ยืนยัน"></base-button>
+            <base-button @click="submitArticleForm()" :isValid="valid === false" class="py-2 px-9 mt-[60px]" buttonLabel="ยืนยัน"></base-button>
         </w-form>
     </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import { useValidation } from '../Account/validator';
 import BaseButton from '../_Bases/BaseButton.vue'
+import { useUtil } from '../../services/useUtil';
+import articleService from './article-service'
+import { useAuth } from '../../services/auth-middleware';
 
 export default {
   components: { BaseButton },
@@ -47,7 +52,22 @@ export default {
         const valid = ref(null);
         const { validators } = useValidation();
 
-        return { valid, validators }
+        const use_auth = useAuth();
+
+        const { generateFiveDigitsUUID } = useUtil();
+        const articleFormBody = reactive({
+         articleUUID: generateFiveDigitsUUID(),
+         articleHeader: "",
+         articleBody: "",
+         authorRole: use_auth.store_auth.user.role,
+         authorEmail: use_auth.store_auth.user.email,
+        })
+
+        const submitArticleForm = () => {
+            articleService.createArticle(articleFormBody);
+        }
+
+        return { valid, use_auth, validators, articleFormBody, submitArticleForm }
         
     },
 }

@@ -1,68 +1,46 @@
 <template>
-  <div class="">
+  <div>
     <h1 class="my-[30px] text-namjaigreen text-lg">บันทึกกิจกรรม</h1>
-    <div class="bg-white rounded-md p-[20px]">
-      <h2 class="text-base mb-[20px]">17 ตุลาคม 2565</h2>
-      <div class="grid grid-flow-col space-x-1 text-sm">
-        <div class="my-auto">
-        <p><b>username</b> ได้ถูกใจ <b>"มูลนิธิกระจกเงา;lfmvadfkmvdfkmvkm"</b></p>
-    </div>
-        <div class="justify-self-end">
-        <button class="bg-namjaired rounded-md py-2 px-3 hidden md:block">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6.69531 2.75H9.69531C9.69531 2.35218 9.53728 1.97064 9.25597 1.68934C8.97467 1.40804 8.59314 1.25 8.19531 1.25C7.79749 1.25 7.41596 1.40804 7.13465 1.68934C6.85335 1.97064 6.69531 2.35218 6.69531 2.75ZM5.57031 2.75C5.57031 2.40528 5.63821 2.06394 5.77013 1.74546C5.90205 1.42698 6.0954 1.1376 6.33916 0.893845C6.58291 0.650091 6.87229 0.456735 7.19077 0.324816C7.50925 0.192898 7.85059 0.125 8.19531 0.125C8.54003 0.125 8.88138 0.192898 9.19986 0.324816C9.51834 0.456735 9.80771 0.650091 10.0515 0.893845C10.2952 1.1376 10.4886 1.42698 10.6205 1.74546C10.7524 2.06394 10.8203 2.40528 10.8203 2.75H15.1328C15.282 2.75 15.4251 2.80926 15.5306 2.91475C15.636 3.02024 15.6953 3.16332 15.6953 3.3125C15.6953 3.46168 15.636 3.60476 15.5306 3.71025C15.4251 3.81574 15.282 3.875 15.1328 3.875H14.1428L13.2653 12.9583C13.198 13.6542 12.8738 14.3002 12.3561 14.7701C11.8383 15.2401 11.164 15.5003 10.4648 15.5H5.92581C5.22671 15.5001 4.55264 15.2398 4.03502 14.7699C3.51741 14.3 3.19336 13.6541 3.12606 12.9583L2.24781 3.875H1.25781C1.10863 3.875 0.965554 3.81574 0.860065 3.71025C0.754576 3.60476 0.695312 3.46168 0.695312 3.3125C0.695312 3.16332 0.754576 3.02024 0.860065 2.91475C0.965554 2.80926 1.10863 2.75 1.25781 2.75H5.57031ZM7.07031 6.3125C7.07031 6.16332 7.01105 6.02024 6.90556 5.91475C6.80007 5.80926 6.657 5.75 6.50781 5.75C6.35863 5.75 6.21555 5.80926 6.11006 5.91475C6.00458 6.02024 5.94531 6.16332 5.94531 6.3125V11.9375C5.94531 12.0867 6.00458 12.2298 6.11006 12.3352C6.21555 12.4407 6.35863 12.5 6.50781 12.5C6.657 12.5 6.80007 12.4407 6.90556 12.3352C7.01105 12.2298 7.07031 12.0867 7.07031 11.9375V6.3125ZM9.88281 5.75C9.73363 5.75 9.59055 5.80926 9.48506 5.91475C9.37958 6.02024 9.32031 6.16332 9.32031 6.3125V11.9375C9.32031 12.0867 9.37958 12.2298 9.48506 12.3352C9.59055 12.4407 9.73363 12.5 9.88281 12.5C10.032 12.5 10.1751 12.4407 10.2806 12.3352C10.386 12.2298 10.4453 12.0867 10.4453 11.9375V6.3125C10.4453 6.16332 10.386 6.02024 10.2806 5.91475C10.1751 5.80926 10.032 5.75 9.88281 5.75Z"
-              fill="white"
-            />
-          </svg>
-        </button>
-    </div>
-          <div
-            @click="showDropDown = true"
-            class="justify-self-end cursor-pointer md:hidden"
-          >
-            <svg
-              width="4"
-              height="18"
-              viewBox="0 0 4 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="2" cy="2" r="2" fill="#CACACA" />
-              <circle cx="2" cy="16" r="2" fill="#CACACA" />
-              <circle cx="2" cy="9" r="2" fill="#CACACA" />
-            </svg>
-          </div>
-          <div
-            class="absolute mt-2 right-12 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-            v-if="showDropDown"
-          >
-            <div class="text-namjaired text-center text-sm">
-              <p @click="showDropDown = false" class="px-6 py-3 cursor-pointer">
-                ลบ
-              </p>
-            </div>
+    <div v-for="activity in activityList" :key="activity.userFavoriteUUID" class="bg-white rounded-md p-[20px]">
+      <div class="cursor-pointer" @click="routeToFav(activity.typeOfFavorite, activity.favoriteReferenceUUID)">
+        <h2 class="text-base mb-[20px]">{{ activity.createDate }}</h2>
+        <div class="grid grid-flow-col space-x-1 text-sm">
+          <div class="my-auto">
+            <p class="flex">
+              คุณได้ถูกใจ{{ (activity.typeOfFavorite === "PROJECT" ? "โครงการ" : "จิตอาสา") }} &nbsp;
+              <h2>"{{ activity.favoriteReferenceTitle }}"</h2>
+            </p>
           </div>
         </div>
-        <w-divider class="my-[30px]"></w-divider>
       </div>
+      <w-divider class="my-[30px]"></w-divider>
     </div>
+  </div>
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
+import { computed } from "@vue/runtime-core";
+import { useRoute, useRouter } from "vue-router";
+import { useUtil } from "../../services/useUtil";
 
 export default {
   setup() {
-    const showDropDown = ref(false);
+    const route = useRoute();
+    const { activityList, getActivityList } = useUtil();
 
-    return { showDropDown };
+    getActivityList(route.params.id);
+
+    const router = useRouter();
+    const routeToFav = (type, UUID) => {
+      if (type === "PROJECT") {
+        router.push(`/project/${UUID}`);
+      } else if (type === "VOLUNTEER") {
+        router.push(`/volunteer/${UUID}`);
+      }
+      console.log(type);
+    };
+
+    return { activityList, getActivityList, routeToFav };
   },
 };
 </script>

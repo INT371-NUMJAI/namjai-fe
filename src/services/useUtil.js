@@ -17,8 +17,20 @@ export function useUtil() {
     const profile = ref([]);
     const getUserNameByEmail = async (email) => {
         let response = await http.get(`/util/user-name?email=${email}`)
-        profile.value = response.data
+        profile.value = response.data;
     }
 
-    return { generateFiveDigitsUUID, profile, getUserNameByEmail }
+    const checkFav = ref(false);
+    const checkIfFavOrNot = async (type, refUUID, email) => {
+        let response = await http.get(`/view/user-fav/check?type=${type}&refUUID=${refUUID}&email=${email}`)
+        checkFav.value = response.data;
+    } 
+
+    const activityList = ref([]);
+    const getActivityList = async (email) => {
+        let response = await http.get(`/view/user-fav?email=${email}`)
+        activityList.value = response.data
+    }
+
+    return { generateFiveDigitsUUID, profile, getUserNameByEmail, checkFav, checkIfFavOrNot, activityList, getActivityList }
 }

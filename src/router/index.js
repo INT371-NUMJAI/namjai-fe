@@ -28,7 +28,7 @@ const router = createRouter({
 				{
 					path: "post",
 					name: "profile.post",
-					component: () => import("../components/Post/ViewPostBlockDetail.vue"),
+					component: () => import("../components/Article/ArticleAdd.vue"),
 				},
 				{
 					path: "project",
@@ -39,6 +39,11 @@ const router = createRouter({
 					path: "volunteer",
 					name: "profile.volunteer",
 					component: () => import("../components/Volunteer/VolunteerAdd.vue"),
+				},
+				{
+					path: "activity",
+					name: "profile.activity",
+					component: () => import("../components/Activity/ActivityList.vue"),
 				},
 				{
 					path: "transaction",
@@ -80,13 +85,13 @@ const router = createRouter({
 			],
 		},
 		{
-			path: "/volunteer",
-			name: "volunteer",
+			path: "/volunteers",
+			name: "volunteers",
 			component: () => import("../components/Volunteer/ViewVolunteer.vue"),
 		},
 		{
-			path: "/volunteer-detail/:id",
-			name: "volunteer-detail",
+			path: "/volunteer/:id",
+			name: "volunteer",
 			component: () => import("../components/Volunteer/ViewVolunteerDetail.vue"),
 		},
 		{
@@ -100,7 +105,7 @@ const router = createRouter({
 			component: () => import("../components/Volunteer/VolunteerProjectForm.vue"),
 		},
 		{
-			path: "/volunteer-detail/:id/volunteerlistdetail",
+			path: "/volunteer/:id/volunteerlistdetail",
 			name: "volunteerlistdetail",
 			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
 		},
@@ -137,9 +142,9 @@ const router = createRouter({
 			component: () => import("../components/Project/ProjectForm.vue"),
 		},
 		{
-			path: "/foundation",
-			name: "foundation",
-			component: () => import("../components/Foundation/ViewFoundation.vue"),
+			path: "/foundations",
+			name: "foundations",
+			component: () => import("../components/Foundation/ViewFoundations.vue"),
 		},
 		{
 			path: "/admin-management",
@@ -177,10 +182,21 @@ const router = createRouter({
 			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
 		},
 		{
-			path: "/article",
-			name: "article",
+			path: "/articles",
+			name: "articles",
 			component: () => import("../components/Article/ViewArticles.vue"),
 		},
+		{
+			path: "/article-add",
+			name: "article-add",
+			component: () => import("../components/Article/ArticleForm.vue"),
+		},
+		{
+			path: "/article/:id",
+			name: "article",
+			component: () => import("../components/Article/ArticleDetail.vue"),
+		},
+
 	],
 	// linkActiveClass: "namjai-active-link",
 	// linkExactActiveClass: "namjai-active-link",

@@ -230,7 +230,7 @@ export default {
           const bodyFormData2 = new FormData();
         bodyFormData2.append("file", fileUpload2[0]);
         bodyFormData2.append("type", "project");
-      bodyFormData2.append("userName", "kaitomnampla");
+      bodyFormData2.append("userName", store.state.auth.user.userName);
       bodyFormData2.append("uuid", fdnProjectBody.fdnProjectUUID);
       utilService.uploadImage(bodyFormData2);
 

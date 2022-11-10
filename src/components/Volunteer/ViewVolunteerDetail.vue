@@ -147,20 +147,16 @@
       class="h-full lg:h-full lg:col-span-4 bg-white my-[30px] lg:my-0 py-[30px] px-6 text-namjaidarkgray"
     >
       <div class="lg:my-24 lg:fixed">
-        <div
-          class="w-[80px] mb-5 px-4 py-1 bg-green-500 text-center rounded-md text-white text-[14px]"
-        >
-          เปิดอยู่
-        </div>
+        <base-status-button class="mb-[30px]" :statusText="volunteer.status"></base-status-button>
         <div
           v-if="volunteer.volunteerProjectName"
           class="flex justify-between text-[14px] lg:text-[16px]"
         >
           <h1 class="">{{ volunteer.foundationContactDTO.fdnName }}</h1>
-          <div class="lg:block lg:ml-[140px] hidden">
+          <div class="lg:block lg:ml-[140px] hidden" v-if="(use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && use_auth.store_auth.user.role != 'ROLE_FDN') || use_auth.store_auth.status.loggedIn === false">
             <svg
-              v-if="isFav"
-              @click="isFav = false"
+              v-if="!checkFav"
+              @click="clickToFav(volunteer.volunteerProjectsUUID, volunteer.volunteerProjectName);checkFav = !checkFav"
               class="cursor-pointer"
               width="26"
               height="22"
@@ -177,8 +173,8 @@
               />
             </svg>
             <svg
-              v-if="!isFav"
-              @click="isFav = true"
+              v-if="checkFav"
+              @click="clickToUnFav(volunteer.volunteerProjectsUUID); checkFav = !checkFav"
               class="cursor-pointer"
               width="26"
               height="22"
@@ -240,7 +236,7 @@
         </div>
         <base-button
 		 id="unregister"
-          v-if="use_auth.store_auth.status.loggedIn === false && checkEnrolled === false"
+          v-if="use_auth.store_auth.status.loggedIn === false && checkEnrolled === false && volunteer.status === `OPEN`"
           @click="showDialogUnregister = true"
           class="w-[156px] py-3 mt-[30px] lg:mt-10"
           buttonLabel="สมัครเลย"
@@ -380,6 +376,8 @@ import VolunteerProjectForm from "./VolunteerProjectForm.vue";
 import volunteerService from "./volunteer-service";
 import { useStore } from "vuex";
 import { useUtil } from "../../services/useUtil";
+import profileService from '../Profile/profile-service';
+
 
 export default {
   components: {
@@ -396,7 +394,7 @@ export default {
     getVolunteerDetailByID(route.params.id);
 
     const routeToVolunteerListDetail = (id) => {
-      router.push(`/volunteer-detail/${id}/volunteerlistdetail`);
+      router.push(`/volunteer/${id}/volunteerlistdetail`);
     };
 
     const formatFdnAddress = computed(() => {
@@ -473,6 +471,33 @@ export default {
       return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`
     }
 
+    const checkUserEmail = use_auth.store_auth.status.loggedIn ? use_auth.store_auth.user.email : "";
+
+    const { generateFiveDigitsUUID, checkFav, checkIfFavOrNot } = useUtil();
+    const favoriteBody = reactive({
+      userFavoriteUUID: generateFiveDigitsUUID(),
+      userEmail: checkUserEmail,
+      typeOfFavorite:"VOLUNTEER",
+      favoriteReferenceUUID: null,
+      favoriteReferenceTitle: null
+    })
+
+    checkIfFavOrNot("VOLUNTEER", route.params.id, checkUserEmail);
+
+    const clickToFav = (uuid, title) => {
+      if (use_auth.store_auth.status.loggedIn) {
+      favoriteBody.favoriteReferenceUUID = uuid;
+      favoriteBody.favoriteReferenceTitle = title;
+      profileService.fav(favoriteBody);
+    } else if (use_auth.store_auth.status.loggedIn === false) {
+      router.push("/login");
+    }
+    }
+
+    const clickToUnFav = (refUUID) => {
+      profileService.unFav("VOLUNTEER", refUUID, checkUserEmail);
+    }
+
     return {
       isFav,
       volunteer,
@@ -494,6 +519,10 @@ export default {
 	  deleteVolunteer,
     close,
     getImage,
+    favoriteBody,
+    clickToFav,
+    clickToUnFav,
+    checkFav,
     };
   },
 };

@@ -1,26 +1,28 @@
 <template>
   <div class="mx-[30px] md:mx-10 lg:mx-44">
-    <div class="my-10 md:my-[60px] lg:mt-[120px] container max-w-6xl mx-auto">
+    <div class="my-10 md:my-[60px] lg:mt-[120px] container max-w-6xl mx-auto bg-white rounded-xl p-6">
       <div class="space-y-2 mb-5 md:mb-10">
-        <h2 class="text-xl md:text-[25px] lg:text-[30px] text-justify leading-relaxed">สภากาชาดไทยจับมือองค์กรชั้นนำร่วมพาประเทศไทยเข้าสู่นวัตกรรมส่งเสริมความยั่งยืนวงการแพทย์จากการ์ตูน กดเ้กดี้เีกด้เดก้เ</h2>
-        <div class="flex items-center space-x-3 text-xs text-zinc-500 tracking-wide">
-          <h3>มูลนิธิกระจกเงา</h3>
+        <h1 class="text-xl md:text-[25px] lg:text-[30px] text-justify leading-relaxed">{{ article.articleHeader }}</h1>
+        <div class="flex items-center space-x-3 text-sm text-zinc-500 tracking-wide">
+          <h3>{{ article.author }}</h3>
           <hr class="w-2 h-0.5 bg-zinc-500" />
-          <h3>01 พ.ย. 65</h3>
+          <h3>{{ article.createDate }}</h3>
         </div>
       </div>
-      <img class="w-full aspect-[5/3] object-cover rounded-xl" src="@/assets/pic1.png" />
+      <img v-if="article.articlePicture != null" class="w-full aspect-[5/3] object-cover rounded-xl" :src="getImage(article.articlePicture)" />
       <div>
         <div class="mt-[30px] md:mt-10 mb-10 md:mb-[60px] lg:grid lg:grid-cols-12 lg:gap-[30px]">
           <div name="firstColumn"></div>
-          <p class="lg:col-span-10  text-justify md:text-[18px] leading-loose">จากการ์ตูนตำรวจสาวป้อมยามตอนสิบฉากที่เด็กทารกเสียชีวิตเพราะรถชนแล้วหลุดออกมาจากรถออกมากระแทกพื้นถนนจนร่างกายผิดรูปเสียชีวิตคาที่อันนี้ตามข้อ..จากการ์ตูนตำรวจสาวป้อมยามตอนสิบฉากที่เด็กทารกเสียชีวิตเพราะรถชนแล้วหลุดออกมาจากรถออกมากระแทกพื้นถนนจนร่างกายผิดรูปเสียชีวิตคาที่อันนี้ตามข้อ..</p>
+          <p class="lg:col-span-10  text-justify md:text-[18px] leading-loose">{{ article.articleBody }}</p>
           <div name="share" class="space-y-3 lg:space-y-0 ">
             <h2 class="mt-10 lg:hidden">แชร์ต่อ</h2>
             <div name="shareIcon" class="flex lg:block space-x-4 lg:space-x-0 lg:space-y-4 ">
+              <a :href="linkShare">
               <svg class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#0165E1] active:text-[#0165E1] cursor-pointer" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38ZM20.1971 19.1689V26H17.359V19.1639H15V16.4893H17.3539V14.5265C17.3539 12.2437 18.7918 11.0001 20.886 11.0001C21.5922 10.9975 22.2979 11.0328 23 11.106V13.4905H21.557C20.4182 13.4905 20.1971 14.0189 20.1971 14.7907V16.4943H22.9186L22.5664 19.1689H20.1971Z" />
               </svg>
-
+              </a>
+              <a :href="linkShareTwitter"></a>
               <svg class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#17A9FD] active:text-[#17A9FD] cursor-pointer" width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   fill-rule="evenodd"
@@ -43,3 +45,37 @@
     </div>
   </div>
 </template>
+
+<script>
+import { computed } from '@vue/runtime-core';
+import { useRoute } from 'vue-router';
+import useArticle from './useArticle'
+
+export default {
+  setup() {
+    const route = useRoute();
+
+    const { article, getArticleById } = useArticle();
+    getArticleById(route.params.id);
+
+    const getImage = (imagePath) => {
+      		return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`
+    	}
+
+      const linkShare = computed(() => {
+    return `https://www.facebook.com/sharer.php?u=https://namjai.site/article/${route.params.id}`
+  })
+
+  const linkShareTwitter = computed(() => {
+    return `https://twitter.com/share?url=https://namjai.site/article/${route.params.id}`
+  })
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(`https://namjai.site/article/${route.params.id}`);
+  }  
+
+    return { article, getImage, linkShare, linkShareTwitter, copyToClipboard };
+  },
+}
+</script>
+

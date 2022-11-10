@@ -118,12 +118,14 @@
               {{ project.foundationContactDTO.fdnName }}
             </h1>
             <div class="justify-self-end">
-              <svg v-if="isFav" @click="isFav = false" class="cursor-pointer" width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <div v-if="(use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && use_auth.store_auth.user.role != 'ROLE_FDN') || use_auth.store_auth.status.loggedIn === false">
+              <svg v-if="!checkFav" @click="clickToFav(project.foundationProjectUUID, project.foundationProjectName);checkFav = !checkFav" class="cursor-pointer" width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z" stroke="#D45343" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              <svg v-if="!isFav" @click="isFav = true" class="cursor-pointer" width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg v-if="checkFav" @click="clickToUnFav(project.foundationProjectUUID); checkFav = !checkFav" class="cursor-pointer" width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z" stroke="#D45343" fill="#D45343" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
+            </div>
               <w-icon 
               v-if="use_auth.store_auth.status.loggedIn && project.foundationProjectName != undefined && use_auth.store_auth.user.email === project.foundationContactDTO.email"
             class="justify-self-end cursor-pointer"
@@ -198,6 +200,7 @@
           </h1>
         </div>
         <!-- <base-button class="w-[140px] md:w-[356px] mb-[30px]" buttonLabel="บริจาค"></base-button> -->
+        <div v-if="project.status === `OPEN`">
         <w-form v-model="valid">
           <div class="flex mt-[30px] lg:mt-0 mx-auto">
             <h1 class="my-auto pr-[15px]">จำนวนเงิน</h1>
@@ -210,8 +213,8 @@
             <w-button name="closeButton" @click="showDialog = false" class="m-2" sm outline round absolute color="black" icon="wi-cross"></w-button>
           <credit-card @closeThisComp="close" :amountProp="Number(amount)" :projectName="project.foundationProjectName" :foundationProject="project.foundationProjectUUID" :validForShow="valid" />
         </w-dialog>
-         
         </w-form>
+      </div>
         <div name="shareDt" class="hidden lg:block pt-16">
           <h2 class="text-[14px]">แชร์ต่อ</h2>
           <div class="flex space-x-3">
@@ -265,7 +268,7 @@
 
 <script>
 import { computed, ref, onMounted, reactive } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useValidation } from "../Account/validator";
 import useProjects from "./useProject";
 import ProjectProgression from "./ProjectProgression.vue";
@@ -273,6 +276,8 @@ import ProjectFinancialPlan from "./ProjectFinancialPlan.vue";
 import CreditCard from "../Transaction/CreditCard.vue";
 import projectService from "./project-service";
 import { useAuth } from '../../services/auth-middleware';
+import profileService from '../Profile/profile-service';
+import { useUtil } from '../../services/useUtil';
 
 export default {
   components: {
@@ -289,6 +294,7 @@ export default {
     const use_auth = useAuth();
 
     const route = useRoute();
+    const router = useRouter();
     const { project, getProjectByID } = useProjects();
 
     const clicked = ref([false, false]);
@@ -354,6 +360,35 @@ export default {
       return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`
     }
 
+    const checkUserEmail = use_auth.store_auth.status.loggedIn ? use_auth.store_auth.user.email : "";
+
+    const { generateFiveDigitsUUID, checkFav, checkIfFavOrNot } = useUtil();
+    const favoriteBody = reactive({
+      userFavoriteUUID: generateFiveDigitsUUID(),
+      userEmail: checkUserEmail,
+      typeOfFavorite:"PROJECT",
+      favoriteReferenceUUID: null,
+      favoriteReferenceTitle: null
+    })
+
+    checkIfFavOrNot("PROJECT", route.params.id, checkUserEmail);
+
+    const clickToFav = (uuid, title) => {
+      if (use_auth.store_auth.status.loggedIn) {
+      favoriteBody.favoriteReferenceUUID = uuid;
+      favoriteBody.favoriteReferenceTitle = title;
+      profileService.fav(favoriteBody);
+    } else if (use_auth.store_auth.status.loggedIn === false) {
+      router.push("/login");
+    }
+      // checkFav.value = false;
+    }
+
+    const clickToUnFav = (refUUID) => {
+      profileService.unFav("PROJECT", refUUID, checkUserEmail);
+      // checkFav.value = true;
+    }   
+  
     // === project.foundationContactDTO.email
     return {
       getImage,
@@ -381,6 +416,10 @@ export default {
     saveNewFDNProjectStatus,
     setFDNProjectUUID,
     copyToClipboard,
+    favoriteBody,
+    clickToFav,
+    clickToUnFav,
+    checkFav,
     };
   },
 };

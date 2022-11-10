@@ -36,16 +36,16 @@
           </div>
         </div>
       </div>
-      <router-link to="/foundation">
+      <router-link to="/foundations">
       <w-button bg-color="transparent" class="font-medium">มูลนิธิ</w-button>
     </router-link>
       <router-link to="/projects">
         <w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
       </router-link>
-      <router-link to="/volunteer">
+      <router-link to="/volunteers">
         <w-button bg-color="transparent" class="font-medium">จิตอาสา</w-button>
       </router-link>
-      <router-link to="/article">
+      <router-link to="/articles">
         <w-button bg-color="transparent" class="font-medium">ข่าวสาร</w-button>
       </router-link>
       <div>
