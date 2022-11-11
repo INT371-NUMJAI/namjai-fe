@@ -1,45 +1,12 @@
 <template>
-  <div
-    class="mx-[30px] md:mx-[40px] lg:mx-[177px] mt-[60px] lg:mt-[120px] h-auto"
-  >
-  
+  <div class="mx-[30px] md:mx-[40px] lg:mx-[177px] mt-[60px] lg:mt-[120px] h-auto">
     <h1 class="text-2xl lg:text-5xl mb-[40px]">ส่งโครงการ</h1>
     <div class="lg:mx-[183px] lg:mt-[60px]">
       <w-form v-model="valid">
-        <w-input
-          :validators="[validators.required]"
-          class="mb-10 lg:text-base md:text-base text-sm"
-          type="text"
-          color="black"
-          label="ชื่อผู้รับผิดชอบโครงการ"
-          label-color="black"
-          placeholder=" "
-          v-model="fdnProjectBody.responsiblePerson"
-        />
-        <w-input
-          :validators="[validators.required]"
-          class="mb-10 lg:text-base md:text-base text-sm"
-          type="text"
-          color="black"
-          label="ชื่อโครงการ"
-          label-color="black"
-          placeholder=" "
-          v-model="fdnProjectBody.fdnProjectName"
-        />
+        <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="text" color="black" label="ชื่อผู้รับผิดชอบโครงการ" label-color="black" placeholder=" " v-model="fdnProjectBody.responsiblePerson" />
+        <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="text" color="black" label="ชื่อโครงการ" label-color="black" placeholder=" " v-model="fdnProjectBody.fdnProjectName" />
         <div class="flex space-x-[20px] lg:space-x-[30px]">
-          <w-select
-            :validators="[validators.required]"
-            class="mb-10 lg:text-base md:text-base text-sm lg:w-[300px]"
-            :items="categories"
-            label="ประเภทโครงการ"
-            label-color="black"
-            placeholder=" "
-            selection-color="grey"
-            color="black"
-            return-object
-            multiple
-            v-model="fdnProjectBody.targetCategoriesSet"
-          >
+          <w-select :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm lg:w-[300px]" :items="categories" label="ประเภทโครงการ" label-color="black" placeholder=" " selection-color="grey" color="black" return-object multiple v-model="fdnProjectBody.targetCategoriesSet">
             <template #item="{ item, selected }">
               <w-icon v-if="selected" class="black">wi-check</w-icon>
               <span v-else></span>
@@ -47,107 +14,39 @@
             </template>
           </w-select>
           <div>
-            <p
-              v-for="fdnCat in fdnProjectBody.targetCategoriesSet"
-              :key="fdnCat.targetCategoriesID"
-              class="text-namjaired"
-            >
+            <p v-for="fdnCat in fdnProjectBody.targetCategoriesSet" :key="fdnCat.targetCategoriesID" class="text-namjaired">
               {{ fdnCat.targetCategoriesName }}
             </p>
           </div>
         </div>
         <div class="flex space-x-[20px] lg:space-x-[30px]">
-        <w-input
-            :validators="[validators.required]"
-            class="mb-10 lg:text-base md:text-base text-sm"
-            type="number"
-            color="black"
-            label="ค่าใช้จ่าย"
-            label-color="black"
-            placeholder=" "
-            v-model="fdnProjectBody.goal"
-          />
-          <w-select
-            class="mb-10 lg:text-base md:text-base text-sm"
-            :items="status"
-            :validators="[validators.required]"
-            label="สถานะโครงการ"
-            label-color="black"
-            placeholder=" "
-            selection-color="grey"
-            color="black"
-            v-model="fdnProjectBody.status"
-          >
-          </w-select>
+          <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="number" color="black" label="ค่าใช้จ่าย" label-color="black" placeholder=" " v-model="fdnProjectBody.goal" />
+          <w-select class="mb-10 lg:text-base md:text-base text-sm" :items="status" :validators="[validators.required]" label="สถานะโครงการ" label-color="black" placeholder=" " selection-color="grey" color="black" v-model="fdnProjectBody.status"> </w-select>
         </div>
         <div class="flex space-x-[20px] lg:space-x-[30px]">
-          <w-input
-            :validators="[validators.required]"
-            class="mb-10 lg:text-base md:text-base text-sm"
-            type="date"
-            color="black"
-            label="วันที่เริ่มโครงการ"
-            label-color="black"
-            placeholder=" "
-            v-model="fdnProjectBody.startDate"
-          />
-          <w-input
-          :validators="[validators.required]"
-          class="mb-10 lg:text-base md:text-base text-sm"
-          type="date"
-          color="black"
-          label="วันที่สิ้นสุดโครงการ"
-          label-color="black"
-          placeholder=" "
-          v-model="fdnProjectBody.endDate"
-        />
+          <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่เริ่มโครงการ" label-color="black" placeholder=" " v-model="fdnProjectBody.startDate" />
+          <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่สิ้นสุดโครงการ" label-color="black" placeholder=" " v-model="fdnProjectBody.endDate" />
         </div>
-        <w-textarea
-          :validators="[validators.required]"
-          class="mb-10 lg:text-base md:text-base text-sm"
-          outline
-          rows="9"
-          color="black"
-          bg-color="white"
-          label="สถานที่และเวลาดำเนินโครงการ"
-          label-color="black"
-          placeholder=" "
-          no-autogrow
-          v-model="fdnProjectBody.fdnProjectDetailPlace"
-        />
-        <w-textarea
-          :validators="[validators.required]"
-          class="mb-10 lg:text-base md:text-base text-sm"
-          outline
-          rows="9"
-          color="black"
-          bg-color="white"
-          label="รายละเอียดโครงการ"
-          label-color="black"
-          placeholder=" "
-          no-autogrow
-          v-model="fdnProjectBody.fdnProjectDetail"
-        />
+        <w-textarea :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" outline rows="9" color="black" bg-color="white" label="สถานที่และเวลาดำเนินโครงการ" label-color="black" placeholder=" " no-autogrow v-model="fdnProjectBody.fdnProjectDetailPlace" />
+        <w-textarea :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" outline rows="9" color="black" bg-color="white" label="รายละเอียดโครงการ" label-color="black" placeholder=" " no-autogrow v-model="fdnProjectBody.fdnProjectDetail" />
         <label class="lg:text-sm md:text-sm text-xs">รูปภาพประกอบ</label>
-        <w-input
-          v-model="fileUpload2[0]"
-          @change="fileHandler2"
-          type="file"
-          class="w-20 h-20"
-          color="amber"
-          bg-color="amber-light1"
-          :preview="false"
-          outline
-          >เลือกไฟล์</w-input
-        >
+        <w-input v-model="fileUpload2[0]" @change="fileHandler2" type="file" class="w-20 h-20" color="amber" bg-color="amber-light1" :preview="false" outline>เลือกไฟล์</w-input>
+        <label class="lg:text-sm md:text-sm text-xs"
+          ><div class="flex mb-2">
+            แผนการใช้เงิน
+            <p class="text-namjaired mx-3">*ส่งไฟล์ .xls</p>
+          </div>
+          <div class="flex justify-start lg:text-sm md:text-sm text-xs">
+            ดาวน์โหลด template สำหรับแผนการเงิน:
+            <p class="text-namjaigreen mx-2 underline">คลิกที่นี่</p>
+          </div>
+        </label>
+        <div class="gap-[30px]">
+          <w-input v-model="fileUpload[0]" @change="fileHandler" type="file" class="w-20 h-20" color="amber" bg-color="amber-light1" :preview="false" outline>เลือกไฟล์</w-input>
+        </div>
         <!-- {{ fdnProjectBody }}
         {{ fileUpload }} -->
-        <base-button
-          class="w-[140px] mx-auto mt-[60px] mb-8"
-          buttonLabel="ยืนยัน"
-          :isValid="valid === false"
-          @click="submitProjectForm"
-        />
+        <base-button class="px-9 py-2 mx-auto mt-[30px] mb-[80px]" buttonLabel="ยืนยัน" :isValid="valid === false" @click="submitProjectForm" />
       </w-form>
     </div>
   </div>
@@ -159,9 +58,8 @@ import { useValidation } from "../Account/validator";
 import { useStore } from "vuex";
 import foundationProjectService from "./project-service";
 import { useUtil } from "../../services/useUtil";
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
 import utilService from "../../services/util-service";
-
 
 export default {
   setup() {
@@ -182,12 +80,7 @@ export default {
       { targetCategoriesName: "สิ่งแวดล้อม", targetCategoriesID: "10" },
       { targetCategoriesName: "สิทธิมนุษยชน", targetCategoriesID: "11" },
     ]);
-    const status = reactive([
-      {label: "Open"},
-      {label: "Not showing"},
-      {label: "Closed"},
-
-    ])
+    const status = reactive([{ label: "Open" }, { label: "Not showing" }, { label: "Closed" }]);
 
     const { generateFiveDigitsUUID } = useUtil();
     // onMounted(() => (foundationUUID.value = store.state.fdn.UUID));
@@ -224,22 +117,22 @@ export default {
     const router = useRouter();
 
     const submitProjectForm = () => {
-      foundationProjectService.addProject(fdnProjectBody).then(response => {
+      foundationProjectService.addProject(fdnProjectBody).then((response) => {
         if (response.status === 200) {
           // router.push("/projects");
           const bodyFormData2 = new FormData();
-        bodyFormData2.append("file", fileUpload2[0]);
-        bodyFormData2.append("type", "project");
-      bodyFormData2.append("userName", store.state.auth.user.userName);
-      bodyFormData2.append("uuid", fdnProjectBody.fdnProjectUUID);
-      utilService.uploadImage(bodyFormData2);
+          bodyFormData2.append("file", fileUpload2[0]);
+          bodyFormData2.append("type", "project");
+          bodyFormData2.append("userName", store.state.auth.user.userName);
+          bodyFormData2.append("uuid", fdnProjectBody.fdnProjectUUID);
+          utilService.uploadImage(bodyFormData2);
 
-      console.log(bodyFormData2);
+          console.log(bodyFormData2);
         }
       });
-      };
+    };
 
-      console.log(store.state.auth.user.userName);
+    console.log(store.state.auth.user.userName);
 
     return {
       validators,
@@ -251,7 +144,7 @@ export default {
       fileHandler,
       fileUpload2,
       fileHandler2,
-      status
+      status,
     };
   },
 };
