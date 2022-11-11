@@ -4,17 +4,17 @@
 			<nav-bar class="z-40" />
 			<router-view />
 		</div>
-		<!-- <foo-ter class="z-50" /> -->
+		<foo-ter class="z-50" />
 	</w-app>
 </template>
 
 <script>
 import NavBar from "./components/NavBar/NavBar.vue";
-// import Footer from "./components/NavBar/Footer.vue";
+import Footer from "./components/NavBar/Footer.vue";
 export default {
 	components: {
 		"nav-bar": NavBar,
-		// "foo-ter": Footer,
+		"foo-ter": Footer,
 	},
 };
 </script>
