@@ -17,5 +17,11 @@ export default function articleService() {
         article.value = response.data;
     }
 
-	return { article, getArticle, articles, getArticleById };
+	const articlesEmail = ref([]);
+	const getArticleByEmail = async (email) => {
+		let response = await http.get(`/view/articles/${email}`);
+		articlesEmail.value = response.data;
+	}
+
+	return { article, getArticle, articles, getArticleById, articlesEmail, getArticleByEmail };
 }

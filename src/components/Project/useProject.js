@@ -17,5 +17,10 @@ export default function useProjects() {
 		projects.value = response.data;
 	};
 
-	return { project, projects, getProjectByID, getProjectByFDNEmail };
+	const getProjectByFDNEmailAndStatusOpen = async (email) => {
+		let response = await http.get(`/view/projects/user-fdn?email=${email}`);
+		projects.value =response.data;
+	}
+
+	return { project, projects, getProjectByID, getProjectByFDNEmail, getProjectByFDNEmailAndStatusOpen };
 }

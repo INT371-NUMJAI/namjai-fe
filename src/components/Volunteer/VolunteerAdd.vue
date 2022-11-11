@@ -29,7 +29,7 @@ export default {
   setup() {
     const use_auth = useAuth();
     const route = useRoute();
-    const { volunteerShortList, getVolunteerShortListByFDNEmail } = useVolunteer();
+    const { volunteerShortList, getVolunteerShortListByFDNEmail, volunteerShortListByFDNEmailandStatusOpen, getVolunteerShortListByFDNEmailandStatusOpen } = useVolunteer();
 
     const checkAuthorized = () => {
       // let check = ""
@@ -42,24 +42,31 @@ export default {
         } 
         else if (
           use_auth.store_auth.user.role === `ROLE_FDN` &&
-          use_auth.store_auth.user.status === `ACTIVE`
+          use_auth.store_auth.user.status === `ACTIVE` &&
+          route.params.id === use_auth.store_auth.user.email
         ) {
           getVolunteerShortListByFDNEmail(route.params.id);
+          console.log("getVolunteerShortListByFDNEmail");
           return false;
         }
-        else if (use_auth.store_auth.user.role === `ROLE_USER`) {
+        else if (use_auth.store_auth.user.role === `ROLE_USER` || use_auth.store_auth.user.role === `ROLE_FDN` && route.params.id != use_auth.store_auth.user.email) {
+          getVolunteerShortListByFDNEmailandStatusOpen(route.params.id);
+          console.log("getVolunteerShortListByFDNEmailandStatusOpen");
           return true;
         }
       } else {
+        getVolunteerShortListByFDNEmailandStatusOpen(route.params.id);
+        console.log("getVolunteerShortListByFDNEmailandStatusOpenNotLoggedIn")
         return true;
       }
       //check fdn unverify
       // console.log(check);
     };
-    getVolunteerShortListByFDNEmail(route.params.id);
+    checkAuthorized();
+    // getVolunteerShortListByFDNEmail(route.params.id);
     
 
-    return { use_auth, checkAuthorized, volunteerShortList, route };
+    return { use_auth, checkAuthorized, volunteerShortList, route, volunteerShortListByFDNEmailandStatusOpen };
   },
 };
 </script>

@@ -41,5 +41,11 @@ export default function volunteerService() {
 		volunteerShortList.value = response.data;
 	}
 
-	return { volunteer, getVolunteerDetailByID, volunteerList, volunteerUUID, getEnrolledVolunteerList, checkEnrolled, getIsEnrolledOrNot, volunteerShortList, getVolunteerShortList, getVolunteerShortListByFDNEmail };
+	// const volunteerShortListByFDNEmailandStatusOpen = ref([]);
+	const getVolunteerShortListByFDNEmailandStatusOpen = async (email) => {
+		let response = await http.get(`/view/volunteer-projects/user-fdn?email=${email}`);
+		volunteerShortList.value = response.data;
+	}
+
+	return { volunteer, getVolunteerDetailByID, volunteerList, volunteerUUID, getEnrolledVolunteerList, checkEnrolled, getIsEnrolledOrNot, volunteerShortList, getVolunteerShortList, getVolunteerShortListByFDNEmail, getVolunteerShortListByFDNEmailandStatusOpen };
 }

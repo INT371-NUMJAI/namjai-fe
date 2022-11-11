@@ -8,8 +8,8 @@
 				    <p class="text-[14px] text-white">เพิ่มข่าวสาร</p>
 			    </button>
             </router-link>
-            <div class="mt-[30px] bg-white rounded-lg p-5 shadow-sm drop-shadow-md hover:shadow-md">
-                <article-card></article-card>
+            <div class="mt-[30px] space-y-[30px] bg-white rounded-lg p-5 shadow-sm drop-shadow-md hover:shadow-md">
+                <article-card :articleProps="articlesEmail"></article-card>
             </div>
         </div>
     </div>
@@ -28,11 +28,12 @@ export default {
     setup() {
         const use_auth = useAuth();
         const route = useRoute();
-        const { article, getArticle } = useArticle();
 
-        getArticle();
+        const { articlesEmail, getArticleByEmail } = useArticle();
 
-        return { article, use_auth, route };
+        getArticleByEmail(route.params.id);
+
+        return { use_auth, route, articlesEmail };
     }
 }
 </script>
