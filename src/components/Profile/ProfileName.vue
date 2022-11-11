@@ -167,6 +167,7 @@ export default {
       utilService.uploadImage(bodyFormData2);
     }
 
+    console.log(use_auth.store_auth.user.userName);
     const { profile, getUserNameByEmail } = useUtil();
     getUserNameByEmail(props.profileNameProps);
 

@@ -10,11 +10,11 @@
 
 <script>
 import NavBar from "./components/NavBar/NavBar.vue";
-// import Footer from "./components/NavBar/Footer.vue";
+import Footer from "./components/NavBar/Footer.vue";
 export default {
 	components: {
 		"nav-bar": NavBar,
-		// "foo-ter": Footer,
+		"foo-ter": Footer,
 	},
 };
 </script>

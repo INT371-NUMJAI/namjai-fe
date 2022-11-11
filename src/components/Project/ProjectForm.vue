@@ -237,9 +237,9 @@ export default {
       console.log(bodyFormData2);
         }
       });
+      };
 
-      
-    };
+      console.log(store.state.auth.user.userName);
 
     return {
       validators,

@@ -49,13 +49,12 @@
           no-autogrow
         />
         <base-button
-          class="w-[140px] mx-auto mt-[60px] mb-8"
+          class="w-[140px] mx-auto mt-[60px] mb-[60px] py-2"
           buttonLabel="ยืนยัน"
           :isValid="valid === false"
 		  @click="submitReportForm"
         />
       </w-form>
-	  {{ reportBody }}
     </div>
   </div>
 </template>

@@ -10,11 +10,12 @@
           <!-- <p>ข่าวสาร</p> -->
         </div>
 
-        <button @click="routeToProfileSubNav(route.params.id, `project`)" class="space-y-3" v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user.role === `ROLE_USER` && route.params.id != use_auth.store_auth.user.email">
+        <button @click="routeToProfileSubNav(route.params.id, `project`)" class="space-y-3" >
           <!-- <router-link to="/profile/project"><p>โครงการ</p></router-link> -->
           <p class="cursor-pointer select-all selection:text-namjaigreen">โครงการ</p>
           <div class="h-1 bg-namjaigreen"></div>
           <!-- <p>โครงการ</p> -->
+		  <!-- v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user.role === `ROLE_USER` && route.params.id != use_auth.store_auth.user.email" -->
         </button>
 
         <button @click="routeToProfileSubNav(route.params.id, `volunteer`)" class="space-y-3">
