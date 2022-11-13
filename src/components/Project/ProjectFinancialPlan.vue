@@ -13,6 +13,9 @@
         <base-button @click="showForm = false" class="py-2 px-9 my-[30px]" buttonLabel="ยกเลิก" buttonColor="bg-namjaired"></base-button>
         <base-button @click="submitProjectFinancial()" :isValid="valid === false" class="py-2 px-9 my-[30px]" buttonLabel="ยืนยัน"></base-button>
       </div>
+      {{ projectFinancialFormBody }}
+      {{ checkError }}
+      {{ checkSuccess }}
     </w-form>
     <w-transition-slide left class="fixed right-[30px] top-[80px]">
       <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> The alert is now visible. </w-alert>
@@ -48,19 +51,30 @@
         </table>
       </div>
       <div>
-        <h2 class="text-right text-xl"><b>ยอดรวม:</b> {{ financials.reduce(function (old, current) {return old + current.amount;}, 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }} บาท</h2>
+        <h2 class="text-right text-xl">
+          <b>ยอดรวม:</b>
+          {{
+            financials
+              .reduce(function (old, current) {
+                return old + current.amount;
+              }, 0)
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          }}
+          บาท
+        </h2>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { reactive, ref } from "vue";
+import { onUpdated, reactive, ref } from "vue";
 import { useValidation } from "../Account/validator";
 import projectService from "./project-service";
 import { useUtil } from "../../services/useUtil";
 import useProjects from "./useProject";
-import { useAuth } from '../../services/auth-middleware';
+import { useAuth } from "../../services/auth-middleware";
 
 export default {
   props: {
@@ -69,7 +83,7 @@ export default {
     },
     fdnOwnerProjectProp: {
       type: String,
-    }
+    },
   },
   setup(props) {
     const valid = ref(false);
@@ -99,15 +113,31 @@ export default {
         .updateProjectFinancial(projectFinancialFormBody)
         .then((response) => {
           if (response.status === 200) {
+            console.log(projectFinancialFormBody.financialPlanUUID);
             financials.value.push({ ...projectFinancialFormBody });
             checkSuccess.value = true;
+            checkError.value = false;
             Object.keys(projectFinancialFormBody).forEach((i) => (projectFinancialFormBody[i] = null));
+            projectFinancialFormBody.financialPlanUUID = generateFiveDigitsUUID();
+            projectFinancialFormBody.fdnProjectUUID = props.foundationProjectUUIDProp;
+            console.log(projectFinancialFormBody.financialPlanUUID);
+            console.log(`${checkError.value} Status 200`);
+            console.log(`${checkSuccess.value} Status 200`);
+          } else {
+            checkSuccess.value = false;
+            checkError.value = true;
+            console.clear();
+            console.log(`${checkError.value} Status != 200`);
+            console.log(`${checkSuccess.value} Status != 200`);
           }
+          console.log(response.status);
         })
         .catch((error) => {
           checkError.value = true;
         });
       showAlert.value = true;
+      console.log(checkError.value);
+      console.log(checkSuccess.value);
     };
 
     return { valid, validators, showAlert, checkSuccess, checkError, projectFinancialFormBody, showForm, financials, use_auth, submitProjectFinancial };

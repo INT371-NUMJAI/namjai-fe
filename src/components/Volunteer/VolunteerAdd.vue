@@ -46,17 +46,14 @@ export default {
           route.params.id === use_auth.store_auth.user.email
         ) {
           getVolunteerShortListByFDNEmail(route.params.id);
-          console.log("getVolunteerShortListByFDNEmail");
           return false;
         }
         else if (use_auth.store_auth.user.role === `ROLE_USER` || use_auth.store_auth.user.role === `ROLE_FDN` && route.params.id != use_auth.store_auth.user.email) {
           getVolunteerShortListByFDNEmailandStatusOpen(route.params.id);
-          console.log("getVolunteerShortListByFDNEmailandStatusOpen");
           return true;
         }
       } else {
         getVolunteerShortListByFDNEmailandStatusOpen(route.params.id);
-        console.log("getVolunteerShortListByFDNEmailandStatusOpenNotLoggedIn")
         return true;
       }
       //check fdn unverify

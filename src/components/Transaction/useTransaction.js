@@ -35,7 +35,6 @@ export default function useTransaction() {
     const getRequestByFDNEmail = async (email) => {
         let response = await http.get(`/view/request-withdrawal/?email=${email}`);
         requestByFDNEmail.value = response.data;
-        console.log(requestByFDNEmail.value);
     }
 
 
