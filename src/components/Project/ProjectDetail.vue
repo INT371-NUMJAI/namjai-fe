@@ -63,8 +63,8 @@
             </div>
           </div>
 
-          <project-progression v-if="selectedProgression === true" />
-          <project-financial-plan v-if="selectedFinancialPlan === true" />
+          <project-progression :foundationProjectUUIDProp="project.foundationProjectUUID" :fdnOwnerProjectProp="project.foundationContactDTO.email" v-if="selectedProgression === true" />
+          <project-financial-plan :foundationProjectUUIDProp="project.foundationProjectUUID" :fdnOwnerProjectProp="project.foundationContactDTO.email" v-if="selectedFinancialPlan === true" />
 
           <div class="bg-white space-y-3 lg:hidden">
             <div class="grid grid-rows-2 grid-cols-2">

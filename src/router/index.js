@@ -137,7 +137,7 @@ const router = createRouter({
 			component: () => import("../components/Project/ViewProjectsByTargetCat.vue"),
 		},
 		{
-			path: "/progressupdateform",
+			path: "/progressupdateform/:id",
 			name: "progress-form",
 			component: () => import("../components/Project/ProgressUpdateForm.vue"),
 		},

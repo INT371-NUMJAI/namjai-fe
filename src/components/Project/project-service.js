@@ -34,6 +34,12 @@ class FoundationProjectService {
 	createPayment(payload) {
 		return http.post("/view/payment", payload);
 	}
+	updateProjectProgress(payload) {
+		return http.post("/view/project/progress", payload);
+	}
+	updateProjectFinancial(payload) {
+		return http.post("/view/financial", payload);
+	}
 }
 
 export default new FoundationProjectService();

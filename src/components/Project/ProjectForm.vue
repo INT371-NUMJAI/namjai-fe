@@ -31,14 +31,19 @@
         <w-textarea :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" outline rows="9" color="black" bg-color="white" label="รายละเอียดโครงการ" label-color="black" placeholder=" " no-autogrow v-model="fdnProjectBody.fdnProjectDetail" />
         <label class="lg:text-sm md:text-sm text-xs">รูปภาพประกอบ</label>
         <w-input v-model="fileUpload2[0]" @change="fileHandler2" type="file" class="w-20 h-20" color="amber" bg-color="amber-light1" :preview="false" outline>เลือกไฟล์</w-input>
+        <div class="mb-[30px] bg-white lg:w-[30%] md:w-[40%] w-full">
+          <img class="p-[10px]" v-if="url" :src="url" />
+        </div>
         <label class="lg:text-sm md:text-sm text-xs"
           ><div class="flex mb-2">
             แผนการใช้เงิน
-            <p class="text-namjaired mx-3">*ส่งไฟล์ .xls</p>
+            <p class="text-namjaired mx-3">*ส่งไฟล์ .csv</p>
           </div>
           <div class="flex justify-start lg:text-sm md:text-sm text-xs">
             ดาวน์โหลด template สำหรับแผนการเงิน:
-            <p class="text-namjaigreen mx-2 underline">คลิกที่นี่</p>
+            <a href="https://download946.mediafire.com/5ct439a347xg/l9fr6cg2f5220t7/financialplan_template.csv">
+              <p class="text-namjaigreen mx-2 underline cursor-pointer">คลิกที่นี่</p>
+            </a>
           </div>
         </label>
         <div class="gap-[30px]">
@@ -49,6 +54,9 @@
         <base-button class="px-9 py-2 mx-auto mt-[30px] mb-[80px]" buttonLabel="ยืนยัน" :isValid="valid === false" @click="submitProjectForm" />
       </w-form>
     </div>
+    <w-transition-slide left class="fixed right-[30px] top-[80px]">
+      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> The alert is now visible. </w-alert>
+    </w-transition-slide>
   </div>
 </template>
 
@@ -80,7 +88,11 @@ export default {
       { targetCategoriesName: "สิ่งแวดล้อม", targetCategoriesID: "10" },
       { targetCategoriesName: "สิทธิมนุษยชน", targetCategoriesID: "11" },
     ]);
-    const status = reactive([{ label: "Open" }, { label: "Not showing" }, { label: "Closed" }]);
+    const status = reactive([{ label: "OPEN" }, { label: "NOT_SHOWING" }, { label: "CLOSED" }]);
+
+    const showAlert = ref(false);
+    const checkSuccess = ref(false);
+    const checkError = ref(false);
 
     const { generateFiveDigitsUUID } = useUtil();
     // onMounted(() => (foundationUUID.value = store.state.fdn.UUID));
@@ -106,8 +118,10 @@ export default {
     };
 
     const fileUpload2 = ref([]);
+    const url = ref("");
     const fileHandler2 = (event) => {
       fileUpload2[0] = event.target.files[0];
+      url.value = URL.createObjectURL(fileUpload2[0]);
       // console.log(input);
       // fileUpload = input;
     };
@@ -117,19 +131,29 @@ export default {
     const router = useRouter();
 
     const submitProjectForm = () => {
-      foundationProjectService.addProject(fdnProjectBody).then((response) => {
-        if (response.status === 200) {
-          // router.push("/projects");
-          const bodyFormData2 = new FormData();
-          bodyFormData2.append("file", fileUpload2[0]);
-          bodyFormData2.append("type", "project");
-          bodyFormData2.append("userName", store.state.auth.user.userName);
-          bodyFormData2.append("uuid", fdnProjectBody.fdnProjectUUID);
-          utilService.uploadImage(bodyFormData2);
-
-          console.log(bodyFormData2);
-        }
-      });
+      foundationProjectService
+        .addProject(fdnProjectBody)
+        .then((response) => {
+          if (response.status === 200) {
+            // router.push("/projects");
+            const bodyFormData2 = new FormData();
+            bodyFormData2.append("file", fileUpload2[0]);
+            bodyFormData2.append("type", "project");
+            bodyFormData2.append("userName", store.state.auth.user.userName);
+            bodyFormData2.append("uuid", fdnProjectBody.fdnProjectUUID);
+            utilService.uploadImage(bodyFormData2).then((response) => {
+              if (response.status === 200) {
+                checkSuccess.value = true;
+              }
+            });
+          } else if (response.status != 200) {
+            checkError.value = true;
+          }
+        })
+        .catch((error) => {
+          checkError.value = true;
+        });
+      showAlert.value = true;
     };
 
     console.log(store.state.auth.user.userName);
@@ -145,6 +169,10 @@ export default {
       fileUpload2,
       fileHandler2,
       status,
+      showAlert,
+      checkSuccess,
+      checkError,
+      url,
     };
   },
 };

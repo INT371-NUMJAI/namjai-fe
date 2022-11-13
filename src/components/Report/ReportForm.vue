@@ -56,6 +56,9 @@
         />
       </w-form>
     </div>
+    <w-transition-slide left class="fixed right-[30px] top-[80px]">
+      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain > The alert is now visible. </w-alert>
+    </w-transition-slide>
   </div>
 </template>
 
@@ -76,6 +79,10 @@ export default {
       { label: "อื่น ๆ", value: "อื่น ๆ" },
     ]);
 
+    const showAlert = ref(false);
+    const checkSuccess = ref(false);
+    const checkError = ref(false);
+
     const reportBody = reactive({
       issueType: "",
       issueDetail: "",
@@ -83,10 +90,17 @@ export default {
     });
 
 	const submitReportForm = () => {
-		reportService.addReport(reportBody);
+		reportService.addReport(reportBody).then((response) => {
+      if (response.status === 200) {
+        checkSuccess.value = true;
+      }
+    }).catch((error) => {
+      checkError.value = true;
+    })
+    showAlert.value = true;
 	}
 
-    return { valid, categories, validators, reportBody, submitReportForm };
+    return { valid, categories, validators, reportBody, showAlert, checkSuccess, checkError, submitReportForm };
   },
 };
 </script>
