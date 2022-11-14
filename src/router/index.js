@@ -87,7 +87,14 @@ const router = createRouter({
 		{
 			path: "/volunteers",
 			name: "volunteers",
-			component: () => import("../components/Volunteer/ViewVolunteer.vue"),
+			component: () => import("../components/Volunteer/ViewVolunteers.vue"),
+			children: [
+				{
+					path: "catergories/:id",
+					component: () => import("../components/Volunteer/ViewVolunteerByTargetCat.vue"),
+					// props: (route) => ({id:route.params.id || 'total'})
+				},
+			],
 		},
 		{
 			path: "/volunteer/:id",

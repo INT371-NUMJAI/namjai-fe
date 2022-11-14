@@ -17,6 +17,9 @@ class VolunteerService {
     deleteEnrolledVolunteer(email, volunteeruuid) {
         return http.delete(`/view/volunteer-enrolled/remove/${email}/${volunteeruuid}`);
     }
+   getVolunteerByTargetCat(id) {
+        return http.get(`/view/volunteer-projects/target?targetCatName=${id}`);
+   } 
 
 }
 

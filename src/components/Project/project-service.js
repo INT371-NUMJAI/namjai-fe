@@ -26,7 +26,7 @@ class FoundationProjectService {
 		return http.post("/view/foundationproject/edit", payload);
 	}
 	async getFoundationProjectsByTargetCatID(id) {
-		return http.get(`/view/foundationproject/target?targetCatID=${id}`);
+		return http.get(`/view/foundationproject/target?targetCatName=${id}`);
 	}
 	getFoundationProjectByFDNUUID(id) {
 		return http.get(`/view/project/user?fdnUUID=${id}`);

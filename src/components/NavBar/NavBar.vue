@@ -39,10 +39,10 @@
       <router-link to="/foundations">
       <w-button bg-color="transparent" class="font-medium">มูลนิธิ</w-button>
     </router-link>
-      <router-link to="/projects">
+      <router-link :to="`/projects/catergories/total`">
         <w-button bg-color="transparent" class="font-medium">โครงการ</w-button>
       </router-link>
-      <router-link to="/volunteers">
+      <router-link :to="`/volunteers/catergories/total`">
         <w-button bg-color="transparent" class="font-medium">จิตอาสา</w-button>
       </router-link>
       <router-link to="/articles">
