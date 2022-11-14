@@ -58,6 +58,7 @@ export default {
     const routeToProfileSubNav = (email, type) => {
       router.push(`/profile/${email}/${type}`);
     };
+    console.log(route.params.id);
 
     return { use_auth, routeToProfileSubNav, route };
   },
