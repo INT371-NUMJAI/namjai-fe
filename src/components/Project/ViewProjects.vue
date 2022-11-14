@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-[30px] md:mx-24 lg:mx-44">
+  <div class="container max-w-6xl mx-auto">
     <div class="my-10 cursor-pointer" @click="routeToProjects">
       <h1 class="mt-10 text-2xl lg:text-[48px] lg:mt-[120px] font-semibold">โครงการ</h1>
       <div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-4"></div>
@@ -69,7 +69,7 @@
         </div>
       </div>
       <div @click="routeToCategories('valley')">
-        <div :class="{ 'bg-[#00715D] text-white': route.fullPath === ('valley') }" class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
+        <div :class="{ 'bg-[#00715D] text-white': route.fullPath === 'valley' }" class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
           <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
             <!-- <img :src="`src/assets/${target.icon}`" /> -->
             <img src="@/assets/valley.svg" />
@@ -117,6 +117,7 @@
     <router-view :key="route.fullPath" />
     <!-- <router-view :key="$route.fullPath"></router-view> -->
   </div>
+  <!-- <router-view :key="$route.fullPath"></router-view> -->
 </template>
 
 <script>
@@ -124,10 +125,14 @@ import ProjectCard from "./ProjectCard.vue";
 import projectService from "./project-service";
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import Search from "../Verification/Search.vue";
+import BaseFilter from "../_Bases/BaseFilter.vue";
 
 export default {
   components: {
     ProjectCard,
+    Search,
+    BaseFilter,
   },
   setup() {
     const route = useRoute();
@@ -148,8 +153,6 @@ export default {
     const routeToProjects = () => {
       router.push(`/projects`);
     };
-
-    console.log(route.fullPath.includes("1"));
 
     return { fdnProjectList, route, routeToCategories, routeToProjects };
   },

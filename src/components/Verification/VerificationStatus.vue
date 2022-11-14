@@ -1,5 +1,5 @@
 <template>
-	<div class="text-namjaiwhite w-20 text-center rounded-xl py-1 -mt-1" :class="color">{{ setStatus }}</div>
+	<div class="text-namjaiwhite w-20 text-center rounded-xl py-1" :class="color">{{ setStatus }}</div>
 </template>
 <script>
 import { computed, ref } from "vue";

@@ -1,18 +1,17 @@
 <template>
-	<div class="w-full"></div>
-	<div class="mt-[40px] mb-[10px]">
-		<table class="text-center mx-auto min-w-max w-full table-auto">
-			<thead class="text-white bg-namjaibrown">
-				<tr>
-					<slot></slot>
-				</tr>
-			</thead>
-		</table>
-	</div>
+  <div class="w-full"></div>
+
+  <table class="min-w-full max-w-6xl w-full table-auto">
+    <thead>
+      <tr class="bg-[#f0fdfc] text-gray-600 uppercase text-sm leading-normal">
+        <slot></slot>
+      </tr>
+    </thead>
+  </table>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 .table tr {
 	border-radius: 20px;
 }
-</style>
+</style> -->

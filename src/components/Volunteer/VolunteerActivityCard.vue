@@ -1,4 +1,8 @@
 <template>
+	<div>
+      <Search />
+    <!-- <router-link to="/volunteerdetail"> -->
+    <!-- </router-link> -->
 	<div v-for="volunteerProp in volunteerProps" :key="volunteerProp.volunteerProjectUUID">
 		<div class="lg:max-w-sm md:max-w-md rounded-lg overflow-hidden bg-namjaiwhite drop-shadow-md hover:shadow-md cursor-pointer">
 			<img v-if="volunteerProp.picturePath != null" class="w-full h-[250px] rounded-t-lg md:rounded-bl-none md:rounded-t-lg lg:rounded-bl-none lg:rounded-t-lg transition-all duration-500 ease-in-out transform bg-center object-cover" :src="getImage(volunteerProp.picturePath)" @click="routeToVolunteerProjectDetail(volunteerProp.volunteerProjectUUID)" />
@@ -28,13 +32,21 @@
 			</div>
 		</div>
 	</div>
+</div>
 </template>
 
 <script>
 import { reactive, ref, toRefs } from "vue";
 import { useRouter } from "vue-router";
+import Search from "../Verification/Search.vue";
+import BaseFilter from "../_Bases/BaseFilter.vue";
+
 
 export default {
+	components: {
+    Search,
+    BaseFilter,
+  },
 	props: {
 		volunteerProps: {
 			type: Array,

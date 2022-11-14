@@ -1,22 +1,30 @@
 <template>
-  <div class="mb-2" v-for="(objectProp, index) in objectProps" :key="index">
-    <base-list class="mx-auto">
-      <router-link :to="'/verify/fdn/' + objectProp.fdnUUID">
-        <th class="py-3 w-[75px]">{{ index + 1 }}</th>
-        <!-- <th class="py-3 w-[83px]">{{ objectProp.fdnUUID }}</th> -->
-        <th>
-          <p class="overflow-hidden truncate py-3 w-[200px]">
-            {{ objectProp.fdnName }} 
-          </p>
-        </th>
-        <th class="py-3 w-[250px]">-</th>
-        <th class="py-3 w-[200px]">{{ objectProp.createDate }}</th>
-        <th class="py-3 w-[100px]">
+  <div class="" v-for="(objectProp, index) in objectProps" :key="index">
+    <router-link :to="'/verify/fdn/' + objectProp.fdnUUID">
+      <!-- <base-list>
+        <td class="py-3 px-6 text-center w-20">{{ index + 1 }}</td>
+        <td class="py-3 px-6 text-left whitespace-nowrap w-[180px]">
+          <p class="overflow-hidden truncate w-[250px]">{{ objectProp.fdnName }}sdhufhsduhfudhfudsfhgfjhufh</p>
+        </td>
+        <td class="py-3 px-6 text-center ">{{ objectProp.createDate ? objectProp.createDate : "N/A" }}</td>
+        <td class="py-3 px-6 ">
           <verification-status :statusText="objectProp.status" />
-        </th>
-        <th class="py-3 w-[250px]">{{ objectProp.approval }}</th>
-      </router-link>
+        </td>
+        {{ requestProp.approveDate ? requestProp.approveDate.slice(0, 10) : "-" }}
+        <td class="py-3 text-center">{{ objectProp.approval ? objectProp.approval :"N/A" }}</td>
+      </base-list> -->
+      <base-list>
+      <td class="py-3 text-center w-16">{{ index + 1 }}</td>
+      <td class="py-3 pl-6 pr-6 text-left whitespace-nowrap w-2/5">
+        <p class="overflow-hidden truncate w-[320px]">{{ objectProp.fdnName }}sdhufhsduhfudhfudsfhgfjhufh</p>
+      </td>
+      <td class="py-3 px-6 text-center w-40">{{ objectProp.createDate ? objectProp.createDate : "N/A" }}</td>
+      <td class="py-3 pl-10 pr-6 w-28">
+        <verification-status :statusText="objectProp.status" />
+      </td>
+      <td class="py-3 text-center w-40">{{ objectProp.approval ? objectProp.approval :"N/A" }}</td>
     </base-list>
+    </router-link>
   </div>
 </template>
 
@@ -38,12 +46,11 @@ export default {
 </script>
 
 <style scoped>
-th:first-child {
+td:first-child {
   border-radius: 10px 0 0 10px;
 }
 
-th:last-child {
+td:last-child {
   border-radius: 0 10px 10px 0;
 }
-
 </style>
