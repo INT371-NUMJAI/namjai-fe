@@ -1,6 +1,5 @@
 <template>
-	<div>
-      <Search />
+      <!-- <Search /> -->
     <!-- <router-link to="/volunteerdetail"> -->
     <!-- </router-link> -->
 	<div v-for="volunteerProp in volunteerProps" :key="volunteerProp.volunteerProjectUUID">
@@ -32,7 +31,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 </template>
 
 <script>
