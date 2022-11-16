@@ -10,8 +10,8 @@
         <p class="text-[14px] text-white">เพิ่มโครงการจิตอาสา</p>
       </button>
     </router-link>
-    <div class="lg:grid lg:grid-cols-3 lg:gap-[30px] lg:space-y-0 space-y-[30px]">
-    <volunteer-activity-card :volunteerProps="volunteerShortList" />
+    <div>
+    <volunteer-activity-card :hiddenProp="false" :volunteerProps="volunteerShortList" />
   </div>
   </div>
 </template>

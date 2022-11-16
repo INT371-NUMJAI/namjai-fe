@@ -90,7 +90,7 @@
           <p class="text-[14px] lg:text-base">เปลี่ยนรูปภาพ</p>
         </template>
         <w-form v-model="valid">
-          <w-input preview="false" v-model="imgFile[0]" @change="fileHandler" type="file" bg-color="white" outline
+          <w-input :validators="[validators.limitFileSize]" preview="false" v-model="imgFile[0]" @change="fileHandler" type="file" bg-color="white" outline
             ><p class="text-[12px] lg:text-[14px]">กดเพื่อเลือกรูป</p></w-input
           >
           <img id="blah" src="#" alt="" />
@@ -111,6 +111,9 @@
             <!-- <w-button @click="dialog.show = false" bg-color="namjaigreen" color="white">ยืนยัน</w-button> -->
           </div>
         </w-form>
+        <w-transition-slide left class="fixed right-[30px] top-[80px]">
+      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
+    </w-transition-slide>
       </w-dialog>
     </div>
   </div>
@@ -127,6 +130,7 @@ import { useRoute } from 'vue-router';
 import { useAuth } from '../../services/auth-middleware';
 import { useUtil } from '../../services/useUtil';
 import utilService from '../../services/util-service';
+import { useValidation } from "../Account/validator";
 
 
 export default {
@@ -142,6 +146,7 @@ export default {
     const route = useRoute();
     const use_auth = useAuth();
     const valid = ref(null);
+    const { validators } = useValidation();
 
     const dialog = reactive({ show: false, width: 300 });
     const dropdown = reactive({ show: false });
@@ -149,6 +154,11 @@ export default {
 
     const imgInp = ref(null);
     const blah = ref(null);
+
+    const showAlert = ref(false);
+    const responseMessage = ref("");
+    const checkSuccess = ref(false);
+    const checkError = ref(false);
 
     const imgFile = ref([]);
     const fileHandler = (event) => {
@@ -164,7 +174,15 @@ export default {
         bodyFormData2.append("type", "profile");
       bodyFormData2.append("userName", use_auth.store_auth.user.userName);
       bodyFormData2.append("uuid", "pic");
-      utilService.uploadImage(bodyFormData2);
+      utilService.uploadImage(bodyFormData2).then(() => {
+          responseMessage.value = "Upload profile image successfully"
+          checkSuccess.value = true;
+          showAlert.value = true;
+      }).catch(() => {
+        responseMessage.value = "Fail to upload profile image, please try again later"
+        checkError.value = true;
+        showAlert.value = true;
+      })
     }
 
     const { profile, getUserNameByEmail } = useUtil();
@@ -174,7 +192,7 @@ export default {
       		return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`
     	}
 
-    return { dialog, dropdown, valid, fileHandler, blah, imgInp, route, use_auth, profile, imgFile, dialogViewProfilePicture, submitProfilePic, getImage };
+    return { dialog, dropdown, valid, fileHandler, blah, imgInp, route, use_auth, profile, imgFile, dialogViewProfilePicture, submitProfilePic, getImage, showAlert, checkSuccess, checkError, validators, responseMessage };
   },
 };
 </script>

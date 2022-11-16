@@ -76,14 +76,14 @@
       </div>
       <w-textarea :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" outline rows="9" color="black" bg-color="white" label="รายละเอียดจิตอาสา" label-color="black" placeholder=" " no-autogrow v-model="addVolunteerBody.description" />
       <label class="lg:text-sm md:text-sm text-xs">รูปภาพประกอบ</label>
-      <w-input v-model="fileUpload[0]" @change="fileHandler" type="file" class="w-20 h-20" color="amber" bg-color="amber-light1" :preview="false" outline>เลือกไฟล์</w-input>
+      <w-input :validators="[validators.limitFileSize]" v-model="fileUpload[0]" @change="fileHandler" type="file" class="w-20 h-20" color="amber" bg-color="amber-light1" :preview="false" outline>เลือกไฟล์</w-input>
       <div class="mt-[30px] bg-white lg:w-[30%] md:w-[40%] w-full">
         <img class="p-[10px]" v-if="url" :src="url" />
       </div>
       <base-button @click="submitAddVolunteerForm()" class="w-[140px] mx-auto mt-[60px] mb-[80px] py-3" buttonLabel="ยืนยัน" :isValid="valid === false" />
     </w-form>
     <w-transition-slide left class="fixed right-[30px] top-[80px]">
-      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> The alert is now visible. </w-alert>
+      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
     </w-transition-slide>
   </div>
 </template>
@@ -95,7 +95,7 @@ import volunteerService from "./volunteer-service.js";
 import { useStore } from "vuex";
 import { useAuth } from "../../services/auth-middleware";
 import { useUtil } from "../../services/useUtil";
-import utilService from '../../services/util-service';
+import utilService from "../../services/util-service";
 
 export default {
   setup() {
@@ -154,6 +154,7 @@ export default {
     });
 
     const showAlert = ref(false);
+    const responseMessage = ref("");
     const checkSuccess = ref(false);
     const checkError = ref(false);
 
@@ -165,25 +166,25 @@ export default {
     };
 
     const submitAddVolunteerForm = () => {
-      volunteerService.addVolunteer(addVolunteerBody).then((response) => {
-        if (response.status === 200) {
+      volunteerService
+        .addVolunteer(addVolunteerBody)
+        .then(() => {
           const bodyFormData = new FormData();
           bodyFormData.append("file", fileUpload[0]);
           bodyFormData.append("type", "volunteer");
           bodyFormData.append("userName", store.state.auth.user.userName);
           bodyFormData.append("uuid", addVolunteerBody.volunteerProjectsUUID);
-          utilService.uploadImage(bodyFormData).then((response) => {
-            if (response.status === 200) {
-              checkSuccess.value = true;
-            }
+          utilService.uploadImage(bodyFormData).then(() => {
+            responseMessage.value = "Upload volunteer successfully"
+            checkSuccess.value = true;
+            showAlert.value = true;
           });
-        } else if (response.status != 200) {
+        })
+        .catch(() => {
+          responseMessage.value = "Fail to upload volunteer, please try again later"
           checkError.value = true;
-        }
-      }).catch((error) => {
-        checkError.value = true;
-      })
-      showAlert.value = true;
+          showAlert.value = true;
+        });
     };
 
     return {
@@ -203,6 +204,7 @@ export default {
       fileUpload,
       fileHandler,
       url,
+      responseMessage,
     };
   },
 };

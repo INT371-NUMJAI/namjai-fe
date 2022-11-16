@@ -1,7 +1,7 @@
 <template>
   <div>
     <div name="search" class="text-gray-600 items-center">
-      <input class="w-1/3 h-10 px-5 rounded-lg text-sm lg:text-lg drop-shadow-md placeholder:italic lg:placeholder:text-sm placeholder:text-slate-400 bg-white ring-1 ring-slate-300 hover:ring-2 hover:ring-sky-200 focus:outline-none focus:ring-blue-300 focus:ring-2" type="search" name="search" placeholder="ใส่ชื่อโครงการเพื่อค้นหา" />
+      <input @input="$emit('update:modelValue', $event.target.value)" :value="modelValue" class="w-1/3 h-10 px-5 rounded-lg text-sm lg:text-lg drop-shadow-md placeholder:italic lg:placeholder:text-sm placeholder:text-slate-400 bg-white ring-1 ring-slate-300 hover:ring-2 hover:ring-sky-200 focus:outline-none focus:ring-blue-300 focus:ring-2" type="search" name="search" placeholder="ใส่ชื่อโครงการเพื่อค้นหา" />
       <!-- <div class="absolute inset-y-0 left-3 my-3">
         <svg class="w-3.5 h-3.5 fill-current text-namjaidarkgray" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -14,3 +14,24 @@
     </div>
   </div>
 </template>
+
+<script>
+import { ref } from "vue";
+
+export default {
+  props: {
+    modelValue: String,
+  },
+  emits: ['update:modelValue'],
+  setup({emit}) {
+
+    const inputSearch = ref("");
+
+    const sendInputSearch = () => {
+      emit("submitInputSearch", inputSearch.value)
+    };
+
+    return { inputSearch, sendInputSearch };
+  },
+};
+</script>

@@ -16,7 +16,7 @@
       </w-form>
     </div>
     <w-transition-slide left class="fixed right-[30px] top-[80px]">
-      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> The alert is now visible. </w-alert>
+      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
     </w-transition-slide>
   </div>
 </template>
@@ -50,15 +50,24 @@ export default {
     });
 
     const showAlert = ref(false);
+    const responseMessage = ref("");
     const checkSuccess = ref(false);
     const checkError = ref(false);
 
     const submitunregisterVolunteerForm = () => {
-      volunteerService.unregisterVolunteerApply(volunteerAttendanceBody);
+      volunteerService.unregisterVolunteerApply(volunteerAttendanceBody).then(() => {
+        responseMessage.value = "Enroll volunteer successfully"
+          checkSuccess.value = true;
+          showAlert.value = true;
+      }).catch(() => {
+        responseMessage.value = "Fail to enroll volunteer, please try again later"
+        checkError.value = true;
+        showAlert.value = true;
+      })
       emit("closeThisComp", false);
     };
 
-    return { validators, valid, volunteerAttendanceBody, submitunregisterVolunteerForm, showAlert, checkSuccess, checkError, };
+    return { validators, valid, volunteerAttendanceBody, submitunregisterVolunteerForm, showAlert, checkSuccess, checkError, responseMessage };
   },
 };
 </script>

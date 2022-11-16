@@ -11,7 +11,7 @@
             />
           </svg>
         </div>
-        <input v-model="inputSearch" @keyup.enter="sendInputSearch()" class="w-full rounded-r-full h-10 lg:h-12 px-3 text-md lg:text-lg placeholder:text-md placeholder:italic placeholder:text-stone-500 bg-white" type="search" name="search" placeholder="ใส่ชื่อโครงการเพื่อค้นหา" />
+        <input @input="$emit('update:modelValue', $event.target.value)" :value="modelValue" class="w-full rounded-r-full h-10 lg:h-12 px-3 text-md lg:text-lg placeholder:text-md placeholder:italic placeholder:text-stone-500 bg-white" type="search" name="search" placeholder="ใส่ชื่อโครงการเพื่อค้นหา" />
         <!-- {{ inputSearch }} -->
       </div>
       <!-- <div class="">
@@ -48,7 +48,10 @@
 import { ref } from "vue";
 
 export default {
-  emits: ['submitInputSearch'],
+  props: {
+    modelValue: String,
+  },
+  emits: ['update:modelValue'],
   setup({emit}) {
     const showInput = ref(false);
 

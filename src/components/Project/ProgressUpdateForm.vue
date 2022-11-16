@@ -8,7 +8,7 @@
       </div>
       <w-textarea v-model="projectProgressFormBody.detail" :validators="[validators.required]" class="mb-[30px] lg:text-base md:text-base text-sm" outline rows="9" color="black" bg-color="white" label="เนื้อหา" label-color="black" placeholder=" " no-autogrow />
       <label class="lg:text-sm md:text-sm text-xs">รูปภาพประกอบ</label>
-      <w-input v-model="fileUpload[0]" @change="fileHandler" type="file" class="mt-[10px] lg:mt-[5px] w-20" label-color="white" color="white" bg-color="success-dark2" :preview="false" outline>เลือกไฟล์</w-input>
+      <w-input :validators="[validators.limitFileSize]" v-model="fileUpload[0]" @change="fileHandler" type="file" class="mt-[10px] lg:mt-[5px] w-20" label-color="white" color="white" bg-color="success-dark2" :preview="false" outline>เลือกไฟล์</w-input>
       <div class="mt-[30px] bg-white lg:w-[30%] md:w-[40%] w-full">
         <img class="p-[10px]" v-if="url" :src="url" />
       </div>
@@ -16,7 +16,7 @@
       <base-button @click="submitProjectProgress(progressUUID)" :isValid="valid === false" class="py-2 px-9 mt-[60px]" buttonLabel="ยืนยัน"></base-button>
     </w-form>
     <w-transition-slide left class="fixed right-[30px] top-[80px]">
-      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> The alert is now visible. </w-alert>
+      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
     </w-transition-slide>
   </div>
 </template>
@@ -49,6 +49,7 @@ export default {
     });
 
     const showAlert = ref(false);
+    const responseMessage = ref("");
     const checkSuccess = ref(false);
     const checkError = ref(false);
 
@@ -67,19 +68,19 @@ export default {
           bodyFormData.append("type", "progress");
           bodyFormData.append("userName", store.state.auth.user.userName);
           bodyFormData.append("uuid", `${route.params.id}:${projectProgressFormBody.foundationProjectProgressUUID}`);
-          utilService.uploadImage(bodyFormData).then((response) => {
-            if (response.status === 200) {
+          utilService.uploadImage(bodyFormData).then(() => {
+            responseMessage.value = "Upload progression successfully"
               checkSuccess.value = true;
               showAlert.value = true;
-            }
           });
-        } else if (response.status != 200) {
-          checkError.value = true;
-          showAlert.value = true;
         }
-      });
+      }).catch(() => {
+        responseMessage.value = "Fail to upload progression, please try again later"
+        checkError.value = true;
+        showAlert.value = true;
+      })
     };
-    return { valid, validators, projectProgressFormBody, submitProjectProgress, showAlert, checkSuccess, checkError, fileHandler, fileUpload, url };
+    return { valid, validators, projectProgressFormBody, submitProjectProgress, showAlert, checkSuccess, checkError, fileHandler, fileUpload, url, responseMessage };
   },
 };
 </script>

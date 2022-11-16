@@ -12,7 +12,7 @@
       <td class="py-3 text-center w-40">{{ requestProp.createDate.slice(0, 10) }}</td>
       <td class="py-3 px-8 text-center w-40">{{ requestProp.approveDate ? requestProp.approveDate.slice(0, 10) : "-" }}</td>
       <td class="py-3 pl-3 w-[90px]">
-        <transaction-request-dialog class="w-28" buttonText="รายละเอียด" :id="requestProp.witddrawalUUID" :hiddenProp="true"></transaction-request-dialog>
+        <transaction-request-dialog class="w-28" buttonText="รายละเอียด" :id="requestProp.withdrawalUUID" :hiddenProp="true"></transaction-request-dialog>
       </td>
     </base-list>
   </div>

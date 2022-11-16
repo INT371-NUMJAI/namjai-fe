@@ -6,11 +6,9 @@
         <div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-4"></div>
       </div>
       <div class="hidden lg:block lg:max-w-7xl mx-auto">
-        <img class="lg:w-full" src="@/assets/banner.png" />
+        <!-- <img class="lg:w-full" src="@/assets/banner.png" /> -->
       </div>
-      <article-big-card class="lg:my-10" />
       <div class="container mx-auto my-5">
-        <h1 class="text-lg lg:text-[30px]">ข่าวอื่นๆ</h1>
         <div class="mt-5 lg:mt-10 space-y-[40px]">
           <article-card :articleProps="articles" />
         </div>

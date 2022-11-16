@@ -289,7 +289,9 @@ export default {
     };
 
     // getProjectByID(route.params.id);
-    getProjectByID(route.params.id);
+    getProjectByID(route.params.id).catch((error) => {
+      router.push({name: 'not-found'})
+    })
 
     const formatStringDate = computed(() => {
       return `${project.value.startDate} - ${project.value.endDate}`;

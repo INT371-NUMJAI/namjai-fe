@@ -7,7 +7,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 http.defaults.headers.common["Authorization"] = `Bearer ${user.accessToken}`;
 class ApproveService {
 	async getFDNShortList() {
-		return await http.get("/view/foundationlist");
+		return  http.get("/view/foundationlist");
 	}
 	getFDNByID(id) {
 		return http.get(`/view/foundation/${id}`);

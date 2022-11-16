@@ -1,9 +1,11 @@
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import http from "@/http-common";
 http.defaults.headers["Content-type"] = "application/json";
 http.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
 export function useUtil() {
+    const router = useRouter();
     function generateFiveDigitsUUID() {
         var result = "";
         let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -16,8 +18,11 @@ export function useUtil() {
     
     const profile = ref([]);
     const getUserNameByEmail = async (email) => {
-        let response = await http.get(`/util/user-name?email=${email}`)
-        profile.value = response.data;
+        try {let response = await http.get(`/util/user-name?email=${email}`)
+        profile.value = response.data;}
+        catch(e) {
+            router.push({name: 'not-found'});
+        }
     }
 
     const checkFav = ref(false);

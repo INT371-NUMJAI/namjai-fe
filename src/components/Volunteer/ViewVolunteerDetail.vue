@@ -391,7 +391,9 @@ export default {
     const use_auth = useAuth();
     const { volunteer, getVolunteerDetailByID, volunteerUUID, checkEnrolled, getIsEnrolledOrNot } = useVolunteer();
 
-    getVolunteerDetailByID(route.params.id);
+    getVolunteerDetailByID(route.params.id).catch((error) => {
+      router.push({name: 'not-found'});
+    })
 
     const routeToVolunteerListDetail = (id) => {
       router.push(`/volunteer/${id}/volunteerlistdetail`);

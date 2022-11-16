@@ -48,15 +48,19 @@
 
 <script>
 import { computed } from '@vue/runtime-core';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
+import router from '../../router';
 import useArticle from './useArticle'
 
 export default {
   setup() {
     const route = useRoute();
+    const router = useRouter();
 
     const { article, getArticleById } = useArticle();
-    getArticleById(route.params.id);
+    getArticleById(route.params.id).catch((error) => {
+      router.push({name: 'not-found'});
+    })
 
     const getImage = (imagePath) => {
       		return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`

@@ -1,8 +1,9 @@
 <template>
-      <!-- <Search /> -->
+      <Search v-if="hiddenProp" @update:modelValue="submitInputSearch" class="mb-[60px]" />
     <!-- <router-link to="/volunteerdetail"> -->
     <!-- </router-link> -->
-	<div v-for="volunteerProp in volunteerProps" :key="volunteerProp.volunteerProjectUUID">
+	<div class="lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 grid grid-cols-1 gap-5 md:gap-6">
+	<div v-for="volunteerProp in searchVolunteerList" :key="volunteerProp.volunteerProjectUUID">
 		<div class="lg:max-w-sm md:max-w-md rounded-lg overflow-hidden bg-namjaiwhite drop-shadow-md hover:shadow-md cursor-pointer">
 			<img v-if="volunteerProp.picturePath != null" class="w-full h-[250px] rounded-t-lg md:rounded-bl-none md:rounded-t-lg lg:rounded-bl-none lg:rounded-t-lg transition-all duration-500 ease-in-out transform bg-center object-cover" :src="getImage(volunteerProp.picturePath)" @click="routeToVolunteerProjectDetail(volunteerProp.volunteerProjectUUID)" />
 			<!-- <img v-if=" projectCardProp.picturePath != null" class="w-full h-[250px] rounded-t-lg md:rounded-bl-none md:rounded-t-lg lg:rounded-bl-none lg:rounded-t-lg transition-all duration-500 ease-in-out transform bg-center object-cover" :src="getImage(projectCardProp.picturePath)" /> -->
@@ -31,10 +32,11 @@
 			</div>
 		</div>
 	</div>
+</div>
 </template>
 
 <script>
-import { reactive, ref, toRefs } from "vue";
+import { computed, reactive, ref, toRefs } from "vue";
 import { useRouter } from "vue-router";
 import Search from "../Verification/Search.vue";
 import BaseFilter from "../_Bases/BaseFilter.vue";
@@ -48,9 +50,12 @@ export default {
 	props: {
 		volunteerProps: {
 			type: Array,
+		},
+		hiddenProp: {
+			type: Boolean,
 		}
 	},
-	setup() {
+	setup(props) {
 		const route = useRouter();
 		const routeToVolunteerProjectDetail = (id) => {
 			route.push(`/volunteer/${id}`);
@@ -59,11 +64,34 @@ export default {
 		const getImage = (imagePath) => {
       		return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`
     	}
+		const searchText = ref("");
+
+		const submitInputSearch = (value) => {
+			searchText.value = value;
+		}
+
+		const isFound = ref(false);
+		const searchVolunteerList = computed(() => {
+			isFound.value = false;
+			if (searchText.value === "") {
+				return props.volunteerProps;
+			} else {
+				let foundVolunteerList = props.volunteerProps.filter((f) => f.volunteerProjectName.toLowerCase().includes(searchText.value.toLowerCase()))
+				if (foundVolunteerList === "") {
+					isFound.value = true;
+					return ; 
+				}
+				return foundVolunteerList;
+			}
+		})
 		return {
 			routeToVolunteerProjectDetail,
 			getImage,
+			submitInputSearch,
+			searchText,
+			searchVolunteerList
 		};
-	},
+		}
 };
 </script>
 

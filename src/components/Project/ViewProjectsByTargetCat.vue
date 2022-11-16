@@ -1,6 +1,6 @@
 <template>
-	<div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
-		<project-card :projectCardProps="fdnProjectList" />
+	<div class="">
+		<project-card :hiddenProp="true" :projectCardProps="fdnProjectList" />
 	</div>
 </template>
 

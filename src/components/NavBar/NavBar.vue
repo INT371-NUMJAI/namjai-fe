@@ -32,7 +32,9 @@
             <router-link to="/withdraw">
               <div class="block rounded-b-md px-4 py-2 cursor-pointer hover:bg-gray-200">คำร้องถอนเงิน</div>
             </router-link>
+            <router-link to="/reportlist">
             <div class="block rounded-b-md px-4 py-2 cursor-pointer hover:bg-gray-200">คำร้องเรียน</div>
+          </router-link>
           </div>
         </div>
       </div>

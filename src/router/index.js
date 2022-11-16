@@ -179,6 +179,11 @@ const router = createRouter({
 			component: () => import("../components/Report/ReportForm.vue"),
 		},
 		{
+			path: "/reportlist",
+			name: "report-list",
+			component: () => import("../components/Report/ViewReportList.vue"),
+		},
+		{
 			path: "/withdraw",
 			name: "withdraw",
 			component: () => import("../components/Transaction/ViewTransactionRequestAdmin.vue"),

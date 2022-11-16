@@ -10,8 +10,8 @@
         <h1 class="text-[20px] md:text-[25px] lg:text-[30px] font-black text-namjaidarkgray">สานต่อโครงการที่กำลังดำเนินอยู่</h1>
         <p class="pt-3 md:pt-5 lg:pt-5 text-[14px] md:text-xl lg:text-xl font-bold text-[#6A6A6A]">หากคุณกำลังมองหาโครงการที่กำลังเปิดอยู่</p>
         <p class="pt-2 text-[14px] md:text-xl lg:text-xl font-bold text-[#6A6A6A]">นี่คือบางส่วนของโครงการที่กำลังเปิดอยู่ในขณะนี้ บริจาคเลย</p>
-        <div class="flex lg:flex-none overflow-x-scroll lg:grid lg:grid-cols-3 pt-[30px] md:pt-10 lg:pt-10 space-x-6 lg:space-x-0 ">
-          <project-card :projectCardProps="fdnProjectList" />
+        <div>
+          <project-card :hiddenProp="false" :projectCardProps="fdnProjectList" />
         </div>
 
         <div class="w-1/2 lg:w-1/6 mx-auto">

@@ -52,7 +52,7 @@
       </div>
     </w-form>
     <w-transition-slide left class="fixed right-[30px] top-[80px]">
-      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> The alert is now visible. </w-alert>
+      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
     </w-transition-slide>
   </div>
 </template>
@@ -69,6 +69,7 @@ export default {
     const valid = ref(null);
 
     const showAlert = ref(false);
+    const responseMessage = ref("");
     const checkSuccess = ref(false);
     const checkError = ref(false);
 
@@ -82,14 +83,20 @@ export default {
     });
     const confirmPassword = ref("");
     const submitForm = () => {
-      authService.register(user).then((response) => {
-        if (response.status === 200) {
+      authService.register(user).then(() => {
+          responseMessage.value = "Sign up successfully"
+          checkSuccess.value = true;
+          showAlert.value  = true;
           router.push("/login");
-        }
+      }).catch(() => {
+        responseMessage.value = "Fail to sign up please try again"
+        checkError.value = true;
+        showAlert.value = true;
+        setTimeout(() => router.push("/report") ,3000)
       });
     };
 
-    return { valid, validators, user, confirmPassword, showAlert, checkSuccess, checkError , submitForm };
+    return { valid, validators, user, confirmPassword, showAlert, checkSuccess, checkError, responseMessage, submitForm };
   },
 };
 </script>

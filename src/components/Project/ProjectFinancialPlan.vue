@@ -13,12 +13,9 @@
         <base-button @click="showForm = false" class="py-2 px-9 my-[30px]" buttonLabel="ยกเลิก" buttonColor="bg-namjaired"></base-button>
         <base-button @click="submitProjectFinancial()" :isValid="valid === false" class="py-2 px-9 my-[30px]" buttonLabel="ยืนยัน"></base-button>
       </div>
-      {{ projectFinancialFormBody }}
-      {{ checkError }}
-      {{ checkSuccess }}
     </w-form>
     <w-transition-slide left class="fixed right-[30px] top-[80px]">
-      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> The alert is now visible. </w-alert>
+      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
     </w-transition-slide>
     <h1 class="text-sm lg:text-base">รายละเอียดแผนการใช้เงิน</h1>
     <div name="table" class="w-full">
@@ -97,6 +94,7 @@ export default {
     getProjectFinancial(props.foundationProjectUUIDProp);
 
     const showAlert = ref(false);
+    const responseMessage = ref("");
     const checkSuccess = ref(false);
     const checkError = ref(false);
 
@@ -111,36 +109,24 @@ export default {
     const submitProjectFinancial = () => {
       projectService
         .updateProjectFinancial(projectFinancialFormBody)
-        .then((response) => {
-          if (response.status === 200) {
-            console.log(projectFinancialFormBody.financialPlanUUID);
-            financials.value.push({ ...projectFinancialFormBody });
-            checkSuccess.value = true;
-            checkError.value = false;
-            Object.keys(projectFinancialFormBody).forEach((i) => (projectFinancialFormBody[i] = null));
-            projectFinancialFormBody.financialPlanUUID = generateFiveDigitsUUID();
-            projectFinancialFormBody.fdnProjectUUID = props.foundationProjectUUIDProp;
-            console.log(projectFinancialFormBody.financialPlanUUID);
-            console.log(`${checkError.value} Status 200`);
-            console.log(`${checkSuccess.value} Status 200`);
-          } else {
-            checkSuccess.value = false;
-            checkError.value = true;
-            console.clear();
-            console.log(`${checkError.value} Status != 200`);
-            console.log(`${checkSuccess.value} Status != 200`);
-          }
-          console.log(response.status);
+        .then(() => {
+          financials.value.push({ ...projectFinancialFormBody });
+          responseMessage.value = "Upload financial plan successfully"
+          checkSuccess.value = true;
+          checkError.value = false;
+          showAlert.value = true;
+          Object.keys(projectFinancialFormBody).forEach((i) => (projectFinancialFormBody[i] = null));
+          projectFinancialFormBody.financialPlanUUID = generateFiveDigitsUUID();
+          projectFinancialFormBody.fdnProjectUUID = props.foundationProjectUUIDProp;
         })
-        .catch((error) => {
+        .catch(() => {
+          responseMessage.value = "Fail to upload financial plan, please try again later"
           checkError.value = true;
+          showAlert.value = true;
         });
-      showAlert.value = true;
-      console.log(checkError.value);
-      console.log(checkSuccess.value);
     };
 
-    return { valid, validators, showAlert, checkSuccess, checkError, projectFinancialFormBody, showForm, financials, use_auth, submitProjectFinancial };
+    return { valid, validators, showAlert, checkSuccess, checkError, projectFinancialFormBody, showForm, financials, use_auth, submitProjectFinancial, responseMessage };
   },
 };
 </script>

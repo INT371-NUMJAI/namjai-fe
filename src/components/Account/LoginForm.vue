@@ -40,7 +40,7 @@
   <img class="hidden lg:block lg:w-3/5 lg:absolute lg:top-24 lg:right-14 lg:-z-0" src="@/assets/pic2.png" />
 
   <w-transition-slide left class="fixed right-[30px] top-[80px]">
-    <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> The alert is now visible. </w-alert>
+    <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
   </w-transition-slide>
 </template>
 
@@ -59,26 +59,26 @@ export default {
     const router = useRouter();
 
     const showAlert = ref(false);
+    const responseMessage = ref("");
     const checkSuccess = ref(false);
     const checkError = ref(false);
 
     const submitLogin = () => {
       authService
         .login(loginRequest)
-        .then((response) => {
-          if (response != null) {
+        .then(() => {
+            responseMessage.value = "Log in successfully"
             checkSuccess.value = true;
+            showAlert.value  = true;
             store.dispatch("auth/login", loginRequest).then(() => {
               router.push("/suggestion");
             });
-          } else {
-            checkError.value = true;
-          }
         })
         .catch((error) => {
+          responseMessage.value = error.response.data.message
           checkError.value = true;
+          showAlert.value  = true;
         });
-        showAlert.value = true;
     };
     const sentRequest = () => {
       typeof valid !== false && valid !== null ? submitLogin() : true;
@@ -92,6 +92,7 @@ export default {
       showAlert,
       checkSuccess,
       checkError,
+      responseMessage,
     };
   },
 };

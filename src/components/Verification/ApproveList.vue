@@ -1,4 +1,5 @@
 <template>
+  <!-- <BaseSearch class="flex-auto" /> -->
   <div class="" v-for="(objectProp, index) in objectProps" :key="index">
     <router-link :to="'/verify/fdn/' + objectProp.fdnUUID">
       <!-- <base-list>
@@ -16,7 +17,7 @@
       <base-list>
       <td class="py-3 text-center w-16">{{ index + 1 }}</td>
       <td class="py-3 pl-6 pr-6 text-left whitespace-nowrap w-2/5">
-        <p class="overflow-hidden truncate w-[320px]">{{ objectProp.fdnName }}sdhufhsduhfudhfudsfhgfjhufh</p>
+        <p class="overflow-hidden truncate w-[320px]">{{ objectProp.fdnName }}</p>
       </td>
       <td class="py-3 px-6 text-center w-40">{{ objectProp.createDate ? objectProp.createDate : "N/A" }}</td>
       <td class="py-3 pl-10 pr-6 w-28">
@@ -30,12 +31,14 @@
 
 <script>
 import BaseList from "../_Bases/BaseList.vue";
+import BaseSearch from '../_Bases/BaseSearch.vue';
 import VerificationStatus from "./VerificationStatus.vue";
 
 export default {
   components: {
     BaseList,
     VerificationStatus,
+    BaseSearch
   },
   props: {
     objectProps: {
