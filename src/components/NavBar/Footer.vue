@@ -11,18 +11,18 @@
             </svg>
           </router-link>
         </div>
-        <div class="pb-5 grid grid-cols-3 gap-6 md:col-span-3">
+        <div class="grid grid-cols-3 gap-6 md:col-span-3">
           <div>
             <h2 class="mb-6 text-sm uppercase text-namjaibeige cursor-default">หน้าต่างเว็บไซต์</h2>
             <ul class="text-[#d0ccc1] space-y-4">
               <router-link to="/main">
-                <li class="cursor-pointer hover:underline">หน้าหลัก</li>
+                <li class="mb-4 cursor-pointer hover:underline">หน้าหลัก</li>
               </router-link>
               <router-link to="/foundations">
-                <li class="cursor-pointer hover:underline">มูลนิธิ</li>
+                <li class="mb-4 cursor-pointer hover:underline">มูลนิธิ</li>
               </router-link>
               <router-link to="/projects">
-                <li class="cursor-pointer hover:underline">โครงการ</li>
+                <li class="mb-4 cursor-pointer hover:underline">โครงการ</li>
               </router-link>
               <router-link to="/articles">
                 <li class="cursor-pointer hover:underline">ข่าวสาร</li>
@@ -32,14 +32,14 @@
           <div>
             <h2 class="mb-6 text-sm uppercase text-namjaibeige cursor-default">ติดต่อเรา</h2>
             <ul class="text-[#d0ccc1] space-y-4">
-              <li class="cursor-pointer hover:underline">เกี่ยวกับเรา</li>
+              <li class="mb-4 cursor-pointer hover:underline">เกี่ยวกับเรา</li>
               <router-link to="/report">
                 <li class="cursor-pointer hover:underline">ร้องเรียน</li>
               </router-link>
             </ul>
           </div>
           <div>
-            <h2 class="mb-6 text-sm uppercase text-namjaibeige cursor-default">Credit</h2>
+            <h2 class="mb-6 text-sm uppercase text-namjaibeige cursor-default">Credits</h2>
             <ul class="text-[#d0ccc1] space-y-4">
               <li class="cursor-pointer hover:underline"><a href="https://www.drawkit.com/">DrawKit</a></li>
               <li class="cursor-pointer hover:underline"><a href="https://icons8.com/">Icon8</a></li>
@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-      <hr class="my-6 bg-namjaibeige lg:my-8" />
+      <!-- <hr class="my-6 bg-namjaibeige lg:my-8" />
       <div class="md:flex md:justify-between">
         <span class="text-sm text-namjaibeige tracking-wider">NAMJAI created by Boonrod Team</span>
         <div class="flex mt-4 md:mt-0 space-x-6">
@@ -56,7 +56,6 @@
             <svg name="facebook" class="w-[10px] h-5" viewBox="0 0 10 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M6.49636 20V10.8919H9.45801L9.89824 7.32578H6.49636V5.05432C6.49636 4.02527 6.77271 3.32071 8.19623 3.32071H10V0.141321C9.12236 0.0437405 8.2402 -0.0033761 7.35754 0.000187992C4.73972 0.000187992 2.94237 1.65823 2.94237 4.70204V7.31912H0V10.8852H2.9488V20H6.49636Z" fill="currentColor" />
             </svg>
-            <!-- <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg> -->
             <span class="sr-only">Facebook page</span>
           </a>
           <a href="#" class="text-[#d0ccc1] hover:text-namjaibeige">
@@ -72,7 +71,7 @@
             <span class="sr-only">Twitter page</span>
           </a>
         </div>
-      </div>
+      </div> -->
     </footer>
   </div>
 </template>
