@@ -42,6 +42,9 @@
       </router-link>
     </div>
   </div>
+  <div class="py-[60px] flex justify-center">
+    <button @click="loadMore()" v-if="currentPage * maxPerPage < projectCardProps.length && searchText === ``" class="bg-transparent hover:bg-namjaigreen text-namjaigreen font-medium hover:text-white py-2 px-10 border-2 border-namjaigreen hover:border-transparent rounded">เพิ่มเติม</button>
+  </div>
 </template>
 
 <style scoped>
@@ -81,11 +84,18 @@ export default {
       searchText.value = value;
     };
 
+    const currentPage = ref(1);
+    const maxPerPage = ref(6);
+
+    const loadMore = () => {
+      currentPage.value += 1;
+    };
+
     const isFound = ref(false);
     const searchProjectList = computed(() => {
       isFound.value = false;
       if (searchText.value === "") {
-        return props.projectCardProps;
+        return props.projectCardProps.slice(0, currentPage.value * maxPerPage.value);
       } else {
         let foundProjectList = props.projectCardProps.filter((f) => f.projectName.toLowerCase().includes(searchText.value.toLowerCase()));
         if (foundProjectList === "") {
@@ -113,7 +123,7 @@ export default {
     // 	}
     // })
 
-    return { getImage, getValueFromInput, submitInputSearch, searchProjectList, searchText };
+    return { getImage, getValueFromInput, submitInputSearch, searchProjectList, searchText,currentPage, maxPerPage, loadMore };
   },
 };
 </script>

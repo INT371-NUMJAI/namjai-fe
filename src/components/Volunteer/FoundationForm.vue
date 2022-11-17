@@ -62,12 +62,12 @@
         </w-select>
       </div>
       <div class="flex space-x-[20px] lg:space-x-[30px]">
-        <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่รับสมัคร" label-color="black" placeholder=" " v-model="addVolunteerBody.startDate" />
-        <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่ปิดรับสมัคร" label-color="black" placeholder=" " v-model="addVolunteerBody.endDate" />
+        <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่รับสมัคร *ไม่สามารถเลือกวันนี้หรือวันที่เก่ากว่าได้*" label-color="black" placeholder=" " v-model="addVolunteerBody.startDate" />
+        <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่ปิดรับสมัคร *ไม่สามารถเลือกวันที่เก่ากว่าวันรับสมัครได้*" label-color="black" placeholder=" " v-model="addVolunteerBody.endDate" />
       </div>
       <div class="flex space-x-[20px] lg:space-x-[30px]">
-        <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่เริ่มกิจกรรม" label-color="black" placeholder=" " v-model="addVolunteerBody.activityStartDate" />
-        <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่สิ้นสุดกิจกรรม" label-color="black" placeholder=" " v-model="addVolunteerBody.activityEndDate" />
+        <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่เริ่มกิจกรรม *ไม่สามารถเลือกวันนี้หรือวันที่เก่ากว่าได้*" label-color="black" placeholder=" " v-model="addVolunteerBody.activityStartDate" />
+        <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่สิ้นสุดกิจกรรม *ไม่สามารถเลือกวันที่เก่ากว่าวันเริ่มกิจกรรมได้*" label-color="black" placeholder=" " v-model="addVolunteerBody.activityEndDate" />
       </div>
       <div class="flex space-x-[30px]">
         <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="text" color="black" label="คุณสมบัติ" label-color="black" placeholder="ใส่ `,` ขั้นแต่ละุณสมบัติ เช่น คนเก่ง,คนดี" v-model="qualifyBefore" />

@@ -1,16 +1,10 @@
 <template>
-  <div
-    class="mx-[30px] md:mx-24 lg:mx-44 lg:grid lg:grid-cols-12 lg:gap-[30px] my-10 lg:my-0"
-  >
+  <div class="mx-[30px] md:mx-24 lg:mx-44 lg:grid lg:grid-cols-12 lg:gap-[30px] my-10 lg:my-0">
     <div name="detail" class="lg:col-span-8 lg:mt-[120px]">
       <div class="grid grid-flow-col text-sm lg:text-base font-medium">
         <div class="flex space-x-2">
           <p>หมวดหมู่:</p>
-          <p
-            v-for="category in volunteer.targetCategoriesSet"
-            :key="category"
-            class="text-namjaigreen"
-          >
+          <p v-for="category in volunteer.targetCategoriesSet" :key="category" class="text-namjaigreen">
             {{ category.targetCategoriesName }}
           </p>
         </div>
@@ -19,10 +13,8 @@
         {{ volunteer.volunteerProjectName }}
       </h2>
       <img v-if="volunteer.picturePath != null" class="w-[330px] h-[186px] md:w-full lg:w-full md:h-[379px] lg:h-[402px] my-[30px] object-cover" :src="getImage(volunteer.picturePath)" />
-        <img v-else-if="volunteer.picturePath === null" class="w-[330px] h-[186px] md:w-full lg:w-full md:h-[379px] lg:h-[402px] my-[30px] object-cover" src="@/assets/image-unavailable.jpeg" />
-      <div
-        class="bg-white mt-[30px] py-[30px] lg:py-10 px-6 text-namjaidarkgray space-y-[30px] lg:space-y-10"
-      >
+      <img v-else-if="volunteer.picturePath === null" class="w-[330px] h-[186px] md:w-full lg:w-full md:h-[379px] lg:h-[402px] my-[30px] object-cover" src="@/assets/image-unavailable.jpeg" />
+      <div class="bg-white mt-[30px] py-[30px] lg:py-10 px-6 text-namjaidarkgray space-y-[30px] lg:space-y-10">
         <div class="space-y-2 lg:space-y-65 text-[14px] lg:text-[16px]">
           <p class="font-black">รายละเอียด</p>
           <hr class="bg-namjaidarkgray" />
@@ -43,10 +35,7 @@
           <hr class="bg-namjaidarkgray" />
           <p class="font-normal">{{ formatLocationAddress }}</p>
         </div>
-        <div
-          v-if="volunteer.volunteerProjectName"
-          class="space-y-2 lg:space-y-5 text-[14px] lg:text-[16px]"
-        >
+        <div v-if="volunteer.volunteerProjectName" class="space-y-2 lg:space-y-5 text-[14px] lg:text-[16px]">
           <p class="font-black">ติดต่อ</p>
           <hr class="bg-namjaidarkgray" />
           <p class="font-normal">{{ formatFdnAddress }}</p>
@@ -56,107 +45,42 @@
             <h2>แชร์ต่อ</h2>
             <h2 class="justify-self-end">ถูกใจโครงการ</h2>
             <div name="shareMbTb" class="flex space-x-4">
-              <svg
-                class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#0165E1] active:text-[#0165E1] cursor-pointer"
-                viewBox="0 0 38 38"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38ZM20.1971 19.1689V26H17.359V19.1639H15V16.4893H17.3539V14.5265C17.3539 12.2437 18.7918 11.0001 20.886 11.0001C21.5922 10.9975 22.2979 11.0328 23 11.106V13.4905H21.557C20.4182 13.4905 20.1971 14.0189 20.1971 14.7907V16.4943H22.9186L22.5664 19.1689H20.1971Z"
-                />
+              <svg class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#0165E1] active:text-[#0165E1] cursor-pointer" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38ZM20.1971 19.1689V26H17.359V19.1639H15V16.4893H17.3539V14.5265C17.3539 12.2437 18.7918 11.0001 20.886 11.0001C21.5922 10.9975 22.2979 11.0328 23 11.106V13.4905H21.557C20.4182 13.4905 20.1971 14.0189 20.1971 14.7907V16.4943H22.9186L22.5664 19.1689H20.1971Z" />
               </svg>
 
-              <svg
-                class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#17A9FD] active:text-[#17A9FD] cursor-pointer"
-                width="38"
-                height="38"
-                viewBox="0 0 38 38"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38ZM25.9972 14.2166C26.7033 14.1309 27.3748 13.9413 28 13.6607L27.9985 13.6629C27.5305 14.372 26.9416 14.991 26.2593 15.4908C26.266 15.6425 26.2698 15.7957 26.2698 15.9474C26.2698 20.6165 22.7621 26 16.3457 26C14.4503 26.0021 12.5943 25.451 11 24.4125C11.2763 24.4455 11.5543 24.4619 11.8326 24.4618C13.4032 24.4642 14.9291 23.9312 16.1645 22.9487C15.4367 22.9352 14.7313 22.6915 14.1471 22.2516C13.5628 21.8118 13.1289 21.1979 12.9062 20.4959C13.429 20.5968 13.9677 20.5761 14.4815 20.4352C13.692 20.2736 12.9821 19.8403 12.4721 19.2088C11.9621 18.5773 11.6835 17.7865 11.6836 16.9706V16.9251C12.1679 17.1978 12.7095 17.3494 13.2633 17.3672C12.7858 17.0442 12.3943 16.6067 12.1237 16.0936C11.8531 15.5805 11.7117 15.0077 11.712 14.4259C11.712 13.7797 11.8842 13.173 12.1837 12.6496C13.0596 13.7412 14.1522 14.634 15.3907 15.27C16.6292 15.9061 17.9859 16.2713 19.3727 16.3418C19.1972 15.5839 19.2735 14.7885 19.59 14.0791C19.9064 13.3697 20.4451 12.7859 21.1226 12.4185C21.8001 12.0511 22.5784 11.9205 23.3366 12.047C24.0948 12.1736 24.7906 12.5502 25.3159 13.1184C26.0971 12.963 26.8461 12.6731 27.5306 12.2613C27.2707 13.08 26.7257 13.775 25.9972 14.2166Z"
-                />
+              <svg class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#17A9FD] active:text-[#17A9FD] cursor-pointer" width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38ZM25.9972 14.2166C26.7033 14.1309 27.3748 13.9413 28 13.6607L27.9985 13.6629C27.5305 14.372 26.9416 14.991 26.2593 15.4908C26.266 15.6425 26.2698 15.7957 26.2698 15.9474C26.2698 20.6165 22.7621 26 16.3457 26C14.4503 26.0021 12.5943 25.451 11 24.4125C11.2763 24.4455 11.5543 24.4619 11.8326 24.4618C13.4032 24.4642 14.9291 23.9312 16.1645 22.9487C15.4367 22.9352 14.7313 22.6915 14.1471 22.2516C13.5628 21.8118 13.1289 21.1979 12.9062 20.4959C13.429 20.5968 13.9677 20.5761 14.4815 20.4352C13.692 20.2736 12.9821 19.8403 12.4721 19.2088C11.9621 18.5773 11.6835 17.7865 11.6836 16.9706V16.9251C12.1679 17.1978 12.7095 17.3494 13.2633 17.3672C12.7858 17.0442 12.3943 16.6067 12.1237 16.0936C11.8531 15.5805 11.7117 15.0077 11.712 14.4259C11.712 13.7797 11.8842 13.173 12.1837 12.6496C13.0596 13.7412 14.1522 14.634 15.3907 15.27C16.6292 15.9061 17.9859 16.2713 19.3727 16.3418C19.1972 15.5839 19.2735 14.7885 19.59 14.0791C19.9064 13.3697 20.4451 12.7859 21.1226 12.4185C21.8001 12.0511 22.5784 11.9205 23.3366 12.047C24.0948 12.1736 24.7906 12.5502 25.3159 13.1184C26.0971 12.963 26.8461 12.6731 27.5306 12.2613C27.2707 13.08 26.7257 13.775 25.9972 14.2166Z" />
               </svg>
 
-              <svg
-                class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#10A88D] active:text-[#10A88D] cursor-pointer"
-                width="38"
-                height="38"
-                viewBox="0 0 38 38"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38ZM15.5858 11.5858C15.9609 11.2107 16.4696 11 17 11H23C23.5304 11 24.0391 11.2107 24.4142 11.5858C24.7893 11.9609 25 12.4696 25 13V23C25 23.5304 24.7893 24.0391 24.4142 24.4142C24.0391 24.7893 23.5304 25 23 25H17C16.4696 25 15.9609 24.7893 15.5858 24.4142C15.2107 24.0391 15 23.5304 15 23V13C15 12.4696 15.2107 11.9609 15.5858 11.5858ZM16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13V23C16 23.2652 16.1054 23.5196 16.2929 23.7071C16.4804 23.8946 16.7348 24 17 24H23C23.2652 24 23.5196 23.8946 23.7071 23.7071C23.8946 23.5196 24 23.2652 24 23V13C24 12.7348 23.8946 12.4804 23.7071 12.2929C23.5196 12.1054 23.2652 12 23 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929ZM13.268 14C13.0924 14.3041 13 14.6489 13 15V23.5C13 24.4283 13.3687 25.3185 14.0251 25.9749C14.6815 26.6313 15.5717 27 16.5 27H21C21.3511 27 21.6959 26.9076 22 26.732C22.304 26.5565 22.5565 26.304 22.732 26H16.5C15.837 26 15.2011 25.7366 14.7322 25.2678C14.2634 24.7989 14 24.163 14 23.5V13.268C13.696 13.4435 13.4435 13.696 13.268 14Z"
-                />
+              <svg class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#10A88D] active:text-[#10A88D] cursor-pointer" width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38ZM15.5858 11.5858C15.9609 11.2107 16.4696 11 17 11H23C23.5304 11 24.0391 11.2107 24.4142 11.5858C24.7893 11.9609 25 12.4696 25 13V23C25 23.5304 24.7893 24.0391 24.4142 24.4142C24.0391 24.7893 23.5304 25 23 25H17C16.4696 25 15.9609 24.7893 15.5858 24.4142C15.2107 24.0391 15 23.5304 15 23V13C15 12.4696 15.2107 11.9609 15.5858 11.5858ZM16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13V23C16 23.2652 16.1054 23.5196 16.2929 23.7071C16.4804 23.8946 16.7348 24 17 24H23C23.2652 24 23.5196 23.8946 23.7071 23.7071C23.8946 23.5196 24 23.2652 24 23V13C24 12.7348 23.8946 12.4804 23.7071 12.2929C23.5196 12.1054 23.2652 12 23 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929ZM13.268 14C13.0924 14.3041 13 14.6489 13 15V23.5C13 24.4283 13.3687 25.3185 14.0251 25.9749C14.6815 26.6313 15.5717 27 16.5 27H21C21.3511 27 21.6959 26.9076 22 26.732C22.304 26.5565 22.5565 26.304 22.732 26H16.5C15.837 26 15.2011 25.7366 14.7322 25.2678C14.2634 24.7989 14 24.163 14 23.5V13.268C13.696 13.4435 13.4435 13.696 13.268 14Z" />
               </svg>
             </div>
             <div class="justify-self-end mr-7">
-              <svg
-                class="cursor-pointer"
-                v-if="isFav"
-                @click="isFav = false"
-                width="26"
-                height="22"
-                viewBox="0 0 26 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z"
-                  stroke="#D45343"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+              <svg class="cursor-pointer" v-if="isFav" @click="isFav = false" width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z" stroke="#D45343" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              <svg
-                class="cursor-pointer"
-                v-if="!isFav"
-                @click="isFav = true"
-                width="26"
-                height="22"
-                viewBox="0 0 26 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z"
-                  stroke="#D45343"
-                  fill="#D45343"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+              <svg class="cursor-pointer" v-if="!isFav" @click="isFav = true" width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z" stroke="#D45343" fill="#D45343" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div
-      name="regist"
-      class="h-full lg:h-full lg:col-span-4 bg-white my-[30px] lg:my-0 py-[30px] px-6 text-namjaidarkgray"
-    >
+    <div name="regist" class="h-full lg:h-full lg:col-span-4 bg-white my-[30px] lg:my-0 py-[30px] px-6 text-namjaidarkgray">
       <div class="lg:my-24 lg:fixed">
         <base-status-button class="mb-[30px]" :statusText="volunteer.status"></base-status-button>
-        <div
-          v-if="volunteer.volunteerProjectName"
-          class="flex justify-between text-[14px] lg:text-[16px]"
-        >
+        <div v-if="volunteer.volunteerProjectName" class="flex justify-between text-[14px] lg:text-[16px]">
           <h1 class="">{{ volunteer.foundationContactDTO.fdnName }}</h1>
           <div class="lg:block lg:ml-[140px] hidden" v-if="(use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && use_auth.store_auth.user.role != 'ROLE_FDN') || use_auth.store_auth.status.loggedIn === false">
             <svg
               v-if="!checkFav"
-              @click="clickToFav(volunteer.volunteerProjectsUUID, volunteer.volunteerProjectName);checkFav = !checkFav"
+              @click="
+                clickToFav(volunteer.volunteerProjectsUUID, volunteer.volunteerProjectName);
+                checkFav = !checkFav;
+              "
               class="cursor-pointer"
               width="26"
               height="22"
@@ -164,17 +88,14 @@
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z"
-                stroke="#D45343"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
+              <path d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z" stroke="#D45343" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
             <svg
               v-if="checkFav"
-              @click="clickToUnFav(volunteer.volunteerProjectsUUID); checkFav = !checkFav"
+              @click="
+                clickToUnFav(volunteer.volunteerProjectsUUID);
+                checkFav = !checkFav;
+              "
               class="cursor-pointer"
               width="26"
               height="22"
@@ -182,14 +103,7 @@
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z"
-                stroke="#D45343"
-                fill="#D45343"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
+              <path d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z" stroke="#D45343" fill="#D45343" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </div>
         </div>
@@ -215,154 +129,73 @@
             </div> -->
             <div class="flex space-x-2 justify-end">
               <w-icon class="" color="green-dark3n">fa fa-user-o</w-icon>
-              <p>
-                {{ volunteer.peopleRegistered }}/{{ volunteer.peopleNeeded }}
-              </p>
+              <p>{{ volunteer.peopleRegistered }}/{{ volunteer.peopleNeeded }}</p>
             </div>
           </div>
           <div v-if="volunteer.volunteerProjectsUUID">
-          <div v-if="store.state.auth.status.loggedIn && use_auth.store_auth.user.email === volunteer.foundationContactDTO.email" class="pt-2 text-sm flex space-x-2">
-            <h2>ดูรายชื่ออาสาสมัคร:</h2>
-            <h2
-              @click="
-                routeToVolunteerListDetail(volunteer.volunteerProjectsUUID)
-              "
-              class="cursor-pointer underline underline-offset-2 text-namjaigreen hover:text-emerald-500"
-            >
-              คลิกที่นี่
-            </h2>
+            <div v-if="store.state.auth.status.loggedIn && use_auth.store_auth.user.email === volunteer.foundationContactDTO.email" class="pt-2 text-sm flex space-x-2">
+              <h2>ดูรายชื่ออาสาสมัคร:</h2>
+              <h2 @click="routeToVolunteerListDetail(volunteer.volunteerProjectsUUID)" class="cursor-pointer underline underline-offset-2 text-namjaigreen hover:text-emerald-500">คลิกที่นี่</h2>
+            </div>
           </div>
         </div>
-        </div>
-        <base-button
-		 id="unregister"
-          v-if="use_auth.store_auth.status.loggedIn === false && checkEnrolled === false && volunteer.status === `OPEN`"
-          @click="showDialogUnregister = true"
-          class="w-[156px] py-3 mt-[30px] lg:mt-10"
-          buttonLabel="สมัครเลย"
-          buttonColor="bg-namjaiyellow"
-        />
-		<w-dialog v-model="showDialogUnregister" :width="800" bg-color="namjai-beige">
-			<w-button class="button--close mt-[20px] mx-[20px]" @click="showDialogUnregister = false" sm outline round absolute color="namjai-red" icon="wi-cross"></w-button>
-		  <volunteer-project-form @closeThisComp="close" :volunteerNameProps="volunteer.volunteerProjectName" :volunteerUUIDProps="volunteer.volunteerProjectsUUID"></volunteer-project-form>
+        <base-button id="unregister" v-if="use_auth.store_auth.status.loggedIn === false && checkEnrolled === false && volunteer.status === `OPEN`" @click="showDialogUnregister = true" class="w-[156px] py-3 mt-[30px] lg:mt-10" buttonLabel="สมัครเลย" buttonColor="bg-namjaiyellow" />
+        <w-dialog v-model="showDialogUnregister" :width="800" bg-color="namjai-beige">
+          <w-button class="button--close mt-[20px] mx-[20px]" @click="showDialogUnregister = false" sm outline round absolute color="namjai-red" icon="wi-cross"></w-button>
+          <volunteer-project-form @closeThisComp="close" :volunteerNameProps="volunteer.volunteerProjectName" :volunteerUUIDProps="volunteer.volunteerProjectsUUID"></volunteer-project-form>
         </w-dialog>
 
-        <base-button
-		  id="registereduser"
-          v-if="use_auth.store_auth.status.loggedIn === true && checkEnrolled === false"
-		  @click="showDialogRegistered = true"
-          class="w-[156px] py-3 mt-[30px] lg:mt-10"
-          buttonLabel="สมัครเลย"
-          buttonColor="bg-namjaiyellow"
-        />
-		<w-dialog v-model="showDialogRegistered" class="px-[30px]" :width="500" bg-color="namjai-beige">
-			<div class="text-center mt-[20px] space-y-[20px]">
-			<h2 class="text-2xl">คุณต้องการสมัครจิตอาสาใช่หรือไม่</h2>
-			<p class="text-lg">ระบบจะใช้ข้อมูลที่คุณได้ลงทะเบียนไว้ในการสมัคร</p>
-		</div>
-			<w-button class="button--close mt-[10px] mx-[20px]" @click="showDialogRegistered = false" sm outline round absolute color="namjai-red" icon="wi-cross"></w-button>
-			<div class="flex mt-[30px] lg:mt-10 mx-[60px]">
-			<base-button
-			id="memberunenrolled"
-          class="w-[130px] py-2"
-          buttonLabel="ยกเลิก"
-          buttonColor="bg-namjaired"
-		  @click="showDialogRegistered = false"
-        />
-			<base-button
-          class="w-[130px] py-2"
-          buttonLabel="สมัครเลย"
-          buttonColor="bg-namjaigreen"
-		  @click="submitRegisteredVolunteerForm"
-        />
-	</div>
+        <base-button id="registereduser" v-if="use_auth.store_auth.status.loggedIn === true && checkEnrolled === false" @click="showDialogRegistered = true" class="w-[156px] py-3 mt-[30px] lg:mt-10" buttonLabel="สมัครเลย" buttonColor="bg-namjaiyellow" />
+        <w-dialog v-model="showDialogRegistered" class="px-[30px]" :width="500" bg-color="namjai-beige">
+          <div class="text-center mt-[20px] space-y-[20px]">
+            <h2 class="text-2xl">คุณต้องการสมัครจิตอาสาใช่หรือไม่</h2>
+            <p class="text-lg">ระบบจะใช้ข้อมูลที่คุณได้ลงทะเบียนไว้ในการสมัคร</p>
+          </div>
+          <w-button class="button--close mt-[10px] mx-[20px]" @click="showDialogRegistered = false" sm outline round absolute color="namjai-red" icon="wi-cross"></w-button>
+          <div class="flex mt-[30px] lg:mt-10 mx-[60px]">
+            <base-button id="memberunenrolled" class="w-[130px] py-2" buttonLabel="ยกเลิก" buttonColor="bg-namjaired" @click="showDialogRegistered = false" />
+            <base-button class="w-[130px] py-2" buttonLabel="สมัครเลย" buttonColor="bg-namjaigreen" @click="submitRegisteredVolunteerForm" />
+          </div>
         </w-dialog>
-        <base-button
-          v-if="checkEnrolled"
-		  @click="showDialogDelete = true"
-          class="w-[156px] py-3 mt-[30px] lg:mt-10"
-          buttonLabel="ยกเลิกการสมัคร"
-          buttonColor="bg-namjaired"
-        />
-		<w-dialog v-model="showDialogDelete" class="px-[30px]" :width="500" bg-color="namjai-beige">
-			<div class="text-center mt-[20px] space-y-[20px]">
-			<h2 class="lg:text-2xl md:text-2xl text-xl">คุณต้องการยกเลิกการเข้าร่วมกิจกรรมนี้หรือไม่</h2>
-		</div>
-			<div class="flex mt-[30px] lg:mt-10 mx-[20px] lg:mx-[60px] md:mx-[60px]">
-			<base-button
-			id="memberunenrolled"
-          class="w-[130px] py-2"
-          buttonLabel="ยกเลิก"
-          buttonColor="bg-namjaired"
-		  @click="showDialogDelete = false"
-        />
-			<base-button
-          class="w-[130px] py-2"
-          buttonLabel="ตกลง"
-          buttonColor="bg-namjaigreen"
-		  @click="deleteVolunteer()"
-        />
-	</div>
+        <base-button v-if="checkEnrolled" @click="showDialogDelete = true" class="w-[156px] py-3 mt-[30px] lg:mt-10" buttonLabel="ยกเลิกการสมัคร" buttonColor="bg-namjaired" />
+        <w-dialog v-model="showDialogDelete" class="px-[30px]" :width="500" bg-color="namjai-beige">
+          <div class="text-center mt-[20px] space-y-[20px]">
+            <h2 class="lg:text-2xl md:text-2xl text-xl">คุณต้องการยกเลิกการเข้าร่วมกิจกรรมนี้หรือไม่</h2>
+          </div>
+          <div class="flex mt-[30px] lg:mt-10 mx-[20px] lg:mx-[60px] md:mx-[60px]">
+            <base-button id="memberunenrolled" class="w-[130px] py-2" buttonLabel="ยกเลิก" buttonColor="bg-namjaired" @click="showDialogDelete = false" />
+            <base-button class="w-[130px] py-2" buttonLabel="ตกลง" buttonColor="bg-namjaigreen" @click="deleteVolunteer()" />
+          </div>
         </w-dialog>
         <div class="space-y-3 mt-[60px] hidden lg:block">
           <h2>แชร์ต่อ</h2>
           <div name="shareMbTb" class="flex space-x-4">
             <a :href="linkShare">
-            <svg
-              class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#0165E1] active:text-[#0165E1] cursor-pointer"
-              viewBox="0 0 38 38"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38ZM20.1971 19.1689V26H17.359V19.1639H15V16.4893H17.3539V14.5265C17.3539 12.2437 18.7918 11.0001 20.886 11.0001C21.5922 10.9975 22.2979 11.0328 23 11.106V13.4905H21.557C20.4182 13.4905 20.1971 14.0189 20.1971 14.7907V16.4943H22.9186L22.5664 19.1689H20.1971Z"
-              />
-            </svg>
-          </a>
+              <svg class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#0165E1] active:text-[#0165E1] cursor-pointer" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38ZM20.1971 19.1689V26H17.359V19.1639H15V16.4893H17.3539V14.5265C17.3539 12.2437 18.7918 11.0001 20.886 11.0001C21.5922 10.9975 22.2979 11.0328 23 11.106V13.4905H21.557C20.4182 13.4905 20.1971 14.0189 20.1971 14.7907V16.4943H22.9186L22.5664 19.1689H20.1971Z" />
+              </svg>
+            </a>
 
-          <a :href="linkShareTwitter">
-            <svg
-              class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#17A9FD] active:text-[#17A9FD] cursor-pointer"
-              width="38"
-              height="38"
-              viewBox="0 0 38 38"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38ZM25.9972 14.2166C26.7033 14.1309 27.3748 13.9413 28 13.6607L27.9985 13.6629C27.5305 14.372 26.9416 14.991 26.2593 15.4908C26.266 15.6425 26.2698 15.7957 26.2698 15.9474C26.2698 20.6165 22.7621 26 16.3457 26C14.4503 26.0021 12.5943 25.451 11 24.4125C11.2763 24.4455 11.5543 24.4619 11.8326 24.4618C13.4032 24.4642 14.9291 23.9312 16.1645 22.9487C15.4367 22.9352 14.7313 22.6915 14.1471 22.2516C13.5628 21.8118 13.1289 21.1979 12.9062 20.4959C13.429 20.5968 13.9677 20.5761 14.4815 20.4352C13.692 20.2736 12.9821 19.8403 12.4721 19.2088C11.9621 18.5773 11.6835 17.7865 11.6836 16.9706V16.9251C12.1679 17.1978 12.7095 17.3494 13.2633 17.3672C12.7858 17.0442 12.3943 16.6067 12.1237 16.0936C11.8531 15.5805 11.7117 15.0077 11.712 14.4259C11.712 13.7797 11.8842 13.173 12.1837 12.6496C13.0596 13.7412 14.1522 14.634 15.3907 15.27C16.6292 15.9061 17.9859 16.2713 19.3727 16.3418C19.1972 15.5839 19.2735 14.7885 19.59 14.0791C19.9064 13.3697 20.4451 12.7859 21.1226 12.4185C21.8001 12.0511 22.5784 11.9205 23.3366 12.047C24.0948 12.1736 24.7906 12.5502 25.3159 13.1184C26.0971 12.963 26.8461 12.6731 27.5306 12.2613C27.2707 13.08 26.7257 13.775 25.9972 14.2166Z"
-              />
-            </svg>
-          </a>
-          <w-tooltip show-on-click top @click="copyToClipboard()">
-    <template #activator="{ on }">
-      <svg
-          v-on="on"
-              class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#10A88D] active:text-[#10A88D] cursor-pointer"
-              width="38"
-              height="38"
-              viewBox="0 0 38 38"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38ZM15.5858 11.5858C15.9609 11.2107 16.4696 11 17 11H23C23.5304 11 24.0391 11.2107 24.4142 11.5858C24.7893 11.9609 25 12.4696 25 13V23C25 23.5304 24.7893 24.0391 24.4142 24.4142C24.0391 24.7893 23.5304 25 23 25H17C16.4696 25 15.9609 24.7893 15.5858 24.4142C15.2107 24.0391 15 23.5304 15 23V13C15 12.4696 15.2107 11.9609 15.5858 11.5858ZM16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13V23C16 23.2652 16.1054 23.5196 16.2929 23.7071C16.4804 23.8946 16.7348 24 17 24H23C23.2652 24 23.5196 23.8946 23.7071 23.7071C23.8946 23.5196 24 23.2652 24 23V13C24 12.7348 23.8946 12.4804 23.7071 12.2929C23.5196 12.1054 23.2652 12 23 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929ZM13.268 14C13.0924 14.3041 13 14.6489 13 15V23.5C13 24.4283 13.3687 25.3185 14.0251 25.9749C14.6815 26.6313 15.5717 27 16.5 27H21C21.3511 27 21.6959 26.9076 22 26.732C22.304 26.5565 22.5565 26.304 22.732 26H16.5C15.837 26 15.2011 25.7366 14.7322 25.2678C14.2634 24.7989 14 24.163 14 23.5V13.268C13.696 13.4435 13.4435 13.696 13.268 14Z"
-              />
-            </svg>
-    </template>
-    Copied link!
-  </w-tooltip>
-       
+            <a :href="linkShareTwitter">
+              <svg class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#17A9FD] active:text-[#17A9FD] cursor-pointer" width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38ZM25.9972 14.2166C26.7033 14.1309 27.3748 13.9413 28 13.6607L27.9985 13.6629C27.5305 14.372 26.9416 14.991 26.2593 15.4908C26.266 15.6425 26.2698 15.7957 26.2698 15.9474C26.2698 20.6165 22.7621 26 16.3457 26C14.4503 26.0021 12.5943 25.451 11 24.4125C11.2763 24.4455 11.5543 24.4619 11.8326 24.4618C13.4032 24.4642 14.9291 23.9312 16.1645 22.9487C15.4367 22.9352 14.7313 22.6915 14.1471 22.2516C13.5628 21.8118 13.1289 21.1979 12.9062 20.4959C13.429 20.5968 13.9677 20.5761 14.4815 20.4352C13.692 20.2736 12.9821 19.8403 12.4721 19.2088C11.9621 18.5773 11.6835 17.7865 11.6836 16.9706V16.9251C12.1679 17.1978 12.7095 17.3494 13.2633 17.3672C12.7858 17.0442 12.3943 16.6067 12.1237 16.0936C11.8531 15.5805 11.7117 15.0077 11.712 14.4259C11.712 13.7797 11.8842 13.173 12.1837 12.6496C13.0596 13.7412 14.1522 14.634 15.3907 15.27C16.6292 15.9061 17.9859 16.2713 19.3727 16.3418C19.1972 15.5839 19.2735 14.7885 19.59 14.0791C19.9064 13.3697 20.4451 12.7859 21.1226 12.4185C21.8001 12.0511 22.5784 11.9205 23.3366 12.047C24.0948 12.1736 24.7906 12.5502 25.3159 13.1184C26.0971 12.963 26.8461 12.6731 27.5306 12.2613C27.2707 13.08 26.7257 13.775 25.9972 14.2166Z" />
+              </svg>
+            </a>
+            <w-tooltip show-on-click top @click="copyToClipboard()">
+              <template #activator="{ on }">
+                <svg v-on="on" class="w-8 h-8 lg:w-[38px] lg:h-[38px] fill-current hover:text-[#10A88D] active:text-[#10A88D] cursor-pointer" width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M19 38C29.4934 38 38 29.4934 38 19C38 8.50659 29.4934 0 19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38ZM15.5858 11.5858C15.9609 11.2107 16.4696 11 17 11H23C23.5304 11 24.0391 11.2107 24.4142 11.5858C24.7893 11.9609 25 12.4696 25 13V23C25 23.5304 24.7893 24.0391 24.4142 24.4142C24.0391 24.7893 23.5304 25 23 25H17C16.4696 25 15.9609 24.7893 15.5858 24.4142C15.2107 24.0391 15 23.5304 15 23V13C15 12.4696 15.2107 11.9609 15.5858 11.5858ZM16.2929 12.2929C16.1054 12.4804 16 12.7348 16 13V23C16 23.2652 16.1054 23.5196 16.2929 23.7071C16.4804 23.8946 16.7348 24 17 24H23C23.2652 24 23.5196 23.8946 23.7071 23.7071C23.8946 23.5196 24 23.2652 24 23V13C24 12.7348 23.8946 12.4804 23.7071 12.2929C23.5196 12.1054 23.2652 12 23 12H17C16.7348 12 16.4804 12.1054 16.2929 12.2929ZM13.268 14C13.0924 14.3041 13 14.6489 13 15V23.5C13 24.4283 13.3687 25.3185 14.0251 25.9749C14.6815 26.6313 15.5717 27 16.5 27H21C21.3511 27 21.6959 26.9076 22 26.732C22.304 26.5565 22.5565 26.304 22.732 26H16.5C15.837 26 15.2011 25.7366 14.7322 25.2678C14.2634 24.7989 14 24.163 14 23.5V13.268C13.696 13.4435 13.4435 13.696 13.268 14Z" />
+                </svg>
+              </template>
+              Copied link!
+            </w-tooltip>
           </div>
         </div>
       </div>
     </div>
+    <w-transition-slide left class="fixed right-[30px] top-[80px]">
+      <w-alert class="w-[350px]" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
+    </w-transition-slide>
   </div>
 </template>
 
@@ -376,14 +209,14 @@ import VolunteerProjectForm from "./VolunteerProjectForm.vue";
 import volunteerService from "./volunteer-service";
 import { useStore } from "vuex";
 import { useUtil } from "../../services/useUtil";
-import profileService from '../Profile/profile-service';
-
+import profileService from "../Profile/profile-service";
 
 export default {
   components: {
     VolunteerProjectForm,
-},
+  },
   setup() {
+    document.title = "Namjai - Volunteer Detail";
     const isFav = ref(true);
 
     const route = useRoute();
@@ -392,8 +225,8 @@ export default {
     const { volunteer, getVolunteerDetailByID, volunteerUUID, checkEnrolled, getIsEnrolledOrNot } = useVolunteer();
 
     getVolunteerDetailByID(route.params.id).catch((error) => {
-      router.push({name: 'not-found'});
-    })
+      router.push({ name: "not-found" });
+    });
 
     const routeToVolunteerListDetail = (id) => {
       router.push(`/volunteer/${id}/volunteerlistdetail`);
@@ -407,71 +240,86 @@ export default {
       return `${volunteer.value.locationDetail} แขวง ${volunteer.value.locationSubDistrict} เขต ${volunteer.value.locationDistrict} จังหวัด ${volunteer.value.locationProvince} ${volunteer.value.locationPostalCode}`;
     });
 
-	const showDialogUnregister = ref(false);
-	const showDialogRegistered = ref(false);
+    const showDialogUnregister = ref(false);
+    const showDialogRegistered = ref(false);
 
-	const store = useStore();
+    const store = useStore();
 
-	// const volunteerProjectID = volunteerUUID.value ? volunteerUUID.value : null
-  const userEmail = store.state.auth.status.loggedIn ? store.state.auth.user.email : "";
-	
-	const volunteerMemberAttendanceBody = reactive({
-		volunteerProjectUUID: route.params.id,
-		email: userEmail,
-	})
+    // const volunteerProjectID = volunteerUUID.value ? volunteerUUID.value : null
+    const userEmail = store.state.auth.status.loggedIn ? store.state.auth.user.email : "";
 
-	const volunteerDeleteBody = reactive({
-		volunteerProjectUUID: route.params.id,
-		email: userEmail,
-	})
-	const submitRegisteredVolunteerForm = () => {
-		volunteerService.registeredVolunteerApply(volunteerMemberAttendanceBody).then(response => {
-      if(response.status === 200) {
-        checkEnrolled.value = true;
-      }
-    })
-    showDialogRegistered.value = false;
+    const volunteerMemberAttendanceBody = reactive({
+      volunteerProjectUUID: route.params.id,
+      email: userEmail,
+    });
 
-	}
+    const volunteerDeleteBody = reactive({
+      volunteerProjectUUID: route.params.id,
+      email: userEmail,
+    });
 
+    const showAlert = ref(false);
+    const checkError = ref(false);
+    const checkSuccess = ref(false);
+    const responseMessage = ref("");
 
-	// console.log(store.state.auth.status.loggedIn);
-	// console.log(store.state.auth.user.email);
-	if(store.state.auth.status.loggedIn) {
-		// console.log(use_auth.auth_email.value);
-		// console.log(userEmail);
-		// if(false) {
-	getIsEnrolledOrNot(route.params.id, store.state.auth.user.email);
-	} 
+    const submitRegisteredVolunteerForm = () => {
+      volunteerService.registeredVolunteerApply(volunteerMemberAttendanceBody).then((response) => {
+        if (response.status === 200) {
+          checkEnrolled.value = true;
+        }
+      });
+      showDialogRegistered.value = false;
+    };
 
-	const showDialogDelete = ref(false);
-
-	const deleteVolunteer = () => {
-		volunteerService.deleteEnrolledVolunteer(store.state.auth.user.email, route.params.id).then(response => {
-			showDialogDelete.value = false;
-      checkEnrolled.value = false;
-		})
-	}
-	
-  const close = () => {
-    showDialogUnregister.value = false;
-  }
-
-  const linkShare = computed(() => {
-    return `https://www.facebook.com/sharer.php?u=https://namjai.site/volunteer-detail/${route.params.id}`
-  })
-
-  const linkShareTwitter = computed(() => {
-    return `https://twitter.com/share?url=https://namjai.site/volunteer-detail/${route.params.id}`
-  })
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(`https://namjai.site/volunteer-detail/${route.params.id}`);
-  }
-
-  const getImage = (imagePath) => {
-      return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`
+    // console.log(store.state.auth.status.loggedIn);
+    // console.log(store.state.auth.user.email);
+    if (store.state.auth.status.loggedIn) {
+      // console.log(use_auth.auth_email.value);
+      // console.log(userEmail);
+      // if(false) {
+      getIsEnrolledOrNot(route.params.id, store.state.auth.user.email);
     }
+
+    const showDialogDelete = ref(false);
+
+    const deleteVolunteer = () => {
+      volunteerService.deleteEnrolledVolunteer(store.state.auth.user.email, route.params.id).then((response) => {
+        console.log("im here");
+        showDialogDelete.value = false;
+        checkEnrolled.value = false;
+      });
+    };
+
+    const close = ({status, message}) => {
+      showDialogUnregister.value = false;
+      if (status) {
+        checkSuccess.value = true;
+        responseMessage.value = message;
+        showAlert.value = true;
+      } else if (status === false) {
+        checkSuccess.value = false;
+        checkError.value = true;
+        responseMessage.value = message;
+        showAlert.value = true;
+      }
+    };
+
+    const linkShare = computed(() => {
+      return `https://www.facebook.com/sharer.php?u=https://namjai.site/volunteer-detail/${route.params.id}`;
+    });
+
+    const linkShareTwitter = computed(() => {
+      return `https://twitter.com/share?url=https://namjai.site/volunteer-detail/${route.params.id}`;
+    });
+
+    const copyToClipboard = () => {
+      navigator.clipboard.writeText(`https://namjai.site/volunteer-detail/${route.params.id}`);
+    };
+
+    const getImage = (imagePath) => {
+      return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`;
+    };
 
     const checkUserEmail = use_auth.store_auth.status.loggedIn ? use_auth.store_auth.user.email : "";
 
@@ -479,26 +327,26 @@ export default {
     const favoriteBody = reactive({
       userFavoriteUUID: generateFiveDigitsUUID(),
       userEmail: checkUserEmail,
-      typeOfFavorite:"VOLUNTEER",
+      typeOfFavorite: "VOLUNTEER",
       favoriteReferenceUUID: null,
-      favoriteReferenceTitle: null
-    })
+      favoriteReferenceTitle: null,
+    });
 
     checkIfFavOrNot("VOLUNTEER", route.params.id, checkUserEmail);
 
     const clickToFav = (uuid, title) => {
       if (use_auth.store_auth.status.loggedIn) {
-      favoriteBody.favoriteReferenceUUID = uuid;
-      favoriteBody.favoriteReferenceTitle = title;
-      profileService.fav(favoriteBody);
-    } else if (use_auth.store_auth.status.loggedIn === false) {
-      router.push("/login");
-    }
-    }
+        favoriteBody.favoriteReferenceUUID = uuid;
+        favoriteBody.favoriteReferenceTitle = title;
+        profileService.fav(favoriteBody);
+      } else if (use_auth.store_auth.status.loggedIn === false) {
+        router.push("/login");
+      }
+    };
 
     const clickToUnFav = (refUUID) => {
       profileService.unFav("VOLUNTEER", refUUID, checkUserEmail);
-    }
+    };
 
     return {
       isFav,
@@ -508,23 +356,27 @@ export default {
       use_auth,
       store,
       showDialogUnregister,
-	  showDialogRegistered,
-	  volunteerMemberAttendanceBody,
-	  checkEnrolled,
-	  showDialogDelete,
-	  volunteerDeleteBody,
-    linkShare,
-    linkShareTwitter,
-    copyToClipboard,
+      showDialogRegistered,
+      volunteerMemberAttendanceBody,
+      checkEnrolled,
+      showDialogDelete,
+      volunteerDeleteBody,
+      linkShare,
+      linkShareTwitter,
+      copyToClipboard,
       routeToVolunteerListDetail,
-	  submitRegisteredVolunteerForm,
-	  deleteVolunteer,
-    close,
-    getImage,
-    favoriteBody,
-    clickToFav,
-    clickToUnFav,
-    checkFav,
+      submitRegisteredVolunteerForm,
+      deleteVolunteer,
+      close,
+      getImage,
+      favoriteBody,
+      clickToFav,
+      clickToUnFav,
+      checkFav,
+      showAlert,
+      checkError,
+      checkSuccess,
+      responseMessage,
     };
   },
 };
@@ -532,6 +384,6 @@ export default {
 
 <style scoped>
 .namjai-beige--bg {
-	background-color: #F9F4E8;
+  background-color: #f9f4e8;
 }
 </style>

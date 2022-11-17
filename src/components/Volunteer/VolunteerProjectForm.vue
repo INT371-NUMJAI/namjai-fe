@@ -12,12 +12,9 @@
           <!-- <label class="text-sm">แขวง</label> -->
           <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="text" color="black" label="อีเมล" label-color="black" placeholder=" " v-model="volunteerAttendanceBody.email" />
         </div>
-        <base-button class="w-[140px] mx-auto mt-[60px] mb-8 py-3" buttonLabel="ยืนยัน" :isValid="valid === false" @click="submitunregisterVolunteerForm" />
+        <base-button class="w-[140px] mx-auto mt-[60px] mb-8 py-3" buttonLabel="ยืนยัน" :isValid="valid === false" @click="submitunregisterVolunteerForm()" />
       </w-form>
     </div>
-    <w-transition-slide left class="fixed right-[30px] top-[80px]">
-      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
-    </w-transition-slide>
   </div>
 </template>
 
@@ -35,6 +32,7 @@ export default {
       type: String,
     },
   },
+  emits: ['closeThisComp'],
   setup(props, { emit }) {
     const valid = ref(null);
     const { validators } = useValidation();
@@ -49,25 +47,26 @@ export default {
       email: "",
     });
 
-    const showAlert = ref(false);
+    const responseStatus = ref(false);
     const responseMessage = ref("");
-    const checkSuccess = ref(false);
-    const checkError = ref(false);
 
     const submitunregisterVolunteerForm = () => {
-      volunteerService.unregisterVolunteerApply(volunteerAttendanceBody).then(() => {
-        responseMessage.value = "Enroll volunteer successfully"
-          checkSuccess.value = true;
-          showAlert.value = true;
-      }).catch(() => {
-        responseMessage.value = "Fail to enroll volunteer, please try again later"
-        checkError.value = true;
-        showAlert.value = true;
-      })
-      emit("closeThisComp", false);
+      volunteerService
+        .unregisterVolunteerApply(volunteerAttendanceBody)
+        .then(() => {
+          responseStatus.value = true;
+          responseMessage.value = "Register successfully"
+        })
+        .catch((error) => {
+          responseStatus.value = false;
+          responseMessage.value = error.response.data.message;
+        })
+        .finally(() => {
+          emit("closeThisComp", {status: responseStatus.value, message: responseMessage.value});
+        });
     };
 
-    return { validators, valid, volunteerAttendanceBody, submitunregisterVolunteerForm, showAlert, checkSuccess, checkError, responseMessage };
+    return { validators, valid, volunteerAttendanceBody, submitunregisterVolunteerForm };
   },
 };
 </script>

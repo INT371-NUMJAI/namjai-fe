@@ -258,6 +258,7 @@ export default {
     "credit-card": CreditCard,
   },
   setup() {
+    document.title = "Namjai - Project Detail";
     const showQR = ref(false);
     const isFav = ref(true);
     const { validators } = useValidation();

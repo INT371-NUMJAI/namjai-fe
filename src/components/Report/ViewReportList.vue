@@ -47,6 +47,7 @@ export default {
     BaseSearch,
   },
   setup() {
+	document.title = "Namjai - Admin";
     const reportList = ref([]);
     const fetchReportList = () => {
       reportService.getReportList().then((response) => {

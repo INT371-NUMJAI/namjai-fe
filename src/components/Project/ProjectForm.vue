@@ -23,10 +23,9 @@
           <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="number" color="black" label="ค่าใช้จ่าย" label-color="black" placeholder=" " v-model="fdnProjectBody.goal" />
           <w-select class="mb-10 lg:text-base md:text-base text-sm" :items="status" :validators="[validators.required]" label="สถานะโครงการ" label-color="black" placeholder=" " selection-color="grey" color="black" v-model="fdnProjectBody.status"> </w-select>
         </div>
-        <div class="flex space-x-[20px] lg:space-x-[30px]">
-          <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่เริ่มโครงการ" label-color="black" placeholder=" " v-model="fdnProjectBody.startDate" />
-          <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่สิ้นสุดโครงการ" label-color="black" placeholder=" " v-model="fdnProjectBody.endDate" />
-        </div>
+          <w-input :validators="[validators.required, validators.notLessThanToday]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่เริ่มโครงการ *ไม่สามารถเลือกวันนี้หรือวันที่เก่ากว่าได้*" label-color="black" placeholder=" " v-model="fdnProjectBody.startDate" />
+          <w-input :validators="[validators.required, validators.notLessThanToday]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่สิ้นสุดโครงการ *ไม่สามารถเลือกวันนี้หรือวันที่เก่ากว่าวันเริ่มโครงการได้*" label-color="black" placeholder=" " v-model="fdnProjectBody.endDate" />
+
         <w-textarea :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" outline rows="9" color="black" bg-color="white" label="สถานที่และเวลาดำเนินโครงการ" label-color="black" placeholder=" " no-autogrow v-model="fdnProjectBody.fdnProjectDetailPlace" />
         <w-textarea :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" outline rows="9" color="black" bg-color="white" label="รายละเอียดโครงการ" label-color="black" placeholder=" " no-autogrow v-model="fdnProjectBody.fdnProjectDetail" />
         <label class="lg:text-sm md:text-sm text-xs">รูปภาพประกอบ</label>
@@ -57,7 +56,7 @@ import utilService from "../../services/util-service";
 export default {
   setup() {
     const valid = ref(null);
-    const { validators } = useValidation();
+    const { validators, startDate } = useValidation();
     const store = useStore();
 
     const categories = reactive([
@@ -128,14 +127,14 @@ export default {
             bodyFormData2.append("userName", store.state.auth.user.userName);
             bodyFormData2.append("uuid", fdnProjectBody.fdnProjectUUID);
             utilService.uploadImage(bodyFormData2).then(() => {
-              responseMessage.value = "Upload project successfully"
+              responseMessage.value = "Upload project successfully";
               checkSuccess.value = true;
               showAlert.value = true;
             });
           }
         })
         .catch(() => {
-          responseMessage.value = "Fail to upload project, please try again later"
+          responseMessage.value = "Fail to upload project, please try again later";
           checkError.value = true;
           showAlert.value = true;
         });
@@ -159,6 +158,7 @@ export default {
       checkError,
       url,
       responseMessage,
+      startDate,
     };
   },
 };
@@ -167,5 +167,11 @@ export default {
 <style scoped>
 .namjai-green--bg {
   background-color: #00715d;
+}
+input:invalid {
+    background-color: ivory;
+    border: none;
+    outline: 2px solid red;
+    border-radius: 5px;
 }
 </style>

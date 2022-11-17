@@ -214,6 +214,7 @@ export default {
     VueperSlide,
   },
   setup() {
+    document.title = "Namjai - Main";
     const fdnProjectList = ref([]);
     const fetchFdnProjectList = () => {
       projectService.getRandomSixProjects().then((response) => {

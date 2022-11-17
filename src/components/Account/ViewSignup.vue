@@ -84,6 +84,7 @@ import { ref } from "vue";
 
 export default {
 	setup() {
+		document.title = "Namjai - Sign up";
 		const clicked = ref([false, false]);
 		const selectedRouteUser = ref(false);
 		const selectedRouteFdn = ref(false);

@@ -135,6 +135,7 @@ export default {
     BaseFilter,
   },
   setup() {
+    document.title = "Namjai - projects";
     const route = useRoute();
 
     const fdnProjectList = ref([]);

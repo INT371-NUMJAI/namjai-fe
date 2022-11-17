@@ -14,6 +14,9 @@
       </div>
     </div>
   </div>
+  <div class="py-[60px] flex justify-center">
+    <button @click="loadMore()" v-if="currentPage * maxPerPage < foundationCardProps.length && searchText === ``" class="bg-transparent hover:bg-namjaigreen text-namjaigreen font-medium hover:text-white py-2 px-10 border-2 border-namjaigreen hover:border-transparent rounded">เพิ่มเติม</button>
+  </div>
 </template>
 
 <script>
@@ -36,8 +39,8 @@ export default {
     const router = useRouter();
     const routeToFoundationProfile = (id) => {
       router.push(`/profile/${id}`).catch(() => {
-        router.push({name: 'not-found'})
-      })
+        router.push({ name: "not-found" });
+      });
     };
 
     const getImage = (imagePath) => {
@@ -50,11 +53,18 @@ export default {
       searchText.value = value;
     };
 
+    const currentPage = ref(1);
+    const maxPerPage = ref(6);
+
+    const loadMore = () => {
+      currentPage.value += 1;
+    };
+
     const isFound = ref(false);
     const searchFoundationList = computed(() => {
       isFound.value = false;
       if (searchText.value === "") {
-        return props.foundationCardProps;
+        return props.foundationCardProps.slice(0, currentPage.value * maxPerPage.value);
       } else {
         let foundFoundationList = props.foundationCardProps.filter((f) => f.fdnName.toLowerCase().includes(searchText.value.toLowerCase()));
         if (foundFoundationList === "") {
@@ -65,7 +75,7 @@ export default {
       }
     });
 
-    return { favHeart, routeToFoundationProfile, getImage, submitInputSearch, searchFoundationList, searchText };
+    return { favHeart, routeToFoundationProfile, getImage, submitInputSearch, searchFoundationList, currentPage, maxPerPage, searchText, loadMore };
   },
 };
 </script>

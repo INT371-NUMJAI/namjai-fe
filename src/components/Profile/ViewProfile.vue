@@ -48,6 +48,7 @@ export default {
     "profile-name": ProfileName,
   },
   setup() {
+    document.title = "Namjai - profile";
     const route = useRoute();
     const router = useRouter();
 

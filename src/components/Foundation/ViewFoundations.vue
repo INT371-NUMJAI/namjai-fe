@@ -24,6 +24,7 @@ export default {
     BaseFilter,
   },
   setup() {
+    document.title = "Namjai - Foundations";
     const router = useRouter();
 
     const fdnList = ref([]);
