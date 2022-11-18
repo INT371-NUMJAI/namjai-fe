@@ -3,9 +3,9 @@
     <div class="my-10 md:my-[60px] lg:mt-[120px] container max-w-6xl mx-auto bg-white rounded-xl p-6">
       <div class="space-y-2 mb-5 md:mb-10">
         <h1 class="text-xl md:text-[25px] lg:text-[30px] text-justify leading-relaxed">{{ article.articleHeader }}</h1>
-        <div class="flex items-center space-x-3 text-sm text-zinc-500 tracking-wide">
+        <div class="lg:flex lg:grid-rows-none md:grid-rows-none md:flex grid grid-flow-row items-center lg:space-x-3 md:space-x-3 text-sm text-zinc-500 tracking-wide">
           <h3>{{ article.author }}</h3>
-          <hr class="w-2 h-0.5 bg-zinc-500" />
+          <hr class="w-2 h-0.5 bg-zinc-500 hidden lg:block md:block" />
           <h3>{{ article.createDate }}</h3>
         </div>
       </div>
