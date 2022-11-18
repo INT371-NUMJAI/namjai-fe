@@ -1,33 +1,37 @@
 <template>
   <div class="mt-[120px] mx-[177px]">
-    <h1 class="text-5xl">เรื่องร้องเรียน</h1>
-    <div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-4 lg:mb-[40px]"></div>
-    <!-- <button @click="testComputed('message')" type="text">test</button> -->
-    <!-- {{ testComputed('hello') }} -->
-    <div class="flex">
-      <base-search v-if="!isFiltered" @update:modelValue="submitInputSearch" class="flex-auto justify-end" />
-      <BaseFilter class="flex justify-end mb-2">
-        <template #show><span>default</span></template>
-        <template #choice>
-          <li class="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-400" role="option" @click="filterReportList('name')">เรื่องร้องเรียน</li>
-          <li class="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-400" role="option" @click="filterReportList('type-web')">การใช้งาน</li>
-          <li class="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-400" role="option" @click="filterReportList('type-fdn')">มูลนิธิ</li>
-          <li class="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-400" role="option" @click="filterReportList('type-user')">ผู้ใช้</li>
-          <li class="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-400" role="option" @click="filterReportList('type-other')">อื่น ๆ</li>
-          <li class="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-400" role="option" @click="filterReportList('status-unsolved')">รอการแก้ไข</li>
-        </template>
-      </BaseFilter>
+    <div class="container max-w-6xl mx-auto">
+      <h1 class="text-5xl">เรื่องร้องเรียน</h1>
+      <div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-4 lg:mb-[40px]"></div>
+      <!-- <button @click="testComputed('message')" type="text">test</button> -->
+      <!-- {{ testComputed('hello') }} -->
+      <div class="mt-10 p-5 bg-white rounded-lg space-y-5">
+        <div class="flex">
+          <base-search v-if="!isFiltered" @update:modelValue="submitInputSearch" class="flex-auto justify-end" />
+          <BaseFilter class="flex justify-end mb-2">
+            <template #show><span>default</span></template>
+            <template #choice>
+              <li class="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-400" role="option" @click="filterReportList('name')">เรื่องร้องเรียน</li>
+              <li class="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-400" role="option" @click="filterReportList('type-web')">การใช้งาน</li>
+              <li class="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-400" role="option" @click="filterReportList('type-fdn')">มูลนิธิ</li>
+              <li class="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-400" role="option" @click="filterReportList('type-user')">ผู้ใช้</li>
+              <li class="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-400" role="option" @click="filterReportList('type-other')">อื่น ๆ</li>
+              <li class="text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-400" role="option" @click="filterReportList('status-unsolved')">รอการแก้ไข</li>
+            </template>
+          </BaseFilter>
+        </div>
+        <base-table>
+          <th class="py-3 w-[75px]">ลำดับ</th>
+          <th>
+            <p class="py-3 pl-32 w-[400px] text-left">เรื่องร้องเรียน</p>
+          </th>
+          <th class="py-3 w-[250px]">ประเภท</th>
+          <th class="py-3 w-[250px]">สถานะ</th>
+        </base-table>
+        <report-list v-if="!isFiltered" :reportProps="searchReportList" />
+        <report-list :reportProps="filteredList" />
+      </div>
     </div>
-    <base-table>
-      <th class="py-3 w-[75px]">ลำดับ</th>
-      <th>
-        <p class="py-3 w-[300px]">เรื่องร้องเรียน</p>
-      </th>
-      <th class="py-3 w-[250px]">ประเภท</th>
-      <th class="py-3 w-[250px]">สถานะ</th>
-    </base-table>
-    <report-list v-if="!isFiltered" :reportProps="searchReportList" />
-	<report-list :reportProps="filteredList" />
   </div>
 </template>
 
@@ -104,8 +108,8 @@ export default {
         case "type-user":
           filteredList.value = reportList.value.filter((f) => f.issueType.includes("USER_PROBLEM"));
           break;
-		  case "type-other":
-		filteredList.value = reportList.value.filter((f) => f.issueType.includes("OTHERS"));
+        case "type-other":
+          filteredList.value = reportList.value.filter((f) => f.issueType.includes("OTHERS"));
           break;
         case "status-pending":
           filteredList.value = reportList.value.filter((f) => f.status.includes("PENDING"));
