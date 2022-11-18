@@ -96,8 +96,8 @@
         </div>
       </div>
     </div>
-    <div name="donate" class="lg:col-span-4 lg:h-full bg-white text-sm lg:text-base rounded-md lg:rounded-none block lg:flex lg:justify-center">
-      <div class="p-5 lg:mx-auto md:p-8 lg:my-24 lg:py-7 lg:px-0 lg:fixed">
+    <div name="donate" class="lg:col-span-4 lg:h-fit lg:mt-0 bg-white text-sm lg:text-base rounded-md lg:rounded-none block lg:flex lg:justify-center">
+      <div class="p-5 lg:mx-auto md:p-8 lg:mt-[140px] lg:mb-10 lg:py-0 lg:px-0 ">
         <div class="hidden lg:block">
           <div class="grid grid-flow-col text-sm lg:text-base font-medium">
             <h1 class="text-base mb-5" v-if="project.foundationProjectName">
@@ -204,7 +204,7 @@
             </w-dialog>
           </w-form>
         </div>
-        <div name="shareDt" class="hidden lg:block pt-16">
+        <div name="shareDt" class="hidden lg:block pt-16 space-y-3">
           <h2 class="text-[14px]">แชร์ต่อ</h2>
           <div class="flex space-x-3">
             <a :href="linkShare">

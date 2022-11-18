@@ -20,7 +20,7 @@
 <script>
 import ArticleBigCard from "./ArticleBigCard.vue";
 import ArticleCard from "./ArticleCard.vue";
-import useArticle from './useArticle'
+import useArticle from "./useArticle";
 
 export default {
   components: {
@@ -34,7 +34,7 @@ export default {
 
     getArticle();
 
-        return { articles };
-  }
+    return { articles };
+  },
 };
 </script>
