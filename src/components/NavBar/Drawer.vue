@@ -3,7 +3,7 @@
 		<w-button @click="showDrawer = true" bg-color="transparent">
 			<w-icon color="white">fa fa-bars</w-icon>
 		</w-button>
-		<w-drawer v-model="showDrawer" bg-color="namjaigreen" width="187" class="z-50 absolute">
+		<w-drawer v-model="showDrawer" bg-color="namjaigreen" width="187" class="z-50">
 			<w-button class="button--close m-2" @click="showDrawer = false" sm outline round absolute color="black" icon="wi-cross"></w-button>
 			<div class="space-y-6 mx-5 mt-10 w-96">
 				<div v-if="use_auth.store_auth.user === null" class="flex justify-center">
