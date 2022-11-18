@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import { useAuth } from "../services/auth-middleware";
 import { Role } from "@/_helpers/Role";
 
+// const use_auth = useAuth();
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
@@ -105,6 +106,7 @@ const router = createRouter({
 			path: "/volunteer-add",
 			name: "volunteer-add",
 			component: () => import("../components/Volunteer/FoundationForm.vue"),
+			meta: {requiresAuth: true},
 		},
 		{
 			path: "/volunteer-unregistered-user",
@@ -115,6 +117,7 @@ const router = createRouter({
 			path: "/volunteer/:id/volunteerlistdetail",
 			name: "volunteerlistdetail",
 			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
+			meta: {requiresAuth: true},
 		},
 		{
 
@@ -147,11 +150,13 @@ const router = createRouter({
 			path: "/progressupdateform/:id",
 			name: "progress-form",
 			component: () => import("../components/Project/ProgressUpdateForm.vue"),
+			meta: {requiresAuth: true},
 		},
 		{
 			path: "/add/foundationproject",
 			name: "fdn-project-form",
 			component: () => import("../components/Project/ProjectForm.vue"),
+			meta: {requiresAuth: true},
 		},
 		{
 			path: "/foundations",
@@ -162,11 +167,13 @@ const router = createRouter({
 			path: "/admin-management",
 			name: "admin-management",
 			component: () => import("../components/Verification/AdminApprove.vue"),
+			meta: {requiresAuth: true},
 		},
 		{
 			path: "/verify/fdn/:id",
 			name: "fdn-detail-verify",
 			component: () => import("../components/Verification/AdminVerifyAccountDetail.vue"),
+			meta: {requiresAuth: true},
 		},
 		{
 			path: "/suggestion",
@@ -182,21 +189,18 @@ const router = createRouter({
 			path: "/reportlist",
 			name: "report-list",
 			component: () => import("../components/Report/ViewReportList.vue"),
+			meta: {requiresAuth: true},
 		},
 		{
 			path: "/withdraw",
 			name: "withdraw",
 			component: () => import("../components/Transaction/ViewTransactionRequestAdmin.vue"),
+			meta: {requiresAuth: true},
 		},
 		{
 			path: "/:pathMatch(.*)*",
 			name: "not-found",
 			component: () => import("../components/PageError/Notfound.vue"),
-		},
-		{
-			path: "/volunteerlist",
-			name: "volunteerlist",
-			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
 		},
 		{
 			path: "/articles",
@@ -213,43 +217,29 @@ const router = createRouter({
 			name: "article",
 			component: () => import("../components/Article/ArticleDetail.vue"),
 		},
+		{
+			path: "/protectedadmin",
+			name: "protected-admin",
+			component: () => import("../components/PageError/ProtectedForAdmin.vue"),
+		},
+		{
+			path: "/protectedfdn",
+			name: "protected-fdn",
+			component: () => import("../components/PageError/ProtectedForFoundation.vue"),
+		},
 
 	],
-	// linkActiveClass: "namjai-active-link",
-	// linkExactActiveClass: "namjai-active-link",
 });
+// const use_auth = useAuth();
+const user = JSON.parse(window.localStorage.getItem("user"));
+router.beforeEach((to, from) => {
+	if (to.meta.requiresAuth && (user === null || (user != null && (user.role != "ROLE_ADMIN" && user.role != "ROLE_FDN")))) {
+		return {name: 'protected-admin'}
+	} else if (to.meta.requiresAuth && (user === null || ((user != null && user.role === "ROLE_FDN") && user.status != "ACTIVE"))) { //fdn disable
+		if (to.meta.requiresAuth && (user === null || ((user != null && user.role === "ROLE_USER")))) { //user
+		return {name: 'protected-fdn'}
+		}
+		return {name: 'protected-fdn'}
+	}
+})
 export default router;
-
-// router.beforeEach(async (to) => {
-// 	// redirect to login page if not logged in and trying to access a restricted page
-// 	const publicPages = ["/login"];
-// 	const authRequired = !publicPages.includes(to.path);
-// 	const auth = useAuth();
-
-// 	// if (authRequired && !auth.user) {
-// 	if (authRequired && !auth.store_auth.status) {
-// 		auth.returnUrl = to.fullPath;
-// 		return "/login";
-// 	}
-// });
-// router.beforeEach((to, from, next) => {
-// 	// redirect to login page if not logged in and trying to access a restricted page
-// 	const { authorize } = to.meta;
-// 	// const currentUser = authenticationService.currentUserValue;
-// 	const currentUser = useAuth().store_auth.user;
-
-// 	if (authorize) {
-// 		if (!currentUser) {
-// 			// not logged in so redirect to login page with the return url
-// 			return next({ path: "/login", query: { returnUrl: to.path } });
-// 		}
-
-// 		// check if route is restricted by role
-// 		if (authorize.length && !authorize.includes(currentUser.role)) {
-// 			// role not authorised so redirect to home page
-// 			return next({ path: "/" });
-// 		}
-// 	}
-
-// 	next();
-// });

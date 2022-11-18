@@ -1,7 +1,7 @@
 import AuthService from "@/services/auth-service.js";
 
 const fdn_uuid = JSON.parse(localStorage.getItem("uuid"));
-const initialState = fdn_uuid ?  {fdn_uuid}  :  null ;
+const initialState = fdn_uuid ?  {fdn_uuid}  :  "" ;
 
 export const fdn = {
     namespaced: true,

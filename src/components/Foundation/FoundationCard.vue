@@ -1,6 +1,6 @@
 <template>
   <Search @update:modelValue="submitInputSearch" />
-  <div class="mt-[60px] w-full lg:grid lg:grid-cols-3 lg:gap-[30px] md:gap-[30px] gap-6 md:grid md:grid-cols-2 space-y-[30px] lg:space-y-0 md:space-y-0">
+  <div class="mt-[60px] w-full lg:grid lg:grid-cols-3 lg:gap-[30px] md:gap-[30px] md:grid md:grid-cols-2 space-y-[30px] lg:space-y-0 md:space-y-0">
     <div v-for="foundationCardProp in searchFoundationList" :key="foundationCardProp.fdnUUID" class="container bg-white rounded-md md:rounded-2xl lg:rounded-2xl flex md:flex-col lg:flex-col drop-shadow-md hover:shadow-lg mx-[30px]">
       <div class="w-1/2 h-[180px] md:w-full lg:w-full">
         <img v-if="foundationCardProp.profilePath != null" class="w-full h-full rounded-l-md md:rounded-bl-none md:rounded-t-2xl lg:rounded-bl-none lg:rounded-t-2xl transition-all duration-500 ease-in-out transform bg-center object-cover" :src="getImage(foundationCardProp.profilePath)" />

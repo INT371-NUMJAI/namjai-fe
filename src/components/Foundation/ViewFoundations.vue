@@ -1,11 +1,9 @@
 <template>
   <div class="mx-[30px] md:mx-24 lg:mx-44">
     <div class="container max-w-6xl mx-auto my-10">
-        <h1 class="my-10 text-2xl md:text-4xl lg:text-5xl lg:mt-[120px] font-semibold">มูลนิธิ</h1>
-        <div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-[20px] mt-[10px]"></div>
-      <div>
+        <h1 class="text-2xl md:text-4xl lg:text-5xl lg:mt-[120px] font-semibold">มูลนิธิ</h1>
+        <div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-[20px] mt-[10px] mb-[30px]"></div>
         <foundation-card :foundationCardProps="fdnList"></foundation-card>
-      </div>
     </div>
   </div>
 </template>

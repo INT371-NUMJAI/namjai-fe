@@ -55,9 +55,10 @@ export default {
     const use_auth = useAuth();
 
     const routeToProfileSubNav = (email, type) => {
-      router.push(`/profile/${email}/${type}`).catch((error) => {
-        router.push({name: 'not-found'})
-      })
+      router.push(`/profile/${email}/${type}`)
+      // .catch((error) => {
+      //   router.push({name: 'not-found'})
+      // })
     };
 
     return { use_auth, routeToProfileSubNav, route };

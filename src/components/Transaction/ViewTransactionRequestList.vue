@@ -2,7 +2,7 @@
   <div v-if="route.params.id === use_auth.store_auth.user.email" class="container mx-auto p-5 md:py-8 lg:py-7 md:px-[34px] lg:px-[34px] bg-white rounded-lg space-y-5">
     <div class="flex justify-between items-center">
       <h2 class="text-sm lg:text-base">รายการโครงการ</h2>
-      <transaction-request-drawer />
+      <transaction-request-drawer v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && use_auth.store_auth.user.status === `ACTIVE`" />
       <!-- <router-link to="/trd">
       <button class="flex justify-center items-center px-2 py-1 lg:px-4 lg:py-2 bg-green-500 space-x-2 rounded-md">
         <svg class="w-3 h-3 lg:w-4 lg:h-4" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +12,10 @@
       </button></router-link> -->
     </div>
     <hr />
-    <div>
+    <span v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && use_auth.store_auth.user.status != `ACTIVE`">
+        <p class="text-center mt-[40px]">กรุณาติดต่อเราเพื่อทำการยืนยันมูลนิธิของท่าน</p>
+      </span>
+    <div v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && use_auth.store_auth.user.status === `ACTIVE`">
       <div class="flex">
           <base-search v-if="!isFiltered" @update:modelValue="submitInputSearch" class="flex-auto justify-end" />
           <BaseFilter class="flex justify-end mb-2">

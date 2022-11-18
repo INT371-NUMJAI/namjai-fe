@@ -11,8 +11,9 @@
         <!-- {{ project.picturePath }} -->
       </div>
       <h1 class="text-xl lg:text-3xl">{{ project.foundationProjectName }} ({{ project.status }})</h1>
-      <img v-if="project.picturePath != null" class="w-full aspect-video object-cover my-5 lg:my-[30px]" :src="getImage(project.picturePath)" />
-      <img v-else-if="project.picturePath === null" class="w-full aspect-video object-cover my-5 lg:my-[30px]" src="@/assets/image-unavailable.jpeg" />
+      <p class="hidden">{{ (project.picturePath = project.picturePath === null ? "" : project.picturePath) }}</p>
+      <img v-if="project.picturePath != null && project.picturePath != ``" class="w-full aspect-video object-cover my-5 lg:my-[30px]" :src="getImage(project.picturePath)" />
+      <img v-else-if="project.picturePath === ``" class="w-full aspect-video object-cover my-5 lg:my-[30px]" src="@/assets/image-unavailable.jpeg" />
       <div class="bg-white mt-[30px] lg:mt-[40px]">
         <div class="flex justify-center md:justify-start lg:justify-start space-x-8 md:space-x-12 lg:space-x-12 text-sm lg:text-base md:px-8 lg:px-10">
           <div class="flex-wrap space-y-3 pt-4 lg:pt-6 h-[54px] lg:h-[66px]" @click="(selectedDetail = true), (selectedProgression = false), (selectedFinancialPlan = false)">
@@ -50,7 +51,7 @@
               </p>
             </div>
 
-            <div class="space-y-2" v-if="project.picturePath">
+            <div class="space-y-2" v-if="project.picturePath != null">
               <h1>ติดต่อ</h1>
               <hr class="bg-black h-0.5" />
               <p class="mb-2.5">
@@ -84,10 +85,33 @@
                 </svg>
               </div>
               <div class="justify-self-end mr-7">
-                <svg v-if="isFav" @click="isFav = false" width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                class="text-namjaigreen"
+                  v-if="!checkFav"
+                  @click="
+                    clickToFav(project.foundationProjectUUID, project.foundationProjectName);
+                    checkFav = !checkFav;
+                  "
+                  width="26"
+                  height="22"
+                  viewBox="0 0 26 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z" stroke="#D45343" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                <svg v-if="!isFav" @click="isFav = true" width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  v-if="checkFav"
+                  @click="
+                    clickToUnFav(project.foundationProjectUUID);
+                    checkFav = !checkFav;
+                  "
+                  width="26"
+                  height="22"
+                  viewBox="0 0 26 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path d="M7.58317 1.25C4.59209 1.25 2.1665 3.65067 2.1665 6.6125C2.1665 9.00342 3.11442 14.6779 12.4452 20.4142C12.6123 20.5159 12.8042 20.5697 12.9998 20.5697C13.1955 20.5697 13.3874 20.5159 13.5545 20.4142C22.8853 14.6779 23.8332 9.00342 23.8332 6.6125C23.8332 3.65067 21.4076 1.25 18.4165 1.25C15.4254 1.25 12.9998 4.5 12.9998 4.5C12.9998 4.5 10.5743 1.25 7.58317 1.25Z" stroke="#D45343" fill="#D45343" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </div>
@@ -97,7 +121,7 @@
       </div>
     </div>
     <div name="donate" class="lg:col-span-4 lg:h-fit lg:mt-0 bg-white text-sm lg:text-base rounded-md lg:rounded-none block lg:flex lg:justify-center">
-      <div class="p-5 lg:mx-auto md:p-8 lg:mt-[140px] lg:mb-10 lg:py-0 lg:px-0 ">
+      <div class="p-5 lg:mx-auto md:p-8 lg:mt-[140px] lg:mb-10 lg:py-0 lg:px-0">
         <div class="hidden lg:block">
           <div class="grid grid-flow-col text-sm lg:text-base font-medium">
             <h1 class="text-base mb-5" v-if="project.foundationProjectName">
@@ -170,7 +194,7 @@
         </div>
         <div class="grid grid-flow-col mb-5 lg:mb-[30px]">
           <p>ระยะเวลา:</p>
-          <p class="text-right">{{ project.startDate }} - {{ project.endDate }}</p>
+          <p class="text-right">{{ project.startDate }} ถึง {{ project.endDate }}</p>
         </div>
         <!-- <p class="text-sm mb-[20px]">ระยะเวลา: 12/12/2022 - 02/01/2023</p> -->
         <div class="grid grid-cols-2 mb-5">
@@ -291,11 +315,11 @@ export default {
 
     // getProjectByID(route.params.id);
     getProjectByID(route.params.id).catch((error) => {
-      router.push({name: 'not-found'})
-    })
+      router.push({ name: "not-found" });
+    });
 
     const formatStringDate = computed(() => {
-      return `${project.value.startDate} - ${project.value.endDate}`;
+      return `${project.value.startDate} ถึง ${project.value.endDate}`;
     });
 
     const formatFdnAddress = computed(() => {

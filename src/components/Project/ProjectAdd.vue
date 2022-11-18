@@ -5,10 +5,12 @@
 				<w-icon class="mr-1" md color="white">fa fa-plus</w-icon>
 				<p class="text-[14px] text-white">เพิ่มโครงการบริจาค</p>
 			</button>
+      <span v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && use_auth.store_auth.user.status != `ACTIVE`">
+        <p class="text-center mt-[80px]">กรุณาติดต่อเราเพื่อทำการยืนยันมูลนิธิของท่าน</p>
+      </span>
 			<div>
 				<project-card :hiddenProp="false" :projectCardProps="projects" />
 			</div>
-			<span v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && use_auth.store_auth.user.status != `ACTIVE`">กรุณาติดต่อเราเพื่อทำการยืนยันมูลนิธิของท่าน</span>
 		</span>
 	</div>
 </template>

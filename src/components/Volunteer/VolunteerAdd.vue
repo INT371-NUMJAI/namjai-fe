@@ -10,6 +10,9 @@
         <p class="text-[14px] text-white">เพิ่มโครงการจิตอาสา</p>
       </button>
     </router-link>
+    <span v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && use_auth.store_auth.user.status != `ACTIVE`">
+        <p class="text-center mt-[80px]">กรุณาติดต่อเราเพื่อทำการยืนยันมูลนิธิของท่าน</p>
+      </span>
     <div>
     <volunteer-activity-card :hiddenProp="false" :volunteerProps="volunteerShortList" />
   </div>
