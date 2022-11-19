@@ -1,24 +1,25 @@
 <template>
-  <Search @update:modelValue="submitInputSearch" />
-  <div class="mt-[60px] w-full lg:grid lg:grid-cols-3 lg:gap-[30px] md:gap-[30px] md:grid md:grid-cols-2 space-y-[30px] lg:space-y-0 md:space-y-0">
-    <div v-for="foundationCardProp in searchFoundationList" :key="foundationCardProp.fdnUUID" class="container bg-white rounded-md md:rounded-2xl lg:rounded-2xl flex md:flex-col lg:flex-col drop-shadow-md hover:shadow-lg mx-[30px]">
-      <div class="w-1/2 h-[180px] md:w-full lg:w-full">
-        <img v-if="foundationCardProp.profilePath != null" class="w-full h-full rounded-l-md md:rounded-bl-none md:rounded-t-2xl lg:rounded-bl-none lg:rounded-t-2xl transition-all duration-500 ease-in-out transform bg-center object-cover" :src="getImage(foundationCardProp.profilePath)" />
-        <img v-else-if="foundationCardProp.profilePath === null || foundationCardProp.profilePath === undefined" class="w-full h-full rounded-l-md md:rounded-bl-none md:rounded-t-2xl lg:rounded-bl-none lg:rounded-t-2xl transition-all duration-500 ease-in-out transform bg-center object-cover" src="@/assets/image-unavailable.jpeg" />
-      </div>
-      <div class="w-1/2 md:w-full lg:w-full py-3 px-5 lg:px-4 grid grid-rows-4 md:grid-rows-none lg:grid-rows-none md:space-y-2 lg:space-y-1">
-        <h2 class="row-span-4 pt-2 text-sm lg:text-base md:h-10 lg:h-14 lg:overflow-hidden">{{ foundationCardProp.fdnName }}</h2>
-        <div class="flex justify-end lg:flex-none">
-          <button @click="routeToFoundationProfile(foundationCardProp.fdnEmail)" class="lg:w-full px-2 py-2 bg-namjaigreen rounded-lg text-[12px] lg:text-sm text-white">ดูรายละเอียด</button>
+  <div>
+    <Search @update:modelValue="submitInputSearch" />
+    <div class="mt-[60px] w-full lg:grid lg:grid-cols-3 lg:gap-[30px] md:gap-[30px] md:grid md:grid-cols-2 space-y-[30px] lg:space-y-0 md:space-y-0">
+      <div v-for="foundationCardProp in searchFoundationList" :key="foundationCardProp.fdnUUID" class="container bg-white rounded-md md:rounded-2xl lg:rounded-2xl max-w-lg md:max-w-md flex md:flex-col lg:flex-col drop-shadow-md hover:shadow-lg">
+        <div class="w-1/2 h-[180px] md:h-[200px] lg:h-[220px] md:w-full">
+          <img v-if="foundationCardProp.profilePath != null" class="w-full h-full rounded-l-md md:rounded-bl-none md:rounded-t-2xl lg:rounded-bl-none lg:rounded-t-2xl transition-all duration-500 ease-in-out transform bg-center object-cover" :src="getImage(foundationCardProp.profilePath)" />
+          <img v-else-if="foundationCardProp.profilePath === null || foundationCardProp.profilePath === undefined" class="w-full h-full rounded-l-md md:rounded-bl-none md:rounded-t-2xl lg:rounded-bl-none lg:rounded-t-2xl transition-all duration-500 ease-in-out transform bg-center object-cover" src="@/assets/image-unavailable.jpeg" />
+        </div>
+        <div class="w-1/2 md:w-full flex flex-col justify-between p-4 space-y-2 lg:space-y-5 leading-normal">
+          <h2 class="text-namjaidarkgray break-words">{{ foundationCardProp.fdnName }}</h2>
+          <div class="">
+            <button @click="routeToFoundationProfile(foundationCardProp.fdnEmail)" class="md:w-full px-2 py-2 bg-namjaigreen rounded-lg text-[12px] lg:text-sm text-white">ดูรายละเอียด</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="py-[60px] flex justify-center">
-    <button @click="loadMore()" v-if="currentPage * maxPerPage < foundationCardProps.length && searchText === ``" class="bg-transparent hover:bg-namjaigreen text-namjaigreen font-medium hover:text-white py-2 px-10 border-2 border-namjaigreen hover:border-transparent rounded">เพิ่มเติม</button>
+    <div class="py-[60px] flex justify-center">
+      <button @click="loadMore()" v-if="currentPage * maxPerPage < foundationCardProps.length && searchText === ``" class="bg-transparent hover:bg-namjaigreen text-namjaigreen font-medium hover:text-white py-2 px-10 border-2 border-namjaigreen hover:border-transparent rounded">เพิ่มเติม</button>
+    </div>
   </div>
 </template>
-
 <script>
 import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
