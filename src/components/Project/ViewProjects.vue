@@ -1,5 +1,6 @@
 <template>
-  <div class="container max-w-6xl mx-auto mt-[120px] lg:mt-0">
+  <div class="mx-[30px] md:mx-24 lg:mx-44 mt-[120px] lg:mt-0">
+  <div class="container max-w-6xl mx-auto">
     <div class="my-10 cursor-pointer" @click="routeToProjects">
       <h1 class="mt-10 text-2xl lg:text-[48px] lg:mt-[120px] font-semibold">โครงการ</h1>
       <div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-4"></div>
@@ -117,6 +118,7 @@
     <router-view :key="route.fullPath" />
     <!-- <router-view :key="$route.fullPath"></router-view> -->
   </div>
+</div>
   <!-- <router-view :key="$route.fullPath"></router-view> -->
 </template>
 
@@ -133,6 +135,7 @@ export default {
     ProjectCard,
     Search,
     BaseFilter,
+
   },
   setup() {
     document.title = "Namjai - projects";
