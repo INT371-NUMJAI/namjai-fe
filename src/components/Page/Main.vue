@@ -153,7 +153,7 @@
           <h2 class="pt-2 text-2xl font-bold text-namjaigreen my-[30px] drop-shadow-lg">Based on what you like!</h2>
           <volunteer-activity-card :volunteerProps="userSuggestionVolunteer" :hiddenProp="false" class="pt-[30px]" />
         </div>
-        <div class="mt-[100px]" v-if="use_auth.store_auth.status.loggedIn === false">
+        <div class="mt-[100px]" v-if="!use_auth.store_auth.status.loggedIn">
           <p class="text-center text-xl mb-[40px]">สมัครสมาชิกเพื่อเลือกโครงการที่เหมาะกับคุณ</p>
           <div class="flex justify-center">
           <router-link to="/signup/user">
@@ -213,7 +213,7 @@
           <article-big-card />
         </div>
         <div class="w-1/2 lg:w-1/6 mx-auto">
-          <router-link to="/article">
+          <router-link to="/articles">
             <div class="py-10 flex space-x-2 justify-center items-center">
               <p class="font-extrabold text-namjaigreen">ไปหน้ากระดานข่าว</p>
               <w-icon class="animate-bounce" color="namjaigreen">fa fa-chevron-right</w-icon>

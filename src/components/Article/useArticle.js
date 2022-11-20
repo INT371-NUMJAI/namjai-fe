@@ -23,5 +23,10 @@ export default function useArticle() {
 		articlesEmail.value = response.data;
 	}
 
-	return { article, getArticle, articles, getArticleById, articlesEmail, getArticleByEmail };
+	const getThreeArticles = async () => {
+		let response = await http.get("/view/articles/top-3");
+        article.value = response.data;
+	}
+
+	return { article, getArticle, articles, getArticleById, articlesEmail, getArticleByEmail, getThreeArticles };
 }

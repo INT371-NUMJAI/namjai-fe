@@ -1,5 +1,5 @@
 <template>
-	<div class="mt-[120px] lg:mt-0">
+	<div>
 		<project-card :hiddenProp="true" :projectCardProps="fdnProjectList" />
 	</div>
 </template>

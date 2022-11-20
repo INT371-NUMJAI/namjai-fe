@@ -3,11 +3,11 @@
   <!-- <router-link to="/volunteerdetail"> -->
   <!-- </router-link> -->
   <div class="lg:grid lg:grid-cols-3 md:grid md:grid-cols-2 grid grid-cols-1 gap-5 md:gap-6">
-    <div v-for="volunteerProp in searchVolunteerList" :key="volunteerProp.volunteerProjectUUID">
+    <div @click="routeToVolunteerProjectDetail(volunteerProp.volunteerProjectUUID)" v-for="volunteerProp in searchVolunteerList" :key="volunteerProp.volunteerProjectUUID">
       <div class="lg:max-w-sm md:max-w-md rounded-lg overflow-hidden bg-namjaiwhite drop-shadow-md hover:shadow-md cursor-pointer">
-        <img v-if="volunteerProp.picturePath != null" class="w-full h-[250px] rounded-t-lg md:rounded-bl-none md:rounded-t-lg lg:rounded-bl-none lg:rounded-t-lg transition-all duration-500 ease-in-out transform bg-center object-cover" :src="getImage(volunteerProp.picturePath)" @click="routeToVolunteerProjectDetail(volunteerProp.volunteerProjectUUID)" />
+        <img v-if="volunteerProp.picturePath != null" class="w-full h-[250px] rounded-t-lg md:rounded-bl-none md:rounded-t-lg lg:rounded-bl-none lg:rounded-t-lg transition-all duration-500 ease-in-out transform bg-center object-cover" :src="getImage(volunteerProp.picturePath)" />
         <!-- <img v-if=" projectCardProp.picturePath != null" class="w-full h-[250px] rounded-t-lg md:rounded-bl-none md:rounded-t-lg lg:rounded-bl-none lg:rounded-t-lg transition-all duration-500 ease-in-out transform bg-center object-cover" :src="getImage(projectCardProp.picturePath)" /> -->
-        <img v-else-if="volunteerProp.picturePath === null" class="w-full h-[250px] rounded-t-lg md:rounded-bl-none md:rounded-t-lg lg:rounded-bl-none lg:rounded-t-lg transition-all duration-500 ease-in-out transform bg-center object-cover" src="@/assets/image-unavailable.jpeg" @click="routeToVolunteerProjectDetail(volunteerProp.volunteerProjectUUID)" />
+        <img v-else-if="volunteerProp.picturePath === null" class="w-full h-[250px] rounded-t-lg md:rounded-bl-none md:rounded-t-lg lg:rounded-bl-none lg:rounded-t-lg transition-all duration-500 ease-in-out transform bg-center object-cover" src="@/assets/image-unavailable.jpeg" />
         <div class="lg:px-6 lg:py-4 px-4 py-3 md:py-5">
           <div class="flex justify-between items-center">
             <h2 class="font-medium text-xl mb-1 overflow-hidden truncate w-[180px] md:[20px]">{{ volunteerProp.volunteerProjectName }}</h2>
