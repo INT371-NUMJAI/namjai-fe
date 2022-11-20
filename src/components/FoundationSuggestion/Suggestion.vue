@@ -129,7 +129,7 @@ export default {
             setTimeout(() => router.push("/main"), 2000);
         })
         .catch(() => {
-          responseMessage.value = "Fail to save your favourite target"
+          responseMessage.value = "Failed to save your favourite target"
           checkError.value = true;
           showAlert.value = true;
         });
