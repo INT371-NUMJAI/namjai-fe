@@ -4,18 +4,18 @@
       <w-icon color="white">fa fa-bars</w-icon>
     </w-button>
     <w-drawer v-model="showDrawer" bg-color="navy-blue" width="220" class="z-50 fixed">
-      <div class="bg-namjaigreen z-0">
+      <div class="bg-namjaigreen z-0 w-full">
         <w-button class="button--close m-2" @click="showDrawer = false" sm outline round absolute color="white" icon="wi-cross"></w-button>
         <div class="space-y-6 mx-5 mt-[80px] text-white">
-          <div v-if="use_auth.store_auth.user === null" class="flex">
+          <div v-if="use_auth.store_auth.user === null" class="flex justify-center">
             <router-link to="/login">
               <w-button @click="showDrawer = !showDrawer" bg-color="transparent" outline round class="text-white py-1">เข้าสู่ระบบ</w-button>
             </router-link>
           </div>
-          <div v-if="use_auth.store_auth.user !== null">
-            <p class="w-[200px]">{{ use_auth.auth_userName.value }}</p>
-            <hr class="mt-[30px] border-1 border-white w-[180px]" />
+		  <div v-if="use_auth.store_auth.user !== null">
+            <p class="w-[200px] text-center">{{ use_auth.auth_userName.value }}</p>
           </div>
+		  <hr class="mt-[30px] border-1 border-white w-[180px]" />
           <div class="space-y-7 mt-[30px]">
             <div class="flex justify-center">
               <router-link to="/foundations">
