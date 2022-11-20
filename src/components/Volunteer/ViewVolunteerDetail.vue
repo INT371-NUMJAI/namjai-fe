@@ -145,25 +145,30 @@
             </div>
           </div>
         </div>
+        <div class="flex justify-center">
         <base-button id="unregister" v-if="use_auth.store_auth.status.loggedIn === false && checkEnrolled === false && volunteer.status === `OPEN`" @click="showDialogUnregister = true" class="w-[156px] py-3 mt-[30px] lg:mt-10" buttonLabel="สมัครเลย" buttonColor="bg-namjaiyellow" />
+        </div>
         <w-dialog v-model="showDialogUnregister" :width="800" bg-color="namjai-beige">
           <w-button class="button--close mt-[20px] mx-[20px]" @click="showDialogUnregister = false" sm outline round absolute color="namjai-red" icon="wi-cross"></w-button>
           <volunteer-project-form @closeThisComp="close" :volunteerNameProps="volunteer.volunteerProjectName" :volunteerUUIDProps="volunteer.volunteerProjectsUUID"></volunteer-project-form>
         </w-dialog>
-
+        <div class="flex justify-center">
         <base-button id="registereduser" v-if="use_auth.store_auth.status.loggedIn === true && checkEnrolled === false" @click="showDialogRegistered = true" class="w-[156px] py-3 mt-[30px] lg:mt-10" buttonLabel="สมัครเลย" buttonColor="bg-namjaiyellow" />
+       </div>
         <w-dialog v-model="showDialogRegistered" class="px-[30px]" :width="500" bg-color="namjai-beige">
           <div class="text-center mt-[20px] space-y-[20px]">
             <h2 class="text-2xl">คุณต้องการสมัครจิตอาสาใช่หรือไม่</h2>
             <p class="text-lg">ระบบจะใช้ข้อมูลที่คุณได้ลงทะเบียนไว้ในการสมัคร</p>
           </div>
           <w-button class="button--close mt-[10px] mx-[20px]" @click="showDialogRegistered = false" sm outline round absolute color="namjai-red" icon="wi-cross"></w-button>
-          <div class="flex mt-[30px] lg:mt-10 mx-[60px]">
+          <div class="flex mt-[30px] lg:mt-10 mx-[60px] justify-center gap-6">
             <base-button id="memberunenrolled" class="w-[130px] py-2" buttonLabel="ยกเลิก" buttonColor="bg-namjaired" @click="showDialogRegistered = false" />
             <base-button class="w-[130px] py-2" buttonLabel="สมัครเลย" buttonColor="bg-namjaigreen" @click="submitRegisteredVolunteerForm" />
           </div>
         </w-dialog>
+        <div class="flex justify-center">
         <base-button v-if="checkEnrolled" @click="showDialogDelete = true" class="w-[156px] py-3 mt-[30px] lg:mt-10" buttonLabel="ยกเลิกการสมัคร" buttonColor="bg-namjaired" />
+        </div>
         <w-dialog v-model="showDialogDelete" class="px-[30px]" :width="500" bg-color="namjai-beige">
           <div class="text-center mt-[20px] space-y-[20px]">
             <h2 class="lg:text-2xl md:text-2xl text-xl">คุณต้องการยกเลิกการเข้าร่วมกิจกรรมนี้หรือไม่</h2>

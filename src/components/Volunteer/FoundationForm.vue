@@ -80,7 +80,9 @@
       <div class="mt-[30px] bg-white lg:w-[30%] md:w-[40%] w-full">
         <img class="p-[10px]" v-if="url" :src="url" />
       </div>
-      <base-button @click="submitAddVolunteerForm()" class="w-[140px] mx-auto mt-[60px] mb-[80px] py-3" buttonLabel="ยืนยัน" :isValid="valid === false" />
+      <div class="flex justify-center">
+      <base-button @click="submitAddVolunteerForm()" class="px-9 mt-[60px] mb-[80px] py-2" buttonLabel="ยืนยัน" :isValid="valid === false" />
+    </div>
     </w-form>
     <w-transition-slide left class="fixed right-[30px] top-[80px]">
       <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
@@ -109,14 +111,17 @@ export default {
 
     const items = ref([{ label: "Online" }, { label: "On-site" }]);
     const categories = ref([
-      { targetCategoriesName: "โควิด-19", targetCategoriesID: 1 },
-      { targetCategoriesName: "เด็กและเยาวชน", targetCategoriesID: 2 },
-      { targetCategoriesName: "ผู้สูงอายุ", targetCategoriesID: 3 },
-      { targetCategoriesName: "ผู้พิการและผู้ป่วย", targetCategoriesID: 4 },
-      { targetCategoriesName: "กลุ่มคนเปราะบาง", targetCategoriesID: 5 },
-      { targetCategoriesName: "สัตว์", targetCategoriesID: 6 },
-      { targetCategoriesName: "สิ่งแวดล้อม", targetCategoriesID: 7 },
-      { targetCategoriesName: "ภัยพิบัติ", targetCategoriesID: 8 },
+    { targetCategoriesNameEn:"medical", targetCategoriesName: "การแพทย์", targetCategoriesID: "1" },
+      { targetCategoriesNameEn:"education", targetCategoriesName: "การศึกษา", targetCategoriesID: "2" },
+      { targetCategoriesNameEn:"child", targetCategoriesName: "เด็กและสตรี", targetCategoriesID: "3" },
+      { targetCategoriesNameEn:"disaster", targetCategoriesName: "บรรเทาสาธารณะภัย", targetCategoriesID: "4" },
+      { targetCategoriesNameEn:"handicapped", targetCategoriesName: "ผู้พิการ", targetCategoriesID: "5" },
+      { targetCategoriesNameEn:"elder", targetCategoriesName: "ผู้สูงอายุ", targetCategoriesID: "6" },
+      { targetCategoriesNameEn:"valley", targetCategoriesName: "พัฒนาชุมชน", targetCategoriesID: "7" },
+      { targetCategoriesNameEn:"art", targetCategoriesName: "ศิลปะและวัฒนธรรม", targetCategoriesID: "8" },
+      { targetCategoriesNameEn:"animal", targetCategoriesName: "สัตว์", targetCategoriesID: "9" },
+      { targetCategoriesNameEn:"environment", targetCategoriesName: "สิ่งแวดล้อม", targetCategoriesID: "10" },
+      { targetCategoriesNameEn:"human", targetCategoriesName: "สิทธิมนุษยชน", targetCategoriesID: "11" },
     ]);
 
     // const foundationName =

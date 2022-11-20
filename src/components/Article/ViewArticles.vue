@@ -10,7 +10,7 @@
       </div>
       <div class="container mx-auto my-5">
         <div class="mt-5 lg:mt-10 space-y-[40px]">
-          <article-card :articleProps="articles" />
+          <article-card :articleProps="articles" :hiddenProp="true" />
         </div>
       </div>
     </div>

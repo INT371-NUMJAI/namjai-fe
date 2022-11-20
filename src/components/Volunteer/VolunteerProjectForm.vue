@@ -12,7 +12,9 @@
           <!-- <label class="text-sm">แขวง</label> -->
           <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="text" color="black" label="อีเมล" label-color="black" placeholder=" " v-model="volunteerAttendanceBody.email" />
         </div>
-        <base-button class="w-[140px] mx-auto mt-[60px] mb-8 py-3" buttonLabel="ยืนยัน" :isValid="valid === false" @click="submitunregisterVolunteerForm()" />
+        <div class="flex justify-center">
+          <base-button class="px-9 mt-[60px] mb-8 py-2" buttonLabel="ยืนยัน" :isValid="valid === false" @click="submitunregisterVolunteerForm()" />
+        </div>
       </w-form>
     </div>
   </div>
@@ -32,7 +34,7 @@ export default {
       type: String,
     },
   },
-  emits: ['closeThisComp'],
+  emits: ["closeThisComp"],
   setup(props, { emit }) {
     const valid = ref(null);
     const { validators } = useValidation();
@@ -55,14 +57,14 @@ export default {
         .unregisterVolunteerApply(volunteerAttendanceBody)
         .then(() => {
           responseStatus.value = true;
-          responseMessage.value = "Register successfully"
+          responseMessage.value = "Register successfully";
         })
         .catch((error) => {
           responseStatus.value = false;
           responseMessage.value = error.response.data.message;
         })
         .finally(() => {
-          emit("closeThisComp", {status: responseStatus.value, message: responseMessage.value});
+          emit("closeThisComp", { status: responseStatus.value, message: responseMessage.value });
         });
     };
 

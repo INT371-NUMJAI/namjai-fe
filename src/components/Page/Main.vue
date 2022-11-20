@@ -7,12 +7,12 @@
       <!-- <img class="object-cover lg:object-bottom w-full h-screen lg:w-full lg:h-[680px]" src="@/assets/annie1.jpg" /> -->
       <div class="relative">
         <img class="object-cover lg w-full h-screen md:h-1/2 lg:w-full lg:h-[620px]" src="@/assets/helpmain.jpg" />
-        <div class="absolute mt-[100px] px-6 top-28  md:left-1/2 translate-y-3/4 md:top-1/3 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full lg:w-1/2 max-w-3xl">
+        <div class="absolute mt-[100px] px-6 top-28 md:left-1/2 translate-y-3/4 md:top-1/3 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full lg:w-1/2 max-w-3xl">
           <h1 class="md:hidden text-center text-5xl md:text-7xl lg:text-8xl text-white">น้ำใจที่สามารถแบ่งปันได้</h1>
           <h1 class="hidden md:block text-center text-5xl md:text-7xl lg:text-8xl text-white">น้ำใจที่สามารถ</h1>
           <h1 class="hidden md:block text-center text-5xl md:text-7xl lg:text-8xl text-white lg:mt-5">แบ่งปันได้</h1>
         </div>
-        
+
         <!-- <div class="absolute top-0 translate-y-2/3 px-6 mt-[100px] text-center md:top-1/3 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
           <h1 class=" text-5xl text-transparent bg-clip-text bg-gradient-to-r from-namjaiyellow to-amber-500  leading-relaxed">น้ำใจที่สามารถแบ่งปันได้</h1>
         </div> -->
@@ -22,13 +22,35 @@
     <!-- <div class="flex justify-center"></div> -->
     <div id="sec2" class="bg-[#FFFCF4] pt-[30px] md:pt-[60px] lg:pt-[60px]">
       <div class="max-w-6xl mx-[30px] md:mx-[40px] lg:mx-auto">
-        <h1 class="text-[20px] md:text-[25px] lg:text-[30px] font-black text-namjaidarkgray">สานต่อโครงการที่กำลังดำเนินอยู่</h1>
+        <h1 class="text-[20px] md:text-[25px] lg:text-[36px] font-black text-namjaidarkgray">สานต่อโครงการที่กำลังดำเนินอยู่</h1>
         <p class="pt-3 md:pt-5 lg:pt-5 text-[14px] md:text-xl lg:text-xl font-bold text-[#6A6A6A]">หากคุณกำลังมองหาโครงการที่กำลังเปิดอยู่</p>
         <p class="pt-2 text-[14px] md:text-xl lg:text-xl font-bold text-[#6A6A6A]">นี่คือบางส่วนของโครงการที่กำลังเปิดอยู่ในขณะนี้ บริจาคเลย</p>
+        <div class="mt-[100px]" v-if="use_auth.store_auth.status.loggedIn && userSuggestionFDN.length === 0 && use_auth.store_auth.user.role === `ROLE_USER`">
+          <p class="text-center text-xl mb-[40px]">เลือกโครงการที่เหมาะกับคุณ</p>
+          <div class="flex justify-center">
+            <router-link to="/suggestion">
+              <base-button class="py-3 px-4" buttonLabel="เลือกเลย"></base-button>
+            </router-link>
+          </div>
+        </div>
+        <div v-if="use_auth.store_auth.status.loggedIn && userSuggestionFDN.length != 0">
+          <h2 class="pt-2 text-2xl font-bold text-namjaigreen my-[30px] drop-shadow-lg">Based on what you like!</h2>
+          <project-card :hiddenProp="false" :projectCardProps="userSuggestionFDN" />
+        </div>
+        <div class="mt-[100px]" v-if="use_auth.store_auth.status.loggedIn === false">
+          <p class="text-center text-xl mb-[40px]">สมัครสมาชิกเพื่อเลือกโครงการที่เหมาะกับคุณ</p>
+          <router-link to="/signup/user">
+            <div class="flex justify-center">
+            <base-button class="py-3 px-4" buttonLabel="สมัครสมาชิกเลย"></base-button>
+          </div>
+          </router-link>
+        </div>
+        <div v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user.role === `ROLE_FDN`" class="mt-[30px]">
           <project-card :hiddenProp="false" :projectCardProps="fdnProjectList" />
+        </div>
 
         <div class="w-1/2 lg:w-1/6 mx-auto">
-          <router-link to="/projects">
+          <router-link to="/projects/catergories/total">
             <div class="py-10 flex space-x-2 justify-center items-center">
               <p class="font-extrabold text-namjaigreen">ไปหน้าโครงการ</p>
               <w-icon class="animate-bounce" color="namjaigreen">fa fa-chevron-right</w-icon>
@@ -40,8 +62,8 @@
 
     <div id="sec3" class="py-[30px] md:py-[60px] lg:py-[60px]">
       <div class="max-w-6xl mx-[30px] md:mx-[40px] lg:mx-auto">
-        <h1 class="text-[20px] md:text-[25px] lg:text-[30px] font-black text-namjaidarkgray">ให้การบริจาค</h1>
-        <h1 class="lg:pt-2 text-[20px] md:text-[25px] lg:text-[30px] font-black text-namjaidarkgray">เป็นเรื่องง่ายไม่กี่ขั้นตอน</h1>
+        <h1 class="text-[20px] md:text-[25px] lg:text-[36px] font-black text-namjaidarkgray">ให้การบริจาค</h1>
+        <h1 class="lg:pt-2 text-[20px] md:text-[25px] lg:text-[36px] font-black text-namjaidarkgray">เป็นเรื่องง่ายไม่กี่ขั้นตอน</h1>
         <div name="mobile" class="pt-[30px] mx-auto space-y-20 md:hidden lg:hidden">
           <div name="step1" class="space-y-5">
             <div class="rounded-full h-[50px] w-[50px] mx-auto py-3 bg-[#FFB300]">
@@ -108,7 +130,7 @@
 
     <div id="sec4" class="bg-[#FFFCF4] pt-[30px] md:pt-[60px] lg:pt-[60px]">
       <div class="mx-[30px] md:mx-[40px] max-w-6xl lg:mx-auto">
-        <h1 class="text-[20px] md:text-[25px] lg:text-[30px] font-black text-namjaidarkgray">โปรแกรมจิตอาสา</h1>
+        <h1 class="text-[20px] md:text-[25px] lg:text-[36px] font-black text-namjaidarkgray">โปรแกรมจิตอาสา</h1>
         <p class="pt-3 text-[14px] font-bold text-[#6A6A6A] md:hidden lg:hidden">อยากออกไปช่วยเหลือผู้คนในพื้นที่ มีโครงการจิตอาสามากมายที่รอคอยอยู่ ตามหาโครงการที่ใช่สำหรับคุณ</p>
         <div class="hidden md:block lg:block">
           <p class="pt-5 text-xl font-bold text-[#6A6A6A]">อยากออกไปช่วยเหลือผู้คนในพื้นที่ มีโครงการจิตอาสา</p>
@@ -119,11 +141,32 @@
 			  <vueper-slide v-for="i in 9" :key="i" :title="i.toString()" class="bg-lime-300" />
 			</vueper-slides>
 		  </div> -->
-
-        <!-- <volunteer-activity-card class="pt-[30px]" /> -->
+        <div class="mt-[100px]" v-if="use_auth.store_auth.status.loggedIn && userSuggestionFDN.length === 0 && use_auth.store_auth.user.role === `ROLE_USER`">
+          <p class="text-center text-xl mb-[40px]">เลือกจิตอาสาที่ใช่สำหรับคุณ</p>
+          <div class="flex justify-center">
+          <router-link to="/suggestion">
+            <base-button class="py-3 px-4" buttonLabel="เลือกเลย"></base-button>
+          </router-link>
+        </div>
+        </div>
+        <div v-if="use_auth.store_auth.status.loggedIn && userSuggestionFDN.length != 0">
+          <h2 class="pt-2 text-2xl font-bold text-namjaigreen my-[30px] drop-shadow-lg">Based on what you like!</h2>
+          <volunteer-activity-card :volunteerProps="userSuggestionVolunteer" :hiddenProp="false" class="pt-[30px]" />
+        </div>
+        <div class="mt-[100px]" v-if="use_auth.store_auth.status.loggedIn === false">
+          <p class="text-center text-xl mb-[40px]">สมัครสมาชิกเพื่อเลือกโครงการที่เหมาะกับคุณ</p>
+          <div class="flex justify-center">
+          <router-link to="/signup/user">
+            <base-button class="py-3 px-4" buttonLabel="สมัครสมาชิกเลย"></base-button>
+          </router-link>
+        </div>
+        </div>
+        <div v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user.role === `ROLE_FDN`" class="mt-[30px]">
+          <volunteer-activity-card :volunteerProps="volunteerList" :hiddenProp="false" class="pt-[30px]" />
+        </div>
 
         <div class="w-1/2 lg:w-1/6 mx-auto">
-          <router-link to="/volunteer">
+          <router-link to="/volunteers/catergories/total">
             <div class="py-10 flex space-x-2 justify-center items-center">
               <p class="font-extrabold text-namjaigreen">ไปหน้าจิตอาสา</p>
               <w-icon class="animate-bounce" color="namjaigreen">fa fa-chevron-right</w-icon>
@@ -153,7 +196,7 @@
         </div> -->
         <div class="lg:col-span-4 py-5 lg:py-10 space-y-5 md:space-y-[30px] lg:space-y-[40px]">
           <div class="flex justify-center">
-            <h1 class="text-[20px] md:text-[25px] lg:text-2xl w-[186px] md:w-[245px] lg:w-[230px] font-semibold text-namjaidarkgray text-center leading-relaxed">โอกาสที่จะได้อาสาเพื่อ แบ่งปันความช่วยเหลือ</h1>
+            <h1 class="text-[20px] md:text-[25px] lg:text-3xl w-[186px] md:w-[245px] lg:w-[300px] font-semibold text-namjaidarkgray text-center leading-relaxed">โอกาสที่จะได้อาสาเพื่อ แบ่งปันความช่วยเหลือ</h1>
           </div>
           <p class="text-justify font-medium text-[#6A6A6A] leading-relaxed md:mx-[69px] lg:mx-0">เพราะเราเชื่อว่าการให้ไม่มีสิ้นสุด นี่เป็นโอกาสที่จะได้ช่วยเหลือและเปิดประสบการณ์ใหม่ๆ ให้กับคุณ มีกิจกรรมจิตอาสามากมายที่กำลังรอคุณอยู่ อย่ารอช้า</p>
         </div>
@@ -163,7 +206,7 @@
 
     <div id="sec6" class="bg-[#FFFCF4] py-[30px] md:pt-[60px] md:pb-[80px] lg:pt-[60px] lg:pb-[80px]">
       <div class="mx-[30px] md:mx-[40px] lg:mx-auto max-w-6xl">
-        <h1 class="text-[20px] md:text-[25px] lg:text-[30px] font-black text-namjaidarkgray">กระดานข่าวสาร</h1>
+        <h1 class="text-[20px] md:text-[25px] lg:text-[36px] font-black text-namjaidarkgray">กระดานข่าวสาร</h1>
         <p class="pt-3 md:pt-5 lg:pt-5 text-[14px] md:text-xl lg:text-xl font-bold text-[#6A6A6A]">ให้คุณไม่พลาดทุกข่าวสารการทำบุญ</p>
         <p class="pt-2 text-[14px] md:text-xl lg:text-xl font-bold text-[#6A6A6A]">ติดตามและให้ข้อมูลบนกระดานข่าวสาร</p>
         <div name="card" class="pt-5 md:pt-10 lg:pt-10 lg:flex lg:gap-[30px]">
@@ -211,7 +254,7 @@
 </style>
 
 <script>
-// import VolunteerActivityCard from "@/components/Volunteer/VolunteerActivityCard.vue";
+import VolunteerActivityCard from "@/components/Volunteer/VolunteerActivityCard.vue";
 import ProjectCard from "@/components/Project/ProjectCard.vue";
 import { ref } from "vue";
 import { VueperSlides, VueperSlide } from "vueperslides";
@@ -219,9 +262,13 @@ import "vueperslides/dist/vueperslides.css";
 // import PostDetailBlock from "../Post/PostDetailBlock.vue";
 import projectService from "../Project/project-service";
 import ArticleBigCard from "../Article/ArticleBigCard.vue";
+import { useAuth } from "../../services/auth-middleware";
+import useUserSuggestion from "../FoundationSuggestion/useUserSuggestion";
+import volunteerService from "../Volunteer/volunteer-service";
+
 export default {
   components: {
-    // "volunteer-activity-card": VolunteerActivityCard,
+    "volunteer-activity-card": VolunteerActivityCard,
     "project-card": ProjectCard,
     // "post-detail-block": PostDetailBlock,
     "article-big-card": ArticleBigCard,
@@ -230,15 +277,33 @@ export default {
   },
   setup() {
     document.title = "Namjai - Main";
-    const fdnProjectList = ref([]);
-    const fetchFdnProjectList = () => {
-      projectService.getRandomSixProjects().then((response) => {
-        fdnProjectList.value = response.data;
-      });
-    };
-    fetchFdnProjectList();
 
-    return { fdnProjectList };
+    const use_auth = useAuth();
+    const { userSuggestionVolunteer, userSuggestionFDN, getVolunteerSuggestion, getSuggestionFoundation } = useUserSuggestion();
+
+    if (use_auth.store_auth.status.loggedIn && use_auth.store_auth.user.role === "ROLE_USER") {
+      getVolunteerSuggestion(use_auth.store_auth.user.email);
+      getSuggestionFoundation(use_auth.store_auth.user.email);
+    }
+
+    const fdnProjectList = ref([]);
+    const volunteerList = ref([]);
+    if (use_auth.store_auth.status.loggedIn && use_auth.store_auth.user.role === "ROLE_FDN") {
+      const fetchFdnProjectList = () => {
+        projectService.getRandomSixProjects().then((response) => {
+          fdnProjectList.value = response.data;
+        });
+      };
+      const fetchVolunteerList = () => {
+        volunteerService.getVolunteerRandom().then((response) => {
+          volunteerList.value = response.data;
+        });
+      };
+      fetchFdnProjectList();
+      fetchVolunteerList();
+    }
+
+    return { fdnProjectList, userSuggestionVolunteer, userSuggestionFDN, use_auth, volunteerList };
   },
 };
 </script>

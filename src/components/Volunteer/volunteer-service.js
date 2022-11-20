@@ -21,6 +21,10 @@ class VolunteerService {
         return http.get(`/view/volunteer-projects/target?targetCatName=${id}`);
    } 
 
+   getVolunteerRandom() {
+    return http.get("/view/volunteer-projects/random");
+   }
+
 }
 
 export default new VolunteerService();

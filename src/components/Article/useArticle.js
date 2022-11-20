@@ -3,7 +3,7 @@ import http from "@/http-common";
 http.defaults.headers["Content-type"] = "application/json";
 http.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 
-export default function articleService() {
+export default function useArticle() {
 	const articles = ref([])
 
 	const getArticle = async () => {
@@ -19,7 +19,7 @@ export default function articleService() {
 
 	const articlesEmail = ref([]);
 	const getArticleByEmail = async (email) => {
-		let response = await http.get(`/view/articles/${email}`);
+		let response = await http.get(`/view/article-email/${email}`);
 		articlesEmail.value = response.data;
 	}
 

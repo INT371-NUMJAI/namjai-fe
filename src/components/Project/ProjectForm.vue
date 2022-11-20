@@ -23,8 +23,8 @@
           <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="number" color="black" label="ค่าใช้จ่าย" label-color="black" placeholder=" " v-model="fdnProjectBody.goal" />
           <w-select class="mb-10 lg:text-base md:text-base text-sm" :items="status" :validators="[validators.required]" label="สถานะโครงการ" label-color="black" placeholder=" " selection-color="grey" color="black" v-model="fdnProjectBody.status"> </w-select>
         </div>
-          <w-input :validators="[validators.required, validators.notLessThanToday]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่เริ่มโครงการ *ไม่สามารถเลือกวันนี้หรือวันที่เก่ากว่าได้*" label-color="black" placeholder=" " v-model="fdnProjectBody.startDate" />
-          <w-input :validators="[validators.required, validators.notLessThanToday]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่สิ้นสุดโครงการ *ไม่สามารถเลือกวันนี้หรือวันที่เก่ากว่าวันเริ่มโครงการได้*" label-color="black" placeholder=" " v-model="fdnProjectBody.endDate" />
+        <w-input :validators="[validators.required, validators.notLessThanToday]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่เริ่มโครงการ *ไม่สามารถเลือกวันนี้หรือวันที่เก่ากว่าได้*" label-color="black" placeholder=" " v-model="fdnProjectBody.startDate" />
+        <w-input :validators="[validators.required, validators.notLessThanToday]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่สิ้นสุดโครงการ *ไม่สามารถเลือกวันนี้หรือวันที่เก่ากว่าวันเริ่มโครงการได้*" label-color="black" placeholder=" " v-model="fdnProjectBody.endDate" />
 
         <w-textarea :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" outline rows="9" color="black" bg-color="white" label="สถานที่และเวลาดำเนินโครงการ" label-color="black" placeholder=" " no-autogrow v-model="fdnProjectBody.fdnProjectDetailPlace" />
         <w-textarea :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" outline rows="9" color="black" bg-color="white" label="รายละเอียดโครงการ" label-color="black" placeholder=" " no-autogrow v-model="fdnProjectBody.fdnProjectDetail" />
@@ -35,7 +35,9 @@
         </div>
         <!-- {{ fdnProjectBody }}
         {{ fileUpload }} -->
-        <base-button class="px-9 py-2 mx-auto mt-[30px] mb-[80px]" buttonLabel="ยืนยัน" :isValid="valid === false" @click="submitProjectForm" />
+        <div class="flex justify-center">
+          <base-button class="px-9 py-2 mt-[30px] mb-[80px]" buttonLabel="ยืนยัน" :isValid="valid === false" @click="submitProjectForm" />
+        </div>
       </w-form>
     </div>
     <w-transition-slide left class="fixed right-[30px] top-[80px]">
@@ -60,17 +62,17 @@ export default {
     const store = useStore();
 
     const categories = reactive([
-      { targetCategoriesName: "การแพทย์", targetCategoriesID: "1" },
-      { targetCategoriesName: "การศึกษา", targetCategoriesID: "2" },
-      { targetCategoriesName: "เด็กและสตรี", targetCategoriesID: "3" },
-      { targetCategoriesName: "บรรเทาสาธารณะภัย", targetCategoriesID: "4" },
-      { targetCategoriesName: "ผู้พิการ", targetCategoriesID: "5" },
-      { targetCategoriesName: "ผู้สูงอายุ", targetCategoriesID: "6" },
-      { targetCategoriesName: "พัฒนาชุมชน", targetCategoriesID: "7" },
-      { targetCategoriesName: "ศิลปะและวัฒนธรรม", targetCategoriesID: "8" },
-      { targetCategoriesName: "สัตว์", targetCategoriesID: "9" },
-      { targetCategoriesName: "สิ่งแวดล้อม", targetCategoriesID: "10" },
-      { targetCategoriesName: "สิทธิมนุษยชน", targetCategoriesID: "11" },
+      { targetCategoriesNameEn: "medical", targetCategoriesName: "การแพทย์", targetCategoriesID: "1" },
+      { targetCategoriesNameEn: "education", targetCategoriesName: "การศึกษา", targetCategoriesID: "2" },
+      { targetCategoriesNameEn: "child", targetCategoriesName: "เด็กและสตรี", targetCategoriesID: "3" },
+      { targetCategoriesNameEn: "disaster", targetCategoriesName: "บรรเทาสาธารณะภัย", targetCategoriesID: "4" },
+      { targetCategoriesNameEn: "handicapped", targetCategoriesName: "ผู้พิการ", targetCategoriesID: "5" },
+      { targetCategoriesNameEn: "elder", targetCategoriesName: "ผู้สูงอายุ", targetCategoriesID: "6" },
+      { targetCategoriesNameEn: "valley", targetCategoriesName: "พัฒนาชุมชน", targetCategoriesID: "7" },
+      { targetCategoriesNameEn: "art", targetCategoriesName: "ศิลปะและวัฒนธรรม", targetCategoriesID: "8" },
+      { targetCategoriesNameEn: "animal", targetCategoriesName: "สัตว์", targetCategoriesID: "9" },
+      { targetCategoriesNameEn: "environment", targetCategoriesName: "สิ่งแวดล้อม", targetCategoriesID: "10" },
+      { targetCategoriesNameEn: "human", targetCategoriesName: "สิทธิมนุษยชน", targetCategoriesID: "11" },
     ]);
     const status = reactive([{ label: "OPEN" }, { label: "NOT_SHOWING" }, { label: "CLOSED" }]);
 
@@ -169,9 +171,9 @@ export default {
   background-color: #00715d;
 }
 input:invalid {
-    background-color: ivory;
-    border: none;
-    outline: 2px solid red;
-    border-radius: 5px;
+  background-color: ivory;
+  border: none;
+  outline: 2px solid red;
+  border-radius: 5px;
 }
 </style>

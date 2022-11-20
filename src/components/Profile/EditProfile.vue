@@ -38,8 +38,8 @@
 					</div>
                 </div>
 			</div>
-			<div class="lg:block lg:w-80 mt-10  lg:pb-[60px] lg:mx-auto">
-				<base-button class="px-[50px] py-3" buttonLabel="ยืนยัน"></base-button>		
+			<div class="mt-10 flex justify-center">
+				<base-button class="px-10 py-3" buttonLabel="ยืนยัน"></base-button>		
 			</div>
 		</w-form>
     </div>

@@ -12,6 +12,10 @@ class UtilService {
         return http.get(`/util/img?path=${imgPath}`);
     }
 
+    checkIfChooseSuggestion(email) {
+        return http.get(`/auth/user/suggestion?id=${email}`);
+    }
+
 }
 
 

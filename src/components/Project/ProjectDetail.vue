@@ -86,7 +86,7 @@
               </div>
               <div class="justify-self-end mr-7">
                 <svg
-                class="text-namjaigreen"
+                  class="text-namjaigreen"
                   v-if="!checkFav"
                   @click="
                     clickToFav(project.foundationProjectUUID, project.foundationProjectName);
@@ -186,7 +186,9 @@
                   </w-radio>
                   <br />
                 </div>
-                <base-button class="px-[40px] lg:h-[45px] lg:pt-2" buttonLabel="ยืนยัน" @click="saveNewFDNProjectStatus"></base-button>
+                <div class="flex justify-center">
+                  <base-button class="px-9 py-2" buttonLabel="ยืนยัน" @click="saveNewFDNProjectStatus"></base-button>
+                </div>
               </w-dialog>
             </div>
           </div>
@@ -212,7 +214,6 @@
             {{ project.goal }}
           </h1>
         </div>
-        <!-- <base-button class="w-[140px] md:w-[356px] mb-[30px]" buttonLabel="บริจาค"></base-button> -->
         <div v-if="project.status === `OPEN`">
           <w-form v-model="valid">
             <div class="flex mt-[30px] lg:mt-0 mx-auto">
@@ -220,8 +221,9 @@
               <w-input :validators="[validators.required, validators.negativeNumber]" v-model="amount" class="my-auto text-center" type="number" bg-color="white" color="black"></w-input>
               <h1 class="pl-[15px] my-auto">บาท</h1>
             </div>
-            <!-- <base-button :isValid="valid === false" @click="showQR = true" class="mt-[30px] w-[150px] py-3" buttonLabel="บริจาค"></base-button> -->
-            <base-button :isValid="valid === false" @click="showDialog = true" class="mt-[30px] w-[150px] py-3" buttonLabel="บริจาค"></base-button>
+            <div class="flex justify-center">
+              <base-button :isValid="valid === false" @click="showDialog = true" class="mt-[30px] w-[150px] py-3" buttonLabel="บริจาค"></base-button>
+            </div>
             <w-dialog v-if="showDialog" :width="400">
               <w-button name="closeButton" @click="showDialog = false" class="m-2" sm outline round absolute color="black" icon="wi-cross"></w-button>
               <credit-card @closeThisComp="close" :amountProp="Number(amount)" :projectName="project.foundationProjectName" :foundationProject="project.foundationProjectUUID" :validForShow="valid" />

@@ -42,6 +42,10 @@ class AuthService {
 			return response.data;
 		});
 	}
+
+	createUserSuggestion(payload) {
+		return http.post("/auth/user-suggestion/add", payload);
+	}
 }
 
 export default new AuthService();

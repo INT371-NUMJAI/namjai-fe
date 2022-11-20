@@ -50,6 +50,10 @@ import { reactive, ref } from "vue";
 import { useValidation } from "./validator";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import useUserSuggestion from "../FoundationSuggestion/useUserSuggestion";
+import { useAuth } from "../../services/auth-middleware";
+import utilService from "../../services/util-service";
+
 export default {
   setup() {
     const { validators } = useValidation();
@@ -57,27 +61,44 @@ export default {
     const loginRequest = reactive({ email: "", password: "" });
     const store = useStore();
     const router = useRouter();
+    const use_auth = useAuth();
 
     const showAlert = ref(false);
     const responseMessage = ref("");
     const checkSuccess = ref(false);
     const checkError = ref(false);
 
+    const { checkIfChooseSuggestion, userSuggestionUser } = useUserSuggestion();
+
     const submitLogin = () => {
       authService
         .login(loginRequest)
         .then(() => {
-            responseMessage.value = "Log in successfully"
-            checkSuccess.value = true;
-            showAlert.value  = true;
-            store.dispatch("auth/login", loginRequest).then(() => {
-              router.push("/suggestion");
-            });
+          responseMessage.value = "Log in successfully";
+          checkSuccess.value = true;
+          showAlert.value = true;
+          store.dispatch("auth/login", loginRequest).then(() => {
+            let user = JSON.parse(window.localStorage.getItem("user"));
+            if (user.role === "ROLE_USER") {
+              utilService.checkIfChooseSuggestion(loginRequest.email).then((response) => {
+                if (response.data === true) {
+                  console.log(response.data);
+                  router.push("/main");
+                } else if (response.data === false) {
+                  console.log(response.data);
+                  router.push("/suggestion");
+                } else {
+                  router.push("/");
+                }
+              });
+            } 
+            router.push("/main");
+          });
         })
         .catch((error) => {
-          responseMessage.value = error.response.data.message
+          responseMessage.value = error.response.data.message;
           checkError.value = true;
-          showAlert.value  = true;
+          showAlert.value = true;
         });
     };
     const sentRequest = () => {

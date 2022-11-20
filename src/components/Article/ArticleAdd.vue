@@ -11,7 +11,7 @@
         <span v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && use_auth.store_auth.user.status != `ACTIVE`">
           <p class="text-center mt-[80px]">กรุณาติดต่อเราเพื่อทำการยืนยันมูลนิธิของท่าน</p>
         </span>
-        <article-card :articleProps="articlesEmail"></article-card>
+        <article-card :hiddenProp="false" :articleProps="articlesEmail"></article-card>
       </div>
     </div>
   </div>

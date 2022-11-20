@@ -9,7 +9,9 @@
       <div class="mt-[30px] bg-white lg:w-[30%] md:w-[40%] w-full">
         <img class="p-[10px]" v-if="url" :src="url" />
       </div>
-      <base-button @click="submitArticleForm" :isValid="valid === false" class="py-2 px-9 mt-[60px]" buttonLabel="ยืนยัน"></base-button>
+      <div class="flex justify-center">
+        <base-button @click="submitArticleForm" :isValid="valid === false" class="py-2 px-9 mt-[60px]" buttonLabel="ยืนยัน"></base-button>
+      </div>
     </w-form>
     <w-transition-slide left class="fixed right-[30px] top-[80px]">
       <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain>{{ responseMessage }} </w-alert>
@@ -75,14 +77,14 @@ export default {
                 showAlert.value = true;
               })
               .catch(() => {
-                responseMessage.value = "Fail to upload article image"
+                responseMessage.value = "Fail to upload article image";
                 checkError.value = true;
                 showAlert.value = true;
               });
           }
         })
         .catch(() => {
-          responseMessage.value = "Fail to upload article, please try again later"
+          responseMessage.value = "Fail to upload article, please try again later";
           checkError.value = true;
           showAlert.value = true;
         });
