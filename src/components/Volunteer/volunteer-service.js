@@ -25,6 +25,11 @@ class VolunteerService {
     return http.get("/view/volunteer-projects/random");
    }
 
+   getEnrolledVolunteerList(id) {
+		return http.get(`/view/volunteer/${id}/enrolledlist`);
+	}
+
+
 }
 
 export default new VolunteerService();

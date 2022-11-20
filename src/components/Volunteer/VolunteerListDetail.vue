@@ -14,14 +14,13 @@
               {{ volunteerList.volunteerProjectName }}
             </h2>
           </div>
-          <!-- <button class="lg:flex lg:items-center lg:space-x-2">
+          <button @click="exportToCSV(volunteerList.enrolledListVolunteerProjectList)" class="lg:flex lg:items-center lg:space-x-2">
             <span class="hidden lg:block text-sm">ดาวน์โหลดรายชื่อ</span>
             <svg class="w-3.5 h-3.5" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7.5 9.375V1.875M7.5 9.375L5 6.875M7.5 9.375L10 6.875M1.25 10.625L1.63812 12.1781C1.70572 12.4485 1.86176 12.6886 2.08146 12.8602C2.30115 13.0317 2.57188 13.125 2.85062 13.125H12.1494C12.4281 13.125 12.6989 13.0317 12.9185 12.8602C13.1382 12.6886 13.2943 12.4485 13.3619 12.1781L13.75 10.625" stroke="#363636" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-          </button> -->
+          </button>
         </div>
-
         <hr />
         <div>
           <div name="table" class="w-full flex overflow-x-scroll lg:flex-none lg:overflow-x-hidden">
@@ -69,19 +68,35 @@
 </template>
 
 <script>
-import useVolunteer from "./useVolunteer";
 import { useRoute } from "vue-router";
+import { ref } from "@vue/reactivity";
+import volunteerService from "./volunteer-service";
 
 export default {
   components: {},
   setup() {
     const route = useRoute();
 
-    const { volunteerList, getEnrolledVolunteerList } = useVolunteer();
+    const volunteerList = ref([]);
+    const getEnrolledVolunteerList = () => {
+      volunteerService.getEnrolledVolunteerList(route.params.id).then((response) => {
+        volunteerList.value = response.data;
+      });
+    };
+    getEnrolledVolunteerList();
 
-    getEnrolledVolunteerList(route.params.id);
+    const exportToCSV = (arr) => {
+      let csvString = [["firstName", "lastName", "email", "contactNumber"], ...arr.map((item) => [item.firstName, item.lastName, item.email, item.contactNumber])].map((e) => e.join(",")).join("\n");
+      csvString = "data:application/csv," + encodeURIComponent(csvString);
+      let today = new Date().toJSON().slice(0, 10).replace(/-/g, '_')
+      var x = document.createElement("A");
+      x.setAttribute("href", csvString);
+      x.setAttribute("download", `volunteerList_${today}.csv`);
+      document.body.appendChild(x);
+      x.click();
+    };
 
-    return { volunteerList };
+    return { volunteerList, exportToCSV };
   },
 };
 </script>

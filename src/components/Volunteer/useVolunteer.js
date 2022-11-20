@@ -15,12 +15,6 @@ export default function volunteerService() {
 		volunteerUUID.value = response.data.volunteerProjectsUUID;
 	};
 
-	const volunteerList = ref([]);
-	const getEnrolledVolunteerList = async (id) => {
-		let response = await http.get(`/view/volunteer/${id}/enrolledlist`);
-		volunteerList.value = response.data;
-	}
-
 	const checkEnrolled = ref(false);
 	const getIsEnrolledOrNot = async (volunteerid, email) => {
 		// http.defaults.headers["Content-type"] = "text/plain";
@@ -47,5 +41,5 @@ export default function volunteerService() {
 		volunteerShortList.value = response.data;
 	}
 
-	return { volunteer, getVolunteerDetailByID, volunteerList, volunteerUUID, getEnrolledVolunteerList, checkEnrolled, getIsEnrolledOrNot, volunteerShortList, getVolunteerShortList, getVolunteerShortListByFDNEmail, getVolunteerShortListByFDNEmailandStatusOpen };
+	return { volunteer, getVolunteerDetailByID, volunteerUUID, checkEnrolled, getIsEnrolledOrNot, volunteerShortList, getVolunteerShortList, getVolunteerShortListByFDNEmail, getVolunteerShortListByFDNEmailandStatusOpen };
 }

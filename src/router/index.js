@@ -117,7 +117,7 @@ const router = createRouter({
 			path: "/volunteer/:id/volunteerlistdetail",
 			name: "volunteerlistdetail",
 			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
-			meta: {requiresAuth: true},
+			// meta: {requiresAuth: true},
 		},
 		{
 

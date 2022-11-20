@@ -1,6 +1,6 @@
 <template>
-  <nav class="bg-namjaigreen flex items-center justify-between px-7 py-6 lg:py-4 lg:px-11 drop-shadow-md lg:fixed lg:w-screen">
-    <div class="flex items-center text-white space-x-5">
+  <nav class="bg-namjaigreen grid grid-cols-10 fixed items-center justify-between px-7 py-6 lg:py-4 lg:px-11 drop-shadow-md lg:fixed lg:w-screen">
+    <div class="flex items-center text-white space-x-5 lg:col-span-5 col-span-9">
       <router-link to="/main">
         <svg width="112" viewBox="0 0 329 59" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M50.75 7V56H41.44L17.01 26.25V56H5.81V7H15.19L39.55 36.75V7H50.75ZM103.713 45.5H80.9632L76.6232 56H65.0032L86.8432 7H98.0432L119.953 56H108.053L103.713 45.5ZM100.143 36.89L92.3732 18.13L84.6032 36.89H100.143Z" fill="white" />
@@ -13,7 +13,7 @@
       </router-link>
       <h1 class="mt-2" v-if="use_auth.auth_role.value === `ADMIN` && use_auth.store_auth.status.loggedIn">Admin</h1>
     </div>
-    <div class="lg:hidden">
+    <div class="lg:hidden justify-self-end">
       <!-- <w-icon color="white">fa fa-bars</w-icon> -->
       <drawer />
     </div>

@@ -1,6 +1,7 @@
 <template>
   <div class="lg:mt-[120px] mt-[60px] lg:mx-[177px] md:mx-[40px] mx-[30px]">
     <h1 class="lg:text-5xl text-2xl my-[40px]">โพสต์ข่าวสาร</h1>
+    <!-- {{ articleFormBody }} -->
     <w-form v-model="valid">
       <w-input :validators="[validators.required]" v-model="articleFormBody.articleHeader" class="mb-[30px] lg:text-base md:text-base text-sm" type="text" color="black" label="หัวข้อข่าว" label-color="black" placeholder=" " />
       <w-textarea :validators="[validators.required]" v-model="articleFormBody.articleBody" class="mb-[30px] lg:text-base md:text-base text-sm" outline rows="9" color="black" bg-color="white" label="เนื้อหาข่าว" label-color="black" placeholder=" " no-autogrow />
@@ -28,6 +29,7 @@ import articleService from "./article-service";
 import { useAuth } from "../../services/auth-middleware";
 import { useStore } from "vuex";
 import utilService from "../../services/util-service";
+import { useRouter } from "vue-router";
 
 export default {
   components: { BaseButton },
@@ -37,6 +39,7 @@ export default {
 
     const use_auth = useAuth();
     const store = useStore();
+    const router = useRouter();
 
     const { generateFiveDigitsUUID } = useUtil();
     const articleFormBody = reactive({
@@ -62,26 +65,31 @@ export default {
     const submitArticleForm = () => {
       articleService
         .createArticle(articleFormBody)
-        .then((response) => {
-          if (response.status === 200) {
-            const bodyFormData = new FormData();
-            bodyFormData.append("file", fileUpload[0]);
-            bodyFormData.append("type", "article");
-            bodyFormData.append("userName", store.state.auth.user.userName);
-            bodyFormData.append("uuid", articleFormBody.articleUUID);
-            utilService
-              .uploadImage(bodyFormData)
-              .then(() => {
-                responseMessage.value = "Upload article successfully";
-                checkSuccess.value = true;
-                showAlert.value = true;
-              })
-              .catch(() => {
-                responseMessage.value = "Fail to upload article image";
-                checkError.value = true;
-                showAlert.value = true;
-              });
-          }
+        .then(() => {
+            if (fileUpload[0]) {
+              const bodyFormData = new FormData();
+              bodyFormData.append("file", fileUpload[0]);
+              bodyFormData.append("type", "article");
+              bodyFormData.append("userName", store.state.auth.user.userName);
+              bodyFormData.append("uuid", articleFormBody.articleUUID);
+              utilService
+                .uploadImage(bodyFormData)
+                .then(() => {
+                  responseMessage.value = "Upload article successfully";
+                  checkSuccess.value = true;
+                  showAlert.value = true;
+                  setTimeout(() => router.push(`/article/${articleFormBody.articleUUID}`), 1000);
+                })
+                .catch(() => {
+                  responseMessage.value = "Fail to upload article image";
+                  checkError.value = true;
+                  showAlert.value = true;
+                });
+            }
+            responseMessage.value = "Upload article successfully";
+            checkSuccess.value = true;
+            showAlert.value = true;
+            setTimeout(() => router.push(`/article/${articleFormBody.articleUUID}`), 1000);
         })
         .catch(() => {
           responseMessage.value = "Fail to upload article, please try again later";
