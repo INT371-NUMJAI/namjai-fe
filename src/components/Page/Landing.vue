@@ -1,5 +1,5 @@
 <template>
-  <div class="snap-y snap-mandatory h-screen overflow-scroll">
+  <div class="snap-y snap-mandatory h-screen overflow-scroll mt-[80px] lg:mt-0">
     <div class="snap-start">
       <div id="section1" class="h-screen overflow-hidden bg-gradient-to-t from-[#D0FDFA] to-transparent">
         <div class="lg:mx-44 md:mx-[40px] mx-[30px] relative lg:top-[150px] top-[50px] space-y-10 text-[#FD9F5B] z-10">

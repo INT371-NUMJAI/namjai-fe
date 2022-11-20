@@ -1,5 +1,5 @@
 <template>
-    <div class="mx-[30px] md:mx-24 lg:mx-44">
+    <div class="mx-[30px] md:mx-24 lg:mx-44 mt-[120px] lg:mt-0">
       <div class="my-10 cursor-pointer" @click="routeToVolunteers">
         <h1 class="mt-10 text-2xl lg:text-[48px] lg:mt-[120px] font-semibold">จิตอาสา</h1>
         <div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-4"></div>

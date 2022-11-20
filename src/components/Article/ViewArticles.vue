@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-[30px] md:mx-10 lg:mx-44">
+  <div class="mx-[30px] md:mx-10 lg:mx-44 mt-[120px] lg:mt-0">
     <div class="comntainer w-full mx-auto">
       <div class="my-10 container mx-auto">
         <h1 class="mt-10 text-2xl lg:text-[48px] lg:mt-[120px]">กระดานข่าว</h1>

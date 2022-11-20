@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-[30px] md:mx-10 lg:mx-44">
+  <div class="mx-[30px] md:mx-10 lg:mx-44 mt-[120px] lg:mt-0">
     <div class="my-10 md:my-[60px] lg:mt-[120px] container max-w-6xl mx-auto bg-white rounded-xl p-6">
       <div class="space-y-2 mb-5 md:mb-10">
         <h1 class="text-xl md:text-[25px] lg:text-[30px] text-justify leading-relaxed">{{ article.articleHeader }}</h1>
