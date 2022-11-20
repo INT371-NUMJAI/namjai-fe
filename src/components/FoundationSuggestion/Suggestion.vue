@@ -3,8 +3,6 @@
     <div class="space-y-[10px] lg:space-y-5">
       <h1 class="text-[25px] lg:text-[30px]">หมวดหมู่การทำบุญ</h1>
       <p class="leading-relaxed lg:text-[20px]">เลือกหมวดหมู่ที่คุณสนใจ เพื่อให้เรานำเสนอได้ตรงใจคุณมากขึ้น</p>
-      {{ suggestBody }}
-      <!-- {{ targetArray }} -->
     </div>
     <div class="flex justify-end">
       <base-button @click="suggestBody.targetCategoriesSuggestion.length = 0" class="py-3 px-4" buttonLabel="ล้างข้อมูล"></base-button>
@@ -129,7 +127,7 @@ export default {
             setTimeout(() => router.push("/main"), 2000);
         })
         .catch(() => {
-          responseMessage.value = "Failed to save your favourite target"
+          responseMessage.value = "Fail to save your favourite target"
           checkError.value = true;
           showAlert.value = true;
         });

@@ -46,6 +46,10 @@ class AuthService {
 	createUserSuggestion(payload) {
 		return http.post("/auth/user-suggestion/add", payload);
 	}
+
+	getProfile(email) {
+		return http.get(`/auth/user/profile?id=${email}`);
+	}
 }
 
 export default new AuthService();
