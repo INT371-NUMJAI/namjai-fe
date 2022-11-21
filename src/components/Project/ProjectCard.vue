@@ -1,7 +1,7 @@
 <template>
   <Search class="mb-[60px]" v-if="hiddenProp" @update:modelValue="submitInputSearch" />
   <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
-    <div class="md:w-[300px] w-[330px] md:gap-5 lg:w-[342px] mb-[20px]" v-for="(projectCardProp, index) in searchProjectList" :key="index">
+    <div class="md:w-[300px] w-[330px] md:gap-5 lg:w-[342px] mb-[20px] mx-auto" v-for="(projectCardProp, index) in searchProjectList" :key="index">
       <router-link :to="'/project/' + projectCardProp.projectUUID">
         <div class="bg-white rounded-lg drop-shadow-md hover:shadow-md">
           <div class="relative cursor-pointer">
@@ -15,8 +15,8 @@
           </div>
 
           <div class="p-5">
-            <h1 class="mb-2 h-[46px] lg:h-[52px] overflow-hidden text-gray-900 text-[14px] lg:text-[16px]">{{ projectCardProp.projectName }}</h1>
-            <p class="mb-3 h-10 text-[12px] lg:text-[14px] overflow-hidden truncate text-namjaidarkgray tracking-wide">{{ projectCardProp.projectDetail }}</p>
+            <h1 class="mb-2 h-[46px] lg:h-[52px] overflow-hidden text-gray-900 text-lg lg:text-[16px]">{{ projectCardProp.projectName }}</h1>
+            <p class="mb-3 h-10 text-sm lg:text-[14px] overflow-hidden truncate text-namjaidarkgray tracking-wide">{{ projectCardProp.projectDetail }}</p>
             <div class="space-y-2.5">
               <div class="flex justify-between items-center">
                 <h2 class="text-[12px] lg:text-[14px] font-black">ยอดบริจาคปัจจุบัน</h2>

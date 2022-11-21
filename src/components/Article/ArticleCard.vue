@@ -8,7 +8,7 @@
         <div class="space-y-5 pt-1">
           <div class="lg:flex lg:gap-3 space-y-2 lg:space-y-0 lg:space-x-20">
             <!-- <div class="w-[6px] md:w-3 h-[70px] md:h-20 bg-namjaiyellow"></div> -->
-            <h2 class="w-[150px] md:w-[300px] lg:w-[400px] pl-3 border-l-4 border-namjaiyellow text-[12px] md:text-[18px] lg:text-xl">{{ articleProp.articleHeader }}</h2>
+            <h2 class="w-[150px] overflow-hidden text-ellipsis h-[55px] md:w-[300px] lg:w-[400px] pl-3 border-l-4 border-namjaiyellow text-[12px] md:text-[18px] lg:text-xl">{{ articleProp.articleHeader }}</h2>
             <p class="lg:text-sm md:text-sm text-[9px] text-gray-500 justify-end">{{ articleProp.createDate }}</p>
           </div>
           <div class="flex gap-3">

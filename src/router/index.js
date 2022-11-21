@@ -3,6 +3,7 @@ import { useAuth } from "../services/auth-middleware";
 import { Role } from "@/_helpers/Role";
 
 // const use_auth = useAuth();
+const user = JSON.parse(window.localStorage.getItem("user"));
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
@@ -68,6 +69,11 @@ const router = createRouter({
 			path: "/login",
 			name: "login",
 			component: () => import("../components/Account/LoginForm.vue"),
+			beforeRouteEnter(to, from,  next) {
+				if (user != null) {
+					next("/main");
+				}
+			} 
 		},
 		{
 			path: "/signup",
@@ -84,6 +90,11 @@ const router = createRouter({
 					component: () => import("../components/Account/SignupFormFoundation.vue"),
 				},
 			],
+		},
+		{
+			path: "/user-signup",
+			name: "user-signup",
+			component: () => import("../components/Account/SignupFormUser.vue"),
 		},
 		{
 			path: "/volunteers",
@@ -231,7 +242,6 @@ const router = createRouter({
 	],
 });
 // const use_auth = useAuth();
-const user = JSON.parse(window.localStorage.getItem("user"));
 router.beforeEach((to, from) => {
 	if (to.meta.requiresAuth && (user === null || (user != null && (user.role != "ROLE_ADMIN" && user.role != "ROLE_FDN")))) {
 		return {name: 'protected-admin'}

@@ -2,7 +2,7 @@
   <div class="mx-[30px] md:mx-10 lg:mx-44 mt-[120px] lg:mt-0">
     <div class="comntainer w-full mx-auto">
       <div class="my-10 container mx-auto">
-        <h1 class="mt-10 text-2xl lg:text-[48px] lg:mt-[120px]">กระดานข่าว</h1>
+        <h1 class="mt-10 text-2xl md:text-4xl lg:text-5xl lg:mt-[120px]">กระดานข่าว</h1>
         <div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-4"></div>
       </div>
       <div class="hidden lg:block lg:max-w-7xl mx-auto">

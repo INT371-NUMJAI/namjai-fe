@@ -210,7 +210,7 @@
         <p class="pt-3 md:pt-5 lg:pt-5 text-[14px] md:text-xl lg:text-xl font-bold text-[#6A6A6A]">ให้คุณไม่พลาดทุกข่าวสารการทำบุญ</p>
         <p class="pt-2 text-[14px] md:text-xl lg:text-xl font-bold text-[#6A6A6A]">ติดตามและให้ข้อมูลบนกระดานข่าวสาร</p>
         <div name="card" class="pt-5 md:pt-10 lg:pt-10 lg:flex lg:gap-[30px]">
-          <article-big-card />
+          <article-big-card :article="article" />
         </div>
         <div class="w-1/2 lg:w-1/6 mx-auto">
           <router-link to="/articles">
@@ -265,6 +265,7 @@ import ArticleBigCard from "../Article/ArticleBigCard.vue";
 import { useAuth } from "../../services/auth-middleware";
 import useUserSuggestion from "../FoundationSuggestion/useUserSuggestion";
 import volunteerService from "../Volunteer/volunteer-service";
+import useArticle from '../Article/useArticle';
 
 export default {
   components: {
@@ -303,7 +304,18 @@ export default {
       fetchVolunteerList();
     }
 
-    return { fdnProjectList, userSuggestionVolunteer, userSuggestionFDN, use_auth, volunteerList };
+    const { article, getThreeArticles } = useArticle();
+
+    getThreeArticles();
+
+
+    return { fdnProjectList, userSuggestionVolunteer, userSuggestionFDN, use_auth, volunteerList, article };
   },
 };
 </script>
+
+<style scoped>
+::-webkit-scrollbar {
+  display: none;
+}
+</style>

@@ -17,14 +17,11 @@
 
         <label class="text-sm lg:text-base mb-2">รหัสผ่าน</label>
         <w-input :validators="[validators.required]" class="mb-6" type="password" color="black" placeholder="*******" v-model="loginRequest.password" />
-
-        <div class="flex justify-end mb-5">
-          <button class="-mt-2 text-sm lg:text-base underline underline-offset-2">ลืมรหัสผ่าน?</button>
-        </div>
         <!-- <base-button class="w-80" /> -->
         <!-- <w-button @click="showAlert = !showAlert" outline> Show alert </w-button> -->
-
-        <base-button class="w-[342px] py-[15px]" buttonLabel="เข้าสู่ระบบ" :isValid="valid === false" buttonType="submit" @click="sentRequest" />
+        <div class="flex justify-center">
+          <base-button class="w-[342px] py-[15px]" buttonLabel="เข้าสู่ระบบ" :isValid="valid === false" buttonType="submit" @click="sentRequest" />
+        </div>
         <!-- <base-button class="text-white text-lg font-semibold" @click="sentRequest" buttonLabel="เข้าสู่ระบบ" :isValid="valid === false" />
 				</div> -->
       </w-form>
@@ -32,7 +29,9 @@
     <div class="lg:block lg:w-80">
       <div class="flex justify-center text-sm lg:text-base">
         <p>ยังไม่มีบัญชีใช่หรือไม่?</p>
-        <router-link to="/signup"><button bg-color="transparent" class="ml-1 font-semibold underline underline-offset-2">ลงทะเบียน</button></router-link>
+        <router-link to="/user-signup"><button bg-color="transparent" class="lg:hidden md:block block ml-1 font-semibold underline underline-offset-2">ลงทะเบียน</button></router-link>
+        <router-link to="/signup"><button bg-color="transparent" class="lg:block md:hidden hidden ml-1 font-semibold underline underline-offset-2">ลงทะเบียน</button></router-link>
+
       </div>
     </div>
   </div>
@@ -91,7 +90,7 @@ export default {
                   router.push("/");
                 }
               });
-            } 
+            }
             router.push("/main");
           });
         })

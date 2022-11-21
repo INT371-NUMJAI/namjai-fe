@@ -17,8 +17,8 @@
       <!-- <w-icon color="white">fa fa-bars</w-icon> -->
       <drawer />
     </div>
-    <div class="hidden lg:flex lg:space-x-11 items-center text-white lg:text-base lg:col-span-7">
-      <div name="manage" class="container inline-block">
+    <div class="hidden lg:flex lg:space-x-11 items-center text-white lg:text-base lg:col-span-7 justify-self-end">
+      <div name="manage" class="">
         <w-button bg-color="transparent" class="font-medium" @click="showManage = !showManage" v-if="use_auth.auth_role.value === `ADMIN` && use_auth.store_auth.status.loggedIn">
           <p>จัดการ</p>
           <div class="ml-2 -mt-[2px]">

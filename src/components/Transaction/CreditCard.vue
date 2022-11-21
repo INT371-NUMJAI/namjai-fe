@@ -28,9 +28,9 @@
             <div>
               <label class="text-sm text-gray-600">วันที่หมดอายุ</label>
               <div class="flex">
-                <w-input :validators="[validators.required]" type="text" color="teal-dark2" class="text-center w-8" placeholder="เดือน"></w-input>
+                <w-input :validators="[validators.required]" type="text" color="teal-dark2" class="text-center" placeholder="เดือน"></w-input>
                 <span>/</span>
-                <w-input :validators="[validators.required]" type="text" color="teal-dark2" class="text-center w-8" placeholder="ปี"></w-input>
+                <w-input :validators="[validators.required]" type="text" color="teal-dark2" class="text-center" placeholder="ปี"></w-input>
               </div>
               
             </div>
