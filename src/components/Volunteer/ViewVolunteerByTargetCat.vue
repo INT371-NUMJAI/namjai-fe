@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container mx-auto">
     <volunteer-activity-card :hiddenProp="true" :volunteerProps="volunteerList" />
   </div>
 </template>

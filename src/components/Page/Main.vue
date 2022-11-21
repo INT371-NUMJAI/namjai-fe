@@ -39,7 +39,7 @@
         </div>
         <div class="mt-[100px]" v-if="use_auth.store_auth.status.loggedIn === false">
           <p class="text-center text-xl mb-[40px]">สมัครสมาชิกเพื่อเลือกโครงการที่เหมาะกับคุณ</p>
-          <router-link to="/signup/user">
+          <router-link to="/user-signup">
             <div class="flex justify-center">
             <base-button class="py-3 px-4" buttonLabel="สมัครสมาชิกเลย"></base-button>
           </div>
@@ -156,7 +156,7 @@
         <div class="mt-[100px]" v-if="!use_auth.store_auth.status.loggedIn">
           <p class="text-center text-xl mb-[40px]">สมัครสมาชิกเพื่อเลือกโครงการที่เหมาะกับคุณ</p>
           <div class="flex justify-center">
-          <router-link to="/signup/user">
+          <router-link to="/user-signup">
             <base-button class="py-3 px-4" buttonLabel="สมัครสมาชิกเลย"></base-button>
           </router-link>
         </div>

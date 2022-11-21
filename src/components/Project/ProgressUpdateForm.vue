@@ -13,7 +13,9 @@
         <img class="p-[10px]" v-if="url" :src="url" />
       </div>
       {{ projectProgressFormBody }}
-      <base-button @click="submitProjectProgress(progressUUID)" :isValid="valid === false" class="py-2 px-9 mt-[60px]" buttonLabel="ยืนยัน"></base-button>
+      <div class="flex justify-center">
+        <base-button @click="submitProjectProgress(progressUUID)" :isValid="valid === false" class="py-2 px-9 mt-[60px]" buttonLabel="ยืนยัน"></base-button>
+      </div>
     </w-form>
     <w-transition-slide left class="fixed right-[30px] top-[80px]">
       <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
@@ -27,7 +29,7 @@ import { useValidation } from "../Account/validator";
 import BaseButton from "../_Bases/BaseButton.vue";
 import projectService from "./project-service";
 import { useUtil } from "../../services/useUtil";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import utilService from "../../services/util-service";
 import { useStore } from "vuex";
 
@@ -38,6 +40,7 @@ export default {
     const { validators } = useValidation();
     const route = useRoute();
     const store = useStore();
+    const router = useRouter();
 
     const { generateFiveDigitsUUID } = useUtil();
     const projectProgressFormBody = reactive({
@@ -61,24 +64,32 @@ export default {
     };
 
     const submitProjectProgress = () => {
-      projectService.updateProjectProgress(projectProgressFormBody).then((response) => {
-        if (response.status === 200) {
-          const bodyFormData = new FormData();
-          bodyFormData.append("file", fileUpload[0]);
-          bodyFormData.append("type", "progress");
-          bodyFormData.append("userName", store.state.auth.user.userName);
-          bodyFormData.append("uuid", `${route.params.id}:${projectProgressFormBody.foundationProjectProgressUUID}`);
-          utilService.uploadImage(bodyFormData).then(() => {
-            responseMessage.value = "Upload progression successfully"
+      projectService
+        .updateProjectProgress(projectProgressFormBody)
+        .then((response) => {
+          if (response.status === 200) {
+            const bodyFormData = new FormData();
+            bodyFormData.append("file", fileUpload[0]);
+            bodyFormData.append("type", "progress");
+            bodyFormData.append("userName", store.state.auth.user.userName);
+            bodyFormData.append("uuid", `${route.params.id}:${projectProgressFormBody.foundationProjectProgressUUID}`);
+            utilService.uploadImage(bodyFormData).then(() => {
+              responseMessage.value = "Upload progression successfully";
               checkSuccess.value = true;
               showAlert.value = true;
-          });
-        }
-      }).catch(() => {
-        responseMessage.value = "Fail to upload progression, please try again later"
-        checkError.value = true;
-        showAlert.value = true;
-      })
+              setTimeout(() => router.push(`/project/${projectProgressFormBody.fdnProjectUUID}`), 1000);
+            });
+          }
+          responseMessage.value = "Upload progression successfully";
+          checkSuccess.value = true;
+          showAlert.value = true;
+          setTimeout(() => router.push(`/project/${projectProgressFormBody.fdnProjectUUID}`), 1000);
+        })
+        .catch(() => {
+          responseMessage.value = "Fail to upload progression, please try again later";
+          checkError.value = true;
+          showAlert.value = true;
+        });
     };
     return { valid, validators, projectProgressFormBody, submitProjectProgress, showAlert, checkSuccess, checkError, fileHandler, fileUpload, url, responseMessage };
   },

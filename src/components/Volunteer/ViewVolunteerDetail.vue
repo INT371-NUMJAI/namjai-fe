@@ -16,27 +16,27 @@
       <img v-else-if="volunteer.picturePath === null" class="w-[330px] h-[186px] md:w-full lg:w-full md:h-[379px] lg:h-[402px] my-[30px] object-cover" src="@/assets/image-unavailable.jpeg" />
       <div class="bg-white mt-[30px] py-[30px] lg:py-10 px-6 text-namjaidarkgray space-y-[30px] lg:space-y-10">
         <div class="space-y-2 lg:space-y-65 text-[14px] lg:text-[16px]">
-          <p class="font-black">รายละเอียด</p>
+          <h2 class="font-black">รายละเอียด</h2>
           <hr class="bg-namjaidarkgray" />
           <p class="font-normal">{{ volunteer.description }}</p>
         </div>
         <div class="space-y-2 lg:space-y-5 text-[14px] lg:text-[16px]">
-          <p class="font-black">คุณสมบัติ</p>
+          <h2 class="font-black">คุณสมบัติ</h2>
           <hr class="bg-namjaidarkgray" />
           <p class="font-normal" v-html="volunteer.qualify"></p>
         </div>
         <div class="space-y-2 lg:space-y-5 text-[14px] lg:text-[16px]">
-          <p class="font-black">หน้าที่</p>
+          <h2 class="font-black">หน้าที่</h2>
           <hr class="bg-namjaidarkgray" />
           <p class="font-normal" v-html="volunteer.duty"></p>
         </div>
         <div class="space-y-2 lg:space-y-5 text-[14px] lg:text-[16px]">
-          <p class="font-black">สถานที่จัดกิจกรรม</p>
+          <h2 class="font-black">สถานที่จัดกิจกรรม</h2>
           <hr class="bg-namjaidarkgray" />
           <p class="font-normal">{{ formatLocationAddress }}</p>
         </div>
         <div v-if="volunteer.volunteerProjectName" class="space-y-2 lg:space-y-5 text-[14px] lg:text-[16px]">
-          <p class="font-black">ติดต่อ</p>
+          <h2 class="font-black">ติดต่อ</h2>
           <hr class="bg-namjaidarkgray" />
           <p class="font-normal">{{ formatFdnAddress }}</p>
         </div>

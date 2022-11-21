@@ -7,13 +7,12 @@
           <p :class="{'cursor-pointer text-namjaigreen': route.fullPath.includes('post')}">ข่าวสาร</p>
           <div :class="{'h-1 bg-namjaigreen': route.fullPath.includes('post')}"></div>          
         </button>
-
         <button @click="routeToProfileSubNav(route.params.id, `project`)" class="space-y-3" v-if="!(use_auth.store_auth.status.loggedIn && use_auth.store_auth.user.role === `ROLE_USER` && route.params.id === use_auth.store_auth.user.email)">
           <p :class="{'cursor-pointer text-namjaigreen': route.fullPath.includes('project')}">โครงการ</p>
           <div :class="{'h-1 bg-namjaigreen': route.fullPath.includes('project')}"></div>          
           <!-- v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user.role === `ROLE_USER` && route.params.id != use_auth.store_auth.user.email" -->
         </button>
-        <button @click="routeToProfileSubNav(route.params.id, `volunteer`)" class="space-y-3">
+        <button @click="routeToProfileSubNav(route.params.id, `volunteer`)" class="space-y-3" v-if="!(use_auth.store_auth.status.loggedIn && use_auth.store_auth.user.role === `ROLE_USER` && route.params.id === use_auth.store_auth.user.email)">
           <p :class="{'cursor-pointer text-namjaigreen': route.fullPath.includes('volunteer')}">จิตอาสา</p>
           <div :class="{'h-1 bg-namjaigreen': route.fullPath.includes('volunteer')}"></div>
                 </button>

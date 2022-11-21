@@ -1,10 +1,10 @@
 <template>
     <div class="mx-[30px] md:mx-24 lg:mx-44 mt-[120px] lg:mt-0">
-      <div class="my-10 cursor-pointer" @click="routeToVolunteers">
+      <div class="container mx-auto my-10 cursor-pointer" @click="routeToVolunteers">
         <h1 class="mt-10 text-2xl md:text-4xl lg:text-5xl lg:mt-[120px] font-semibold">จิตอาสา</h1>
         <div class="w-16 border-4 border-t border-namjaired md:mt-4 lg:mt-4"></div>
       </div>
-      <div class="w-full flex overflow-x-auto space-x-3 cursor-pointer">
+      <div class="container mx-auto w-full flex overflow-x-auto space-x-3 cursor-pointer">
         <div @click="routeToCategories('total')">
           <div :class="{ 'bg-[#00715D] text-white': route.fullPath.includes('total') }" class="bg-white hover:bg-namjaigreen hover:text-white w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
             <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">

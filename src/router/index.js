@@ -161,7 +161,6 @@ const router = createRouter({
 			path: "/progressupdateform/:id",
 			name: "progress-form",
 			component: () => import("../components/Project/ProgressUpdateForm.vue"),
-			meta: {requiresAuth: true},
 		},
 		{
 			path: "/add/foundationproject",

@@ -47,17 +47,14 @@ export default {
           route.params.id === use_auth.store_auth.user.email
         ) {
           getProjectByFDNEmail(route.params.id);
-          console.log("getProjectByFDNEmail");
           return false;
         }
         else if (use_auth.store_auth.user.role === `ROLE_USER` || use_auth.store_auth.user.role === `ROLE_FDN` && route.params.id != use_auth.store_auth.user.email) {
           getProjectByFDNEmailAndStatusOpen(route.params.id);
-          console.log("getProjectByFDNEmailAndStatusOpen");
           return true;
         }
       } else {
         getProjectByFDNEmailAndStatusOpen(route.params.id);
-        console.log("getProjectByFDNEmailAndStatusOpenNotLoggedIn");
         return true;
       }
       //check fdn unverify

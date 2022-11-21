@@ -37,5 +37,11 @@ export function useUtil() {
         activityList.value = response.data
     }
 
-    return { generateFiveDigitsUUID, profile, getUserNameByEmail, checkFav, checkIfFavOrNot, activityList, getActivityList }
+    const joinedVolunteer = ref([]);
+    const getEnrolledVolunteerActivity = async (email) => {
+        let response = await http.get(`/view/volunteer-enrolled/activities?email=${email}`)
+        joinedVolunteer.value = response.data
+    }
+
+    return { generateFiveDigitsUUID, profile, getUserNameByEmail, checkFav, checkIfFavOrNot, activityList, getActivityList, joinedVolunteer, getEnrolledVolunteerActivity }
 }

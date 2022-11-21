@@ -9,7 +9,7 @@
       </router-link>
       <div class="mt-[30px] space-y-[30px] bg-white rounded-lg p-5 shadow-sm drop-shadow-md hover:shadow-md">
         <span v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && use_auth.store_auth.user.status != `ACTIVE`">
-          <p class="text-center mt-[80px]">กรุณาติดต่อเราเพื่อทำการยืนยันมูลนิธิของท่าน</p>
+          <p class="text-center mt-[80px]">ผู้ใช้รายนี้ยังไม่มีข่าวสาร</p>
         </span>
         <article-card :hiddenProp="false" :articleProps="articlesEmail"></article-card>
       </div>
