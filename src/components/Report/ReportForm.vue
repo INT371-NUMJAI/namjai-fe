@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-[30px] md:mx-[40px] lg:mx-[177px] mt-[60px] lg:mt-[120px] h-auto">
+  <div class="mx-[30px] md:mx-[40px] lg:mx-[177px] mt-[120px] h-auto">
     <h1 class="text-2xl lg:text-5xl">ร้องเรียน</h1>
     <div class="mt-4 mb-[40px]">
       <div class="w-16 border-4 border-t border-namjaired"></div>

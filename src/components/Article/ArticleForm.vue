@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:mt-[120px] mt-[60px] lg:mx-[177px] md:mx-[40px] mx-[30px]">
+  <div class="mt-[120px] lg:mx-[177px] md:mx-[40px] mx-[30px]">
     <h1 class="lg:text-5xl text-2xl my-[40px]">โพสต์ข่าวสาร</h1>
     <!-- {{ articleFormBody }} -->
     <w-form v-model="valid">

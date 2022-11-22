@@ -15,7 +15,7 @@
       <div v-if="selectedFavourite === true">
         <div v-for="activity in activityList" :key="activity.userFavoriteUUID" class="pb-[0px] py-[30px]">
           <div class="cursor-pointer" @click="routeToFav(activity.typeOfFavorite, activity.favoriteReferenceUUID)">
-            <div class="grid grid-flow-col space-x-1 text-sm md:px-8 lg:px-10">
+            <div class="grid grid-flow-col space-x-1 text-sm md:px-8 lg:px-10 px-8">
               <div class="md:flex">
                 <span>คุณได้ถูกใจ </span>
                 <span class="md:flex">
@@ -33,7 +33,7 @@
       <div v-if="selectedJoinedVolunteer === true">
         <div v-for="volunteer in joinedVolunteer" :key="volunteer.userFavoriteUUID" class="pb-[0px] py-[30px]">
           <div class="cursor-pointer" @click="routeToVolunteer(volunteer.favoriteReferenceUUID)">
-            <div class="grid grid-flow-col space-x-1 text-sm md:px-8 lg:px-10">
+            <div class="grid grid-flow-col space-x-1 text-sm md:px-8 lg:px-10 px-8">
               <div class="md:flex">
                 <span>คุณได้เข้าร่วมจิตอาสา&nbsp;</span>
                 <span class="md:flex">

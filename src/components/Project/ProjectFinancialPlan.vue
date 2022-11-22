@@ -18,7 +18,8 @@
       <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
     </w-transition-slide>
     <h1 class="text-sm lg:text-base">รายละเอียดแผนการใช้เงิน</h1>
-    <div name="table" class="w-full">
+    <div class="italic text-center my-[30px]" v-if="financials.length === 0">ยังไม่มีแผนการใช้เงิน</div>
+    <div v-else-if="financials.length != 0" name="table" class="w-full">
       <div class="bg-white overflow-x-auto shadow-md rounded my-6">
         <table class="min-w-max w-full table-auto">
           <thead>
