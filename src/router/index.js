@@ -177,13 +177,13 @@ const router = createRouter({
 			path: "/admin-management",
 			name: "admin-management",
 			component: () => import("../components/Verification/AdminApprove.vue"),
-			meta: {requiresAuth: true},
+			// meta: {requiresAuth: false},
 		},
 		{
 			path: "/verify/fdn/:id",
 			name: "fdn-detail-verify",
 			component: () => import("../components/Verification/AdminVerifyAccountDetail.vue"),
-			meta: {requiresAuth: true},
+			// meta: {requiresAuth: true},
 		},
 		{
 			path: "/suggestion",
@@ -199,13 +199,13 @@ const router = createRouter({
 			path: "/reportlist",
 			name: "report-list",
 			component: () => import("../components/Report/ViewReportList.vue"),
-			meta: {requiresAuth: true},
+			// meta: {requiresAuth: true},
 		},
 		{
 			path: "/withdraw",
 			name: "withdraw",
 			component: () => import("../components/Transaction/ViewTransactionRequestAdmin.vue"),
-			meta: {requiresAuth: true},
+			// meta: {requiresAuth: true},
 		},
 		{
 			path: "/:pathMatch(.*)*",
@@ -242,7 +242,7 @@ const router = createRouter({
 });
 // const use_auth = useAuth();
 router.beforeEach((to, from) => {
-	if (to.meta.requiresAuth && (user === null || (user != null && (user.role != "ROLE_ADMIN" && user.role != "ROLE_FDN")))) {
+	if (to.meta.requiresAuth && (user === null || (user != null && (user.role === "ROLE_USER" || user.role === "ROLE_FDN")))) {
 		return {name: 'protected-admin'}
 	} else if (to.meta.requiresAuth && (user === null || ((user != null && user.role === "ROLE_FDN") && user.status != "ACTIVE"))) { //fdn disable
 		if (to.meta.requiresAuth && (user === null || ((user != null && user.role === "ROLE_USER")))) { //user

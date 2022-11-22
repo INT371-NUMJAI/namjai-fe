@@ -7,10 +7,10 @@
           <div class="pt-2.5 flex">
             <div class="font-medium">ขนาดองค์กร:</div>
             <div class="ml-5 space-x-3">
-              <w-radio v-model="foundation.fdnSize" bg-color="white" color="amber-light2" label-color="black" return-value="small" class="">
+              <w-radio v-model="foundation.fdnSize" bg-color="white" color="amber-light2" label-color="black" return-value="SMALL" class="">
                 <p class="mx-2">ขนาดเล็ก</p>
               </w-radio>
-              <w-radio v-model="foundation.fdnSize" bg-color="white" color="amber-light2" label-color="black" return-value="big">
+              <w-radio v-model="foundation.fdnSize" bg-color="white" color="amber-light2" label-color="black" return-value="BIG">
                 <p class="mx-2">ขนาดใหญ่</p>
               </w-radio>
             </div>
@@ -79,7 +79,7 @@
         <div class="grid grid-cols-2 gap-10">
           <div class="space-y-2 lg:space-y-4">
             <label class="font-medium">เบอร์โทรศัพท์</label>
-            <w-input :validators="[validators.required]" type="tel" placeholder="เบอร์โทรศัพท์" color="black" v-model="foundation.contactNo"></w-input>
+            <w-input :validators="[validators.required, validators.phoneNoLength]" type="tel" placeholder="เบอร์โทรศัพท์" color="black" v-model="foundation.contactNo"></w-input>
           </div>
         </div>
         <div class="space-y-4">
@@ -167,7 +167,7 @@ export default {
               responseMessage.value = "Sign up successfully, Waiting for admin to approve.";
               checkSuccess.value = true;
               showAlert.value = true;
-              router.push("/login");
+              setTimeout(() => router.push("/login"), 1000);
             })
             .catch(() => {
               responseMessage.value = "Fail to sign up, Please contact admin";

@@ -39,11 +39,17 @@
         </div>
         <div class="mt-[100px]" v-if="use_auth.store_auth.status.loggedIn === false">
           <p class="text-center text-xl mb-[40px]">สมัครสมาชิกเพื่อเลือกโครงการที่เหมาะกับคุณ</p>
-          <router-link to="/user-signup">
-            <div class="flex justify-center">
-            <base-button class="py-3 px-4" buttonLabel="สมัครสมาชิกเลย"></base-button>
+
+          <div class="flex justify-center lg:hidden">
+            <router-link to="/user-signup">
+              <base-button class="py-3 px-4" buttonLabel="สมัครสมาชิกเลย"></base-button>
+            </router-link>
           </div>
-          </router-link>
+          <div class="lg:flex justify-center hidden md:hidden">
+            <router-link to="/signup">
+              <base-button class="py-3 px-4" buttonLabel="สมัครสมาชิกเลย"></base-button>
+            </router-link>
+          </div>
         </div>
         <div v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user.role === `ROLE_FDN`" class="mt-[30px]">
           <project-card :hiddenProp="false" :projectCardProps="fdnProjectList" />
@@ -77,9 +83,9 @@
             <div class="rounded-full h-[50px] w-[50px] mx-auto py-3 bg-[#FFB300]">
               <h1 class="text-[20px] text-namjaibeige text-center">2</h1>
             </div>
-            <img class="w-1/3 mx-[110px]" src="@/assets/scan.svg" />
-            <h1 class="text-2xl text-center text-namjaidarkgray">สแกนบริจาค</h1>
-            <p class="mx-auto w-[245px] text-center text-[#6A6A6A] font-black">สแกน QR Code บน Moblie Banking และใส่ยอดเงินที่ต้องการบริจาค</p>
+            <img class="w-5/12 mx-auto" src="@/assets/donate.svg" />
+            <h1 class="text-2xl text-center text-namjaidarkgray">ใส่จำนวนเงิน</h1>
+            <p class="mx-auto w-[245px] text-center text-[#6A6A6A] font-black">ใส่ยอดเงินที่ต้องการบริจาคและจ่ายผ่านบัตรเครดิต</p>
           </div>
           <div name="step3" class="space-y-5">
             <div class="rounded-full h-[50px] w-[50px] mx-auto py-3 bg-[#FFB300]">
@@ -107,8 +113,8 @@
           </div>
           <div class="flex items-center py-[40px]">
             <img class="md:w-[200px] w-[210px] h-[92px] flex-auto" src="@/assets/click.svg" />
-            <img class="md:w-[150px] w-[159px] h-[175px] flex-auto" src="@/assets/scan.svg" />
-            <img class="md:md:w-[200px] w-[204px] h-[104px] flex-auto" src="@/assets/complete.svg" />
+            <img class="md:w-[150px] w-[159px] h-[175px] flex-auto" src="@/assets/donate.svg" />
+            <img class="md:w-[200px] w-[204px] h-[104px] flex-auto" src="@/assets/complete.svg" />
           </div>
           <div class="grid grid-cols-3">
             <div class="mx-auto md:space-y-3 space-y-5">
@@ -116,8 +122,8 @@
               <p class="md:w-[190px] w-[230px] md:text-[14px] text-center text-[#6A6A6A] font-black">เลือกโครงการที่คุณต้องการบริจาคและกดเลือกที่ปุ่มบริจาค</p>
             </div>
             <div class="mx-auto md:space-y-3 space-y-5">
-              <h1 class="md:text-[20px] text-2xl text-center text-namjaidarkgray">สแกนบริจาค</h1>
-              <p class="md:w-[220px] w-[250px] md:text-[14px] text-center text-[#6A6A6A] font-black">สแกน QR Code บน Moblie Banking และใส่ยอดเงินที่ต้องการบริจาค</p>
+              <h1 class="md:text-[20px] text-2xl text-center text-namjaidarkgray">ใส่จำนวนเงิน</h1>
+              <p class="md:w-[220px] w-[250px] md:text-[14px] text-center text-[#6A6A6A] font-black">ใส่ยอดเงินที่ต้องการบริจาคและจ่ายผ่านบัตรเครดิต</p>
             </div>
             <div class="mx-auto md:space-y-3 space-y-5">
               <h1 class="md:text-[20px] text-2xl text-center text-namjaidarkgray">ยืนยันบริจาค</h1>
@@ -144,10 +150,10 @@
         <div class="mt-[100px]" v-if="use_auth.store_auth.status.loggedIn && userSuggestionFDN.length === 0 && use_auth.store_auth.user.role === `ROLE_USER`">
           <p class="text-center text-xl mb-[40px]">เลือกจิตอาสาที่ใช่สำหรับคุณ</p>
           <div class="flex justify-center">
-          <router-link to="/suggestion">
-            <base-button class="py-3 px-4" buttonLabel="เลือกเลย"></base-button>
-          </router-link>
-        </div>
+            <router-link to="/suggestion">
+              <base-button class="py-3 px-4" buttonLabel="เลือกเลย"></base-button>
+            </router-link>
+          </div>
         </div>
         <div v-if="use_auth.store_auth.status.loggedIn && userSuggestionFDN.length != 0">
           <h2 class="pt-2 text-2xl font-bold text-namjaigreen my-[30px] drop-shadow-lg">Based on what you like!</h2>
@@ -155,11 +161,16 @@
         </div>
         <div class="mt-[100px]" v-if="!use_auth.store_auth.status.loggedIn">
           <p class="text-center text-xl mb-[40px]">สมัครสมาชิกเพื่อเลือกโครงการที่เหมาะกับคุณ</p>
-          <div class="flex justify-center">
-          <router-link to="/user-signup">
-            <base-button class="py-3 px-4" buttonLabel="สมัครสมาชิกเลย"></base-button>
-          </router-link>
-        </div>
+          <div class="flex justify-center lg:hidden">
+            <router-link to="/user-signup">
+              <base-button class="py-3 px-4" buttonLabel="สมัครสมาชิกเลย"></base-button>
+            </router-link>
+          </div>
+          <div class="lg:flex justify-center hidden md:hidden">
+            <router-link to="/signup">
+              <base-button class="py-3 px-4" buttonLabel="สมัครสมาชิกเลย"></base-button>
+            </router-link>
+          </div>
         </div>
         <div v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user.role === `ROLE_FDN`" class="mt-[30px]">
           <volunteer-activity-card :volunteerProps="volunteerList" :hiddenProp="false" class="pt-[30px]" />
@@ -198,7 +209,7 @@
           <div class="flex justify-center">
             <h1 class="text-[20px] md:text-[25px] lg:text-3xl w-[186px] md:w-[245px] lg:w-[300px] font-semibold text-namjaidarkgray text-center leading-relaxed">โอกาสที่จะได้อาสาเพื่อ แบ่งปันความช่วยเหลือ</h1>
           </div>
-          <p class="text-justify font-medium text-[#6A6A6A] leading-relaxed md:mx-[69px] lg:mx-0">เพราะเราเชื่อว่าการให้ไม่มีสิ้นสุด นี่เป็นโอกาสที่จะได้ช่วยเหลือและเปิดประสบการณ์ใหม่ๆ ให้กับคุณ มีกิจกรรมจิตอาสามากมายที่กำลังรอคุณอยู่ อย่ารอช้า</p>
+          <p class="text-justify font-medium text-[#6A6A6A] leading-relaxed md:mx-[69px] lg:mx-0">เพราะเราเชื่อว่าการให้ไม่สิ้นสุด นี่เป็นโอกาสที่จะได้ช่วยเหลือและเปิดประสบการณ์ใหม่ ๆ ให้กับคุณ มีกิจกรรมจิตอาสามากมายที่กำลังรอคุณอยู่ อย่ารอช้ารีบค้นหาโครงการจิตอาสาที่คุณชื่นชอบแล้วสมัครเลยขอเพียงคุณมีความตั้งใจที่แน่วแน่ แรงกายที่มั่นคง และจิตใจที่ดีงามคุณก็สามารถสร้างความเปลี่ยนแปลงให้สังคมนี้ได้</p>
         </div>
         <!-- <project-card class="pt-[30px]" /> -->
       </div>
@@ -227,19 +238,19 @@
       <img class="w-full h-[200px]" src="@/assets/sec7.png" />
       <div class="max-w-6xl mx-auto absolute top-16 left-0 right-0 px-4 grid grid-cols-12 gap-[30px]">
         <div class="col-span-3">
-          <h1 class="text-5xl text-white text-center underline underline-offset-[12px] decoration-[6px] decoration-namjaired">598,900</h1>
+          <h1 class="text-5xl text-white text-center underline underline-offset-[12px] decoration-[6px] decoration-namjaired">5,779,735</h1>
           <h1 class="pt-5 text-white text-center">ยอดบริจาคทั้งหมด</h1>
         </div>
         <div class="col-span-3">
-          <h1 class="text-5xl text-white text-center underline underline-offset-[12px] decoration-[6px] decoration-namjaired">136</h1>
+          <h1 class="text-5xl text-white text-center underline underline-offset-[12px] decoration-[6px] decoration-namjaired">11</h1>
           <h1 class="pt-5 text-white text-center">มูลนิธิที่เข้าร่วม</h1>
         </div>
         <div class="col-span-3">
-          <h1 class="text-5xl text-white text-center underline underline-offset-[12px] decoration-[6px] decoration-namjaired">1,479</h1>
+          <h1 class="text-5xl text-white text-center underline underline-offset-[12px] decoration-[6px] decoration-namjaired">18</h1>
           <h1 class="pt-5 text-white text-center">โครงการ</h1>
         </div>
         <div class="col-span-3">
-          <h1 class="text-5xl text-white text-center underline underline-offset-[12px] decoration-[6px] decoration-namjaired">861</h1>
+          <h1 class="text-5xl text-white text-center underline underline-offset-[12px] decoration-[6px] decoration-namjaired">18</h1>
           <h1 class="pt-5 text-white text-center">จิตอาสา</h1>
         </div>
       </div>
@@ -265,7 +276,7 @@ import ArticleBigCard from "../Article/ArticleBigCard.vue";
 import { useAuth } from "../../services/auth-middleware";
 import useUserSuggestion from "../FoundationSuggestion/useUserSuggestion";
 import volunteerService from "../Volunteer/volunteer-service";
-import useArticle from '../Article/useArticle';
+import useArticle from "../Article/useArticle";
 
 export default {
   components: {
@@ -307,7 +318,6 @@ export default {
     const { article, getThreeArticles } = useArticle();
 
     getThreeArticles();
-
 
     return { fdnProjectList, userSuggestionVolunteer, userSuggestionFDN, use_auth, volunteerList, article };
   },

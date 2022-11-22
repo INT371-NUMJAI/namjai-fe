@@ -124,7 +124,7 @@
       <div class="p-5 lg:mx-auto md:p-8 lg:mt-[140px] lg:mb-10 lg:py-0 lg:px-0">
         <div class="hidden lg:block">
           <div class="grid grid-flow-col text-sm lg:text-base font-medium">
-            <h1 class="text-base mb-5" v-if="project.foundationProjectName">
+            <h1 @click="routeToProfile(project.foundationContactDTO.email)" class="text-base mb-5 cursor-pointer" v-if="project.foundationProjectName">
               {{ project.foundationContactDTO.fdnName }}
             </h1>
             <div class="justify-self-end">
@@ -221,8 +221,8 @@
               <w-input :validators="[validators.required, validators.negativeNumber]" v-model="amount" class="my-auto text-center" type="number" bg-color="white" color="black"></w-input>
               <h1 class="pl-[15px] my-auto">บาท</h1>
             </div>
-            <div class="flex justify-center">
-              <base-button :isValid="valid === false" @click="showDialog = true" class="mt-[30px] w-[150px] py-3" buttonLabel="บริจาค"></base-button>
+            <div class="flex justify-center mt-[30px]">
+              <base-button :isValid="valid === false" @click="showDialog = true" class="w-[150px] py-3" buttonLabel="บริจาค"></base-button>
             </div>
             <w-dialog v-if="showDialog" :width="400">
               <w-button name="closeButton" @click="showDialog = false" class="m-2" sm outline round absolute color="black" icon="wi-cross"></w-button>
@@ -390,6 +390,10 @@ export default {
       // checkFav.value = true;
     };
 
+    const routeToProfile = (email) => {
+      router.push(`/profile/${email}`)
+    }
+
     // === project.foundationContactDTO.email
     return {
       getImage,
@@ -421,6 +425,7 @@ export default {
       clickToFav,
       clickToUnFav,
       checkFav,
+      routeToProfile,
     };
   },
 };

@@ -9,7 +9,7 @@
       <div class="grid grid-cols-2 gap-[30px]">
         <w-input v-model="projectFinancialFormBody.amount" :validators="[validators.required]" class="mb-[30px] lg:text-base md:text-base text-sm" type="number" color="black" label="ยอดรวม" label-color="black" placeholder=" " />
       </div>
-      <div class="flex gap-0">
+      <div class="flex gap-6">
         <base-button @click="showForm = false" class="py-2 px-9 my-[30px]" buttonLabel="ยกเลิก" buttonColor="bg-namjaired"></base-button>
         <base-button @click="submitProjectFinancial()" :isValid="valid === false" class="py-2 px-9 my-[30px]" buttonLabel="ยืนยัน"></base-button>
       </div>

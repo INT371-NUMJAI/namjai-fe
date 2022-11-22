@@ -12,7 +12,6 @@
       <div class="mt-[30px] bg-white lg:w-[30%] md:w-[40%] w-full">
         <img class="p-[10px]" v-if="url" :src="url" />
       </div>
-      {{ projectProgressFormBody }}
       <div class="flex justify-center">
         <base-button @click="submitProjectProgress(progressUUID)" :isValid="valid === false" class="py-2 px-9 mt-[60px]" buttonLabel="ยืนยัน"></base-button>
       </div>

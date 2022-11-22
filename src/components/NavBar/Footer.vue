@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="px-[30px] py-10 bg-namjaigreen">
+    <footer class="px-[30px] py-10 bg-namjaigreen relative bottom-0">
       <div class="md:grid md:grid-cols-4 md:gap-5">
         <div class="pb-10">
           <router-link to="/">

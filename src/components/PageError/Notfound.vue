@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto lg:mt-80 md:mt-[120px] mt-[80px]">
+  <div class="mx-auto lg:mt-80 md:mt-[120px] mt-[80px] h-screen">
     <h2 class="text-center text-5xl">PAGE NOT FOUND</h2>
     <br />
     <p class="text-center text-xl">Page that you are looking for is not exist at this moment.</p>

@@ -79,7 +79,7 @@
       <div class="lg:my-24 lg:fixed">
         <base-status-button class="mb-[30px]" :statusText="volunteer.status"></base-status-button>
         <div v-if="volunteer.volunteerProjectName" class="flex justify-between text-[14px] lg:text-[16px]">
-          <h1 class="">{{ volunteer.foundationContactDTO.fdnName }}</h1>
+          <h1 @click="routeToProfile(volunteer.foundationContactDTO.email)" class="cursor-pointer">{{ volunteer.foundationContactDTO.fdnName }}</h1>
           <div class="lg:block lg:ml-[140px] hidden" v-if="(use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && use_auth.store_auth.user.role != 'ROLE_FDN') || use_auth.store_auth.status.loggedIn === false">
             <svg
               v-if="!checkFav"
@@ -359,6 +359,10 @@ export default {
       profileService.unFav("VOLUNTEER", refUUID, checkUserEmail);
     };
 
+    const routeToProfile = (email) => {
+      router.push(`/profile/${email}`)
+    }
+
     return {
       isFav,
       volunteer,
@@ -388,6 +392,7 @@ export default {
       checkError,
       checkSuccess,
       responseMessage,
+      routeToProfile,
     };
   },
 };

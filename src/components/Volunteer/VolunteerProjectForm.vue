@@ -8,7 +8,7 @@
           <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="text" color="black" label="นามสกุล" label-color="black" placeholder=" " v-model="volunteerAttendanceBody.lastName" />
         </div>
         <div class="flex space-x-[20px] lg:space-x-[30px]">
-          <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="text" color="black" label="เบอร์โทรศัพท์" label-color="black" placeholder=" " v-model="volunteerAttendanceBody.contactNumber" />
+          <w-input :validators="[validators.required, validators.phoneNoLength]" class="mb-10 lg:text-base md:text-base text-sm" type="text" color="black" label="เบอร์โทรศัพท์" label-color="black" placeholder=" " v-model="volunteerAttendanceBody.contactNumber" />
           <!-- <label class="text-sm">แขวง</label> -->
           <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="text" color="black" label="อีเมล" label-color="black" placeholder=" " v-model="volunteerAttendanceBody.email" />
         </div>

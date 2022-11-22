@@ -3,14 +3,14 @@
     <div class="w-32 h-32 bg-namjaired rounded-full -ml-10 -mt-5"></div>
     <div class="w-32 h-32 border-2 border-namjaiyellow rounded-full"></div>
   </div>
-  <div class="h-screen w-full md:h-[850px] bg-namjaiwhite rounded-2xl lg:bg-transparent">
-		<div class="mx-8 mb-20 md:mx-20 lg:mx-0">
-      <div class="flex justify-between">
-      <h1 class=" pt-[30px] text-2xl lg:hidden md:block block font-semibold">เริ่มต้นเปลี่ยนสังคม</h1>
-      <div class="w-24 h-20 md:w-28 md:h-24 bg-namjaiyellow rounded-b-full lg:hidden"></div>
+  <div class="h-screen w-full md:h-[850px] bg-namjaiwhite rounded-2xl lg:bg-transparent mb-[60px]">
+    <div class="mx-0 mb-20 lg:mx-0">
+      <div class="flex justify-between mx-8">
+        <h1 class="pt-[30px] text-2xl lg:hidden md:block block font-semibold">เริ่มต้นเปลี่ยนสังคม</h1>
+        <div class="w-24 h-20 md:w-28 md:h-24 bg-namjaiyellow rounded-b-full lg:hidden"></div>
       </div>
-      <div class="">
-        <w-form v-model="valid" name="donorForm" class="py-7 lg:py-10">
+      <div class="bg-white lg:bg-transparent h-screen">
+        <w-form v-model="valid" name="donorForm" class="py-7 lg:py-10 mx-8 md:mx-20">
           <div class="space-y-8 lg:space-y-10">
             <div class="space-y-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0">
               <div class="space-y-2 lg:space-y-4">
@@ -48,24 +48,24 @@
               </div>
             </div>
           </div>
-          <div class="lg:block lg:w-80 lg:mt-10 md:my-[60px] lg:pb-[60px] lg:mx-auto">
+          <div class="lg:block lg:w-80 lg:mt-10 md:my-[60px] lg:pb-[60px] pb-[60px] lg:mx-auto">
             <div class="md:mx-auto mx-auto flex justify-center mt-[30px] mb-5 bg-namjaigreen h-[60px] lg:w-80 my-10 rounded-xl">
               <w-button :disabled="valid === false" color="white" bg-color="transparent" class="text-white text-lg font-semibold" type="submit" @click="submitForm()"> ลงทะเบียน </w-button>
             </div>
             <!-- <span>{{ user }}</span> -->
-            <div class="flex justify-center text-sm lg:text-base mb-[60px]">
-              <p>ยังไม่มีบัญชีใช่หรือไม่?</p>
+            <div class="flex justify-center text-sm lg:text-base">
+              <p>มีบัญชีแล้วใช่หรือไม่?</p>
               <router-link to="/login">
                 <button bg-color="transparent" class="ml-1 font-semibold">เข้าสู่ระบบ</button>
               </router-link>
             </div>
           </div>
         </w-form>
-        <w-transition-slide left class="fixed right-[30px] top-[80px]">
-          <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
-        </w-transition-slide>
       </div>
     </div>
+    <w-transition-slide left class="fixed right-[30px] top-[80px]">
+      <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
+    </w-transition-slide>
   </div>
   <!-- </div> -->
 </template>

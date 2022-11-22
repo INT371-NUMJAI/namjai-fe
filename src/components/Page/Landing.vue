@@ -44,7 +44,7 @@
                 <img class="lg:mx-0 mx-0 lg:w-[528px] md:w-[367px] w-[330px] z-20 object-cover" src="@/assets/fdn.png" alt="" />
                 <div class="lg:my-auto">
                   <h1 class="block lg:hidden text-namjaigreen text-2xl mt-[40px] mb-[10px]">FOUNDATION</h1>
-                  <p class="lg:w-[372px] z-20 my-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <p class="lg:w-[372px] z-20 my-auto">กระจายความช่วยเหลือให้กับหน่วยงานที่คุณสามารถเชื่อถือได้ เพื่อส่งผ่านกำลังใจให้กับผู้ที่ต้องการความช่วยเหลือ</p>
                 </div>
               </div>
               <div class="lg:grid lg:grid-cols-2 md:flex md:space-x-10 snap-center">
@@ -58,7 +58,7 @@
                 <img class="lg:mx-0 mx-0 lg:w-[528px] md:w-[367px] w-[330px] z-20" src="@/assets/vlt.jpg" alt="" />
                 <div class="lg:my-auto">
                   <h1 class="block lg:hidden text-namjaigreen text-2xl mt-[40px] mb-[10px]">VOLUNTEER</h1>
-                  <p class="w-[372px] z-20 my-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <p class="w-[372px] z-20 my-auto">ร่วมเป็นส่วนหนึ่งในการช่วยเหลือสังคมผ่านแรงกาย เพราะเราเชื่อว่าพลังแห่งการร่วมมือสามารถสร้างความเปลี่ยนแปลงได้</p>
                 </div>
               </div>
             </div>
@@ -87,8 +87,8 @@
               <h1 class="text-namjaiyellow lg:text-3xl md:text-3xl text-[18px]">น้ำใจ</h1>
               <h1 class="text-namjaibrown lg:text-3xl md:text-3xl text-[18px] ml-2">ทำให้การบริจาคเป็นเรื่องง่าย</h1>
             </div>
-            <div class="mb-[65px]">
-              <h1 class="text-namjaidarkgray lg:text-xl md:text-xl text-base lg:w-[425px] md:w-[440px] leading-relaxed">เว็บแอปพลิเคชั่นสำหรับการกระจายข่าวสารและเป็นช่องทางในการบริจาคให้กับโพรเจ็กต์ของมูลนิธิต่าง ๆ อีกทั้งยังเป็นช่องทางในการรับสมัครจิตอาสาที่ต้องการทำกิจกรรมจิตอาสา</h1>
+            <div class="mb-[40px]">
+              <h1 class="text-namjaidarkgray lg:text-xl md:text-xl text-base lg:w-[425px] md:w-[440px] leading-relaxed">เว็บแอปพลิเคชั่นสำหรับการกระจายข่าวสารและเป็นช่องทางในการบริจาคให้กับโปรเจ็กต์ของมูลนิธิต่าง ๆ อีกทั้งยังเป็นช่องทางในการรับสมัครจิตอาสาที่ต้องการทำกิจกรรมจิตอาสา</h1>
             </div>
             <div @scroll="scrollFeature" id="scrollMenu" class="flex space-x-5 md:space-x-3 lg:space-x-[30px] snap-x snap-mandatory overflow-x-auto">
               <div class="snap-center">
