@@ -1,6 +1,6 @@
 <template>
   <div
-    class="py-[30px] md:py-[32px] px-[30px] md:px-[34px] lg:px-[34px] bg-white rounded-lg space-y-5"
+    class="container mx-auto py-[30px] md:py-[32px] px-[30px] md:px-[34px] lg:px-[34px] bg-white rounded-lg space-y-5"
   >
     <span class="font-black"
       >{{ profile.profileDetail }}</span
@@ -35,13 +35,13 @@
       </div>
     </div>
     <div v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && route.params.id === use_auth.store_auth.user.email"  class="flex space-x-3">
-		<!-- <router-link to="/editprofile">
+		<router-link to="/editprofile">
       <base-button
         class="w-[150px] py-3 md:mx-0 lg:mx-0 text-base"
         buttonColor="bg-namjaibrown"
         buttonLabel="แก้ไขข้อมูลส่วนตัว"
       />
-	</router-link> -->
+	</router-link>
       <base-button
         class="w-[150px] py-3 md:mx-0 lg:mx-0 text-base "
         buttonColor="bg-namjaired"

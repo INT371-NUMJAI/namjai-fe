@@ -15,6 +15,7 @@
       </div>
     </div>
   </div>
+  <foo-ter></foo-ter>
 </template>
 
 <script>

@@ -116,10 +116,9 @@
       </div>
     </div>
     <router-view :key="route.fullPath" />
-    <!-- <router-view :key="$route.fullPath"></router-view> -->
   </div>
 </div>
-  <!-- <router-view :key="$route.fullPath"></router-view> -->
+<foo-ter></foo-ter>
 </template>
 
 <script>

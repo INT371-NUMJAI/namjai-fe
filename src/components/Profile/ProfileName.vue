@@ -115,6 +115,7 @@
       <w-alert class="w-[350px]" v-if="showAlert" v-model="showAlert" :success="checkSuccess" :error="checkError" border-right dismiss plain> {{ responseMessage }} </w-alert>
     </w-transition-slide>
       </w-dialog>
+      <div class="hidden">{{ store.dispatch("setProfileRole", profile.role) }}</div>
     </div>
   </div>
 </template>
@@ -131,7 +132,7 @@ import { useAuth } from '../../services/auth-middleware';
 import { useUtil } from '../../services/useUtil';
 import utilService from '../../services/util-service';
 import { useValidation } from "../Account/validator";
-
+import { useStore } from 'vuex';
 
 export default {
   props: {
@@ -147,6 +148,7 @@ export default {
     const use_auth = useAuth();
     const valid = ref(null);
     const { validators } = useValidation();
+    const store = useStore();
 
     const dialog = reactive({ show: false, width: 300 });
     const dropdown = reactive({ show: false });
@@ -192,7 +194,7 @@ export default {
       		return `${import.meta.env.VITE_APP_BACKEND_URL}/util/img?path=${imagePath}`
     	}
 
-    return { dialog, dropdown, valid, fileHandler, blah, imgInp, route, use_auth, profile, imgFile, dialogViewProfilePicture, submitProfilePic, getImage, showAlert, checkSuccess, checkError, validators, responseMessage };
+    return { dialog, dropdown, valid, fileHandler, blah, imgInp, route, use_auth, profile, imgFile, dialogViewProfilePicture, submitProfilePic, getImage, showAlert, checkSuccess, checkError, validators, responseMessage, store };
   },
 };
 </script>

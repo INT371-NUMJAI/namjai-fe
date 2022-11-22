@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto space-y-2.5 lg:space-y-5">
+  <div class="container lg:max-w-max md:max-w-max mx-auto">
     <router-link to="/volunteer-add">
       <button v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && route.params.id === use_auth.store_auth.user.email && use_auth.store_auth.user.role === `ROLE_FDN`" :disabled="checkAuthorized()" class="bg-namjaired w-full lg:w-[186px] py-3 flex justify-center space-x-3 rounded-lg">
         <w-icon class="mr1" md color="white">fa fa-plus</w-icon>

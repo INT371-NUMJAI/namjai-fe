@@ -1,10 +1,10 @@
 <template>
-  <div class="mx-[30px] md:mx-10 lg:mx-44 mt-[120px] lg:mt-0">
+  <div class="mx-[30px] md:mx-10 lg:mx-44 mt-[120px] lg:mt-0 h-screen">
     <div class="my-10 md:my-[60px] lg:mt-[120px] container max-w-6xl mx-auto bg-white rounded-xl p-6">
       <div class="space-y-2 mb-5 md:mb-10">
         <h1 class="text-xl md:text-[25px] lg:text-[30px] leading-relaxed">{{ article.articleHeader }}</h1>
         <div class="flex items-center space-x-3 text-sm text-zinc-500 tracking-wide">
-          <h3>{{ article.author }}</h3>
+          <h3 @click="routeToProfile(article.email)" class="cursor-pointer">{{ article.author }}</h3>
           <hr class="w-2 h-0.5 bg-zinc-500" />
           <h3>{{ article.createDate }}</h3>
         </div>
@@ -84,7 +84,11 @@ export default {
     navigator.clipboard.writeText(`https://namjai.site/article/${route.params.id}`);
   }  
 
-    return { article, getImage, linkShare, linkShareTwitter, copyToClipboard };
+  const routeToProfile = (email) => {
+    router.push(`/profile/${email}`)
+  }
+
+    return { article, getImage, linkShare, linkShareTwitter, copyToClipboard, routeToProfile };
   },
 }
 </script>

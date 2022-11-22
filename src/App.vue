@@ -4,7 +4,7 @@
 			<nav-bar class="z-40" />
 			<router-view />
 		</div>
-		<foo-ter class="z-50" />
+		<!-- <foo-ter class="z-50" /> -->
 	</w-app>
 </template>
 

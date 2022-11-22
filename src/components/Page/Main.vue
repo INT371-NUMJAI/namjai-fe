@@ -255,6 +255,7 @@
         </div>
       </div>
     </div>
+    <foo-ter />
   </div>
 </template>
 
@@ -277,6 +278,7 @@ import { useAuth } from "../../services/auth-middleware";
 import useUserSuggestion from "../FoundationSuggestion/useUserSuggestion";
 import volunteerService from "../Volunteer/volunteer-service";
 import useArticle from "../Article/useArticle";
+import Footer from '../NavBar/Footer.vue';
 
 export default {
   components: {
@@ -286,6 +288,7 @@ export default {
     "article-big-card": ArticleBigCard,
     VueperSlides,
     VueperSlide,
+    Footer,
   },
   setup() {
     document.title = "Namjai - Main";

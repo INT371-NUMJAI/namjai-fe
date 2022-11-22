@@ -1,7 +1,7 @@
 <template>
   <Search class="mb-[60px]" v-if="hiddenProp" @update:modelValue="submitInputSearch" />
   <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
-    <div class="md:w-[300px] w-[330px] md:gap-5 lg:w-[342px] mb-[20px] mx-auto" v-for="(projectCardProp, index) in searchProjectList" :key="index">
+    <div class="lg:max-w-sm md:max-w-md md:w-[300px] w-[330px] md:gap-5 lg:w-[342px] mb-[20px] mx-auto" v-for="(projectCardProp, index) in searchProjectList" :key="index">
       <router-link :to="'/project/' + projectCardProp.projectUUID">
         <div class="bg-white rounded-lg drop-shadow-md hover:shadow-md">
           <div class="relative cursor-pointer">

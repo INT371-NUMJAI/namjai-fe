@@ -8,7 +8,6 @@
         <div @click="routeToCategories('total')">
           <div :class="{ 'bg-[#00715D] text-white': route.fullPath.includes('total') }" class="bg-white hover:bg-namjaigreen hover:text-white w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
             <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-              <!-- <img :src="`src/assets/${target.icon}`" /> -->
               <img src="@/assets/all.svg" />
             </div>
             <h1 class="text-center pt-[10px]">ทั้งหมด</h1>
@@ -17,7 +16,6 @@
         <div @click="routeToCategories('medical')">
           <div :class="{ 'bg-[#00715D] text-white': route.fullPath.includes('medical') }" class="bg-white hover:bg-namjaigreen hover:text-white w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
             <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-              <!-- <img :src="`src/assets/${target.icon}`" /> -->
               <img src="@/assets/medical.svg" />
             </div>
             <h1 class="text-center pt-[10px]">การแพทย์</h1>
@@ -26,7 +24,6 @@
         <div @click="routeToCategories('education')">
           <div :class="{ 'bg-[#00715D] text-white': route.fullPath.includes('education') }" class="bg-white hover:bg-namjaigreen hover:text-white w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
             <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-              <!-- <img :src="`src/assets/${target.icon}`" /> -->
               <img src="@/assets/education.svg" />
             </div>
             <h1 class="text-center pt-[10px]">การศึกษา</h1>
@@ -35,7 +32,6 @@
         <div @click="routeToCategories('children')">
           <div :class="{ 'bg-[#00715D] text-white': route.fullPath.includes('children') }" class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
             <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-              <!-- <img :src="`src/assets/${target.icon}`" /> -->
               <img src="@/assets/children.svg" />
             </div>
             <h1 class="text-center pt-[10px]">เด็กและสตรี</h1>
@@ -44,7 +40,6 @@
         <div @click="routeToCategories('disaster')">
           <div :class="{ 'bg-[#00715D] text-white': route.fullPath.includes('disaster') }" class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
             <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-              <!-- <img :src="`src/assets/${target.icon}`" /> -->
               <img src="@/assets/disaster.svg" />
             </div>
             <h1 class="text-center pt-[10px]">บรรเทาสาธารณะภัย</h1>
@@ -53,7 +48,6 @@
         <div @click="routeToCategories('handicapped')">
           <div :class="{ 'bg-[#00715D] text-white': route.fullPath.includes('handicapped') }" class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
             <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-              <!-- <img :src="`src/assets/${target.icon}`" /> -->
               <img src="@/assets/handicapped.svg" />
             </div>
             <h1 class="text-center pt-[10px]">ผู้พิการ</h1>
@@ -62,7 +56,6 @@
         <div @click="routeToCategories('elder')">
           <div :class="{ 'bg-[#00715D] text-white': route.fullPath.includes('elder') }" class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
             <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-              <!-- <img :src="`src/assets/${target.icon}`" /> -->
               <img src="@/assets/elder.svg" />
             </div>
             <h1 class="text-center pt-[10px]">ผู้สูงอายุ</h1>
@@ -71,7 +64,6 @@
         <div @click="routeToCategories('valley')">
           <div :class="{ 'bg-[#00715D] text-white': route.fullPath === ('valley') }" class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
             <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-              <!-- <img :src="`src/assets/${target.icon}`" /> -->
               <img src="@/assets/valley.svg" />
             </div>
             <h1 class="text-center pt-[10px]">พัฒนาชุมชน</h1>
@@ -80,7 +72,6 @@
         <div @click="routeToCategories('art')">
           <div :class="{ 'bg-[#00715D] text-white': route.fullPath.includes('art') }" class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
             <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-              <!-- <img :src="`src/assets/${target.icon}`" /> -->
               <img src="@/assets/art.svg" />
             </div>
             <h1 class="text-center pt-[10px]">ศิลปะและวัฒนธรรม</h1>
@@ -89,7 +80,6 @@
         <div @click="routeToCategories('animal')">
           <div :class="{ 'bg-[#00715D] text-white': route.fullPath.includes('animal') }" class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
             <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-              <!-- <img :src="`src/assets/${target.icon}`" /> -->
               <img src="@/assets/animal.svg" />
             </div>
             <h1 class="text-center pt-[10px]">สัตว์</h1>
@@ -98,7 +88,6 @@
         <div @click="routeToCategories('environment')">
           <div :class="{ 'bg-[#00715D] text-white': route.fullPath.includes('environment') }" class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
             <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-              <!-- <img :src="`src/assets/${target.icon}`" /> -->
               <img src="@/assets/environment.svg" />
             </div>
             <h1 class="text-center pt-[10px]">สิ่งแวดล้อม</h1>
@@ -107,7 +96,6 @@
         <div @click="routeToCategories('human')">
           <div :class="{ 'bg-[#00715D] text-white': route.fullPath.includes('human') }" class="bg-white hover:text-white hover:bg-namjaigreen w-[100px] h-[155px] py-[10px] rounded-lg mb-[60px] drop-shadow-md hover:shadow-md">
             <div class="mx-auto rounded-full overflow-hidden w-[80px] bg-namjaibrown">
-              <!-- <img :src="`src/assets/${target.icon}`" /> -->
               <img src="@/assets/human.svg" />
             </div>
             <h1 class="text-center pt-[10px]">สิทธิมนุษยชน</h1>
@@ -115,8 +103,8 @@
         </div>
       </div>
       <router-view :key="route.fullPath" />
-      <!-- <router-view :key="$route.fullPath"></router-view> -->
     </div>
+    <foo-ter></foo-ter>
   </template>
   
   <script>

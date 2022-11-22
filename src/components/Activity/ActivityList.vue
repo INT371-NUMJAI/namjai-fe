@@ -28,6 +28,7 @@
           </div>
           <w-divider class="pb-[20px] mt-[20px] mx-[40px]"></w-divider>
         </div>
+        <div class="text-center py-[100px]" v-if="activityList.length === 0">ยังไม่มีรายการที่ถูกใจ</div>
       </div>
       <div v-if="selectedJoinedVolunteer === true">
         <div v-for="volunteer in joinedVolunteer" :key="volunteer.userFavoriteUUID" class="pb-[0px] py-[30px]">
@@ -44,6 +45,7 @@
           </div>
           <w-divider class="pb-[20px] mt-[20px] mx-[40px]"></w-divider>
         </div>
+        <div class="text-center py-[100px]" v-if="joinedVolunteer.length === 0">ยังไม่มีจิตอาสาที่เข้าร่วม</div>
       </div>
     </div>
   </div>

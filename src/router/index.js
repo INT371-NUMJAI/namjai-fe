@@ -117,7 +117,7 @@ const router = createRouter({
 			path: "/volunteer-add",
 			name: "volunteer-add",
 			component: () => import("../components/Volunteer/FoundationForm.vue"),
-			meta: {requiresAuth: true},
+			// meta: {requiresAuth: true},
 		},
 		{
 			path: "/volunteer-unregistered-user",
@@ -166,7 +166,7 @@ const router = createRouter({
 			path: "/add/foundationproject",
 			name: "fdn-project-form",
 			component: () => import("../components/Project/ProjectForm.vue"),
-			meta: {requiresAuth: true},
+			// meta: {requiresAuth: true},
 		},
 		{
 			path: "/foundations",

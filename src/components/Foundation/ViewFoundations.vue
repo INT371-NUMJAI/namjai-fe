@@ -6,6 +6,7 @@
       <foundation-card :foundationCardProps="fdnList"></foundation-card>
     </div>
   </div>
+  <foo-ter></foo-ter>
 </template>
 
 <script>
