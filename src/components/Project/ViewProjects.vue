@@ -126,13 +126,11 @@ import ProjectCard from "./ProjectCard.vue";
 import projectService from "./project-service";
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import Search from "../Verification/Search.vue";
 import BaseFilter from "../_Bases/BaseFilter.vue";
 
 export default {
   components: {
     ProjectCard,
-    Search,
     BaseFilter,
 
   },

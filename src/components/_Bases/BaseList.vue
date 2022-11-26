@@ -11,11 +11,9 @@
 </template>
 
 <script>
-// import VerificationStatus from "@/components/Verification/VerificationStatus.vue";
 
 export default {
   // components: {
-  // 	VerificationStatus,
   // },
   // props: {
   // 	objectProps: {

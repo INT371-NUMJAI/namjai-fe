@@ -104,8 +104,8 @@ export default {
           showAlert.value = true;
           router.push("/login");
         })
-        .catch(() => {
-          responseMessage.value = "Fail to sign up please try again";
+        .catch((error) => {
+          responseMessage.value = error.response.data.message;
           checkError.value = true;
           showAlert.value = true;
           setTimeout(() => router.push("/report"), 3000);

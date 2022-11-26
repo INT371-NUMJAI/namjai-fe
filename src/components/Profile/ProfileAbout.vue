@@ -88,9 +88,6 @@ export default {
     const router = useRouter();
     const route = useRoute();
 
-    // const email = use_auth.store_auth.user.email ? use_auth.store_auth.user.email : null;
-
-    // console.log(use_auth.store_auth.user.email);
     const deleteAccountByEmail = () => {
       profileService.deleteProfile(use_auth.store_auth.user.email).then((response) => {
         if (response.status === 200) {

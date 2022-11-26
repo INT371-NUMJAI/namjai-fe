@@ -15,13 +15,11 @@ import foundationService from "./foundation-service";
 import FoundationCard from "./FoundationCard.vue";
 import BaseFilter from "../_Bases/BaseFilter.vue";
 import { useRouter } from "vue-router";
-import Search from "../Verification/Search.vue";
 
 export default {
   components: {
     FoundationCard,
     BaseFilter,
-    Search,
   },
   setup() {
     document.title = "Namjai - Foundations";

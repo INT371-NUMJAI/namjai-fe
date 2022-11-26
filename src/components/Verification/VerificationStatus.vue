@@ -14,7 +14,7 @@ export default {
 
 		const setStatus = computed(() => {
 			const message = ref("");
-			if ("VERIFIED" === props.statusText || "APPROVE" === props.statusText) {
+			if ("VERIFIED" === props.statusText || "APPROVED" === props.statusText) {
 				color.value = "bg-namjaigreen";
 				return (message.value = "อนุมัติ");
 			}
