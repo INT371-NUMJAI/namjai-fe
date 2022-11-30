@@ -109,7 +109,6 @@
   
   <script>
   import { useRoute, useRouter } from "vue-router";
-import useVolunteer from "./useVolunteer";
 import VolunteerActivityCard from './VolunteerActivityCard.vue';
 
   
