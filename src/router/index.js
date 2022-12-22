@@ -117,7 +117,7 @@ const router = createRouter({
 			path: "/volunteer-add",
 			name: "volunteer-add",
 			component: () => import("../components/Volunteer/FoundationForm.vue"),
-			meta: {requiresAuth: true},
+			// meta: {requiresAuth: true},
 		},
 		{
 			path: "/volunteer-unregistered-user",
@@ -128,7 +128,7 @@ const router = createRouter({
 			path: "/volunteer/:id/volunteerlistdetail",
 			name: "volunteerlistdetail",
 			component: () => import("../components/Volunteer/VolunteerListDetail.vue"),
-			meta: {requiresAuth: true},
+			// meta: {requiresAuth: true},
 		},
 		{
 
@@ -166,7 +166,7 @@ const router = createRouter({
 			path: "/add/foundationproject",
 			name: "fdn-project-form",
 			component: () => import("../components/Project/ProjectForm.vue"),
-			meta: {requiresAuth: true},
+			// meta: {requiresAuth: true},
 		},
 		{
 			path: "/foundations",
@@ -199,13 +199,13 @@ const router = createRouter({
 			path: "/reportlist",
 			name: "report-list",
 			component: () => import("../components/Report/ViewReportList.vue"),
-			meta: {requiresAuth: true},
+			// meta: {requiresAuth: true},
 		},
 		{
 			path: "/withdraw",
 			name: "withdraw",
 			component: () => import("../components/Transaction/ViewTransactionRequestAdmin.vue"),
-			meta: {requiresAuth: true},
+			// meta: {requiresAuth: true},
 		},
 		{
 			path: "/:pathMatch(.*)*",

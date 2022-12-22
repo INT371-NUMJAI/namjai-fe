@@ -54,6 +54,7 @@
       <div class="flex space-x-[20px] lg:space-x-[30px]">
         <w-select class="mb-10 lg:text-base md:text-base text-sm" :items="items" label="ประเภทกิจกรรม" label-color="black" placeholder=" " selection-color="grey" color="black" v-model="addVolunteerBody.activityType"> </w-select>
         <w-select class="mb-10 lg:text-base md:text-base text-sm" :items="categories" label="หมวดหมู่" label-color="black" placeholder=" " selection-color="grey" color="black" return-object multiple v-model="addVolunteerBody.targetCategoriesSet">
+          
           <template #item="{ item, selected }">
             <w-icon v-if="selected" class="black">wi-check</w-icon>
             <span v-else></span>
@@ -61,6 +62,7 @@
           </template>
         </w-select>
       </div>
+      <!-- {{addVolunteerBody}} -->
       <div class="flex space-x-[20px] lg:space-x-[30px]">
         <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่รับสมัคร *ไม่สามารถเลือกวันนี้หรือวันที่เก่ากว่าได้*" label-color="black" placeholder=" " v-model="addVolunteerBody.startDate" />
         <w-input :validators="[validators.required]" class="mb-10 lg:text-base md:text-base text-sm" type="date" color="black" label="วันที่ปิดรับสมัคร *ไม่สามารถเลือกวันที่เก่ากว่าวันรับสมัครได้*" label-color="black" placeholder=" " v-model="addVolunteerBody.endDate" />

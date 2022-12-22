@@ -1,7 +1,7 @@
 <template>
-  <div class="container lg:max-w-max md:max-w-max mx-auto">
+  <div class="container lg:max-w-max md:max-w-max">
     <router-link to="/volunteer-add">
-      <button v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && route.params.id === use_auth.store_auth.user.email && use_auth.store_auth.user.role === `ROLE_FDN`" :disabled="checkAuthorized()" class="bg-namjaired w-full lg:w-[186px] py-3 flex justify-center space-x-3 rounded-lg">
+      <button v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && route.params.id === use_auth.store_auth.user.email && use_auth.store_auth.user.role === `ROLE_FDN`" :disabled="checkAuthorized()" class="mb-5 bg-namjaired w-full lg:w-[186px] py-3 flex justify-center space-x-3 rounded-lg">
         <w-icon class="mr1" md color="white">fa fa-plus</w-icon>
         <p class="text-[14px] text-white">เพิ่มโครงการจิตอาสา</p>
       </button>
@@ -9,13 +9,14 @@
     <span v-if="use_auth.store_auth.status.loggedIn && use_auth.store_auth.user != null && use_auth.store_auth.user.status != `ACTIVE`">
       <p class="text-center mt-[80px]">กรุณาติดต่อเราเพื่อทำการยืนยันมูลนิธิของท่าน</p>
     </span>
-    <span v-if="volunteerShortList.length === 0">
-      <p class="text-center mt-[80px]">มูลนิธินี้ยังไม่มีโครงการจิตอาสา</p>
-    </span>
+    
     <div>
       <volunteer-activity-card :hiddenProp="false" :volunteerProps="volunteerShortList" />
     </div>
   </div>
+  <span  v-if="volunteerShortList.length === 0">
+      <p class="text-center -mt-[60px]">มูลนิธินี้ยังไม่มีโครงการจิตอาสา</p>
+    </span>
 </template>
 
 <script>

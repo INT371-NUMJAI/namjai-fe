@@ -124,10 +124,11 @@ export default {
     const checkSuccess = ref(false);
     const checkError = ref(false);
 
-    const apiVerificationFDN = reactive({ fdnUUid: "", status: "", message: "", adminApprove: use_auth.auth_userName });
+    const apiVerificationFDN = reactive({ fdnUUid: "", status: "", message: "", adminApprove: use_auth.store_auth.user.userName });
     const clickToVerify = (uuid) => {
       apiVerificationFDN.fdnUUid = uuid;
       apiVerificationFDN.status = "APPROVE";
+      console.log(apiVerificationFDN);
       approveService.approveFDN(apiVerificationFDN).then(() => {
 		showAlert.value = true;
 		checkSuccess.value = true;
